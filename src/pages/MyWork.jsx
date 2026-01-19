@@ -5,6 +5,9 @@ import CompletedWork from "../components/layout/CompletedWork";
 import BackButton from "../components/common/BackButton";
 import { useNavigate } from "react-router-dom";
 import MyWorkStatCard from "../components/common/MyWorkStatCard";
+import LanguageFilter from "../components/common/LanguageFilter";
+import TimeFilter from "../components/common/TimeFilter";
+import MyWorkNav from "../components/layout/MyWorkNav";
 export default function MyWork() {
   const workStats = [
     {
@@ -42,13 +45,17 @@ export default function MyWork() {
             Track your current contributions and view your work history
           </p>
         </div>
-        <div className="flex gap-2 items-center">
-          <span>All language</span>
-          <span>All Time</span>
+        <div className="flex gap-2 items-center pt-12">
+          <LanguageFilter
+            onSelect={(lang) => console.log("Selected Lang:", lang)}
+          />
+          <TimeFilter
+            onSelect={(time) => console.log("Selected Time:", time)}
+          />
         </div>
       </div>
       <div className="px-10">
-        <div className="flex gap-4 justify-around bg-red-300">
+        <div className="flex gap-4 justify-around">
           {workStats.map((stat, index) => (
             <MyWorkStatCard key={index} stat={stat} />
           ))}
@@ -56,33 +63,12 @@ export default function MyWork() {
 
         {/* ===== Tabs Navbar ===== */}
         <div className="py-6">
-          <div className="flex  flex-col md:flex-row gap-2 lg:gap-8 justify-around border-2 border-gray-200 bg-switchbg rounded-2xl md:rounded-full p-1  w-full md:w-fit lg:shadow-sm">
-            <button
-              onClick={() => setActiveTab("current")}
-              className={`py-2 px-2 md:px-6 
-            ${
-              activeTab === "current"
-                ? "bg-white rounded-full font-semibold border-2 border-gray-200 lg:shadow-sm"
-                : "text-textdark"
-            }`}
-            >
-              Current Work
-            </button>
-
-            <button
-              onClick={() => setActiveTab("completed")}
-              className={`py-2 px-2 md:px-6
-            ${
-              activeTab === "completed"
-                ? "bg-white rounded-full font-semibold border-2 border-gray-200 lg:shadow-sm"
-                : "text-textdark"
-            }`}
-            >
-              Completed
-            </button>
-          </div>
+          <MyWorkNav activeTab={activeTab} setActiveTab={setActiveTab} />
         </div>
+
         {/* ===== Dynamic Content ===== */}
+        {/*condition && value
+        if condition is true → return value*/}
         <div>
           {activeTab === "current" && <CurrentWork />}
           {activeTab === "completed" && <CompletedWork />}

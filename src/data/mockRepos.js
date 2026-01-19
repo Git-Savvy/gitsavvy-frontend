@@ -1,6 +1,6 @@
 const mockRepos = [
   {
-    id: 1,
+    id:142,
     title: "cloud-infrastructure",
     description: "Infrastructure as code templates for AWS, Azure, and GCP",
     stars: 5432,
@@ -10,7 +10,7 @@ const mockRepos = [
     tags: ["React", "Vite", "Tailwind", "UI"],
   },
   {
-    id: 2,
+    id: 200,
     title: "EmergencyApp",
     description: "An emergency communication system with AI first aid guidance",
     stars: 120,

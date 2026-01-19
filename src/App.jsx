@@ -9,6 +9,7 @@ import MyWork from "./pages/MyWork";
 import Profile from "./pages/Profile";
 import { UserProvider } from "./context/UserContext";
 import { RepoProvider } from "./context/RepoContext";
+import { IssueProvider } from "./context/IssueContext";
 import NotFound from "./pages/NotFound";
 function App() {
   const repoInfo = {
@@ -27,35 +28,24 @@ function App() {
         <Route
           path="/home"
           element={
-            <UserProvider>
-              {/*provider have to wrap the component it self not the route! */}
-              <RepoProvider>
-                <HomePage />
-              </RepoProvider>
-            </UserProvider>
-          }
-        >
-          <Route index element={<Discover />} />
-
-          <Route element={<LayoutChatbot />}>
-            <Route
-              path="repoDetail/:id"
-              element={<RepoDetail repo={repoInfo} />}
-            />
-            <Route path="issueDetail/:id" element={<IssueDetail />} />
-          </Route>
-
-          <Route
-            path="myWork"
-            element={
+            <IssueProvider>
               <UserProvider>
                 {/*provider have to wrap the component it self not the route! */}
                 <RepoProvider>
-                  <MyWork />
-                </RepoProvider>{" "}
+                  <HomePage />
+                </RepoProvider>
               </UserProvider>
-            }
-          />
+            </IssueProvider>
+          }
+        >
+          <Route index element={<Discover />} />
+          <Route element={<LayoutChatbot />}>
+            <Route path="repoDetail/:id" element={<RepoDetail />} />
+            <Route path="issueDetail/:id" element={<IssueDetail />} />
+          </Route>
+          <Route path="myWork" element={<MyWork />} />{" "}
+          {/*All nested routes inherit the parent element tree.So React renders:
+             MyWork has access to:UserContext, RepoContext */}
           <Route path="profile" element={<Profile />} />
         </Route>
 

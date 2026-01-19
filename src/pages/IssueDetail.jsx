@@ -1,20 +1,25 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BackButton from "../components/common/BackButton";
-import {
-  ExternalLink,
-  MessageSquare,
-  Info,
-  Box,
-  UserCircle,
-} from "lucide-react";
+import { ExternalLink, Info, UserCircle } from "lucide-react";
 import SimpleLightButton from "../components/common/SimpleLightButton";
 import SimpleDarkButton from "../components/common/SimpleDarkButton";
 import IssueNav from "../components/layout/IssueNav";
 import DescriptionIssue from "../components/layout/DescriptionIssue";
 import Comments from "../components/layout/Comments";
 import ContributionWorkflow from "../components/common/contributionFlow/ContributionWorkflow"; // The modal component
+import { useParams } from "react-router-dom";
+import { IssueContext } from "../context/IssueContext";
+import { useContext } from "react";
 export default function IssueDetail() {
+  const { id } = useParams(); // id from URL
+  const { issues } = useContext(IssueContext);
+  // find issue with this id
+  const issue = issues.find((i) => i.issueId === parseInt(id));
+  if (!issue) return <div>Issue not found</div>;
+  {
+    /*change it to nice card later*/
+  }
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("description");
@@ -58,7 +63,7 @@ export default function IssueDetail() {
       <BackButton
         text=" Back to Repository"
         onClick={() => {
-          navigate("/home/repo");
+          navigate(`/home/repoDetail/${issue.repositoryId}`);
         }}
       />
 

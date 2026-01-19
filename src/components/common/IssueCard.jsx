@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { MessageSquare, Clock, AlertCircle } from "lucide-react";
 import SimpleDarkButton from "./SimpleDarkButton";
 
-export default function IssueCard({ title, description, tags = [] }) {
+export default function IssueCard({ issue }) {
   const navigate = useNavigate();
   return (
     <div className="bg-white border-2 border-gray-200 rounded-xl p-6 lg:shadow-sm  transition-colors">
@@ -12,22 +12,24 @@ export default function IssueCard({ title, description, tags = [] }) {
           {/* Title and Icon */}
           <div className="flex items-center gap-2">
             <AlertCircle className="w-5 h-5 text-slate-400" />
-            <h3 className="text-lg font-semibold text-slate-900">{title}</h3>
+            <h3 className="text-lg font-semibold text-slate-900">
+              {issue.issueTitle}
+            </h3>
           </div>
 
           {/* Description */}
           <p className="text-slate-500 text-[15px] leading-relaxed max-w-3xl">
-            {description}
+            {issue.issueDescription}
           </p>
 
           {/* Corrected Tags Mapping */}
           <div className="flex flex-wrap gap-2 pt-1">
-            {tags.map((tag, index) => (
+            {issue.labels.map((label, index) => (
               <span
                 key={index}
                 className="px-3 py-0.5 bg-emerald-50 text-emerald-600 border border-emerald-100 rounded-full text-xs font-semibold"
               >
-                {tag}
+                {label}
               </span>
             ))}
           </div>
@@ -37,7 +39,7 @@ export default function IssueCard({ title, description, tags = [] }) {
         <SimpleDarkButton
           text="View Details"
           onClick={() => {
-            navigate("/home/issue");
+            navigate(`/home/issueDetail/${issue.issueId}`);
           }}
         />
       </div>

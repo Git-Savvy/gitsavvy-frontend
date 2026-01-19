@@ -1,7 +1,7 @@
-export default function IssueNav({ activeTab, setActiveTab,num }) {
+export default function IssueNav({ activeTab, setActiveTab, num }) {
   const tabs = [
-    { id: "description", label: "Description" },
-    { id: "comments", label: `Comments (${num})` },
+    { id: "description", label: "DESCRIPTION" },
+    { id: "comments", label: `COMMENTS (${num})` },
   ];
   return (
     <div className="flex  flex-col md:flex-row gap-2 lg:gap-8 justify-around  bg-switchbg rounded-2xl md:rounded-full p-1  w-full md:w-fit">

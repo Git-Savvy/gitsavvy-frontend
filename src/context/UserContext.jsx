@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react"; //A context is like a global storage for a part of your app.
+import { createContext, useState } from "react"; //A context is like a global storage for a part of your app.
 import mockUser from "../data/mockUser";
 
 const UserContext = createContext(); //like a container that can store your user data so any component in your app can access it.

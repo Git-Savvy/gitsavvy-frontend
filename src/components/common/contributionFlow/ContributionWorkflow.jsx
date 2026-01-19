@@ -8,6 +8,7 @@ import CompleteView from "./CompleteView";
 import {
   Check,
   GitFork,
+   GitCommitHorizontal,
   GitBranch,
   GitPullRequest,
   X,
@@ -29,7 +30,7 @@ const STEP_ICONS = {
   claim: Settings,
   fork: GitFork,
   branch: GitBranch,
-  changes: GitBranch,
+  changes:  GitCommitHorizontal,
   pr: GitPullRequest,
   complete: Check,
 };
