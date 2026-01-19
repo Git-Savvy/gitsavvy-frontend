@@ -1,5 +1,4 @@
 import ProfileHeaderCard from "../components/common/profilePageComponents/ProfileHeaderCard";
-import ProfileDropdownMenue from "../components/common/profilePageComponents/ProfileDropdownMenu";
 import RecommendationInfoCard from "../components/common/profilePageComponents/RecommendationInfoCard";
 import SelectionCards from "../components/common/profilePageComponents/SelectionCards";
 import BackButton from "../components/common/BackButton";

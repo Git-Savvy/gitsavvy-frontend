@@ -1,10 +1,23 @@
 import logo from "../../assets/lightLogo.svg";
 import { ChevronDown, Briefcase } from "lucide-react";
 import { NavLink } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useRef, useState, useEffect } from "react";
 import { UserContext } from "../../context/UserContext";
+import ProfileDropdownMenu from "../common/profilePageComponents/ProfileDropdownMenu";
 export default function Navbar() {
   const { user } = useContext(UserContext); //just access without modifying anything
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
   return (
     <nav className="flex items-center justify-between px-6 py-4 border-b-2  border-gray-200 bg-white h-[4rem] lg:shadow-sm">
       {/* Left */}
@@ -46,7 +59,21 @@ export default function Navbar() {
             )}
           </NavLink>
 
-          <ChevronDown className="text-sm text-gray-500 hover:text-texthover" />
+          <button onClick={() => setIsOpen(!isOpen)}>
+            {" "}
+            <ChevronDown className="text-sm text-gray-500 hover:text-texthover" />
+          </button>
+          {/* The Dropdown with Absolute Positioning */}
+          {isOpen && (
+            <div className="absolute right-0 mt-65 mr-8 z-50 animate-in fade-in zoom-in-95 duration-100">
+              <ProfileDropdownMenu
+                name="Alex Chen"
+                handle="alexchen"
+                level={8}
+                points={2450}
+              />
+            </div>
+          )}
         </div>
       </div>
     </nav>

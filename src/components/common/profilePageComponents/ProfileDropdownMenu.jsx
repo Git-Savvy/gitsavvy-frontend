@@ -1,8 +1,8 @@
 import { User, LogOut, Trophy } from "lucide-react";
 
-export default function ProfileDropdownMenue({ name, handle, level, points }) {
+export default function ProfileDropdownMenu({ name, handle, level, points }) {
   return (
-    <div className="w-64 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden">
+    <div className="w-64 bg-white rounded-2xl shadow-2xl border-2 border-gray-200 overflow-hidden">
       <div className="p-4 border-b border-gray-50">
         <p className="font-bold text-gray-900 text-lg">{name}</p>
         <p className="text-gray-400 text-sm mb-2">@{handle}</p>
