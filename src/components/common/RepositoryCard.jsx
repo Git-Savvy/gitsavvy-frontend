@@ -10,7 +10,7 @@ import SimpleDarkButton from "./SimpleDarkButton";
 import SimpleLightButton from "./SimpleLightButton";
 export default function RepositoryCard({ repo, navigate }) {
   return (
-    <div className="border-2 border-gray-200 rounded-xl p-5 bg-white flex justify-between gap-4">
+    <div className="border-2 border-gray-200 rounded-xl p-5 bg-white flex justify-between gap-4  lg:shadow-sm">
       {/* Left */}
       <div>
         <div className="flex items-center gap-2">

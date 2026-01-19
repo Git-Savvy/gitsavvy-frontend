@@ -11,7 +11,7 @@ export default function IssueNav({ activeTab, setActiveTab,num }) {
           onClick={() => setActiveTab(tab.id)}
           className={`py-2 px-2 md:px-6 ${
             activeTab === tab.id
-              ? "bg-white rounded-full font-semibold"
+              ? "bg-white rounded-full font-semibold border-2 border-gray-200 lg:shadow-sm"
               : "text-textdark"
           }`}
         >

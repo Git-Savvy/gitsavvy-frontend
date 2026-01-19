@@ -1,7 +1,5 @@
 import DocumentationRefreshCard from "../common/DocumentationRefreshCard";
 import DocumentationSidebar from "./DocumentationSidebar";
-import DocCard from "../common/DocCard";
-import { Sparkles, RefreshCw } from "lucide-react";
 export default function Docs() {
   return (
     <div className="min-h-screen font-sans text-slate-700">

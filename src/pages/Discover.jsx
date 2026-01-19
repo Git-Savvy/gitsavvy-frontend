@@ -28,7 +28,7 @@ export default function Discover() {
         ))}
       </main>
       {/* Right sidebar */}
-      <div className="bg-white border-x-2 border-gray-200">
+      <div className="bg-white border-x-2 border-gray-200  lg:shadow-sm">
         <RightSidebar />
       </div>
     </div>

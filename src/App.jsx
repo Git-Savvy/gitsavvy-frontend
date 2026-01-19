@@ -38,11 +38,24 @@ function App() {
           <Route index element={<Discover />} />
 
           <Route element={<LayoutChatbot />}>
-            <Route path="repoDetail/:id" element={<RepoDetail repo={repoInfo} />} />
+            <Route
+              path="repoDetail/:id"
+              element={<RepoDetail repo={repoInfo} />}
+            />
             <Route path="issueDetail/:id" element={<IssueDetail />} />
           </Route>
 
-          <Route path="myWork" element={<MyWork />} />
+          <Route
+            path="myWork"
+            element={
+              <UserProvider>
+                {/*provider have to wrap the component it self not the route! */}
+                <RepoProvider>
+                  <MyWork />
+                </RepoProvider>{" "}
+              </UserProvider>
+            }
+          />
           <Route path="profile" element={<Profile />} />
         </Route>
 

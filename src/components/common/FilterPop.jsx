@@ -31,7 +31,7 @@ export default function FilterPop() {
       {/* Filter Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-6 py-2 border border-gray-200 rounded-lg font-medium text-slate-700 hover:bg-hoverl transition-colors shadow-sm bg-white"
+        className="flex items-center gap-2 px-6 py-2 border border-gray-200 rounded-lg font-medium text-slate-700 hover:bg-hoverl transition-colors lg:shadow-sm bg-white"
       >
         <ListFilter className="w-4 h-4" />
         Filter

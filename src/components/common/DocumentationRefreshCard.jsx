@@ -1,8 +1,7 @@
-import DocCard from "../common/DocCard";
 import { Sparkles, RefreshCw } from "lucide-react";
 export default function DocumentationRefreshCard() {
   return (
-    <header className="bg-white border-2 border-gray-200 rounded-2xl p-8 shadow-sm">
+    <header className="bg-white border-2 border-gray-200 rounded-2xl p-8 lg:shadow-sm">
       <div className="flex justify-between items-start mb-4">
         <div className="flex items-center gap-2 text-indigo-900 font-semibold text-lg">
           <Sparkles className="w-5 h-5 text-primary" />
