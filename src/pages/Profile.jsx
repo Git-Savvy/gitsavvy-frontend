@@ -3,37 +3,39 @@ import RecommendationInfoCard from "../components/common/profilePageComponents/R
 import SelectionCards from "../components/common/profilePageComponents/SelectionCards";
 import BackButton from "../components/common/BackButton";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../context/UserContext";
 export default function Profile() {
+  const { user, setUser } = useContext(UserContext);
   const Navigate = useNavigate();
   // State for Language Tags
   const [languages, setLanguages] = useState([
-    { name: "TypeScript", selected: true },
-    { name: "JavaScript", selected: false },
-    { name: "Python", selected: true },
-    { name: "Rust", selected: true },
-    { name: "Go", selected: false },
-    { name: "Java", selected: false },
-    { name: "C++", selected: false },
-    { name: "Ruby", selected: false },
-    { name: "PHP", selected: false },
-    { name: "Swift", selected: false },
-    { name: "Kotlin", selected: false },
+    { id: 1, name: "TypeScript" },
+    { id: 2, name: "JavaScript" },
+    { id: 3, name: "Python" },
+    { id: 4, name: "Rust" },
+    { id: 5, name: "Go" },
+    { id: 6, name: "Java" },
+    { id: 7, name: "C++" },
+    { id: 8, name: "Ruby" },
+    { id: 9, name: "PHP" },
+    { id: 10, name: "Swift" },
+    { id: 11, name: "Kotlin" },
   ]);
 
   // State for Interest Tags
   const [interests, setInterests] = useState([
-    { name: "Web Development", selected: true },
-    { name: "Mobile Development", selected: false },
-    { name: "Machine Learning", selected: true },
-    { name: "DevOps", selected: true },
-    { name: "Cloud Computing", selected: false },
-    { name: "Data Science", selected: false },
-    { name: "Blockchain", selected: false },
-    { name: "Game Development", selected: false },
-    { name: "Security", selected: false },
-    { name: "UI/UX", selected: false },
-    { name: "API Development", selected: false },
+    { id: 1, name: "Web Development" },
+    { id: 2, name: "Mobile Development" },
+    { id: 3, name: "Machine Learning" },
+    { id: 4, name: "DevOps" },
+    { id: 5, name: "Cloud Computing" },
+    { id: 6, name: "Data Science" },
+    { id: 7, name: "Blockchain" },
+    { id: 8, name: "Game Development" },
+    { id: 9, name: "Security" },
+    { id: 10, name: "UI/UX" },
+    { id: 11, name: "API Development" },
   ]);
   return (
     <div className="max-w-8xl px-45 space-y-8">
@@ -44,18 +46,22 @@ export default function Profile() {
         }}
       />
       <ProfileHeaderCard
-        name="Alex Chen"
-        handle="alexchen"
-        level={8}
-        points={2450}
-        githubUser="alexchen"
+        avatar={user.avatar}
+        name={`${user.firstName} ${user.lastName}`}
+        handle={user.username}
+        level={user.level}
+        points={user.points}
+        githubUser={user.username}
       />
 
       <SelectionCards
         title="Preferred Programming Languages"
         description="Select languages you're comfortable working with. This helps us recommend relevant repositories."
-        tags={languages}
+        tags={languages} //this contain all list to show
         activeColor="blue"
+        type="languages"
+        setUser={setUser}
+        user={user}
       />
 
       <SelectionCards
@@ -63,6 +69,9 @@ export default function Profile() {
         description="Choose topics you're interested in to refine repository recommendations."
         tags={interests}
         activeColor="purple"
+        type="interests"
+        setUser={setUser}
+        user={user}
       />
       <RecommendationInfoCard />
     </div>

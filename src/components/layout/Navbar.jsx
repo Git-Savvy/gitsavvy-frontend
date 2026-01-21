@@ -11,13 +11,18 @@ export default function Navbar() {
   // Close dropdown when clicking outside
   useEffect(() => {
     function handleClickOutside(event) {
+      /**dropdownRef.current && ...
+       This ensures the dropdown exists in the DOM before we try to call .contains().
+       If we didn’t check, and the element is not yet rendered (or removed), this would throw an error: */
+
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsOpen(false);
       }
     }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
   }, []);
+  console.log("isOpen:", isOpen);
   return (
     <nav className="flex items-center justify-between px-6 py-4 border-b-2  border-gray-200 bg-white h-[4rem] lg:shadow-sm">
       {/* Left */}
@@ -59,21 +64,22 @@ export default function Navbar() {
             )}
           </NavLink>
 
-          <button onClick={() => setIsOpen(!isOpen)}>
-            {" "}
-            <ChevronDown className="text-sm text-gray-500 hover:text-texthover" />
-          </button>
-          {/* The Dropdown with Absolute Positioning */}
-          {isOpen && (
-            <div className="absolute right-0 mt-65 mr-8 z-50 animate-in fade-in zoom-in-95 duration-100">
-              <ProfileDropdownMenu
-                name="Alex Chen"
-                handle="alexchen"
-                level={8}
-                points={2450}
-              />
-            </div>
-          )}
+          <div ref={dropdownRef}>
+            <button onClick={() => setIsOpen(!isOpen)}>
+              <ChevronDown className="text-sm text-gray-500 hover:text-texthover" />
+            </button>
+
+            {isOpen && (
+              <div className="absolute right-0 mr-5 mt-2 z-50">
+                <ProfileDropdownMenu
+                  name={user.firstName}
+                  handle={user.username}
+                  level={user.level}
+                  points={user.points}
+                />
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </nav>

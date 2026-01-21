@@ -1,6 +1,7 @@
 import { Trophy, Star, Github, Check } from "lucide-react";
 
 export default function ProfileHeaderCard({
+  avatar,
   name,
   handle,
   level,
@@ -12,7 +13,7 @@ export default function ProfileHeaderCard({
       <h2 className="text-gray-900 font-semibold mb-6">Account Information</h2>
       <div className="flex items-center gap-5 mb-8">
         <img
-          src="https://i.pravatar.cc/150?u=alex"
+          src={avatar}
           className="w-20 h-20 rounded-full border-2 border-white shadow-sm"
           alt="Avatar"
         />
