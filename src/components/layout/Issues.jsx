@@ -4,8 +4,13 @@ import IssueCard from "../common/IssueCard";
 import FilterPop from "../common/FilterPop";
 import { useContext } from "react";
 import { IssueContext } from "../../context/IssueContext";
+import NoDataMessage from "../messages/NoDataMessage";
 export default function Issues({ repoId }) {
   const { issues } = useContext(IssueContext);
+  // 1. Filter the list first
+  const filteredIssues = issues?.filter(
+    (item) => item.repositoryId === parseInt(repoId),
+  );
   const issuesLable = [
     "All Issues",
     "Good First Issue",
@@ -38,13 +43,18 @@ export default function Issues({ repoId }) {
             ))}
           </div>
         </div>
-
         {/* 2. Individual Issue Cards */}
-        {issues
-          .filter((item) => item.repositoryId === parseInt(repoId))
-          .map((item) => (
+
+        {filteredIssues.length > 0 ? (
+          filteredIssues.map((item) => (
             <IssueCard key={item.issueId} issue={item} />
-          ))}
+          ))
+        ) : (
+          <NoDataMessage
+            text="No issues found for this repository."
+            containerStyle="flex-1 bg-white border-2 border-gray-200 rounded-2xl p-10 shadow-sm"
+          />
+        )}
       </div>
     </div>
   );

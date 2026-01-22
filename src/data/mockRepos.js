@@ -64,6 +64,22 @@ const mockRepos = [
     lastUpdated: "2026-01-12T08:00:00Z",
     status: "archived",
   },
-];
+  {
+    id: 5,
+    title: "Test-Empty",
+    owner: "mesh",
+    description: "testing for empty states in project",
+    stars: 60,
+    forks: 10,
+    openIssues: 0,
+    contributers: 37,
+    tags: ["React", "JavaScript", "Club", "Portfolio"],
+    programmingLanguage: ["JavaScript", "React", "Tailwind"],
+    externalRepoLink: "https://github.com/programmingclub/Projects5",
+    contributorIDs: [2, 3, 4, 9, 10],
+    lastUpdated: "2025-01-12T08:00:00Z",
+    status: "archived",
+  },
+]
 
 export default mockRepos;

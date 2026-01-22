@@ -1,30 +1,20 @@
 import { useMemo } from "react";
-
+import { findPageBySlug } from "../../../utils/findPageBySlug";
+import NoDataMessage from "../../messages/NoDataMessage";
 export default function MainContentCard({ docEntry, activeSlug }) {
-  // 1. Helper function to find a page by its slug in a recursive tree
-  const findPageBySlug = (items, slug) => {
-    for (const item of items) {
-      if (item.slug === slug) return item;
-      if (item.children) {
-        const found = findPageBySlug(item.children, slug);
-        if (found) return found;
-      }
-    }
-    return null;
-  };
-
-  // 2. Find the current page data
+  // 1. Find the current page data{research only if the active slug or docsEntry change}
   const currentPage = useMemo(() => {
     if (!docEntry?.pages || !activeSlug) return null;
     return findPageBySlug(docEntry.pages, activeSlug);
   }, [docEntry, activeSlug]);
 
-  // 3. Handle state where no page is found or selected
+  // 2. Handle state where no page is found {I made first page to be shown in first abload so always there is a selected page]
   if (!currentPage) {
     return (
-      <main className="flex-1 bg-white border-2 border-gray-200 rounded-2xl p-10 shadow-sm flex items-center justify-center text-slate-400">
-        Select a page from the sidebar to view documentation.
-      </main>
+      <NoDataMessage
+        containerStyle="flex-1 bg-white border-2 border-gray-200 rounded-2xl p-10 shadow-sm"
+        text="Select a page from the sidebar to view documentation."
+      />
     );
   }
 

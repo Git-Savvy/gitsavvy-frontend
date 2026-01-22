@@ -1,5 +1,5 @@
 import { Sparkles, RefreshCw } from "lucide-react";
-export default function DocumentationRefreshCard() {
+export default function DocumentationRefreshCard({ docs }) {
   return (
     <header className="border-2 border-gray-200 rounded-2xl p-8 lg:shadow-sm bg-gradient-to-br from-[#EFF6FF] to-[#FAF5FF] ">
       <div className="flex justify-between items-start mb-4">
@@ -9,7 +9,7 @@ export default function DocumentationRefreshCard() {
         </div>
         <button className="flex items-center gap-2 px-4 py-2 bg-white border-2 border-gray-300 rounded-lg text-sm font-medium hover:bg-white transition-colors">
           <RefreshCw className="w-4 h-4" />
-          Refresh Docs
+          {docs ? "Refresh Docs" : "Create Docs"}
         </button>
       </div>
       <p className="text-slate-500 leading-relaxed max-w-4xl">

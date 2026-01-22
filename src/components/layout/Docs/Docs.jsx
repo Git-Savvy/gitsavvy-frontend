@@ -31,7 +31,7 @@ export default function Docs({ repoId }) {
   return (
     <div className="min-h-screen font-sans text-slate-700">
       <div className="space-y-6">
-        <DocumentationRefreshCard />
+        <DocumentationRefreshCard docs={docEntry}/>
 
         <div className="flex flex-col md:flex-row gap-6">
           {/* Pass pages array and the setter function */}

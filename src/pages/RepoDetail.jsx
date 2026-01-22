@@ -63,7 +63,7 @@ export default function RepoDetail() {
           />
         </div>
         <p>{repo.description}</p>
-        <div className="flex gap-4 text-sm text-gray-500 my-5 text-text-secondary">
+        <div className="flex gap-4 text-sm  my-5 text-text-secondary">
           <span className="flex gap-1">
             <Star className="text-yellow-500" />
             <p className="text-base">{repo.stars}</p>

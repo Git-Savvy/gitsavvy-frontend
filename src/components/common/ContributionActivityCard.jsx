@@ -12,7 +12,7 @@ import {
 
 export default function ContributionActivityCard({ data }) {
   return (
-    <div className="w-full  p-6 bg-white border-2 border-gray-200 rounded-xl lg:shadow-sm">
+    <div className="w-full p-6 bg-white border-2 border-gray-200 rounded-xl lg:shadow-sm">
       {/* Header */}
       <div className="mb-10">
         <h2 className="text-lg font-medium text-gray-900">
@@ -21,11 +21,11 @@ export default function ContributionActivityCard({ data }) {
       </div>
 
       {/* Chart Container */}
-      <div className="h-[350px] w-full">
+      <div className="h-[350px] w-full min-w-0">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={data}
-            margin={{ top: 5, right: 10, left: -20, bottom: 0 }}
+            margin={{ top: 5, right: 10, left: 0, bottom: 0 }}
             //to remove the default focus border that appear because of the browser
             accessibilityLayer={false}
             style={{ outline: "none" }}

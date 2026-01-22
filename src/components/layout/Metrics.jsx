@@ -6,13 +6,27 @@ import TopContributerCard from "../common/TopContributerCard";
 import MonthlyContributionCard from "../common/MonthlyContributionCard";
 import { MetricsContext } from "../../context/MetricsContext";
 import { useContext } from "react";
+import NoDataMessage from "../messages/NoDataMessage";
 const Metrics = ({ repoId }) => {
   const { metrics } = useContext(MetricsContext);
   const metric = metrics.find((m) => m.repoId === parseInt(repoId));
-  const Commits = metric.totalCommits;
-  const PL = metric.prsMerged;
-  const issueC = metric.issuesClosed;
-  const Contributers = metric.contributors;
+  let Commits = 0;
+  let PL = 0;
+  let issueC = 0;
+  let Contributers = 0;
+  if (metric) {
+    Commits = metric.totalCommits;
+    PL = metric.prsMerged;
+    issueC = metric.issuesClosed;
+    Contributers = metric.contributors;
+  } else {
+    return (
+      <NoDataMessage
+        containerStyle="flex-1 bg-white border-2 border-gray-200 rounded-2xl p-10 shadow-sm"
+        text={"No metric status found."}
+      />
+    );
+  }
   const stats = [
     {
       label: "Total Commits",
@@ -88,7 +102,7 @@ const Metrics = ({ repoId }) => {
 
   return (
     <div className=" bg-gray-50 min-h-screen font-sans text-slate-700">
-      <div className="space-y-6">
+      <div className="space-y-6 w-full">
         {/* 1. Top Stats Row */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {stats.map((stat, i) => (

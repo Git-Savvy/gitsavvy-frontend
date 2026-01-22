@@ -1,12 +1,13 @@
 import { Laptop, CircleCheckBig } from "lucide-react";
 import { useContext } from "react";
 import { ReadmeContext } from "../../context/ReadmeContext";
+import NoDataMessage from "../messages/NoDataMessage";
 export default function Readme({ repoId }) {
   const { readmes } = useContext(ReadmeContext);
   // Use find() because we expect only 1 README per repo
   const readme = readmes.find((r) => r.repoId === parseInt(repoId));
 
-  if (!readme) return <div>no readme file available</div>;
+  if (!readme) return <NoDataMessage  containerStyle="flex-1 bg-white border-2 border-gray-200 rounded-2xl p-10 shadow-sm" text="No readme file found."/>;
   else
     return (
       <div className="border-2 border-gray-200 rounded-xl bg-white p-8 lg:shadow-sm">
