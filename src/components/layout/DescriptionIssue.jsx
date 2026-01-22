@@ -1,12 +1,10 @@
-export default function DescriptionIssue() {
+export default function DescriptionIssue({issue}) {
   return (
     <section className="space-y-6 border-2 border-gray-200 rounded-xl bg-white p-8 lg:shadow-sm">
       <div>
         <h4 className="font-bold text-gray-900 mb-2">Issue Description</h4>
         <p className="text-gray-600 leading-relaxed">
-          Implement dark mode theme switching with system preference detection.
-          This should include proper color scheme management and localStorage
-          persistence.
+         {issue.issueDescription}
         </p>
       </div>
 

@@ -11,15 +11,21 @@ import ContributionWorkflow from "../components/common/contributionFlow/Contribu
 import { useParams } from "react-router-dom";
 import { IssueContext } from "../context/IssueContext";
 import { useContext } from "react";
+import NotFound from "./NotFound";
+import { timeAgo } from "../utils/timeAgo";
 export default function IssueDetail() {
-  const { id } = useParams(); // id from URL
+  const { repoId, issueId } = useParams(); // id from URL
   const { issues } = useContext(IssueContext);
   // find issue with this id
-  const issue = issues.find((i) => i.issueId === parseInt(id));
-  if (!issue) return <div>Issue not found</div>;
-  {
-    /*change it to nice card later*/
-  }
+  const issue = issues.find((i) => i.issueId === parseInt(issueId));
+  if (!issue)
+    return (
+      <NotFound
+        text="  The Issue page you’re looking for doesn’t exist or has been moved."
+        button={`Back to repository`}
+        url={`/home/repoDetail/${parseInt(repoId)}`}
+      />
+    );
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("description");
@@ -54,7 +60,7 @@ export default function IssueDetail() {
       case "comments":
         return <Comments comments={comments} />;
       default:
-        return <DescriptionIssue />;
+        return <DescriptionIssue issue={issue} />;
     }
   };
   return (
@@ -63,7 +69,7 @@ export default function IssueDetail() {
       <BackButton
         text=" Back to Repository"
         onClick={() => {
-          navigate(`/home/repoDetail/${issue.repositoryId}`);
+          navigate(`/home/repoDetail/${repoId}`);
         }}
       />
 
@@ -77,17 +83,17 @@ export default function IssueDetail() {
             <div className="space-y-3">
               <div className="flex  gap-3 justify-center items-center">
                 <h1 className="text-3xl text-bold text-textdark">
-                  Add dark mode support{" "}
+                  {issue.issueTitle}
                 </h1>
                 <span className="text-text-secondary font-normal text-xl border border-gray-700  text-center rounded-xl w-10 h-7 mt-2">
-                  #1
+                  #{issue.issueId}
                 </span>
               </div>
               <div className="flex  justify-between  mb-6 ">
                 <div className="flex gap-4">
                   <div>
                     <div className="flex items-center gap-4 text-sm text-gray-500">
-                      <span>Opened 2 days ago</span>
+                      <span>Opened {timeAgo(issue.creationDate)}</span>
                       <span className="flex items-center gap-1">
                         • 3 comments
                       </span>

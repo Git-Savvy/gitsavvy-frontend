@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, SearchX } from "lucide-react";
 import SimpleDarkButton from "../components/common/SimpleDarkButton";
 import { useNavigate } from "react-router-dom";
-export default function NotFound() {
+export default function NotFound({ text, button, url }) {
   const navigate = useNavigate();
   return (
     <div className="min-h-screen flex items-center justify-center bg-background px-4">
@@ -25,17 +25,15 @@ export default function NotFound() {
           Page not found
         </p>
 
-        <p className="text-gray-500 mt-2 leading-relaxed">
-          The page you’re looking for doesn’t exist or has been moved.
-        </p>
+        <p className="text-gray-500 mt-2 leading-relaxed">{text}</p>
 
         {/* actions */}
 
         <div className="mt-8 flex  gap-3 justify-center">
           <SimpleDarkButton
-            text=" Go Home"
+            text={button}
             icon={<ArrowLeft size={18} />}
-            onClick={() => navigate("/home")}
+            onClick={() => navigate(url)}
           />
         </div>
       </div>

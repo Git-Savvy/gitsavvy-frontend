@@ -4,7 +4,7 @@ import IssueCard from "../common/IssueCard";
 import FilterPop from "../common/FilterPop";
 import { useContext } from "react";
 import { IssueContext } from "../../context/IssueContext";
-export default function Issues() {
+export default function Issues({ repoId }) {
   const { issues } = useContext(IssueContext);
   const issuesLable = [
     "All Issues",
@@ -40,9 +40,11 @@ export default function Issues() {
         </div>
 
         {/* 2. Individual Issue Cards */}
-        {issues.map((item) => (
-          <IssueCard key={item.issueId} issue={item} />
-        ))}
+        {issues
+          .filter((item) => item.repositoryId === parseInt(repoId))
+          .map((item) => (
+            <IssueCard key={item.issueId} issue={item} />
+          ))}
       </div>
     </div>
   );

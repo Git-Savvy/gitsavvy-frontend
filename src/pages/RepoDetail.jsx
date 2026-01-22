@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import RepoNav from "../components/layout/RepoNav";
 import Readme from "../components/layout/Readme";
-import Docs from "../components/layout/Docs";
+import Docs from "../components/layout/Docs/Docs";
 import Issues from "../components/layout/Issues";
 import Metrics from "../components/layout/Metrics";
 import { Star, GitFork, Users, ExternalLink } from "lucide-react";
@@ -11,15 +11,20 @@ import BackButton from "../components/common/BackButton";
 import { useParams } from "react-router-dom";
 import { useContext } from "react";
 import { RepoContext } from "../context/RepoContext";
+import NotFound from "./NotFound";
 export default function RepoDetail() {
-  const { id } = useParams(); // id from URL
+  const { repoId } = useParams(); // id from URL "it is a string!"
   const { repos } = useContext(RepoContext);
   // find repo with this id
-  const repo = repos.find((r) => r.id === parseInt(id));
-  if (!repo) return <div>Repository not found</div>;
-  {
-    /*change it to nice card later*/
-  }
+  const repo = repos.find((r) => r.id === parseInt(repoId));
+  if (!repo)
+    return (
+      <NotFound
+        text="  The Repository page you’re looking for doesn’t exist or has been moved."
+        button="Go to Home"
+        url="/home"
+      />
+    );
 
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("readme");
@@ -27,13 +32,13 @@ export default function RepoDetail() {
   const renderContent = () => {
     switch (activeTab) {
       case "docs":
-        return <Docs />;
+        return <Docs repoId={repo.id} />;
       case "issues":
-        return <Issues />;
+        return <Issues repoId={repo.id} />;
       case "metrics":
-        return <Metrics />;
+        return <Metrics repoId={repo.id} />;
       default:
-        return <Readme />;
+        return <Readme repoId={repo.id} />;
     }
   };
 

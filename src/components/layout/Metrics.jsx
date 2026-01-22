@@ -4,32 +4,40 @@ import StatsCard from "../common/StatsCard";
 import ContributionActivityCard from "../common/ContributionActivityCard";
 import TopContributerCard from "../common/TopContributerCard";
 import MonthlyContributionCard from "../common/MonthlyContributionCard";
-const Metrics = () => {
+import { MetricsContext } from "../../context/MetricsContext";
+import { useContext } from "react";
+const Metrics = ({ repoId }) => {
+  const { metrics } = useContext(MetricsContext);
+  const metric = metrics.find((m) => m.repoId === parseInt(repoId));
+  const Commits = metric.totalCommits;
+  const PL = metric.prsMerged;
+  const issueC = metric.issuesClosed;
+  const Contributers = metric.contributors;
   const stats = [
     {
       label: "Total Commits",
-      value: "1,547",
-      growth: "+12%",
+      value: Commits,
+      growth: "+12%", //later calculate it or try to fitch it
       icon: <Activity className="text-blue-500" />,
       color: "bg-blue-100",
     },
     {
       label: "PRs Merged",
-      value: "197",
+      value: PL,
       growth: "+8%",
       icon: <GitPullRequest className="text-purple-500" />,
       color: "bg-purple-100",
     },
     {
       label: "Issues Closed",
-      value: "134",
+      value: issueC,
       growth: "+15%",
       icon: <CircleCheck className="text-emerald-500" />,
       color: "bg-emerald-100",
     },
     {
       label: "Contributors",
-      value: "37",
+      value: Contributers,
       growth: "+5%",
       icon: <Users className="text-cyan-400" />,
       color: "bg-cyan-100",
@@ -70,13 +78,13 @@ const Metrics = () => {
   ];
 
   const data = [
-  { name: "Jan", commits: 145, prs: 25, issues: 12 },
-  { name: "Feb", commits: 200, prs: 32, issues: 20 },
-  { name: "Mar", commits: 235, prs: 28, issues: 15 },
-  { name: "Apr", commits: 270, prs: 35, issues: 22 },
-  { name: "May", commits: 320, prs: 42, issues: 28 },
-  { name: "Jun", commits: 295, prs: 38, issues: 20 },
-];
+    { name: "Jan", commits: 145, prs: 25, issues: 12 },
+    { name: "Feb", commits: 200, prs: 32, issues: 20 },
+    { name: "Mar", commits: 235, prs: 28, issues: 15 },
+    { name: "Apr", commits: 270, prs: 35, issues: 22 },
+    { name: "May", commits: 320, prs: 42, issues: 28 },
+    { name: "Jun", commits: 295, prs: 38, issues: 20 },
+  ];
 
   return (
     <div className=" bg-gray-50 min-h-screen font-sans text-slate-700">
@@ -89,14 +97,14 @@ const Metrics = () => {
         </div>
 
         {/* 2. Main Contribution Activity Card */}
-        <ContributionActivityCard data={data}/>
+        <ContributionActivityCard data={data} />
         {/* 3. Bottom Grid: Top Contributors & Monthly Bar Chart */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-4">
           {/* Top Contributors Card */}
-          <TopContributerCard contributors={contributors}/>
+          <TopContributerCard contributors={contributors} />
 
           {/* Monthly Contributions Bar Chart Card */}
-          <MonthlyContributionCard data={data}/>
+          <MonthlyContributionCard data={data} />
         </div>
       </div>
     </div>

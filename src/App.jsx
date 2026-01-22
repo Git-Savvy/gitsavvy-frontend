@@ -10,6 +10,9 @@ import Profile from "./pages/Profile";
 import { UserProvider } from "./context/UserContext";
 import { RepoProvider } from "./context/RepoContext";
 import { IssueProvider } from "./context/IssueContext";
+import { MetricsProvider } from "./context/MetricsContext";
+import { ReadmeProvider } from "./context/ReadmeContext";
+import { DocsProvider } from "./context/DocsContext";
 import NotFound from "./pages/NotFound";
 function App() {
   const repoInfo = {
@@ -28,20 +31,34 @@ function App() {
         <Route
           path="/home"
           element={
-            <IssueProvider>
-              <UserProvider>
-                {/*provider have to wrap the component it self not the route! */}
-                <RepoProvider>
-                  <HomePage />
-                </RepoProvider>
-              </UserProvider>
-            </IssueProvider>
+            <DocsProvider>
+              <IssueProvider>
+                <UserProvider>
+                  {/*provider have to wrap the component it self not the route! */}
+                  <RepoProvider>
+                    <HomePage />
+                  </RepoProvider>
+                </UserProvider>
+              </IssueProvider>
+            </DocsProvider>
           }
         >
           <Route index element={<Discover />} />
           <Route element={<LayoutChatbot />}>
-            <Route path="repoDetail/:id" element={<RepoDetail />} />
-            <Route path="issueDetail/:id" element={<IssueDetail />} />
+            <Route
+              path="repoDetail/:repoId"
+              element={
+                <MetricsProvider>
+                  <ReadmeProvider>
+                    <RepoDetail />
+                  </ReadmeProvider>
+                </MetricsProvider>
+              }
+            />
+            <Route
+              path="repoDetail/:repoId/issueDetail/:issueId"
+              element={<IssueDetail />}
+            />
           </Route>
           <Route path="myWork" element={<MyWork />} />{" "}
           {/*All nested routes inherit the parent element tree.So React renders:
@@ -49,7 +66,16 @@ function App() {
           <Route path="profile" element={<Profile />} />
         </Route>
 
-        <Route path="*" element={<NotFound />} />
+        <Route
+          path="*"
+          element={
+            <NotFound
+              text="  The page you’re looking for doesn’t exist or has been moved."
+              button="Go Home"
+              url="/home"
+            />
+          }
+        />
       </Routes>
     </Router>
   );

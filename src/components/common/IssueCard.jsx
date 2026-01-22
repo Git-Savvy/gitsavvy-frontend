@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { MessageSquare, Clock, AlertCircle } from "lucide-react";
 import SimpleDarkButton from "./SimpleDarkButton";
+import { useParams } from "react-router-dom";
 
 export default function IssueCard({ issue }) {
+  const { repoId } = useParams();
   const navigate = useNavigate();
   return (
     <div className="bg-white border-2 border-gray-200 rounded-xl p-6 lg:shadow-sm  transition-colors">
@@ -39,7 +41,7 @@ export default function IssueCard({ issue }) {
         <SimpleDarkButton
           text="View Details"
           onClick={() => {
-            navigate(`/home/issueDetail/${issue.issueId}`);
+            navigate(`/home/repoDetail/${issue.repositoryId}/issueDetail/${issue.issueId}`);
           }}
         />
       </div>
