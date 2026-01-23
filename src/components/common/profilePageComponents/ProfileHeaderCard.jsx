@@ -20,7 +20,7 @@ export default function ProfileHeaderCard({
         <div>
           <h3 className="text-xl font-bold text-gray-900">{name}</h3>
           <p className="text-gray-500 mb-2">@{handle}</p>
-          <div className="flex gap-2">
+          <div className="flex flex-col md:flex-row gap-2">
             <span className="bg-cyan-400 text-white text-xs font-bold px-2 py-1 rounded flex items-center gap-1">
               <Trophy className="w-3 h-3" /> Level {level}
             </span>
@@ -30,7 +30,7 @@ export default function ProfileHeaderCard({
           </div>
         </div>
       </div>
-      <div className="bg-emerald-50/50 border border-emerald-200 rounded-xl p-4 flex justify-between items-center">
+      <div className="bg-emerald-50/50 border border-emerald-200 rounded-xl p-4 flex flex-col md:flex-row justify-between md:items-center">
         <div className="flex items-center gap-3">
           <Github className="w-5 h-5 text-emerald-600" />
           <div>
@@ -42,7 +42,7 @@ export default function ProfileHeaderCard({
             </p>
           </div>
         </div>
-        <span className="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-1 rounded-md flex items-center gap-1">
+        <span className="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-1 rounded-md flex items-center gap-1 w-fit mt-5 md:mt-0">
           <Check className="w-3 h-3" /> CONNECTED
         </span>
       </div>

@@ -43,7 +43,7 @@ export default function RepoDetail() {
   };
 
   return (
-    <div className="max-w-8xl  flex-col gap-10 px-45 ">
+    <div className="max-w-8xl  flex-col gap-10 px-5 md:px-20 lg:px-45 ">
       {/*main content */}
       <BackButton
         text="Back to Discover"
@@ -53,7 +53,7 @@ export default function RepoDetail() {
       />
       {/*repo info*/}
       <div className="mt-8">
-        <div className="lg:flex justify-between ">
+        <div className="md:flex justify-between ">
           <h1 className="text-3xl text-bold text-textdark  mb-3">
             {repo.title}
           </h1>
@@ -62,8 +62,8 @@ export default function RepoDetail() {
             icon={<ExternalLink className="w-5 h-5 " />}
           />
         </div>
-        <p>{repo.description}</p>
-        <div className="flex gap-4 text-sm  my-5 text-text-secondary">
+        <p className="mt-5">{repo.description}</p>
+        <div className="flex flex-col md:flex-row gap-4 text-sm  my-5 text-text-secondary">
           <span className="flex gap-1">
             <Star className="text-yellow-500" />
             <p className="text-base">{repo.stars}</p>

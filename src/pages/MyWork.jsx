@@ -37,7 +37,7 @@ export default function MyWork() {
   return (
     <div className="space-y-8 ">
       {/* ===== Header ===== */}
-      <div className="bg-white w-full flex justify-between px-10 pb-3 border-b-2 border-gray-200 lg:shadow-sm">
+      <div className="bg-white w-full flex flex-col lg:flex-row  justify-between px-10 lg:px-40  pb-3 border-b-2 border-gray-200 lg:shadow-sm">
         <div className="">
           <BackButton text={"Back"} onClick={() => navigate("/home")} />
           <h1 className="text-2xl font-bold text-gray-900">My Work</h1>
@@ -45,7 +45,7 @@ export default function MyWork() {
             Track your current contributions and view your work history
           </p>
         </div>
-        <div className="flex gap-2 items-center pt-12">
+        <div className="flex flex-col md:flex-row gap-2 items-center pt-12">
           <LanguageFilter
             onSelect={(lang) => console.log("Selected Lang:", lang)}
           />
@@ -54,8 +54,8 @@ export default function MyWork() {
           />
         </div>
       </div>
-      <div className="px-10">
-        <div className="flex gap-4 justify-around">
+      <div className="px-10 lg:px-40">
+        <div className="flex flex-col lg:flex-row gap-4 justify-around ">
           {workStats.map((stat, index) => (
             <MyWorkStatCard key={index} stat={stat} />
           ))}

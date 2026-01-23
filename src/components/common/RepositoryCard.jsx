@@ -10,17 +10,17 @@ import SimpleDarkButton from "./SimpleDarkButton";
 import SimpleLightButton from "./SimpleLightButton";
 export default function RepositoryCard({ repo, navigate }) {
   return (
-    <div className="border-2 border-gray-200 rounded-xl p-5 bg-white flex justify-between gap-4  lg:shadow-sm">
+    <div className="border-2 border-gray-200 rounded-xl p-5 bg-white flex flex-col lg:flex-row justify-between gap-4  lg:shadow-sm">
       {/* Left */}
       <div>
         <div className="flex items-center gap-2">
-          <h3 className="font-semibold text-lg">{repo.title}</h3>
-          <img src={recommended} />
+          <h3 className="font-semibold text-lg mb-2 md:mb-0">{repo.title}</h3>
+          <img src={recommended} className="hidden lg:flex"/>
         </div>
 
-        <p className="text-sm text-gray-600 mt-1">{repo.description}</p>
+        <p className=" text-sm text-gray-600 mt-1">{repo.description}</p>
 
-        <div className="flex gap-4 text-sm text-gray-500 mt-3">
+        <div className="flex flex-col md:flex-row gap-4 text-sm text-gray-500 mt-3">
           <span className="flex gap-1">
             <FontAwesomeIcon
               icon={faStar}

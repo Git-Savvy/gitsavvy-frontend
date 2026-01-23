@@ -9,9 +9,9 @@ export default function Discover() {
   const navigate = useNavigate();
 
   return (
-    <div className="max-w-8xl  flex gap-10 ">
+    <div className="max-w-8xl  flex lg:gap-5 ">
       {/* Main content */}
-      <main className="flex-1 space-y-6 px-8 py-8">
+      <main className="flex-1 space-y-6 px-2 lg:px-8 py-8">
         <div>
           <h1 className="text-2xl font-semibold">Discover Repositories</h1>
           <p className="text-gray-600">
@@ -23,7 +23,7 @@ export default function Discover() {
 
         <h2 className="font-semibold text-lg">Recommended for You</h2>
 
-        {repos.map((repo, index) => (
+        {repos.map((repo) => (
           <RepositoryCard key={repo.id} repo={repo} navigate={navigate} />
         ))}
       </main>

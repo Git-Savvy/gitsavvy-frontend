@@ -7,7 +7,7 @@ export default function RepoNav({ activeTab, setActiveTab }) {
   ];
 
   return (
-    <div className="flex  flex-col md:flex-row gap-2 lg:gap-8 justify-around border-2 border-gray-200 bg-switchbg rounded-2xl md:rounded-full p-1  w-full md:w-fit lg:shadow-sm">
+    <div className="flex flex-col md:flex-row gap-2 lg:gap-8 justify-around border-2 border-gray-200 bg-switchbg rounded-2xl md:rounded-full p-1  md:w-fit lg:shadow-sm">
       {tabs.map((tab) => (
         <button
           key={tab.id}

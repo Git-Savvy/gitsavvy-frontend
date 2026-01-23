@@ -33,7 +33,7 @@ export default function Docs({ repoId }) {
       <div className="space-y-6">
         <DocumentationRefreshCard docs={docEntry}/>
 
-        <div className="flex flex-col md:flex-row gap-6">
+        <div className="flex flex-col lg:flex-row gap-6">
           {/* Pass pages array and the setter function */}
           <DocumentationSidebar
             data={pages}

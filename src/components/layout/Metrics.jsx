@@ -104,7 +104,7 @@ const Metrics = ({ repoId }) => {
     <div className=" bg-gray-50 min-h-screen font-sans text-slate-700">
       <div className="space-y-6 w-full">
         {/* 1. Top Stats Row */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-7 ">
           {stats.map((stat, i) => (
             <StatsCard stat={stat} key={i} />
           ))}

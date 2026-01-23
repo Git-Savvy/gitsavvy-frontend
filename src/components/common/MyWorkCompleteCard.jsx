@@ -13,9 +13,9 @@ export default function MyWorkCompleteCard({
   return (
     <div className=" mx-auto bg-white border border-gray-200 rounded-2xl p-6 shadow-sm font-sans">
       {/* Top Row: Icon, Title, and Badge */}
-      <div className="flex justify-between items-start mb-6">
+      <div className="flex flex-col md:flex-row justify-between items-start mb-6">
         <div className="flex gap-4">
-          <div className="bg-purple-50 p-3 rounded-xl">
+          <div className="bg-purple-50 p-3 rounded-xl w-fit h-fit">
             <CheckCircle2 className="w-6 h-6 text-purple-600" />
           </div>
           <div className="pt-1">
@@ -25,13 +25,13 @@ export default function MyWorkCompleteCard({
             <p className="text-gray-500 text-sm">{repo}</p>
           </div>
         </div>
-        <span className="bg-emerald-500 text-white px-3 py-1 rounded-lg text-xs font-medium">
+        <span className="bg-emerald-500 text-white px-3 py-1 rounded-lg text-xs font-medium mt-5 md:mt-0">
           {status}
         </span>
       </div>
 
       {/* Bottom Metadata Row */}
-      <div className="flex items-center gap-6 text-sm">
+      <div className="flex flex-col md:flex-row md:items-center gap-6 text-sm">
         {/* Date */}
         <div className="flex items-center gap-1.5 text-gray-500">
           <Clock className="w-4 h-4" />
@@ -39,7 +39,7 @@ export default function MyWorkCompleteCard({
         </div>
 
         {/* Language Tag */}
-        <div className="bg-white border border-gray-200 px-3 py-0.5 rounded-full text-gray-700">
+        <div className="bg-white border border-gray-200 px-3 py-0.5 rounded-full text-gray-700 w-fit">
           {language}
         </div>
 

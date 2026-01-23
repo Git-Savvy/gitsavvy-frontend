@@ -24,7 +24,7 @@ export default function Navbar() {
   }, []);
   console.log("isOpen:", isOpen);
   return (
-    <nav className="flex items-center justify-between px-6 py-4 border-b-2  border-gray-200 bg-white h-[4rem] lg:shadow-sm">
+    <nav className="flex items-center justify-between gap-2 px-6 py-4 border-b-2  border-gray-200 bg-white h-[4rem] lg:shadow-sm">
       {/* Left */}
       <NavLink to="/home">
         <img src={logo} className="w-[15rem]" />
@@ -38,7 +38,7 @@ export default function Navbar() {
             `p-2 rounded-md border border-gray-700  ${isActive ? "bg-primary text-white " : "text-primary hover:bg-hoverl hover:text-primary"}`
           }
         >
-          <Briefcase />
+          <Briefcase className="w-4 h-4 md:w-6 md:h-6" />
         </NavLink>
         {/*profile photo and name */}
         <div className="flex items-center gap-2">

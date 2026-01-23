@@ -64,7 +64,7 @@ export default function IssueDetail() {
     }
   };
   return (
-    <main className="max-w-8xl  flex-col gap-10 px-45">
+    <main className="max-w-8xl  flex-col gap-10 px-5 md:px-20 lg:px-45">
       {/* Back Link */}
       <BackButton
         text=" Back to Repository"
@@ -75,33 +75,35 @@ export default function IssueDetail() {
 
       {/* 2. Issue Title & Meta */}
       <div className="mt-8">
-        <div className="lg:flex justify-between ">
-          <div className="flex  gap-3 ">
-            <div className=" w-16 h-16 bg-green-100 rounded-full flex items-center justify-center text-green-600">
-              <Info size={30} />
+        <div className="md:flex justify-between gap-2">
+          <div className="flex flex-col lg:flex-row gap-3 ">
+            <div className="flex  gap-5">
+              <div className=" w-16 h-16 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+                <Info size={30} />
+              </div>
+              <span
+                className="lg:hidden text-text-secondary font-normal text-xl border border-gray-700 flex items-center justify-center rounded-xl w-15 h-10 mt-2"
+              >
+                #{issue.issueId}
+              </span>
             </div>
             <div className="space-y-3">
-              <div className="flex  gap-3 justify-center items-center">
+              <div className="flex gap-3 flex-col md:flex-row">
                 <h1 className="text-3xl text-bold text-textdark">
                   {issue.issueTitle}
                 </h1>
-                <span className="text-text-secondary font-normal text-xl border border-gray-700  text-center rounded-xl w-10 h-7 mt-2">
+                <span className="hidden lg:flex text-text-secondary font-normal text-xl border border-gray-700  text-center rounded-xl w-10 h-7 mt-2">
                   #{issue.issueId}
                 </span>
               </div>
-              <div className="flex  justify-between  mb-6 ">
-                <div className="flex gap-4">
-                  <div>
-                    <div className="flex items-center gap-4 text-sm text-gray-500">
-                      <span>Opened {timeAgo(issue.creationDate)}</span>
-                      <span className="flex items-center gap-1">
-                        • 3 comments
-                      </span>
-                      <span className="flex items-center gap-1">
-                        • <UserCircle size={14} /> johndoe
-                      </span>
-                    </div>
-                  </div>
+
+              <div className="flex gap-4 mb-6">
+                <div className="flex flex-col lg:flex-row lg:items-center gap-4 text-sm text-gray-500">
+                  <span><span className="lg:hidden">• </span>Opened {timeAgo(issue.creationDate)}</span>
+                  <span className="flex items-center gap-1">• 3 comments</span>
+                  <span className="flex items-center gap-1">
+                    • <UserCircle size={14} /> johndoe
+                  </span>
                 </div>
               </div>
             </div>
@@ -112,7 +114,7 @@ export default function IssueDetail() {
           />
         </div>
         {/* Labels */}
-        <div className="flex gap-2 mb-8">
+        <div className="flex gap-2 mb-8 mt-5 md:mt-0">
           {["Easy", "enhancement", "good first issue"].map((label) => (
             <span
               key={label}
@@ -125,8 +127,8 @@ export default function IssueDetail() {
       </div>
 
       {/* 3. CTA Banner */}
-      <div className="bg-gradient-to-br from-[#EFF6FF] to-[#FAF5FF]  border border-blue-300 rounded-2xl p-6 flex items-center justify-between mb-8 ">
-        <div>
+      <div className="bg-gradient-to-br from-[#EFF6FF] to-[#FAF5FF]  border border-blue-300 rounded-2xl p-6 flex flex-col md:flex-row md:items-center justify-between mb-8 ">
+        <div className="mb-5 md:mb-0">
           <h3 className="font-semibold text-indigo-900 mb-1">
             Ready to contribute?
           </h3>

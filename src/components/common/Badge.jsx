@@ -17,7 +17,7 @@ export default function Budge({ title, level, img, num }) {
 
   return (
     <div
-      className={`border-2 rounded-xl p-2 mb-2 flex gap-2
+      className={`border-2 rounded-xl p-2 mb-2 flex flex-col md:flex-row gap-2 
         ${styles.border} ${styles.bg}`}
     >
       <div className="w-12 h-12 flex items-center justify-center bg-white border-2 border-gray-300 rounded-full">

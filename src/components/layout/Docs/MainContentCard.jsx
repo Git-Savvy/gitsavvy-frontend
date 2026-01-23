@@ -23,10 +23,10 @@ export default function MainContentCard({ docEntry, activeSlug }) {
   return (
     <main className="flex-1 bg-white border-2 border-gray-200 rounded-2xl p-10 shadow-sm">
       {/* Header */}
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-semibold text-slate-800">{title}</h1>
+      <div className="flex flex-col md:flex-row justify-between md:items-center mb-6">
+        <h1 className="text-2xl font-semibold text-slate-800 mb-5 md:mb-0">{title}</h1>
         {generatedAt && (
-          <span className="bg-cyan-50 text-cyan-400 px-3 py-1 rounded-full text-xs font-bold border border-cyan-100">
+          <span className="bg-cyan-50 text-cyan-400 px-3 py-1 rounded-full text-xs font-bold border border-cyan-100 w-fit">
             Generated At:{" "}
             {new Date(generatedAt).toLocaleDateString("en-GB", {
               day: "numeric",

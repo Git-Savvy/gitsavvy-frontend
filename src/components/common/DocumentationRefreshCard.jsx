@@ -2,8 +2,8 @@ import { Sparkles, RefreshCw } from "lucide-react";
 export default function DocumentationRefreshCard({ docs }) {
   return (
     <header className="border-2 border-gray-200 rounded-2xl p-8 lg:shadow-sm bg-gradient-to-br from-[#EFF6FF] to-[#FAF5FF] ">
-      <div className="flex justify-between items-start mb-4">
-        <div className="flex items-center gap-2 text-indigo-900 font-semibold text-lg">
+      <div className="flex flex-col md:flex-row justify-between items-start mb-4">
+        <div className="flex items-center gap-2 text-indigo-900 font-semibold text-lg mb-5 md:mb-0">
           <Sparkles className="w-5 h-5 text-primary" />
           <h1 className="text-textdark">AI Documentation Engine</h1>
         </div>

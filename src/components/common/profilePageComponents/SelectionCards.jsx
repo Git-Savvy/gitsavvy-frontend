@@ -32,7 +32,7 @@ export default function SelectionCards({
 
   return (
     <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex flex-col md:flex-row justify-between md:items-center mb-6">
         <h2 className="text-gray-900 font-semibold">{title}</h2>
         <span className="text-gray-400 text-sm">
           {userpref.length} selected

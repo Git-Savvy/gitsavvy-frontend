@@ -8,7 +8,7 @@ import CompleteView from "./CompleteView";
 import {
   Check,
   GitFork,
-   GitCommitHorizontal,
+  GitCommitHorizontal,
   GitBranch,
   GitPullRequest,
   X,
@@ -30,7 +30,7 @@ const STEP_ICONS = {
   claim: Settings,
   fork: GitFork,
   branch: GitBranch,
-  changes:  GitCommitHorizontal,
+  changes: GitCommitHorizontal,
   pr: GitPullRequest,
   complete: Check,
 };
@@ -48,7 +48,7 @@ export default function ContributionWorkflow({ isOpen, onClose }) {
   //STEPS.length - 1 is the index for last step, we use min to insure that we never goes beyond the last step.
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 p-6">
       {/* Backdrop: this div make the blur bg  and make sure to close the modal as it's pressed */}
       <div
         className="absolute inset-0 bg-black/40 backdrop-blur-sm"
@@ -56,7 +56,7 @@ export default function ContributionWorkflow({ isOpen, onClose }) {
       />
 
       {/* Modal Card */}
-      <div className="relative w-full max-w-[590px]  max-h-[90vh] bg-white rounded-3xl shadow-2xl py-4  transition-all duration-200">
+      <div className="relative w-full max-w-[590px]  max-h-[80vh] bg-white rounded-3xl shadow-2xl py-4  transition-all duration-200">
         {/* Header */}
         <div className="p-8 pb-4 ">
           {/* Close Button */}
@@ -84,7 +84,7 @@ export default function ContributionWorkflow({ isOpen, onClose }) {
                 key={step.id}
                 className="z-10 mt-2 flex flex-col items-center  flex-1 h-[90px]"
               >
-                 {/* this div is the circle*/}
+                {/* this div is the circle*/}
                 <div
                   className={`w-10 h-10  rounded-full flex items-center justify-center border-2 transition-all duration-300
                   ${
@@ -103,9 +103,8 @@ export default function ContributionWorkflow({ isOpen, onClose }) {
                   ) : (
                     <div className="text-sm font-bold">{index + 1}</div>
                   )}
-                  
                 </div>
-                 
+
                 {/* Step label with line breaks (“Split the text whenever there is a space.”)*/}
                 <span className="text-[10px] mt-2 font-semibold text-gray-500 text-center uppercase tracking-tight">
                   {step.label.split(" ").map((word, idx) => (
@@ -125,37 +124,39 @@ export default function ContributionWorkflow({ isOpen, onClose }) {
         </div>
 
         {/* Content Body */}
-        <div className="overflow-y-auto relative w-full max-w-[580px]  max-h-[50vh]  rounded-3xl transition-all duration-200">
-          <div className="px-10 pb-8 space-y-6 mt-2">
-            {/* Issue Details Card */}
-            <div className="border border-gray-100 rounded-2xl p-6 bg-white shadow-sm">
-              <h3 className="text-xl font-bold text-gray-800">
-                Add dark mode support
-              </h3>
-              <p className="text-gray-500 text-[15px] mt-3 leading-relaxed">
-                Implement dark mode theme switching with system preference
-                detection. This should include proper color scheme management
-                and localStorage persistence.
-              </p>
-              <div className="flex gap-2 mt-5">
-                <span className="px-4 py-1.5 bg-gray-50 border border-gray-200 text-gray-600 text-[13px] rounded-xl">
-                  enhancement
-                </span>
-                <span className="px-4 py-1.5 bg-gray-50 border border-gray-200 text-gray-600 text-[13px] rounded-xl">
-                  good first issue
-                </span>
+        <div className=" relative w-full max-w-[580px] h-[40vh] rounded-3xl transition-all duration-200">
+          <div className="overflow-y-auto h-full">
+            <div className="px-10 pb-8 space-y-6 mt-2">
+              {/* Issue Details Card */}
+              <div className="border border-gray-100 rounded-2xl p-6 bg-white shadow-sm">
+                <h3 className="text-xl font-bold text-gray-800">
+                  Add dark mode support
+                </h3>
+                <p className="text-gray-500 text-[15px] mt-3 leading-relaxed">
+                  Implement dark mode theme switching with system preference
+                  detection. This should include proper color scheme management
+                  and localStorage persistence.
+                </p>
+                <div className="flex gap-2 mt-5">
+                  <span className="px-4 py-1.5 bg-gray-50 border border-gray-200 text-gray-600 text-[13px] rounded-xl">
+                    enhancement
+                  </span>
+                  <span className="px-4 py-1.5 bg-gray-50 border border-gray-200 text-gray-600 text-[13px] rounded-xl">
+                    good first issue
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Step Views */}
-          <div className="space-y-4 px-10 ">
-            {currentStep === 0 && <ClaimView onNext={nextStep} />}
-            {currentStep === 1 && <ForkView onNext={nextStep} />}
-            {currentStep === 2 && <BranchView onNext={nextStep} />}
-            {currentStep === 3 && <ChangesView onNext={nextStep} />}
-            {currentStep === 4 && <PRView onNext={nextStep} />}
-            {currentStep === 5 && <CompleteView onNext={onClose} />}
+            {/* Step Views */}
+            <div className="space-y-4 px-10 ">
+              {currentStep === 0 && <ClaimView onNext={nextStep} />}
+              {currentStep === 1 && <ForkView onNext={nextStep} />}
+              {currentStep === 2 && <BranchView onNext={nextStep} />}
+              {currentStep === 3 && <ChangesView onNext={nextStep} />}
+              {currentStep === 4 && <PRView onNext={nextStep} />}
+              {currentStep === 5 && <CompleteView onNext={onClose} />}
+            </div>
           </div>
         </div>
       </div>

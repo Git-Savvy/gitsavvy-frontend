@@ -38,7 +38,7 @@ export default function Profile() {
     { id: 11, name: "API Development" },
   ]);
   return (
-    <div className="max-w-8xl px-45 space-y-8">
+    <div className="max-w-8xl px-10 lg:px-45 space-y-8">
       <BackButton
         text="Back"
         onClick={() => {
