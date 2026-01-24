@@ -12,10 +12,10 @@ import {
 
 export default function ContributionActivityCard({ data }) {
   return (
-    <div className="w-full p-6 bg-white border-2 border-gray-200 rounded-xl lg:shadow-sm">
+    <div className="w-full p-6 bg-white border-2 border-Gray200 rounded-xl lg:shadow-sm">
       {/* Header */}
       <div className="mb-10">
-        <h2 className="text-lg font-medium text-gray-900">
+        <h2 className="text-lg font-medium text-Gray600">
           Contribution Activity
         </h2>
       </div>
@@ -65,7 +65,7 @@ export default function ContributionActivityCard({ data }) {
               align="center"
               iconType="circle"
               formatter={(value) => (
-                <span className="text-slate-600 pr-7">{value}</span>
+                <span className="text-Gray600 pr-7">{value}</span>
               )}
               wrapperStyle={{
                 paddingTop: "40px",

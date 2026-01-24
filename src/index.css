@@ -1,14 +1,172 @@
+/* ---------------------------------------------
+   Tailwind v4 base
+---------------------------------------------- */
+
 @import "tailwindcss";
 @plugin "tailwind-scrollbar";
+
+/* ---------------------------------------------
+   Enable dark mode variant
+   This tells Tailwind to look for the .dark class
+---------------------------------------------- */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------------------------------------------
+   LIGHT THEME (default)
+---------------------------------------------- */
+
 @theme {
-  --color-background: #fafafa; /* main light background */
-  --color-textdark: #171717; /* for text */
-  --color-primary: #321e73; /* primary */
+  /*==========Default light mood=======================*/
+  /* Backgrounds */
+  --color-background: #fafafa; /* main app background */
+  --color-white: #ffffff; /* cards / surfaces */
+  --color-Indigo50: #eef2ff;
+  --color-Cyan50: #ecfeff;
+  --color-Purple50: #faf5ff;
+  --color-Nav: #b88ef4;
+  --color-NavSelected: #faf5ff;
+
+  --color-Gray300: #d1d5db;
+  /*Gradient Pair*/
+  --color-SCyan: #edfbfa;
+  --color-ECyan: #c4f9f4;
+
+  --color-SBar: #1dddd0;
+  --color-EBar: #00c0e8;
+
+  /* border */
+  --color-Gray200: #e5e7eb; /*border-gray-200*/
+  --color-Indigo300: #a5b4fc; /*border-indigo-300*/
+  --color-Teal400: #00d5be;
+  --color-Cyan400: #22d3ee;
+  --color-Purple400: #c084fc;
+  --color-NavBorder: #321e73;
+
+  /* Text */
+  --color-textdark: #171717; /* primary text */
   --color-text-secondary: #525252; /* secondary text */
-  --color-white: #ffffff; /* light accent / card background */
-  --color-hoverd: #1e1b4b; /*dark button color when hover */
+  --color-Gray600: #4b5563; /* gray-600 */
+  --color-Gray500: #6b7280; /* gray-500 */
+  --color-Gray400: #9ca3af; /* gray-400 will look diff in dark mood*/
+  --color-Gray50: #f9fafb; /* gray-50 */
+  --color-Yellow400: #facc15; /*  */
+  --color-Slate700: #334155; /* */
+  --color-Slate500: #64748b; /* */
+  --color-Slate400: #94a3b8; /* insted of zink*/
+  --color-Indigo900: #312e81; /*border-indigo-900*/
+  --color-Cyan400: #22d3ee;
+  --color-NavText1: #faf5ff;
+  --color-NavText2: #321e73;
+  /* Brand */
+  --color-primary: #321e73;
+
+  /* Hover */
   --color-hoverl: #f3f4f6; /*light button color when hover */
-  --color-texthover: #5b21b6; /*text when hover*/
+  --color-hoverd: #1e1b4b; /*dark button color when hover */
+  --color-texthover: #5b21b6;
+
+  /* UI */
   --color-primaryLableBg: #f3e8ff; /*light purple bg*/
-  --color-switchbg: #ececf0;
+  --color-switchbg: #fafafa;
+
+  /* --- Dark Theme Redefinition --- */
+  /* This targets the system settings automatically */
+  /*@media (prefers-color-scheme: dark) {
+    /* Backgrounds */
+  /* --color-background: #0f0f14;
+    --color-white: #18181b; */
+  /* Text */
+  /* --color-textdark: #f5f5f5;
+    --color-text-secondary: #a1a1aa; */
+  /* Brand */
+  /* --color-primary: #b88ef4; */
+  /* Hover */
+  /* --color-hoverl: #27272a;
+    --color-hoverd: #6d28d9;
+    --color-texthover: #c4b5fd; */
+  /* UI */
+  /* --color-primaryLableBg: #2e1065;
+    --color-switchbg: #27272a;
+  } */
+}
+
+/* 3. Force Dark Theme for manual class (Important for the JS toggle) */
+/* We put this in @layer base to make sure it applies to the :root */
+@layer base {
+  .dark {
+    /* Backgrounds */
+    --color-background: #0b0d10; /* Slightly lighter surface */
+    --color-white: #3f3f46; /* Industry standard dark grey */
+
+    --color-Indigo50: #1e1b4b;
+    --color-Cyan50: #082f2c;
+    --color-Purple50: #321e73;
+    --color-Nav: #082f2c;
+    --color-NavSelected: #040d0c;
+    /*Gradient Pair*/
+    --color-SCyan: #040d0c;
+    --color-ECyan: #0d3d39;
+
+    --color-SBar: #046371;
+    --color-EBar: #00827e;
+
+    /* border */
+    --color-Gray200: #e5e7eb; /*border-gray-200*/
+    --color-Indigo300: #6366f1; /*border-indigo-300*/
+    --color-Teal400: #00d5be;
+    --color-Cyan400: #0ea5e9;
+    --color-Purple400: #a855f7;
+    --color-NavBorder: #00d5be;
+
+    /* Text */
+    --color-textdark: #ffff;
+    --color-text-secondary: #f3f4f6;
+    --color-Gray600: #d1d5db; /* gray-600 */
+    --color-NavText1: #fff;
+    --color-NavText2: #fff;
+
+    /* Brand (Electric Indigo) */
+    --color-primary: #b88ef4;
+
+    /* Hover & UI */
+    --color-hoverl: #000;
+    --color-hoverd: #a16fe0;
+    --color-texthover: #c7d2fe;
+    --color-primaryLableBg: #0b0d10;
+    --color-switchbg: #121212;
+  }
+}
+
+/* ---------------------------------------------
+   BASE STYLES
+---------------------------------------------- */
+@layer base {
+  :root {
+    color-scheme: light dark; /* This tells the browser you have both themes */
+  }
+
+  body {
+    color: var(--color-textdark);
+    transition: background-color 0.2s ease; /* Optional: smooth fade */
+  }
+}
+
+/* ---------------------------------------------
+   SCROLLBARS
+   These now use your variables automatically!
+---------------------------------------------- */
+@layer utilities {
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--color-switchbg);
+    border-radius: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-primary);
+  }
 }

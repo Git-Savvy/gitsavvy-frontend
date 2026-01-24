@@ -13,8 +13,10 @@ export default function Discover() {
       {/* Main content */}
       <main className="flex-1 space-y-6 px-2 lg:px-8 py-8">
         <div>
-          <h1 className="text-2xl font-semibold">Discover Repositories</h1>
-          <p className="text-gray-600">
+          <h1 className="text-2xl lg:text-3xl font-semibold">
+            Discover Repositories
+          </h1>
+          <p className="text-Gray600">
             Find open-source projects that match your skills and interests
           </p>
         </div>

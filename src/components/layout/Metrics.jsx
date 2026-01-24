@@ -101,7 +101,7 @@ const Metrics = ({ repoId }) => {
   ];
 
   return (
-    <div className=" bg-gray-50 min-h-screen font-sans text-slate-700">
+    <div className=" bg-background min-h-screen font-sans text-Gray500">
       <div className="space-y-6 w-full">
         {/* 1. Top Stats Row */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-7 ">

@@ -1,15 +1,15 @@
 const colorMap = {
   0: {
-    border: "border-gray-400",
-    bg: "bg-gray-50",
+    border: "border-Gray500",
+    bg: "bg-background",
   },
   1: {
-    border: "border-sky-400",
-    bg: "bg-sky-50",
+    border: "border-Teal400",
+    bg: "bg-Cyan50",
   },
   2: {
-    border: "border-purple-400",
-    bg: "bg-purple-50",
+    border: "border-primary",
+    bg: "bg-Purple50",
   },
 };
 export default function Budge({ title, level, img, num }) {
@@ -20,13 +20,13 @@ export default function Budge({ title, level, img, num }) {
       className={`border-2 rounded-xl p-2 mb-2 flex flex-col md:flex-row gap-2 
         ${styles.border} ${styles.bg}`}
     >
-      <div className="w-12 h-12 flex items-center justify-center bg-white border-2 border-gray-300 rounded-full">
+      <div className={`w-12 h-12 flex items-center justify-center bg-background border-2  ${styles.border}  rounded-full`}>
         <img src={img} alt={title} className="w-6 h-6" />
       </div>
 
       <div>
-        <p className="font-medium text-lg text-gray-600">{title}</p>
-        <p className="text-sm text-gray-500">{level}</p>
+        <p className="font-medium text-lg text-Gray600">{title}</p>
+        <p className="text-sm text-Gray600">{level}</p>
       </div>
     </div>
   );

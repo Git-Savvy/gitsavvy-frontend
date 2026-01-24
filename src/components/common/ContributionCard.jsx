@@ -1,6 +1,6 @@
 export default function ContributionCard() {
   return (
-    <div className="border-2 border-indigo-300 bg-indigo-50 rounded-xl p-5 my-10">
+    <div className="border-2 border-Indigo300 bg-Indigo50 rounded-xl p-5 my-10">
       <h1 className="text-text-secondry">
         Keep contributing to earn more badges and level up! Each contribution
         brings you closer to exclusive achievements.

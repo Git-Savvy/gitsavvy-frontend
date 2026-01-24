@@ -24,7 +24,7 @@ export default function Navbar() {
   }, []);
   console.log("isOpen:", isOpen);
   return (
-    <nav className="flex items-center justify-between gap-2 px-6 py-4 border-b-2  border-gray-200 bg-white h-[4rem] lg:shadow-sm">
+    <nav className="flex items-center justify-between gap-2 px-6 py-4 border-b-2  border-Gray200 bg-white h-[4rem] lg:shadow-sm">
       {/* Left */}
       <NavLink to="/home">
         <img src={logo} className="w-[15rem]" />
@@ -35,10 +35,10 @@ export default function Navbar() {
         <NavLink
           to="/home/myWork"
           className={({ isActive }) =>
-            `p-2 rounded-md border border-gray-700  ${isActive ? "bg-primary text-white " : "text-primary hover:bg-hoverl hover:text-primary"}`
+            `p-2 rounded-md border-2 border-primary w-fit ${isActive ? "bg-primary text-white " : "text-primary bg-switchbg hover:bg-hoverl "}`
           }
         >
-          <Briefcase className="w-4 h-4 md:w-6 md:h-6" />
+          <Briefcase className="w-4 h-4 md:w-5 md:h-5" />
         </NavLink>
         {/*profile photo and name */}
         <div className="flex items-center gap-2">
@@ -46,17 +46,17 @@ export default function Navbar() {
             {({ isActive }) => (
               <div className="flex items-center gap-2">
                 <div
-                  className={`w-9 h-9 rounded-full flex items-center justify-center hover:bg-texthover ${isActive ? "bg-texthover" : ""}`}
+                  className={`w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary ${isActive ? "bg-primary" : ""}`}
                 >
                   <img
                     src={user.avatar}
-                    className="w-8 h-8 rounded-full"
+                    className="w-9 h-9 rounded-full"
                     alt="avatar"
                   />
                 </div>
 
                 <span
-                  className={`text-sm transition ${isActive ? "text-texthover" : "text-gray-500 hover:text-texthover"}`}
+                  className={`text-lg font-simibold transition ${isActive ? "text-primary" : "text-Gray600 hover:text-primary "}`}
                 >
                   {user.username}
                 </span>
@@ -66,7 +66,7 @@ export default function Navbar() {
 
           <div ref={dropdownRef}>
             <button onClick={() => setIsOpen(!isOpen)}>
-              <ChevronDown className="text-sm text-gray-500 hover:text-texthover" />
+              <ChevronDown className="text-sm text-Gray600 hover:text-primary" />
             </button>
 
             {isOpen && (

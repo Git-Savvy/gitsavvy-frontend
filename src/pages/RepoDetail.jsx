@@ -65,7 +65,7 @@ export default function RepoDetail() {
         <p className="mt-5">{repo.description}</p>
         <div className="flex flex-col md:flex-row gap-4 text-sm  my-5 text-text-secondary">
           <span className="flex gap-1">
-            <Star className="text-yellow-500" />
+            <Star className="text-Yellow400" />
             <p className="text-base">{repo.stars}</p>
             <p className="text-base">stars</p>
           </span>
@@ -84,7 +84,7 @@ export default function RepoDetail() {
           {repo.tags.map((tag) => (
             <span
               key={tag}
-              className="text-xs text-bold  px-3 py-1 rounded-xl bg-gray-300"
+              className="text-xs bg-primary  text-[#fff] text-bold  px-3 py-1 rounded-xl bg-gray-300"
             >
               {tag}
             </span>

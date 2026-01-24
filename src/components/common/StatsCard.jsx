@@ -2,11 +2,11 @@ import { TrendingUp } from "lucide-react";
 import { TrendingDown } from "lucide-react";
 export default function StatsCard({ stat }) {
   return (
-    <div className="w-full bg-white p-5 rounded-2xl border-2 border-gray-200 lg:shadow-sm flex flex-col gap-3">
+    <div className="w-full bg-white p-5 rounded-2xl border-2 border-Gray200 lg:shadow-sm flex flex-col gap-3">
       <div className="flex flex-col md:flex-row items-center gap-3 mb-5">
         <div className={`${stat.color} p-2 rounded-xl`}>{stat.icon}</div>
         <div>
-          <div className="lg:text-2xl font-bold text-slate-800">
+          <div className="lg:text-2xl font-bold text-textdark">
             {stat.value}
           </div>
           <div className="text-xs text-slate-400 font-medium ">

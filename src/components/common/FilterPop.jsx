@@ -50,7 +50,7 @@ export default function FilterPop() {
             {labelOptions.map((label) => (
               <label
                 key={label}
-                className="flex items-center gap-3 cursor-pointer group"
+                className="flex items-center gap-3 cursor-pointer "
               >
                 <input
                   type="checkbox"
