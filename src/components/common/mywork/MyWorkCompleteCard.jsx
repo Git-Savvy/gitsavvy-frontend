@@ -11,21 +11,21 @@ export default function MyWorkCompleteCard({
   status,
 }) {
   return (
-    <div className=" mx-auto bg-white border border-gray-200 rounded-2xl p-6 shadow-sm font-sans">
+    <div className=" mx-auto bg-white border border-Gray200 rounded-2xl p-6 shadow-sm font-sans mb-10">
       {/* Top Row: Icon, Title, and Badge */}
       <div className="flex flex-col md:flex-row justify-between items-start mb-6">
         <div className="flex gap-4">
-          <div className="bg-purple-50 p-3 rounded-xl w-fit h-fit">
-            <CheckCircle2 className="w-6 h-6 text-purple-600" />
+          <div className="bg-Purple400/20 p-3 rounded-xl w-fit h-fit">
+            <CheckCircle2 className="w-6 h-6 text-Purple400" />
           </div>
           <div className="pt-1">
-            <h3 className="text-lg font-semibold text-gray-900 leading-none mb-2">
+            <h3 className="text-lg font-semibold text-text-secondary leading-none mb-2">
               {title}
             </h3>
-            <p className="text-gray-500 text-sm">{repo}</p>
+            <p className="text-Gray400 text-sm">{repo}</p>
           </div>
         </div>
-        <span className="bg-emerald-500 text-white px-3 py-1 rounded-lg text-xs font-medium mt-5 md:mt-0">
+        <span className="bg-emerald-500 text-NavText1 px-3 py-1 rounded-lg text-xs font-medium mt-5 md:mt-0">
           {status}
         </span>
       </div>
@@ -33,13 +33,13 @@ export default function MyWorkCompleteCard({
       {/* Bottom Metadata Row */}
       <div className="flex flex-col md:flex-row md:items-center gap-6 text-sm">
         {/* Date */}
-        <div className="flex items-center gap-1.5 text-gray-500">
+        <div className="flex items-center gap-1.5 text-Gray600">
           <Clock className="w-4 h-4" />
           <span>{date}</span>
         </div>
 
         {/* Language Tag */}
-        <div className="bg-white border border-gray-200 px-3 py-0.5 rounded-full text-gray-700 w-fit">
+        <div className="bg-white border border-Gray200 px-3 py-0.5 rounded-full text-textsecondary w-fit">
           {language}
         </div>
 

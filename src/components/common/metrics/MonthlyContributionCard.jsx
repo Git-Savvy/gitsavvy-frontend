@@ -20,12 +20,12 @@ export default function MonthlyContributionCard({ data }) {
   }, [data]);
 
   if (!data || data.length === 0) {
-    return <div className="p-8 text-gray-500">No data available</div>;
+    return <div className="p-8 text-Gray600">No data available</div>;
   }
 
   return (
-    <div className="w-full max-w-4xl bg-white border-2 border-gray-200 rounded-2xl p-8 lg:shadow-sm font-sans">
-      <h2 className="text-xl font-medium text-gray-800 mb-12">
+    <div className="w-full max-w-4xl bg-white border-2 border-Gray200 rounded-2xl p-8 lg:shadow-sm font-sans">
+      <h2 className="text-xl font-medium text-text-secondary mb-12">
         Monthly Contributions
       </h2>
 
@@ -40,8 +40,16 @@ export default function MonthlyContributionCard({ data }) {
           >
             <defs>
               <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#22d3ee" stopOpacity={1} />
-                <stop offset="95%" stopColor="#0369a1" stopOpacity={1} />
+                <stop
+                  offset="5%"
+                  stopColor="var(--color-SBar)"
+                  stopOpacity={1}
+                />
+                <stop
+                  offset="95%"
+                  stopColor="var(--color-EBar)"
+                  stopOpacity={1}
+                />
               </linearGradient>
             </defs>
 
@@ -55,22 +63,25 @@ export default function MonthlyContributionCard({ data }) {
 
             <XAxis
               dataKey="name"
-              axisLine={{ stroke: "#94a3b8" }}
+              axisLine={{ stroke: "var(--color-Gray600)" }}
               tickLine={false}
-              tick={{ fill: "#64748b", fontSize: 13 }}
+              tick={{ fill: "var(--color-Gray600)", fontSize: 13 }}
               dy={10}
             />
 
             <YAxis
               domain={[0, "auto"]} // Changed to auto so it fits the new larger totals
-              axisLine={{ stroke: "#94a3b8" }}
+              axisLine={{ stroke: "var(--color-Gray600)" }}
               tickLine={false}
-              tick={{ fill: "#64748b", fontSize: 13 }}
+              tick={{ fill: "var(--color-Gray600)", fontSize: 13 }}
             />
 
             <Tooltip
-              cursor={{ fill: "#f8fafc" }}
+              cursor={{
+                fill: "color-mix(in srgb, var(--color-Teal400), transparent 95%)",
+              }}
               contentStyle={{
+                backgroundColor: "var(--color-background)",
                 borderRadius: "8px",
                 border: "none",
                 boxShadow: "0 4px 12px rgba(0,0,0,0.1)",

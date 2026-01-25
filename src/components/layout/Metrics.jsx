@@ -1,9 +1,9 @@
 import React from "react";
 import { Activity, GitPullRequest, CircleCheck, Users } from "lucide-react";
-import StatsCard from "../common/StatsCard";
-import ContributionActivityCard from "../common/ContributionActivityCard";
-import TopContributerCard from "../common/TopContributerCard";
-import MonthlyContributionCard from "../common/MonthlyContributionCard";
+import StatsCard from "../common/metrics/StatsCard";
+import ContributionActivityCard from "../common/metrics/ContributionActivityCard";
+import TopContributerCard from "../common/metrics/TopContributerCard";
+import MonthlyContributionCard from "../common/metrics/MonthlyContributionCard";
 import { MetricsContext } from "../../context/MetricsContext";
 import { useContext } from "react";
 import NoDataMessage from "../messages/NoDataMessage";
@@ -32,29 +32,29 @@ const Metrics = ({ repoId }) => {
       label: "Total Commits",
       value: Commits,
       growth: "+12%", //later calculate it or try to fitch it
-      icon: <Activity className="text-blue-500" />,
-      color: "bg-blue-100",
+      icon: <Activity className="text-indigo-500" />,
+      color: "bg-indigo-500/15 border-indigo-500",
     },
     {
       label: "PRs Merged",
       value: PL,
       growth: "+8%",
       icon: <GitPullRequest className="text-purple-500" />,
-      color: "bg-purple-100",
+      color: "bg-purple-500/15 border-purple-500",
     },
     {
       label: "Issues Closed",
       value: issueC,
       growth: "+15%",
-      icon: <CircleCheck className="text-emerald-500" />,
-      color: "bg-emerald-100",
+      icon: <CircleCheck className="text-teal-500" />,
+      color: "bg-teal-500/15 border-teal-500",
     },
     {
       label: "Contributors",
       value: Contributers,
       growth: "+5%",
       icon: <Users className="text-cyan-400" />,
-      color: "bg-cyan-100",
+      color: "bg-cyan-400/15 border-cyan-400",
     },
   ];
 

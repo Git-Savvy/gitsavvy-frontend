@@ -10,34 +10,35 @@ export default function ProfileHeaderCard({
 }) {
   return (
     <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
-      <h2 className="text-gray-900 font-semibold mb-6">Account Information</h2>
+      <h2 className="text-textdark font-semibold mb-6">Account Information</h2>
       <div className="flex items-center gap-5 mb-8">
         <img
           src={avatar}
-          className="w-20 h-20 rounded-full border-2 border-white shadow-sm"
+          className="w-20 h-20 rounded-full border-2 border-primary  shadow-[0_0_20px_#B88EF4] 
+            hover:shadow-[0_0_30px_#B88EF4] "
           alt="Avatar"
         />
         <div>
-          <h3 className="text-xl font-bold text-gray-900">{name}</h3>
-          <p className="text-gray-500 mb-2">@{handle}</p>
+          <h3 className="text-xl font-bold text-textdark">{name}</h3>
+          <p className="text-Gray600 mb-2">@{handle}</p>
           <div className="flex flex-col md:flex-row gap-2">
-            <span className="bg-cyan-400 text-white text-xs font-bold px-2 py-1 rounded flex items-center gap-1">
+            <span className="bg-cyan-400 text-NavText1 text-xs font-bold px-2 py-1 rounded flex items-center gap-1">
               <Trophy className="w-3 h-3" /> Level {level}
             </span>
-            <span className="border border-gray-200 text-gray-700 text-xs font-bold px-2 py-1 rounded flex items-center gap-1">
+            <span className="border border-Gray200 text-Gray600 text-xs font-bold px-2 py-1 rounded flex items-center gap-1">
               <Star className="w-3 h-3" /> {points} points
             </span>
           </div>
         </div>
       </div>
-      <div className="bg-emerald-50/50 border border-emerald-200 rounded-xl p-4 flex flex-col md:flex-row justify-between md:items-center">
+      <div className="bg-Cyan50 border border-Teal400 rounded-xl p-4 flex flex-col md:flex-row justify-between md:items-center">
         <div className="flex items-center gap-3">
-          <Github className="w-5 h-5 text-emerald-600" />
+          <Github className="w-5 h-5 text-Teal400" />
           <div>
-            <p className="text-sm font-semibold text-gray-900">
+            <p className="text-sm font-semibold text-textdark">
               GitHub Connected
             </p>
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-Gray600">
               Authenticated as @{githubUser}
             </p>
           </div>

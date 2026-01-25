@@ -13,8 +13,8 @@ export default function RepositoryCard({ repo, navigate }) {
         <div className="flex items-center gap-2">
           <h3 className="font-semibold text-xl lg:text-2xl mb-2 md:mb-0">{repo.title}</h3>
           <div className="hidden lg:flex">
-            <div className="flex items-center  gap-2 w-fit border  border-primary text-primary rounded-lg bg-primaryLableBg px-2">
-              <Sparkles className="w-4 h-4 " />
+            <div className="flex items-center  gap-2 w-fit border-2  border-Purple400 text-Gray600 rounded-lg bg-Purple50 px-2">
+              <Sparkles className="w-4 h-4 text-Purple400 " />
               <p>Recommended</p>
             </div>
           </div>
@@ -35,7 +35,7 @@ export default function RepositoryCard({ repo, navigate }) {
             {repo.forks}
           </span>
           <span className="flex gap-1">
-            <AlertCircle className="w-[1.2rem] h-auto text-primary " />
+            <AlertCircle className="text-lg text-primary pb-1" />
             {repo.openIssues} open issues
           </span>
         </div>
@@ -50,7 +50,7 @@ export default function RepositoryCard({ repo, navigate }) {
       </div>
 
       {/* Right */}
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-3 justify-items justify-center transition-all duration-300 ease-in-out">
         <SimpleDarkButton
           text="View Details"
           onClick={() => navigate(`/home/repoDetail/${repo.id}`)}

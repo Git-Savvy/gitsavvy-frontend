@@ -4,6 +4,8 @@ import { NavLink } from "react-router-dom";
 import { useContext, useRef, useState, useEffect } from "react";
 import { UserContext } from "../../context/UserContext";
 import ProfileDropdownMenu from "../common/profilePageComponents/ProfileDropdownMenu";
+import { ThemeProvider } from "../../context/ThemeContext";
+import ThemeSwitcher from "../common/ThemeSwitcher";
 export default function Navbar() {
   const { user } = useContext(UserContext); //just access without modifying anything
   const [isOpen, setIsOpen] = useState(false);
@@ -32,10 +34,13 @@ export default function Navbar() {
 
       {/* Right */}
       <div className="flex items-center gap-4">
+        <ThemeProvider>
+          <ThemeSwitcher />
+        </ThemeProvider>
         <NavLink
           to="/home/myWork"
           className={({ isActive }) =>
-            `p-2 rounded-md border-2 border-primary w-fit ${isActive ? "bg-primary text-white " : "text-primary bg-switchbg hover:bg-hoverl "}`
+            `p-2 rounded-md border-2 border-primary  hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer w-fit ${isActive ? "bg-primary text-white " : "text-primary bg-switchbg hover:bg-hoverl "}`
           }
         >
           <Briefcase className="w-4 h-4 md:w-5 md:h-5" />
@@ -44,9 +49,9 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           <NavLink to="/home/profile">
             {({ isActive }) => (
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 ">
                 <div
-                  className={`w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary ${isActive ? "bg-primary" : ""}`}
+                  className={`w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary  hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer ${isActive ? "bg-primary " : ""}`}
                 >
                   <img
                     src={user.avatar}
@@ -56,7 +61,7 @@ export default function Navbar() {
                 </div>
 
                 <span
-                  className={`text-lg font-simibold transition ${isActive ? "text-primary" : "text-Gray600 hover:text-primary "}`}
+                  className={`text-lg font-simibold   transition-all duration-300 cursor-pointer ${isActive ? "text-primary" : "text-Gray600 hover:text-primary "}`}
                 >
                   {user.username}
                 </span>
@@ -66,7 +71,7 @@ export default function Navbar() {
 
           <div ref={dropdownRef}>
             <button onClick={() => setIsOpen(!isOpen)}>
-              <ChevronDown className="text-sm text-Gray600 hover:text-primary" />
+              <ChevronDown className="text-sm text-Gray600 hover:text-primary cursor-pointer" />
             </button>
 
             {isOpen && (

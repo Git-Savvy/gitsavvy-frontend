@@ -6,7 +6,7 @@ export default function Comments({ comments }) {
       {comments.map((comment) => (
         <div
           key={comment.id}
-          className="flex gap-4 p-4  border-2 border-gray-200 rounded-xl bg-white "
+          className="flex gap-4 p-4  border-2 border-Gray200 rounded-xl bg-white "
         >
           <img
             src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${comment.user}`}
@@ -16,9 +16,9 @@ export default function Comments({ comments }) {
           <div>
             <div className="flex gap-2 items-center mb-1">
               <span className="font-bold text-sm">{comment.user}</span>
-              <span className="text-xs text-gray-400">{comment.time}</span>
+              <span className="text-xs text-Gray400">{comment.time}</span>
             </div>
-            <p className="text-sm text-gray-600">{comment.text}</p>
+            <p className="text-sm text-Gray600">{comment.text}</p>
           </div>
         </div>
       ))}

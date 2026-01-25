@@ -1,4 +1,4 @@
-import MyWorkCurrentCard from "../common/MyWorkCurrentWork";
+import MyWorkCurrentCard from "../common/mywork/MyWorkCurrentWork";
 
 export default function CurrentWork() {
   const work = [

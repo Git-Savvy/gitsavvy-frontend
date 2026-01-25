@@ -12,7 +12,7 @@ export default function MainContentCard({ docEntry, activeSlug }) {
   if (!currentPage) {
     return (
       <NoDataMessage
-        containerStyle="flex-1 bg-white border-2 border-gray-200 rounded-2xl p-10 shadow-sm"
+        containerStyle="flex-1 bg-white text-Slate400 border-2 border-Gray200 rounded-2xl p-10 shadow-sm"
         text="Select a page from the sidebar to view documentation."
       />
     );
@@ -21,12 +21,12 @@ export default function MainContentCard({ docEntry, activeSlug }) {
   const { title, generatedAt, content } = currentPage;
 
   return (
-    <main className="flex-1 bg-white border-2 border-gray-200 rounded-2xl p-10 shadow-sm">
+    <main className="flex-1 bg-white border-2 border-Gray200 rounded-2xl p-10 shadow-sm">
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between md:items-center mb-6">
-        <h1 className="text-2xl font-semibold text-slate-800 mb-5 md:mb-0">{title}</h1>
+        <h1 className="text-2xl font-semibold text-textdark mb-5 md:mb-0">{title}</h1>
         {generatedAt && (
-          <span className="bg-cyan-50 text-cyan-400 px-3 py-1 rounded-full text-xs font-bold border border-cyan-100 w-fit">
+          <span className="bg-Cyan50 text-Cyan400 px-3 py-1 rounded-full text-xs font-bold border border-cyan-100 w-fit">
             Generated At:{" "}
             {new Date(generatedAt).toLocaleDateString("en-GB", {
               day: "numeric",
@@ -38,7 +38,7 @@ export default function MainContentCard({ docEntry, activeSlug }) {
 
       {/* Description */}
       {content?.description && (
-        <p className="text-slate-600 mb-8 leading-relaxed">
+        <p className="text-Gray600 mb-8 leading-relaxed">
           {content.description}
         </p>
       )}
@@ -47,7 +47,7 @@ export default function MainContentCard({ docEntry, activeSlug }) {
       {content?.prerequisites && (
         <>
           <h3 className="text-lg font-semibold mb-4">Prerequisites</h3>
-          <ul className="list-disc list-inside space-y-3 text-slate-600 mb-8 ml-2">
+          <ul className="list-disc list-inside space-y-3 text-Gray600 mb-8 ml-2">
             {content.prerequisites.map((req, i) => (
               <li key={i}>{req}</li>
             ))}
@@ -65,7 +65,7 @@ export default function MainContentCard({ docEntry, activeSlug }) {
           </div>
           {content.installation.yarn && (
             <>
-              <p className="text-sm text-slate-500 mb-4">Or using yarn:</p>
+              <p className="text-sm text-Gray600 mb-4">Or using yarn:</p>
               <div className="bg-zinc-900 text-zinc-100 p-5 rounded-xl font-mono text-sm overflow-x-auto">
                 <span className="text-slate-400">yarn add</span>{" "}
                 {content.installation.yarn.split("add ")[1]}

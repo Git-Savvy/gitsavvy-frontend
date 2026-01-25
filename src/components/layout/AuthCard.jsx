@@ -9,7 +9,7 @@ const AuthCard = () => {
     navigate("/home");
   };
   return (
-    <div className="bg-white border-2 border-gray-200  rounded-2xl shadow-b shadow-lg p-12 max-w-[41rem] ">
+    <div className="bg-white border-2 border-Gray200  rounded-2xl shadow-b shadow-lg p-12 max-w-[41rem] ">
       <div className="mb-7">
         {" "}
         <img src={getStarted} />{" "}
@@ -26,14 +26,14 @@ const AuthCard = () => {
 
       <button
         onClick={handleSignIn}
-        className="w-full bg-primary hover:bg-hoverd  hover:cursor-pointer text-white py-3  rounded-lg font-medium flex items-center justify-center gap-3 transition mt-25 mb-29 "
+        className="w-full bg-primary hover:bg-hoverd  hover:cursor-pointer text-NavText1 py-3  rounded-lg font-medium flex items-center justify-center gap-3 transition mt-25 mb-29 "
       >
         <Github />
         <span>Sign up with GitHub</span>
         <ArrowRight />
       </button>
 
-      <p className="text-xs text-gray-500 text-center mt-4">
+      <p className="text-xs text-Gray600 text-center mt-4">
         By signing up, you agree to our{" "}
         <span className="font-medium">Terms of Service</span> and{" "}
         <span className="font-medium">Privacy Policy</span>

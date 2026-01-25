@@ -20,9 +20,7 @@ import ThemeSwitcher from "./components/common/ThemeSwitcher";
 function App() {
   return (
     <>
-      <ThemeProvider>
-        <ThemeSwitcher />
-      </ThemeProvider>
+    
       <Router>
         <Routes>
           <Route
@@ -68,7 +66,7 @@ function App() {
                 element={<IssueDetail />}
               />
             </Route>
-            <Route path="myWork" element={<MyWork />} />{" "}
+            <Route path="myWork" element={<MyWork />} />
             {/*All nested routes inherit the parent element tree.So React renders:
              MyWork has access to:UserContext, RepoContext */}
             <Route path="profile" element={<Profile />} />

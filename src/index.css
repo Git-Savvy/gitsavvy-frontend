@@ -51,12 +51,10 @@
   --color-Gray400: #9ca3af; /* gray-400 will look diff in dark mood*/
   --color-Gray50: #f9fafb; /* gray-50 */
   --color-Yellow400: #facc15; /*  */
-  --color-Slate700: #334155; /* */
-  --color-Slate500: #64748b; /* */
-  --color-Slate400: #94a3b8; /* insted of zink*/
+  --color-Slate400: #94a3b8; /* insted of zink i used it no data message*/
   --color-Indigo900: #312e81; /*border-indigo-900*/
   --color-Cyan400: #22d3ee;
-  --color-NavText1: #faf5ff;
+  --color-NavText1: #fff; /*not change in both mood*/
   --color-NavText2: #321e73;
   /* Brand */
   --color-primary: #321e73;
@@ -97,11 +95,11 @@
   .dark {
     /* Backgrounds */
     --color-background: #0b0d10; /* Slightly lighter surface */
-    --color-white: #3f3f46; /* Industry standard dark grey */
+    --color-white: #24292E; /* Industry standard dark grey */
 
     --color-Indigo50: #1e1b4b;
     --color-Cyan50: #082f2c;
-    --color-Purple50: #321e73;
+    --color-Purple50: #241e2f;
     --color-Nav: #082f2c;
     --color-NavSelected: #040d0c;
     /*Gradient Pair*/
@@ -115,23 +113,23 @@
     --color-Gray200: #e5e7eb; /*border-gray-200*/
     --color-Indigo300: #6366f1; /*border-indigo-300*/
     --color-Teal400: #00d5be;
-    --color-Cyan400: #0ea5e9;
+    --color-Cyan400: #22d3ee;
     --color-Purple400: #a855f7;
     --color-NavBorder: #00d5be;
 
     /* Text */
     --color-textdark: #ffff;
     --color-text-secondary: #f3f4f6;
-    --color-Gray600: #d1d5db; /* gray-600 */
-    --color-NavText1: #fff;
-    --color-NavText2: #fff;
-
+    --color-Gray600: #d1d5db; /* gray-600 change in dark #4b5563 */
+    --color-NavText1: #fff; /* stay white in both mood */
+    --color-NavText2: #00d5be; /* change on mood */
+    --color-Slate400: #94a3b8; /* insted of zink i used it no data message*/
     /* Brand (Electric Indigo) */
-    --color-primary: #b88ef4;
+    --color-primary: #a16fe0;
 
     /* Hover & UI */
     --color-hoverl: #000;
-    --color-hoverd: #a16fe0;
+    --color-hoverd:  #9159d9; /*#b88ef4; */
     --color-texthover: #c7d2fe;
     --color-primaryLableBg: #0b0d10;
     --color-switchbg: #121212;
@@ -144,6 +142,10 @@
 @layer base {
   :root {
     color-scheme: light dark; /* This tells the browser you have both themes */
+  }
+  html,
+  body {
+    @apply bg-background; /* Use your #141218 or #121212 variable */
   }
 
   body {
@@ -158,15 +160,19 @@
 ---------------------------------------------- */
 @layer utilities {
   ::-webkit-scrollbar {
-    width: 6px;
+    width: 9px;
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: var(--color-switchbg);
-    border-radius: 6px;
+    background-color: var(--color-NavBorder);
+    border-radius: 5px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background-color: var(--color-primary);
+    background-color: color-mix(
+      in srgb,
+      var(--color-NavBorder),
+      transparent 50%
+    );
   }
 }

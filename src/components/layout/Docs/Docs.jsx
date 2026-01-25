@@ -29,7 +29,7 @@ export default function Docs({ repoId }) {
   }, [pages, activeSlug]);
 
   return (
-    <div className="min-h-screen font-sans text-slate-700">
+    <div className="min-h-screen font-sans text-Gray600">
       <div className="space-y-6">
         <DocumentationRefreshCard docs={docEntry}/>
 

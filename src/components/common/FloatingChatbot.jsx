@@ -12,11 +12,11 @@ const FloatingChatbot = () => {
           {/* Header */}
           <div className="p-4 border-b border-gray-100 flex justify-between items-center bg-white">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-cyan-400 rounded-xl flex items-center justify-center text-white shadow-sm">
+              <div className="w-10 h-10 bg-Teal400 rounded-xl flex items-center justify-center text-NavText1 shadow-sm">
                 <Sparkles className="w-6 h-6" />
               </div>
               <div>
-                <h3 className="font-bold text-slate-800 text-sm">
+                <h3 className="font-bold text-text-secondary text-sm">
                   AI Assistant
                 </h3>
                 <p className="text-xs text-slate-400">Always here to help</p>
@@ -24,7 +24,7 @@ const FloatingChatbot = () => {
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="text-slate-400 hover:text-slate-600 transition-colors"
+              className="text-Slate400 hover:text-Gray600 transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
@@ -34,7 +34,7 @@ const FloatingChatbot = () => {
           <div className="flex-1 p-4 bg-white overflow-y-auto space-y-4">
             {/* AI Welcome Message */}
             <div className="flex flex-col items-start max-w-[85%]">
-              <div className="bg-gray-100 p-4 rounded-2xl rounded-tl-none text-slate-700 text-[15px] leading-relaxed">
+              <div className="bg-background p-4 rounded-2xl rounded-tl-none text-text-secondary text-[15px] leading-relaxed">
                 Hello! I'm your AI assistant for cloud-infrastructure. I can
                 help you understand the codebase, explain functions, navigate
                 the repository structure, and answer technical questions. How
@@ -44,16 +44,16 @@ const FloatingChatbot = () => {
           </div>
 
           {/* Input Area */}
-          <div className="p-4 bg-white border-t border-gray-50">
+          <div className="p-4 bg-white border-t border-Gray200">
             <div className="flex items-center gap-2">
               <div className="flex-1 relative">
                 <input
                   type="text"
                   placeholder="Ask me anything..."
-                  className="w-full bg-gray-50 border-none rounded-xl py-3 px-4 text-sm text-slate-600 placeholder:text-slate-400 focus:ring-2 focus:ring-indigo-500/20 outline-none"
+                  className="w-full bg-background border-none rounded-xl py-3 px-4 text-sm text-Gray600 placeholder:text-Slate400 focus:ring-2 focus:ring-indigo-500/50 outline-none"
                 />
               </div>
-              <button className="bg-[#2D1B69] p-3 rounded-xl text-white hover:bg-[#3b2585] transition-all shadow-md active:scale-95">
+              <button className="bg-NavBorder p-3 rounded-xl text-NavText1 hover:bg-NavBorder/9 transition-all shadow-md active:scale-95">
                 <Send className="w-5 h-5" />
               </button>
             </div>
@@ -67,7 +67,7 @@ const FloatingChatbot = () => {
         className={`w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 ${
           isOpen
             ? "bg-white text-slate-500 border border-gray-100 rotate-90"
-            : "bg-cyan-400 text-white hover:scale-110"
+            : "bg-NavBorder text-NavText1 hover:scale-110"
         }`}
       >
         {isOpen ? (

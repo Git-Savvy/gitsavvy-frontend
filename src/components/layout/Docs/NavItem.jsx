@@ -35,7 +35,7 @@ export const NavItem = ({ item, depth = 0, activeSlug, onSelect }) => {
         onClick={handleClick}
         className={`
           flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer transition-colors
-          ${isActive ? "bg-purple-100 text-purple-700 font-medium" : "hover:bg-gray-50 text-slate-600"}
+          ${isActive ? "bg-Nav/30 text-NavBorder font-medium" : "hover:bg-background text-Gray600"}
           ${depth > 0 ? "ml-4" : ""}
         `}
       >
@@ -51,7 +51,7 @@ export const NavItem = ({ item, depth = 0, activeSlug, onSelect }) => {
         )}
 
         <Icon
-          className={`w-4 h-4 ${isActive ? "text-purple-700" : "text-slate-400"}`}
+          className={`w-4 h-4 ${isActive ? "text-NavBorder" : "text-Slate400"}`}
         />
         <span className="text-sm">{item.title}</span>
       </div>

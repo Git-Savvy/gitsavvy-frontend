@@ -8,7 +8,7 @@ const colorMap = {
     bg: "bg-Cyan50",
   },
   2: {
-    border: "border-primary",
+    border: "border-Purple400",
     bg: "bg-Purple50",
   },
 };

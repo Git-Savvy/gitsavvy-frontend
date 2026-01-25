@@ -34,26 +34,27 @@ export default function ContributionActivityCard({ data }) {
               strokeDasharray="3 3"
               vertical={true}
               horizontal={true}
-              stroke="#f1f5f9"
+              stroke="var(--color-Slate400)"
             />
             <XAxis
               dataKey="name"
-              axisLine={{ stroke: "#e2e8f0" }}
+              axisLine={{ stroke: "var(--color-textdark)" }}
               tickLine={false}
-              tick={{ fill: "#64748b", fontSize: 12 }}
+              tick={{ fill: "var(--color-textdark)", fontSize: 12 }}
               dy={10}
             />
             <YAxis
               domain={[0, 320]}
               ticks={[0, 80, 160, 240, 320]}
-              axisLine={{ stroke: "#e2e8f0" }}
+              axisLine={{ stroke: "var(--color-textdark)" }}
               tickLine={false}
-              tick={{ fill: "#64748b", fontSize: 12 }}
+              tick={{ fill: "var(--color-textdark)", fontSize: 12 }}
             />
 
             {/* Tooltip styled with Tailwind-like colors */}
             <Tooltip
               contentStyle={{
+                backgroundColor: "var(--color-background)",
                 borderRadius: "8px",
                 border: "none",
                 boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)",
@@ -70,7 +71,7 @@ export default function ContributionActivityCard({ data }) {
               wrapperStyle={{
                 paddingTop: "40px",
                 fontSize: "14px",
-                color: "#475569",
+                color: "var(--color-background)",
               }}
             />
 
@@ -79,9 +80,14 @@ export default function ContributionActivityCard({ data }) {
               name="Commits"
               type="monotone"
               dataKey="commits"
-              stroke="#3b82f6"
+              stroke="var(--color-Cyan400)"
               strokeWidth={2}
-              dot={{ r: 4, fill: "#fff", stroke: "#3b82f6", strokeWidth: 2 }}
+              dot={{
+                r: 4,
+                fill: "#fff",
+                stroke: "var(--color-Cyan400)",
+                strokeWidth: 2,
+              }}
               activeDot={{ r: 6, strokeWidth: 0 }}
             />
 
@@ -90,9 +96,14 @@ export default function ContributionActivityCard({ data }) {
               name="Pull Requests"
               type="monotone"
               dataKey="prs"
-              stroke="#8b5cf6"
+              stroke="var(--color-Purple400)"
               strokeWidth={2}
-              dot={{ r: 4, fill: "#fff", stroke: "#8b5cf6", strokeWidth: 2 }}
+              dot={{
+                r: 4,
+                fill: "#fff",
+                stroke: "var(--color-Purple400)",
+                strokeWidth: 2,
+              }}
               activeDot={{ r: 6, strokeWidth: 0 }}
             />
 
@@ -101,9 +112,14 @@ export default function ContributionActivityCard({ data }) {
               name="Issues"
               type="monotone"
               dataKey="issues"
-              stroke="#10b981"
+              stroke="var(--color-Teal400)"
               strokeWidth={2}
-              dot={{ r: 4, fill: "#fff", stroke: "#10b981", strokeWidth: 2 }}
+              dot={{
+                r: 4,
+                fill: "#fff",
+                stroke: "var(--color-Teal400)",
+                strokeWidth: 2,
+              }}
               activeDot={{ r: 6, strokeWidth: 0 }}
             />
           </LineChart>

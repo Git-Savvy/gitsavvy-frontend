@@ -5,6 +5,8 @@ import star from "../assets/starLogo.png";
 import light from "../assets/lightningLogo.png";
 import code from "../assets/codeLogo.png";
 import increase from "../assets/increaseLogo.png";
+import ThemeSwitcher from "../components/common/ThemeSwitcher";
+import { ThemeProvider } from "../context/ThemeContext";
 const Landing = () => {
   const features = [
     {
@@ -25,10 +27,17 @@ const Landing = () => {
     },
   ];
   return (
-    <section className="min-h-screen bg-[#FAFAFA] flex items-center">
+    <section className="min-h-screen bg-background flex items-center">
       <div className="container mx-auto  grid grid-cols-1 lg:grid-cols-2 gap-20 items-center ">
         {/* LEFT SIDE */}
         <div>
+          <div className="absolute top-10 left-10">
+            {" "}
+            <ThemeProvider>
+              <ThemeSwitcher />
+            </ThemeProvider>
+          </div>
+
           {/* Logo */}
           <div className="flex items-center gap-2 mb-6">
             <img
@@ -55,7 +64,7 @@ const Landing = () => {
             {features.map((feature) => (
               <div
                 key={feature.text}
-                className="bg-white border-2 border-gray-200  rounded-2xl px-4 py-3 flex items-center gap-3 text-base text-gray-700"
+                className="bg-white border-2 border-Gray200  rounded-2xl px-4 py-3 flex items-center gap-3 text-base text-text-secondary"
               >
                 <img
                   src={feature.image}

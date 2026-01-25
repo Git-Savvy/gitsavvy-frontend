@@ -1,4 +1,4 @@
-import MyWorkCompleteCard from "../common/MyWorkCompleteCard";
+import MyWorkCompleteCard from "../common/mywork/MyWorkCompleteCard";
 export default function CompletedWork() {
   const work = [
     {

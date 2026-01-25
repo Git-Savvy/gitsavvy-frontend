@@ -78,11 +78,11 @@ export default function IssueDetail() {
         <div className="md:flex justify-between gap-2">
           <div className="flex flex-col lg:flex-row gap-3 ">
             <div className="flex  gap-5">
-              <div className=" w-16 h-16 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+              <div className=" w-16 h-16 bg-Teal400/20 rounded-full flex items-center justify-center text-Teal400">
                 <Info size={30} />
               </div>
               <span
-                className="lg:hidden text-text-secondary font-normal text-xl border border-gray-700 flex items-center justify-center rounded-xl w-15 h-10 mt-2"
+                className="lg:hidden text-text-secondary font-normal text-xl border-2 border-Gray600 flex items-center justify-center rounded-xl w-16 h-10 mt-2"
               >
                 #{issue.issueId}
               </span>
@@ -92,13 +92,13 @@ export default function IssueDetail() {
                 <h1 className="text-3xl text-bold text-textdark">
                   {issue.issueTitle}
                 </h1>
-                <span className="hidden lg:flex text-text-secondary font-normal text-xl border border-gray-700  text-center rounded-xl w-10 h-7 mt-2">
+                <span className="hidden lg:flex text-text-secondary font-normal text-xl border border-Gray600  text-center rounded-xl w-10 h-7 mt-2">
                   #{issue.issueId}
                 </span>
               </div>
 
               <div className="flex gap-4 mb-6">
-                <div className="flex flex-col lg:flex-row lg:items-center gap-4 text-sm text-gray-500">
+                <div className="flex flex-col lg:flex-row lg:items-center gap-4 text-sm text-Gray600">
                   <span><span className="lg:hidden">• </span>Opened {timeAgo(issue.creationDate)}</span>
                   <span className="flex items-center gap-1">• 3 comments</span>
                   <span className="flex items-center gap-1">
@@ -118,7 +118,7 @@ export default function IssueDetail() {
           {["Easy", "enhancement", "good first issue"].map((label) => (
             <span
               key={label}
-              className="px-3 py-1 bg-green-50 text-green-700 text-xs font-medium rounded-xl border-1 border-green-400"
+              className="px-3 py-1 bg-Cyan50 text-Teal400 lg:text-2xs font-medium rounded-xl border-1 border-Teal400"
             >
               {label}
             </span>
@@ -127,12 +127,12 @@ export default function IssueDetail() {
       </div>
 
       {/* 3. CTA Banner */}
-      <div className="bg-gradient-to-br from-[#EFF6FF] to-[#FAF5FF]  border border-blue-300 rounded-2xl p-6 flex flex-col md:flex-row md:items-center justify-between mb-8 ">
+      <div className="bg-gradient-to-br from-SCyan to-ESyan  border border-Teal400 rounded-2xl p-6 flex flex-col md:flex-row md:items-center justify-between mb-8 ">
         <div className="mb-5 md:mb-0">
-          <h3 className="font-semibold text-indigo-900 mb-1">
+          <h3 className="font-semibold text-primary mb-1">
             Ready to contribute?
           </h3>
-          <p className="text-indigo-700 text-sm">
+          <p className="text-text-secondary text-sm">
             This issue is available for contributors. Claim it to start working!
           </p>
         </div>

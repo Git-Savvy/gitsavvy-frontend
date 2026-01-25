@@ -5,7 +5,7 @@ import { UserContext } from "../../context/UserContext";
 export default function ProgressCard({ img }) {
   const { user } = useContext(UserContext);
   return (
-    <div className="border-2 border-teal-400 bg-gradient-to-br from-SCyan to-ECyan rounded-xl p-5">
+    <div className="border-2 border-Teal400 bg-gradient-to-br from-SCyan to-ECyan rounded-xl p-5">
       <div className="flex flex-col md:flex-row justify-between mb-8">
         <div>
           <p className="text-sm text-text-secondry">Level {user.level}</p>

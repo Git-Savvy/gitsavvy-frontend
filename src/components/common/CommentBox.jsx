@@ -1,17 +1,20 @@
 import { useState } from "react";
 import { SendHorizontal } from "lucide-react";
 import SimpleDarkButton from "./SimpleDarkButton";
+import { UserContext} from "../../context/UserContext";
+import { useContext } from "react";
 export default function CommentBox() {
   const [comment, setComment] = useState("");
+  const {user}=useContext(UserContext)
 
   return (
     <div className="w-full rounded-2xl border border-gray-200 bg-white p-4 mb-5">
       <div className="flex items-start gap-4">
         {/* Avatar */}
         <img
-          src="https://i.pravatar.cc/40"
+          src={user.avatar}
           alt="user avatar"
-          className="h-10 w-10 rounded-full object-cover"
+          className="h-10 w-10 rounded-full object-cover ring-2 ring-primary"
         />
 
         {/* Input */}
@@ -19,7 +22,7 @@ export default function CommentBox() {
           value={comment}
           onChange={(e) => setComment(e.target.value)}
           placeholder="Add your comment..."
-          className="w-full pl-8 pr-4 py-2 bg-gray-50 border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
+          className="w-full pl-8 pr-4 py-2 bg-bacground border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
         />
       </div>
 

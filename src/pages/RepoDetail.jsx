@@ -70,7 +70,7 @@ export default function RepoDetail() {
             <p className="text-base">stars</p>
           </span>
           <span className="flex gap-1 ">
-            <GitFork />
+            <GitFork className="text-Gray600" />
             <p className="text-base">{repo.forks}</p>
             <p className="text-base">forks</p>
           </span>

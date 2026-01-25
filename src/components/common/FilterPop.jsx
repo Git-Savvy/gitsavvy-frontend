@@ -31,7 +31,7 @@ export default function FilterPop() {
       {/* Filter Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-6 py-2 border border-gray-200 rounded-lg font-medium text-slate-700 hover:bg-hoverl transition-colors lg:shadow-sm bg-white"
+        className="flex items-center gap-2 px-6 py-2 border border-Gray200 rounded-lg font-medium text-Gray600 hover:bg-hoverl transition-colors lg:shadow-sm bg-white"
       >
         <ListFilter className="w-4 h-4" />
         Filter
@@ -39,12 +39,12 @@ export default function FilterPop() {
 
       {/* Popover Card */}
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-64 bg-white border-2 border-gray-200 rounded-xl shadow-xl z-50 p-5 animate-in fade-in zoom-in duration-150">
-          <h3 className="text-lg font-semibold text-slate-900 mb-4">Filters</h3>
+        <div className="absolute right-0 mt-2 w-64 bg-white border-2 border-Gray200 rounded-xl shadow-xl z-50 p-5 animate-in fade-in zoom-in duration-150">
+          <h3 className="text-lg font-semibold text-textdark mb-4">Filters</h3>
 
           {/* Labels Section */}
           <div className="space-y-3">
-            <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+            <p className="text-xs font-bold text-Slate400 uppercase tracking-wider">
               Labels
             </p>
             {labelOptions.map((label) => (
@@ -54,9 +54,9 @@ export default function FilterPop() {
               >
                 <input
                   type="checkbox"
-                  className="w-5 h-5 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer"
+                  className="w-5 h-5 rounded border-Gray200 text-primary focus:ring-indigo-500 cursor-pointer"
                 />
-                <span className="text-[15px] text-slate-700 group-hover:text-slate-900 transition-colors">
+                <span className="text-[15px] text-Gray600 group-hover:text-dark transition-colors">
                   {label}
                 </span>
               </label>
@@ -67,7 +67,7 @@ export default function FilterPop() {
 
           {/* Status Section */}
           <div className="space-y-3">
-            <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+            <p className="text-xs font-bold text-Slate400 uppercase tracking-wider">
               Status
             </p>
             {statusOptions.map((status) => (
@@ -77,9 +77,9 @@ export default function FilterPop() {
               >
                 <input
                   type="checkbox"
-                  className="w-5 h-5 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer"
+                  className="w-5 h-5 rounded border-Gray400 text-primary focus:ring-primary cursor-pointer"
                 />
-                <span className="text-[15px] text-slate-700 group-hover:text-slate-900 transition-colors">
+                <span className="text-[15px] text-Gray600 group-hover:text-textdark transition-colors">
                   {status}
                 </span>
               </label>
