@@ -2,9 +2,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Sparkles, AlertCircle, ExternalLink } from "lucide-react";
 import { faCodeFork } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
-import recommended from "../../assets/recommendedLogo.svg";
-import SimpleDarkButton from "./SimpleDarkButton";
-import SimpleLightButton from "./SimpleLightButton";
+import SimpleDarkButton from "../SimpleDarkButton";
+import SimpleLightButton from "../SimpleLightButton";
 export default function RepositoryCard({ repo, navigate }) {
   return (
     <div className="border-2 border-Gray200 rounded-xl p-5 bg-white flex flex-col lg:flex-row justify-between gap-4  lg:shadow-sm">

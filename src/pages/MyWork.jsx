@@ -5,8 +5,8 @@ import CompletedWork from "../components/layout/CompletedWork";
 import BackButton from "../components/common/BackButton";
 import { useNavigate } from "react-router-dom";
 import MyWorkStatCard from "../components/common/mywork/MyWorkStatCard";
-import LanguageFilter from "../components/common/LanguageFilter";
-import TimeFilter from "../components/common/TimeFilter";
+import LanguageFilter from "../components/common/mywork/LanguageFilter";
+import TimeFilter from "../components/common/mywork/TimeFilter";
 import MyWorkNav from "../components/layout/MyWorkNav";
 export default function MyWork() {
   const workStats = [

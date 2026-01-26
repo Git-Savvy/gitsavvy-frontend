@@ -62,15 +62,15 @@ export default function ContributionWorkflow({ isOpen, onClose }) {
           {/* Close Button */}
           <button
             onClick={onClose}
-            className="absolute top-6 right-6 text-gray-400 hover:text-gray-600"
+            className="absolute top-6 right-6 text-Gray400 hover:text-Gray600"
           >
             <X size={24} />
           </button>
 
-          <h2 className="text-[26px] font-bold text-gray-900 leading-tight">
+          <h2 className="text-[26px] font-bold text-textdark leading-tight">
             Contribution Workflow
           </h2>
-          <p className="text-gray-500 mt-1">
+          <p className="text-Gray400 mt-1">
             Follow these steps to contribute to cloud-infrastructure
           </p>
         </div>
@@ -89,10 +89,10 @@ export default function ContributionWorkflow({ isOpen, onClose }) {
                   className={`w-10 h-10  rounded-full flex items-center justify-center border-2 transition-all duration-300
                   ${
                     index < currentStep
-                      ? "bg-[#E8F8F0] border-[#4ADE80] text-[#16A34A]"
+                      ? "bg-background border-Teal400 text-Teal400"
                       : index == currentStep
                         ? "bg-primaryLableBg border-primary text-primary"
-                        : "bg-white border-gray-100 text-gray-300"
+                        : "bg-white border-Gray200 text-Stale400"
                   }`}
                 >
                   {/* Show check if step completed, else show icon */}
@@ -106,7 +106,7 @@ export default function ContributionWorkflow({ isOpen, onClose }) {
                 </div>
 
                 {/* Step label with line breaks (“Split the text whenever there is a space.”)*/}
-                <span className="text-[10px] mt-2 font-semibold text-gray-500 text-center uppercase tracking-tight">
+                <span className="text-[10px] mt-2 font-semibold text-Gray00 text-center uppercase tracking-tight">
                   {step.label.split(" ").map((word, idx) => (
                     <React.Fragment key={idx}>
                       {/*( React.Fragment) It lets us group elements without adding HTML tags. */}
@@ -120,7 +120,7 @@ export default function ContributionWorkflow({ isOpen, onClose }) {
           })}
 
           {/* Progress Line */}
-          <div className="absolute top-[52px] left-[10%] right-[10%] h-[2px] bg-gray-100 z-0" />
+          <div className="absolute top-[52px] left-[10%] right-[10%] h-[2px] bg-Gray200 z-0" />
         </div>
 
         {/* Content Body */}
@@ -128,20 +128,20 @@ export default function ContributionWorkflow({ isOpen, onClose }) {
           <div className="overflow-y-auto h-full">
             <div className="px-10 pb-8 space-y-6 mt-2">
               {/* Issue Details Card */}
-              <div className="border border-gray-100 rounded-2xl p-6 bg-white shadow-sm">
-                <h3 className="text-xl font-bold text-gray-800">
+              <div className="border border-Gray200 rounded-2xl p-6 bg-white shadow-sm">
+                <h3 className="text-xl font-bold text-text-secondary">
                   Add dark mode support
                 </h3>
-                <p className="text-gray-500 text-[15px] mt-3 leading-relaxed">
+                <p className="text-Gray600 text-[15px] mt-3 leading-relaxed">
                   Implement dark mode theme switching with system preference
                   detection. This should include proper color scheme management
                   and localStorage persistence.
                 </p>
                 <div className="flex gap-2 mt-5">
-                  <span className="px-4 py-1.5 bg-gray-50 border border-gray-200 text-gray-600 text-[13px] rounded-xl">
+                  <span className="px-4 py-1.5 bg-background border border-Gray200 text-Gray600 text-[13px] rounded-xl">
                     enhancement
                   </span>
-                  <span className="px-4 py-1.5 bg-gray-50 border border-gray-200 text-gray-600 text-[13px] rounded-xl">
+                  <span className="px-4 py-1.5 bg-background border border-Gray200 text-Gray600 text-[13px] rounded-xl">
                     good first issue
                   </span>
                 </div>

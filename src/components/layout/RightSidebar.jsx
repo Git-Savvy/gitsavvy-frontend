@@ -1,7 +1,7 @@
-import ProgressCard from "../common/ProgressCard";
-import Badge from "../common/Badge";
+import ProgressCard from "../common/discover/ProgressCard";
+import Badge from "../common/discover/Badge";
 import Cup from "../../assets/cupIcon.png";
-import ContributionCard from "../common/ContributionCard";
+import ContributionCard from "../common/discover/ContributionCard";
 import { UserContext } from "../../context/UserContext";
 import { useContext } from "react";
 export default function RightSidebar() {

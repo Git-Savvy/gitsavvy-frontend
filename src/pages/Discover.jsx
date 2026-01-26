@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import RepositoryCard from "../components/common/RepositoryCard";
+import RepositoryCard from "../components/common/discover/RepositoryCard";
 import RightSidebar from "../components/layout/RightSidebar";
 import SearchSquare from "../components/common/SearchSquare";
 import { useContext } from "react";
