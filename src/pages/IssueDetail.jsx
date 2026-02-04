@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import BackButton from "../components/common/BackButton";
 import { ExternalLink, Info, UserCircle } from "lucide-react";
 import SimpleLightButton from "../components/common/SimpleLightButton";
-import SimpleDarkButton from "../components/common/SimpleDarkButton";
 import IssueNav from "../components/layout/IssueNav";
 import DescriptionIssue from "../components/layout/DescriptionIssue";
 import Comments from "../components/layout/Comments";
@@ -13,6 +12,8 @@ import { IssueContext } from "../context/IssueContext";
 import { useContext } from "react";
 import NotFound from "./NotFound";
 import { timeAgo } from "../utils/timeAgo";
+import ClaimBanner from "../components/common/contributionFlow/ClaimBanner";
+import ClaimedBanner from "../components/common/contributionFlow/ClimedBanner";
 export default function IssueDetail() {
   const { repoId, issueId } = useParams(); // id from URL
   const { issues } = useContext(IssueContext);
@@ -81,9 +82,7 @@ export default function IssueDetail() {
               <div className=" w-16 h-16 bg-Teal400/20 rounded-full flex items-center justify-center text-Teal400">
                 <Info size={30} />
               </div>
-              <span
-                className="lg:hidden text-text-secondary font-normal text-xl border-2 border-Gray600 flex items-center justify-center rounded-xl w-16 h-10 mt-2"
-              >
+              <span className="lg:hidden text-text-secondary font-normal text-xl border-2 border-Gray600 flex items-center justify-center rounded-xl w-16 h-10 mt-2">
                 #{issue.issueId}
               </span>
             </div>
@@ -99,7 +98,10 @@ export default function IssueDetail() {
 
               <div className="flex gap-4 mb-6">
                 <div className="flex flex-col lg:flex-row lg:items-center gap-4 text-sm text-Gray600">
-                  <span><span className="lg:hidden">• </span>Opened {timeAgo(issue.creationDate)}</span>
+                  <span>
+                    <span className="lg:hidden">• </span>Opened{" "}
+                    {timeAgo(issue.creationDate)}
+                  </span>
                   <span className="flex items-center gap-1">• 3 comments</span>
                   <span className="flex items-center gap-1">
                     • <UserCircle size={14} /> johndoe
@@ -126,23 +128,13 @@ export default function IssueDetail() {
         </div>
       </div>
 
-      {/* 3. CTA Banner */}
-      <div className="bg-gradient-to-br from-SCyan to-ESyan  border border-Teal400 rounded-2xl p-6 flex flex-col md:flex-row md:items-center justify-between mb-8 ">
-        <div className="mb-5 md:mb-0">
-          <h3 className="font-semibold text-primary mb-1">
-            Ready to contribute?
-          </h3>
-          <p className="text-text-secondary text-sm">
-            This issue is available for contributors. Claim it to start working!
-          </p>
-        </div>
-        <SimpleDarkButton
-          onClick={() => {
-            setIsModalOpen(true);
-          }}
-          text=" Claim Issue"
-        />
-      </div>
+      {/* 3. CTA Claim Banner */}
+      {/* 3. CTA Claim Banner */}
+      {!issue.assignedUserId ? (
+        <ClaimBanner setIsModalOpen={setIsModalOpen} />
+      ) : (
+        <ClaimedBanner />
+      )}
 
       {/* 4. Navigation Bar (Tabs) */}
       <div>

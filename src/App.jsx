@@ -15,12 +15,11 @@ import { MetricsProvider } from "./context/MetricsContext";
 import { ReadmeProvider } from "./context/ReadmeContext";
 import { DocsProvider } from "./context/DocsContext";
 import NotFound from "./pages/NotFound";
-import ThemeSwitcher from "./components/common/ThemeSwitcher";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 function App() {
   return (
     <>
-    
       <Router>
         <Routes>
           <Route
@@ -84,6 +83,7 @@ function App() {
           />
         </Routes>
       </Router>
+      <ReactQueryDevtools initialIsOpen={false} />
     </>
   );
 }

@@ -1,4 +1,29 @@
+import { useContext } from "react";
+import { UserContext } from "../../../context/UserContext";
+import { IssueContext } from "../../../context/IssueContext";
+import { useParams } from "react-router-dom";
 export default function ClimView({ onNext }) {
+  const { issueId } = useParams(); // id from URL
+  const { user } = useContext(UserContext);
+  const { issues, setIssues } = useContext(IssueContext);
+
+  function handleClaim() {
+    setIssues(
+      (
+        issues, //Always update state using the previous state callback.
+      ) =>
+        issues.map((issue) =>
+          issue.issueId === Number(issueId) && !issue.assignedUserId
+            ? {
+                ...issue,
+                assignedUserId: user.id,
+                issueStatus: "claimed",
+              }
+            : issue,
+        ),
+    );
+  }
+
   return (
     <div className="space-y-5">
       <p className="text-Gray600 text-sm">
@@ -12,7 +37,11 @@ export default function ClimView({ onNext }) {
         </p>
       </div>
       <button
-        onClick={onNext}
+        onClick={() => {
+          handleClaim();
+          onNext();
+          console.log("Updated Issue:", issues);
+        }}
         className="w-full bg-primary text-white hover:bg-hoverd py-4 rounded-xl font-bold text-lg"
       >
         Claim This Issue

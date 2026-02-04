@@ -1,0 +1,92 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "Mshael",
+      "firstName": "Mshael",
+      "lastName": "Alshawaf",
+      "password": "123456",
+      "email": "shawaf@gmail.com",
+      "language": "en",
+      "avatar": "https://i.pravatar.cc/150?img=2",
+      "points": 2450,
+      "level": 8,
+      "badges": [
+        {
+          "id": 1,
+          "name": "First Contribution",
+          "level": "Common",
+          "icon": "https://img.icons8.com/color/96/medal.png"
+        },
+        {
+          "id": 2,
+          "name": "Bug Hunter",
+          "level": "Rare",
+          "icon": "https://img.icons8.com/color/96/prize.png"
+        },
+        {
+          "id": 3,
+          "name": "Code Master",
+          "level": "Epic",
+          "icon": "https://img.icons8.com/color/96/trophy.png"
+        }
+      ],
+      "preferences": {
+        "languages": ["TypeScript", "JavaScript", "Python"],
+        "interests": ["Web Development", "UI/UX"]
+      },
+      "status": "active"
+    },
+
+    {
+      "id": 2,
+      "username": "SaraDev",
+      "firstName": "Sara",
+      "lastName": "Alqahtani",
+      "password": "123456",
+      "email": "sara@gmail.com",
+      "language": "en",
+      "avatar": "https://i.pravatar.cc/150?img=5",
+      "points": 1820,
+      "level": 6,
+      "badges": [
+        {
+          "id": 1,
+          "name": "First Contribution",
+          "level": "Common",
+          "icon": "https://img.icons8.com/color/96/medal.png"
+        },
+        {
+          "id": 2,
+          "name": "Bug Hunter",
+          "level": "Rare",
+          "icon": "https://img.icons8.com/color/96/prize.png"
+        }
+      ],
+      "preferences": {
+        "languages": ["JavaScript", "React"],
+        "interests": ["Frontend", "UI Design"]
+      },
+      "status": "active"
+    },
+
+    {
+      "id": 3,
+      "username": "OmarBackend",
+      "firstName": "Omar",
+      "lastName": "Alharbi",
+      "password": "123456",
+      "email": "omar@gmail.com",
+      "language": "ar",
+      "avatar": "https://i.pravatar.cc/150?img=12",
+      "points": 950,
+      "level": 3,
+      "badges": [],
+      "preferences": {
+        "languages": ["Java", "Spring", "SQL"],
+        "interests": ["Backend", "Databases"]
+      },
+      "status": "inactive"
+    }
+  ]
+}
