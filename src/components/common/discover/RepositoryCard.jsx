@@ -10,16 +10,20 @@ export default function RepositoryCard({ repo, navigate }) {
       {/* Left */}
       <div>
         <div className="flex items-center gap-2">
-          <h3 className="font-semibold text-xl lg:text-2xl mb-2 md:mb-0">{repo.title}</h3>
+          <h3 className="font-semibold text-xl lg:text-2xl mb-2 md:mb-0">
+            {repo.title}
+          </h3>
           <div className="hidden lg:flex">
-            <div className="flex items-center  gap-2 w-fit border-2  border-Purple400 text-Gray600 rounded-lg bg-Purple50 px-2">
-              <Sparkles className="w-4 h-4 text-Purple400 " />
-              <p>Recommended</p>
+            <div className="flex items-center  gap-2 w-fit border-1  border-primary rounded-lg bg-Purple400/20 px-2">
+              <Sparkles className="w-4 h-4 text-primary " />
+              <p className="text-primary">Recommended</p>
             </div>
           </div>
         </div>
 
-        <p className=" text-sm lg:text-md text-Gray600 mt-1">{repo.description}</p>
+        <p className=" text-sm lg:text-md text-Gray600 mt-1">
+          {repo.description}
+        </p>
 
         <div className="flex flex-col md:flex-row gap-4 text-sm text-Gray600 mt-3">
           <span className="flex gap-1">
@@ -41,7 +45,10 @@ export default function RepositoryCard({ repo, navigate }) {
 
         <div className="flex gap-2 mt-3">
           {repo.tags.map((tag) => (
-            <span key={tag} className="text-sm font-simibold border-1 px-2 lg:px-3 py-1 rounded-full text-Cyan400 bg-Cyan50">
+            <span
+              key={tag}
+              className="text-sm font-semibold border-1  px-2 lg:px-3 py-1 rounded-full text-NavBorder bg-NavSelected"
+            >
               {tag}
             </span>
           ))}

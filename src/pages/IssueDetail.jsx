@@ -82,7 +82,7 @@ export default function IssueDetail() {
               <div className=" w-16 h-16 bg-Teal400/20 rounded-full flex items-center justify-center text-Teal400">
                 <Info size={30} />
               </div>
-              <span className="lg:hidden text-text-secondary font-normal text-xl border-2 border-Gray600 flex items-center justify-center rounded-xl w-16 h-10 mt-2">
+              <span className="lg:hidden  font-normal text-xl border-1 text-NavBorder bg-NavSelected  flex items-center justify-center rounded-xl w-13 h-8 mt-2">
                 #{issue.issueId}
               </span>
             </div>
@@ -91,7 +91,7 @@ export default function IssueDetail() {
                 <h1 className="text-3xl text-bold text-textdark">
                   {issue.issueTitle}
                 </h1>
-                <span className="hidden lg:flex text-text-secondary font-normal text-xl border border-Gray600  text-center rounded-xl w-10 h-7 mt-2">
+                <span className="hidden lg:flex  font-normal text-xl border-1 text-NavBorder bg-NavSelected  text-center justify-center rounded-xl w-12 h-7 mt-2">
                   #{issue.issueId}
                 </span>
               </div>
@@ -120,7 +120,7 @@ export default function IssueDetail() {
           {["Easy", "enhancement", "good first issue"].map((label) => (
             <span
               key={label}
-              className="px-3 py-1 bg-Cyan50 text-Teal400 lg:text-2xs font-medium rounded-xl border-1 border-Teal400"
+              className="px-3 py-1 text-NavBorder bg-NavSelected lg:text-2xs font-medium rounded-xl border-1"
             >
               {label}
             </span>
@@ -128,7 +128,6 @@ export default function IssueDetail() {
         </div>
       </div>
 
-      {/* 3. CTA Claim Banner */}
       {/* 3. CTA Claim Banner */}
       {!issue.assignedUserId ? (
         <ClaimBanner setIsModalOpen={setIsModalOpen} />
@@ -149,6 +148,7 @@ export default function IssueDetail() {
       <ContributionWorkflow
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+        issue={issue}
       />
     </main>
   );

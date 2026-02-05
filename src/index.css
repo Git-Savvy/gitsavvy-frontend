@@ -1,7 +1,6 @@
 /* ---------------------------------------------
    Tailwind v4 base
 ---------------------------------------------- */
-
 @import "tailwindcss";
 @plugin "tailwind-scrollbar";
 
@@ -9,7 +8,6 @@
    Enable dark mode variant
    This tells Tailwind to look for the .dark class
 ---------------------------------------------- */
-
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ---------------------------------------------
@@ -17,7 +15,6 @@
 ---------------------------------------------- */
 
 @theme {
-  /*==========Default light mood=======================*/
   /* Backgrounds */
   --color-background: #fafafa; /* main app background */
   --color-white: #ffffff; /* cards / surfaces */
@@ -30,8 +27,7 @@
   --color-Gray300: #d1d5db;
   /*Gradient Pair*/
   --color-SCyan: #edfbfa;
-  --color-ECyan: #c4f9f4;
-
+  --color-ECyan: #b7c5f0;
   --color-SBar: #1dddd0;
   --color-EBar: #00c0e8;
 
@@ -53,7 +49,6 @@
   --color-Yellow400: #facc15; /*  */
   --color-Slate400: #94a3b8; /* insted of zink i used it no data message*/
   --color-Indigo900: #312e81; /*border-indigo-900*/
-  --color-Cyan400: #22d3ee;
   --color-NavText1: #fff; /*not change in both mood*/
   --color-NavText2: #321e73;
   --color-WarningText:#92400E;
@@ -68,26 +63,6 @@
   /* UI */
   --color-primaryLableBg: #f3e8ff; /*light purple bg*/
   --color-switchbg: #fafafa;
-
-  /* --- Dark Theme Redefinition --- */
-  /* This targets the system settings automatically */
-  /*@media (prefers-color-scheme: dark) {
-    /* Backgrounds */
-  /* --color-background: #0f0f14;
-    --color-white: #18181b; */
-  /* Text */
-  /* --color-textdark: #f5f5f5;
-    --color-text-secondary: #a1a1aa; */
-  /* Brand */
-  /* --color-primary: #b88ef4; */
-  /* Hover */
-  /* --color-hoverl: #27272a;
-    --color-hoverd: #6d28d9;
-    --color-texthover: #c4b5fd; */
-  /* UI */
-  /* --color-primaryLableBg: #2e1065;
-    --color-switchbg: #27272a;
-  } */
 }
 
 /* 3. Force Dark Theme for manual class (Important for the JS toggle) */
@@ -97,7 +72,6 @@
     /* Backgrounds */
     --color-background: #0b0d10; /* Slightly lighter surface */
     --color-white: #24292E; /* Industry standard dark grey */
-
     --color-Indigo50: #1e1b4b;
     --color-Cyan50: #082f2c;
     --color-Purple50: #241e2f;
@@ -107,7 +81,6 @@
     /*Gradient Pair*/
     --color-SCyan: #040d0c;
     --color-ECyan: #0d3d39;
-
     --color-SBar: #046371;
     --color-EBar: #00827e;
 
@@ -127,13 +100,15 @@
     --color-NavText2: #00d5be; /* change on mood */
     --color-Slate400: #94a3b8; /* insted of zink i used it no data message*/
     --color-WarningText:#FDE68A;
+
     /* Brand (Electric Indigo) */
     --color-primary: #a16fe0;
 
-    /* Hover & UI */
+    /* Hover */
     --color-hoverl: #000;
     --color-hoverd:  #9159d9; /*#b88ef4; */
     --color-texthover: #c7d2fe;
+    /* UI */
     --color-primaryLableBg: #0b0d10;
     --color-switchbg: #121212;
   }
@@ -148,7 +123,7 @@
   }
   html,
   body {
-    @apply bg-background; /* Use your #141218 or #121212 variable */
+    @apply bg-background;
   }
 
   body {

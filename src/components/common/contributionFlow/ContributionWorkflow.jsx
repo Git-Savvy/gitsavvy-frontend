@@ -14,6 +14,7 @@ import {
   X,
   Settings,
 } from "lucide-react";
+import IssueDetailsCard from "./IssueDetailsCard";
 
 /* --- Step Definitions --- */
 const STEPS = [
@@ -35,7 +36,7 @@ const STEP_ICONS = {
   complete: Check,
 };
 
-export default function ContributionWorkflow({ isOpen, onClose }) {
+export default function ContributionWorkflow({ isOpen, onClose, issue }) {
   const [currentStep, setCurrentStep] = useState(0);
 
   if (!isOpen) return null; // Don't render if modal is closed
@@ -71,7 +72,7 @@ export default function ContributionWorkflow({ isOpen, onClose }) {
             Contribution Workflow
           </h2>
           <p className="text-Gray400 mt-1">
-            Follow these steps to contribute to cloud-infrastructure
+            {`Follow these steps to contribute to ${issue.issueTitle}`}
           </p>
         </div>
 
@@ -89,7 +90,7 @@ export default function ContributionWorkflow({ isOpen, onClose }) {
                   className={`w-10 h-10  rounded-full flex items-center justify-center border-2 transition-all duration-300
                   ${
                     index < currentStep
-                      ? "bg-background border-Teal400 text-Teal400"
+                      ? "bg-Cyan50 border-Teal400 text-Teal400"
                       : index == currentStep
                         ? "bg-primaryLableBg border-primary text-primary"
                         : "bg-white border-Gray200 text-Stale400"
@@ -128,24 +129,7 @@ export default function ContributionWorkflow({ isOpen, onClose }) {
           <div className="overflow-y-auto h-full">
             <div className="px-10 pb-8 space-y-6 mt-2">
               {/* Issue Details Card */}
-              <div className="border border-Gray200 rounded-2xl p-6 bg-white shadow-sm">
-                <h3 className="text-xl font-bold text-text-secondary">
-                  Add dark mode support
-                </h3>
-                <p className="text-Gray600 text-[15px] mt-3 leading-relaxed">
-                  Implement dark mode theme switching with system preference
-                  detection. This should include proper color scheme management
-                  and localStorage persistence.
-                </p>
-                <div className="flex gap-2 mt-5">
-                  <span className="px-4 py-1.5 bg-background border border-Gray200 text-Gray600 text-[13px] rounded-xl">
-                    enhancement
-                  </span>
-                  <span className="px-4 py-1.5 bg-background border border-Gray200 text-Gray600 text-[13px] rounded-xl">
-                    good first issue
-                  </span>
-                </div>
-              </div>
+              <IssueDetailsCard issue={issue} />
             </div>
 
             {/* Step Views */}
