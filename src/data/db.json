@@ -1,0 +1,605 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "Mshael",
+      "firstName": "Mshael",
+      "lastName": "Alshawaf",
+      "password": "123456",
+      "email": "shawaf@gmail.com",
+      "language": "en",
+      "avatar": "https://i.pravatar.cc/150?img=2",
+      "points": 2450,
+      "level": 8,
+      "badges": [
+        {
+          "id": 1,
+          "name": "First Contribution",
+          "level": "Common",
+          "icon": "https://img.icons8.com/color/96/medal.png"
+        },
+        {
+          "id": 2,
+          "name": "Bug Hunter",
+          "level": "Rare",
+          "icon": "https://img.icons8.com/color/96/prize.png"
+        },
+        {
+          "id": 3,
+          "name": "Code Master",
+          "level": "Epic",
+          "icon": "https://img.icons8.com/color/96/trophy.png"
+        },
+        {
+          "id": 4,
+          "name": "Monister",
+          "level": "Extra",
+          "icon": "https://img.icons8.com/color/96/trophy.png"
+        }
+      ],
+      "preferences": {
+        "languages": ["TypeScript", "JavaScript", "Python"],
+        "interests": ["Web Development", "UI/UX"]
+      },
+      "status": "active"
+    },
+    {
+      "id": 2,
+      "username": "SaraDev",
+      "firstName": "Sara",
+      "lastName": "Alqahtani",
+      "password": "123456",
+      "email": "sara@gmail.com",
+      "language": "en",
+      "avatar": "https://i.pravatar.cc/150?img=5",
+      "points": 1820,
+      "level": 6,
+      "badges": [
+        {
+          "id": 1,
+          "name": "First Contribution",
+          "level": "Common",
+          "icon": "https://img.icons8.com/color/96/medal.png"
+        },
+        {
+          "id": 2,
+          "name": "Bug Hunter",
+          "level": "Rare",
+          "icon": "https://img.icons8.com/color/96/prize.png"
+        }
+      ],
+      "preferences": {
+        "languages": ["JavaScript", "React"],
+        "interests": ["Frontend", "UI Design"]
+      },
+      "status": "active"
+    },
+    {
+      "id": 3,
+      "username": "OmarBackend",
+      "firstName": "Omar",
+      "lastName": "Alharbi",
+      "password": "123456",
+      "email": "omar@gmail.com",
+      "language": "ar",
+      "avatar": "https://i.pravatar.cc/150?img=12",
+      "points": 950,
+      "level": 3,
+      "badges": [],
+      "preferences": {
+        "languages": ["Java", "Spring", "SQL"],
+        "interests": ["Backend", "Databases"]
+      },
+      "status": "inactive"
+    }
+  ],
+
+  "repos": [
+    {
+      "id": 142,
+      "title": "cloud-infrastructure",
+      "owner": "octocat",
+      "description": "Infrastructure as code templates for AWS, Azure, and GCP",
+      "stars": 5432,
+      "forks": 734,
+      "openIssues": 3,
+      "contributors": 37,
+      "tags": ["React", "Vite", "Tailwind", "UI"],
+      "programmingLanguage": ["Python", "Terraform", "Bash"],
+      "externalRepoLink": "https://github.com/octocat/cloud-infrastructure",
+      "contributorIDs": [1, 2, 3, 4, 5],
+      "lastUpdated": "2026-01-15T12:34:00Z",
+      "status": "active"
+    },
+    {
+      "id": 200,
+      "title": "EmergencyApp",
+      "owner": "mashael",
+      "description": "An emergency communication system with AI first aid guidance",
+      "stars": 120,
+      "forks": 30,
+      "openIssues": 19,
+      "contributors": 37,
+      "tags": ["TypeScript", "Python"],
+      "programmingLanguage": ["TypeScript", "Python"],
+      "externalRepoLink": "https://github.com/mashael/EmergencyApp",
+      "contributorIDs": [1, 2, 6],
+      "lastUpdated": "2026-01-10T09:20:00Z",
+      "status": "active"
+    },
+    {
+      "id": 3,
+      "title": "DiabetesDietAI",
+      "owner": "mashael",
+      "description": "Personalized meal recommendation system for diabetes management",
+      "stars": 75,
+      "forks": 15,
+      "openIssues": 2,
+      "contributors": 37,
+      "tags": ["AI", "Nutrition", "Health", "React"],
+      "programmingLanguage": ["Python", "React"],
+      "externalRepoLink": "https://github.com/mashael/DiabetesDietAI",
+      "contributorIDs": [1, 7, 8],
+      "lastUpdated": "2026-01-05T15:45:00Z",
+      "status": "active"
+    },
+    {
+      "id": 4,
+      "title": "ProgrammingClubProjects",
+      "owner": "clubadmin",
+      "description": "Collection of projects developed in Programming Club courses",
+      "stars": 60,
+      "forks": 10,
+      "openIssues": 0,
+      "contributors": 37,
+      "tags": ["React", "JavaScript", "Club", "Portfolio"],
+      "programmingLanguage": ["JavaScript", "React", "Tailwind"],
+      "externalRepoLink": "https://github.com/programmingclub/Projects",
+      "contributorIDs": [2, 3, 4, 9, 10],
+      "lastUpdated": "2026-01-12T08:00:00Z",
+      "status": "archived"
+    },
+    {
+      "id": 5,
+      "title": "Test-Empty",
+      "owner": "mesh",
+      "description": "testing for empty states in project",
+      "stars": 60,
+      "forks": 10,
+      "openIssues": 0,
+      "contributors": 37,
+      "tags": ["React", "JavaScript", "Club", "Portfolio"],
+      "programmingLanguage": ["JavaScript", "React", "Tailwind"],
+      "externalRepoLink": "https://github.com/programmingclub/Projects5",
+      "contributorIDs": [2, 3, 4, 9, 10],
+      "lastUpdated": "2025-01-12T08:00:00Z",
+      "status": "archived"
+    }
+  ],
+
+  "readmes": [
+    {
+      "id": 1,
+      "repoId": 142,
+      "content": "# Cloud Infrastructure\n\nInfrastructure as code templates for AWS, Azure, and GCP.\nThis project provides production-ready Terraform and scripting templates designed to simplify cloud deployment and management.\n\n## Features\n- Modular Terraform architecture\n- Multi-cloud support (AWS, Azure, GCP)\n- Secure IAM and networking templates\n- CI/CD-ready structure\n\n## Use Cases\n- Rapid cloud environment setup\n- Standardized infrastructure across teams\n- Best-practice cloud security implementation"
+    },
+    {
+      "id": 2,
+      "repoId": 200,
+      "content": "# EmergencyApp\n\nEmergencyApp is a smart emergency communication system with AI-powered first aid guidance.\nThe app enables users to quickly contact emergency services and share critical medical and location information.\n\n## Core Features\n- One-tap emergency calling\n- Voice-activated emergency trigger\n- Real-time location sharing\n- AI-based first aid instructions\n- Smartwatch vital sign monitoring\n\n## Target Users\n- Individuals\n- Elderly users\n- People with chronic conditions"
+    },
+    {
+      "id": 3,
+      "repoId": 3,
+      "content": "# DiabetesDietAI\n\nDiabetesDietAI is an AI-driven system that provides personalized meal recommendations for diabetes management.\nIt analyzes user food intake, blood sugar levels, and preferences to suggest healthier meal options.\n\n## Key Capabilities\n- Personalized meal planning\n- Blood sugar–aware recommendations\n- Regional food database\n- AI-based decision logic\n\n## Goal\nHelp users maintain stable blood glucose levels through smarter nutrition choices."
+    },
+    {
+      "id": 4,
+      "repoId": 4,
+      "content": "# ProgrammingClubProjects\n\nThis repository contains a collection of projects developed during Programming Club courses.\nIt serves as a portfolio showcase and learning reference for club members.\n\n## Included Projects\n- Web development projects\n- React and JavaScript applications\n- UI/UX practice projects\n- Team-based course assignments\n\n## Purpose\n- Encourage collaborative learning\n- Showcase student achievements\n- Provide reusable learning resources"
+    }
+  ],
+  "metrics": [
+    {
+      "id": 1,
+      "repoId": 142,
+      "totalCommits": 1547,
+      "prsMerged": 197,
+      "issuesClosed": 134,
+      "contributors": 37
+    },
+    {
+      "id": 2,
+      "repoId": 200,
+      "totalCommits": 320,
+      "prsMerged": 45,
+      "issuesClosed": 19,
+      "contributors": 12
+    },
+    {
+      "id": 3,
+      "repoId": 3,
+      "totalCommits": 98,
+      "prsMerged": 28,
+      "issuesClosed": 12,
+      "contributors": 5
+    },
+    {
+      "id": 4,
+      "repoId": 4,
+      "totalCommits": 75,
+      "prsMerged": 20,
+      "issuesClosed": 10,
+      "contributors": 6
+    }
+  ],
+  "issues": [
+    {
+      "id": 42,
+      "issueTitle": "Fix login bug in authentication module",
+      "issueStatus": "Open",
+      "issueDescription": "Users are unable to login when passwords contain special characters. Need to sanitize input and add unit tests.",
+      "labels": [
+        "All Issues",
+        "Good First Issue",
+        "Help Wanted",
+        "Bug",
+        "Enhancement"
+      ],
+      "githubIssueLink": "https://github.com/octocat/HelloWorld/issues/42",
+      "repositoryId": 142,
+      "assignedUserId": null,
+      "creationDate": "2025-10-15",
+      "lastUpdatedDate": "2025-10-18",
+      "priority": "High"
+    },
+    {
+      "id": 43,
+      "issueTitle": "Improve dashboard responsiveness",
+      "issueStatus": "Open",
+      "issueDescription": "Dashboard layout breaks on smaller screens. Adjust CSS and Tailwind classes to ensure proper display across devices.",
+      "labels": ["Easy", "Enhancement", "Good First Issue"],
+      "githubIssueLink": "https://github.com/octocat/HelloWorld/issues/43",
+      "repositoryId": 142,
+      "assignedUserId": null,
+      "creationDate": "2025-10-12",
+      "lastUpdatedDate": "2025-10-17",
+      "priority": "Medium"
+    },
+    {
+      "id": 44,
+      "issueTitle": "Update README documentation",
+      "issueStatus": "Open",
+      "issueDescription": "The README is outdated. Add new setup instructions, screenshots, and API usage examples for the emergency app.",
+      "labels": ["Easy", "Enhancement", "Documentation"],
+      "githubIssueLink": "https://github.com/octocat/HelloWorld/issues/44",
+      "repositoryId": 200,
+      "assignedUserId": null,
+      "creationDate": "2025-10-05",
+      "lastUpdatedDate": "2025-10-10",
+      "priority": "Low"
+    },
+    {
+      "id": 45,
+      "issueTitle": "Fix API error handling",
+      "issueStatus": "Open",
+      "issueDescription": "Some errors from the emergency API are not logged or displayed. Add proper error messages and retry logic.",
+      "labels": ["Bug", "High Priority", "Enhancement"],
+      "githubIssueLink": "https://github.com/octocat/HelloWorld/issues/45",
+      "repositoryId": 200,
+      "assignedUserId": 126,
+      "creationDate": "2025-10-16",
+      "lastUpdatedDate": "2025-10-18",
+      "priority": "High"
+    },
+    {
+      "id": 46,
+      "issueTitle": "Improve AI meal suggestions",
+      "issueStatus": "Open",
+      "issueDescription": "AI sometimes suggests high-sugar meals. Adjust algorithm to better consider recent blood sugar readings.",
+      "labels": ["Enhancement", "AI", "Health"],
+      "githubIssueLink": "https://github.com/mashael/DiabetesDietAI/issues/46",
+      "repositoryId": 3,
+      "assignedUserId": null,
+      "creationDate": "2026-01-08",
+      "lastUpdatedDate": "2026-01-09",
+      "priority": "High"
+    },
+    {
+      "id": 47,
+      "issueTitle": "Add regional Saudi foods",
+      "issueStatus": "Open",
+      "issueDescription": "Include local Saudi cuisine options in the meal database to make diet suggestions culturally relevant.",
+      "labels": ["Feature", "Database"],
+      "githubIssueLink": "https://github.com/mashael/DiabetesDietAI/issues/47",
+      "repositoryId": 3,
+      "assignedUserId": null,
+      "creationDate": "2026-01-09",
+      "lastUpdatedDate": "2026-01-10",
+      "priority": "Medium"
+    },
+    {
+      "id": 48,
+      "issueTitle": "Fix glucose reading bug",
+      "issueStatus": "Claimed",
+      "issueDescription": "Some glucose readings are not updating in real-time due to API latency. Add proper error handling and retries.",
+      "labels": ["Bug", "Critical"],
+      "githubIssueLink": "https://github.com/mashael/DiabetesDietAI/issues/48",
+      "repositoryId": 3,
+      "assignedUserId": 129,
+      "creationDate": "2026-01-10",
+      "lastUpdatedDate": "2026-01-11",
+      "priority": "High"
+    },
+    {
+      "id": 49,
+      "issueTitle": "Add project showcase page",
+      "issueStatus": "Open",
+      "issueDescription": "Create a dynamic page to showcase all club projects with filters for tech stack and course.",
+      "labels": ["Feature", "UI"],
+      "githubIssueLink": "https://github.com/programmingclub/Projects/issues/49",
+      "repositoryId": 4,
+      "assignedUserId": null,
+      "creationDate": "2026-01-07",
+      "lastUpdatedDate": "2026-01-08",
+      "priority": "Medium"
+    },
+    {
+      "id": 50,
+      "issueTitle": "Fix responsive layout bug",
+      "issueStatus": "Open",
+      "issueDescription": "Some project cards break layout on mobile screens. Update Tailwind classes for proper responsiveness.",
+      "labels": ["Bug", "UI"],
+      "githubIssueLink": "https://github.com/programmingclub/Projects/issues/50",
+      "repositoryId": 4,
+      "assignedUserId": null,
+      "creationDate": "2026-01-08",
+      "lastUpdatedDate": "2026-01-09",
+      "priority": "High"
+    },
+    {
+      "id": 51,
+      "issueTitle": "Update README with instructions",
+      "issueStatus": "Claimed",
+      "issueDescription": "Add setup instructions and screenshots for each project in the repo README.",
+      "labels": ["Documentation"],
+      "githubIssueLink": "https://github.com/programmingclub/Projects/issues/51",
+      "repositoryId": 4,
+      "assignedUserId": 132,
+      "creationDate": "2026-01-09",
+      "lastUpdatedDate": "2026-01-10",
+      "priority": "Low"
+    }
+  ],
+  "docs": [
+    {
+      "id": 1,
+      "repoId": 142,
+      "pages": [
+        {
+          "title": "Repository Overview",
+          "type": "folder",
+          "children": [
+            {
+              "slug": "getting-started",
+              "title": "Getting Started",
+              "type": "page",
+              "generatedAt": "2025-11-11",
+              "content": {
+                "description": "This guide will help you get started with cloud-infrastructure. Follow these steps to integrate the library into your project.",
+                "prerequisites": [
+                  "Node.js 16+",
+                  "npm or yarn",
+                  "TypeScript/React knowledge"
+                ],
+                "installation": {
+                  "npm": "npm install cloud-infrastructure",
+                  "yarn": "yarn add cloud-infrastructure"
+                }
+              }
+            },
+            { "slug": "installation", "title": "Installation", "type": "page" }
+          ]
+        },
+        {
+          "title": "API Reference",
+          "type": "folder",
+          "children": [
+            {
+              "title": "Components",
+              "type": "folder",
+              "children": [
+                {
+                  "slug": "button-component",
+                  "title": "Button Component",
+                  "type": "page"
+                },
+                {
+                  "slug": "input-component",
+                  "title": "Input Component",
+                  "type": "page"
+                },
+                {
+                  "slug": "card-component",
+                  "title": "Card Component",
+                  "type": "page"
+                }
+              ]
+            }
+          ]
+        },
+        { "title": "Guides", "type": "folder", "children": [] }
+      ]
+    },
+    {
+      "id": 2,
+      "repoId": 200,
+      "pages": [
+        {
+          "title": "Core Functionality",
+          "type": "folder",
+          "children": [
+            {
+              "title": "AI First Aid Engine",
+              "type": "folder",
+              "children": [
+                {
+                  "slug": "ai-overview",
+                  "title": "How it Works",
+                  "type": "page",
+                  "content": {
+                    "description": "The AI Engine uses a multi-layer neural network to classify emergency severity in real-time.",
+                    "features": [
+                      "Real-time triage",
+                      "Voice-to-text analysis",
+                      "Visual wound detection"
+                    ]
+                  }
+                },
+                {
+                  "title": "Medical Data Library",
+                  "type": "folder",
+                  "children": [
+                    {
+                      "title": "Symptom Databases",
+                      "type": "folder",
+                      "children": [
+                        {
+                          "slug": "respiratory-data",
+                          "title": "Respiratory Distress",
+                          "type": "page",
+                          "content": {
+                            "description": "Dataset containing audio signatures of various breathing difficulties."
+                          }
+                        },
+                        {
+                          "slug": "cardiac-patterns",
+                          "title": "Cardiac Arrhythmia",
+                          "type": "page",
+                          "content": {
+                            "description": "ECG pattern recognition data for emergency heart conditions."
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "slug": "medical-datasets",
+                      "title": "General First Aid Data",
+                      "type": "page",
+                      "generatedAt": "2026-01-22",
+                      "content": {
+                        "description": "Standardized first aid procedures based on Red Cross guidelines.",
+                        "prerequisites": ["Node.js 18+", "Firebase Admin SDK"],
+                        "installation": {
+                          "npm": "npm install @emergency/data-sdk",
+                          "yarn": "yarn add @emergency/data-sdk"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "title": "Processing Algorithms",
+                  "type": "folder",
+                  "children": [
+                    {
+                      "slug": "nlp-triage",
+                      "title": "NLP Triage Logic",
+                      "type": "page"
+                    },
+                    {
+                      "slug": "vision-analysis",
+                      "title": "Wound Image Analysis",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Communication Systems",
+              "type": "folder",
+              "children": [
+                {
+                  "slug": "real-time-alerts",
+                  "title": "Push Notifications",
+                  "type": "page"
+                },
+                {
+                  "slug": "sms-integration",
+                  "title": "SMS Gateway",
+                  "type": "page"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Integrations & Setup",
+          "type": "folder",
+          "children": [
+            {
+              "slug": "firebase-setup",
+              "title": "Firebase Configuration",
+              "type": "page",
+              "content": {
+                "description": "Step-by-step guide to connecting your EmergencyApp to Google Firebase.",
+                "usage": "const firebaseConfig = {\n  apiKey: \"AIzaSy...\",\n  authDomain: \"emergency-app.firebaseapp.com\",\n  projectId: \"emergency-app\"\n};"
+              }
+            },
+            {
+              "slug": "google-maps-api",
+              "title": "Maps & Location",
+              "type": "page"
+            }
+          ]
+        },
+        {
+          "slug": "security-protocol",
+          "title": "Security & Privacy",
+          "type": "page",
+          "content": {
+            "description": "All medical data is encrypted using AES-256 standards before transmission."
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "repoId": 3,
+      "pages": [
+        {
+          "slug": "overview",
+          "title": "Project Overview",
+          "type": "page",
+          "generatedAt": "2025-6-11",
+          "content": {
+            "description": "This this is dummy data with no sense",
+            "prerequisites": [
+              "Node.js 16+",
+              "npm or yarn",
+              "TypeScript/React knowledge"
+            ],
+            "installation": {
+              "npm": "npm install DiabetesDietAI",
+              "yarn": "yarn add DiabetesDietAI"
+            }
+          }
+        },
+        {
+          "slug": "ai-model",
+          "title": "AI Recommendation Engine",
+          "type": "page"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "repoId": 4,
+      "pages": [
+        { "slug": "about", "title": "About This Repository", "type": "page" },
+        { "slug": "structure", "title": "Project Structure", "type": "page" }
+      ]
+    }
+  ]
+}

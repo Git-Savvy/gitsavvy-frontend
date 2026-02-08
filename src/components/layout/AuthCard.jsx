@@ -2,11 +2,12 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import getStarted from "../../assets/getStarted.svg";
 import { Github, ArrowRight } from "lucide-react";
+import { LoginForm } from "../../pages/LoginForm";
 const AuthCard = () => {
   const navigate = useNavigate();
   const handleSignIn = () => {
     // later you can add real auth here
-    navigate("/home");
+    navigate("/login");
   };
   return (
     <div className="bg-white border-2 border-Gray200  rounded-2xl shadow-b shadow-lg p-12 max-w-[41rem] ">

@@ -2,10 +2,9 @@ import ProgressCard from "../common/discover/ProgressCard";
 import Badge from "../common/discover/Badge";
 import Cup from "../../assets/cupIcon.png";
 import ContributionCard from "../common/discover/ContributionCard";
-import { UserContext } from "../../context/UserContext";
-import { useContext } from "react";
+import { useUserContext } from "../../context/UserContext";
 export default function RightSidebar() {
-  const { user } = useContext(UserContext);
+  const { user } = useUserContext();
   return (
     <aside className=" hidden md:flex">
       <div className=" max-w-[15rem] md:max-w-[20rem] space-y-6">

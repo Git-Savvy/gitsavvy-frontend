@@ -3,10 +3,10 @@ import RecommendationInfoCard from "../components/common/profilePageComponents/R
 import SelectionCards from "../components/common/profilePageComponents/SelectionCards";
 import BackButton from "../components/common/BackButton";
 import { useNavigate } from "react-router-dom";
-import { useState, useContext } from "react";
-import { UserContext } from "../context/UserContext";
+import { useState} from "react";
+import { useUserContext } from "../context/UserContext";
 export default function Profile() {
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUser } = useUserContext();
   const Navigate = useNavigate();
   // State for Language Tags
   const [languages, setLanguages] = useState([

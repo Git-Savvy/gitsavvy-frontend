@@ -6,7 +6,6 @@ import light from "../assets/lightningLogo.png";
 import code from "../assets/codeLogo.png";
 import increase from "../assets/increaseLogo.png";
 import ThemeSwitcher from "../components/common/ThemeSwitcher";
-import { ThemeProvider } from "../context/ThemeContext";
 const Landing = () => {
   const features = [
     {
@@ -33,9 +32,7 @@ const Landing = () => {
         <div>
           <div className="absolute top-10 left-10">
             {" "}
-            <ThemeProvider>
-              <ThemeSwitcher />
-            </ThemeProvider>
+            <ThemeSwitcher />
           </div>
 
           {/* Logo */}

@@ -1,13 +1,12 @@
 import logo from "../../assets/lightLogo.svg";
 import { ChevronDown, Briefcase } from "lucide-react";
 import { NavLink } from "react-router-dom";
-import { useContext, useRef, useState, useEffect } from "react";
-import { UserContext } from "../../context/UserContext";
+import { useRef, useState, useEffect } from "react";
+import { useUserContext } from "../../context/UserContext";
 import ProfileDropdownMenu from "../common/profilePageComponents/ProfileDropdownMenu";
-import { ThemeProvider } from "../../context/ThemeContext";
 import ThemeSwitcher from "../common/ThemeSwitcher";
 export default function Navbar() {
-  const { user } = useContext(UserContext); //just access without modifying anything
+  const { user } = useUserContext(); //just access without modifying anything
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
   // Close dropdown when clicking outside
@@ -24,7 +23,6 @@ export default function Navbar() {
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
-  console.log("isOpen:", isOpen);
   return (
     <nav className="flex items-center justify-between gap-2 px-6 py-4 border-b-2  border-Gray200 bg-white h-[4rem] lg:shadow-sm">
       {/* Left */}
@@ -34,9 +32,7 @@ export default function Navbar() {
 
       {/* Right */}
       <div className="flex items-center gap-4">
-        <ThemeProvider>
-          <ThemeSwitcher />
-        </ThemeProvider>
+        <ThemeSwitcher />
         <NavLink
           to="/home/myWork"
           className={({ isActive }) =>
@@ -76,12 +72,7 @@ export default function Navbar() {
 
             {isOpen && (
               <div className="absolute right-0 mr-5 mt-2 z-50">
-                <ProfileDropdownMenu
-                  name={user.firstName}
-                  handle={user.username}
-                  level={user.level}
-                  points={user.points}
-                />
+                <ProfileDropdownMenu />
               </div>
             )}
           </div>

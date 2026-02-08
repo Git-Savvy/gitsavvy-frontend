@@ -1,9 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { useContext } from "react";
-import { UserContext } from "../../../context/UserContext";
+import { useUserContext } from "../../../context/UserContext";
 export default function ProgressCard({ img }) {
-  const { user } = useContext(UserContext);
+  const { user } = useUserContext();
   return (
     <div className="border-2 border-Teal400 bg-Cyan50 rounded-xl p-5">
       <div className="flex flex-col md:flex-row justify-between mb-8">

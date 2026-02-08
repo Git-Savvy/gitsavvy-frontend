@@ -16,76 +16,63 @@ import { ReadmeProvider } from "./context/ReadmeContext";
 import { DocsProvider } from "./context/DocsContext";
 import NotFound from "./pages/NotFound";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { LoginForm } from "./pages/LoginForm";
+import ProtectedRoute from "./pages/ProtectedRoute";
 
 function App() {
   return (
-    <>
-      <Router>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <ThemeProvider>
-                <AuthPage />
-              </ThemeProvider>
-            }
-          />
+    // Global Providers must wrap the Router or the entire Routes tree
+    <UserProvider>
+      <ThemeProvider>
+        <Router>
+          <Routes>
+            {/* PUBLIC ROUTES */}
+            <Route path="/" element={<AuthPage />} />
+            <Route path="/login" element={<LoginForm />} />
 
-          <Route
-            path="/home"
-            element={
-              <ThemeProvider>
-                <DocsProvider>
-                  <IssueProvider>
-                    <UserProvider>
-                      {/*provider have to wrap the component it self not the route! */}
+            {/* PROTECTED ROUTES - Wrapped in the Gatekeeper */}
+            <Route
+              path="/home"
+              element={
+                <ProtectedRoute>
+                  <DocsProvider>
+                    <IssueProvider>
                       <RepoProvider>
                         <HomePage />
                       </RepoProvider>
-                    </UserProvider>
-                  </IssueProvider>
-                </DocsProvider>
-              </ThemeProvider>
-            }
-          >
-            <Route index element={<Discover />} />
-            <Route element={<LayoutChatbot />}>
-              <Route
-                path="repoDetail/:repoId"
-                element={
-                  <MetricsProvider>
-                    <ReadmeProvider>
-                      <RepoDetail />
-                    </ReadmeProvider>
-                  </MetricsProvider>
-                }
-              />
-              <Route
-                path="repoDetail/:repoId/issueDetail/:issueId"
-                element={<IssueDetail />}
-              />
+                    </IssueProvider>
+                  </DocsProvider>
+                </ProtectedRoute>
+              }
+            >
+              {/* All these nested routes are now safe! */}
+              <Route index element={<Discover />} />
+              <Route element={<LayoutChatbot />}>
+                <Route
+                  path="repoDetail/:repoId"
+                  element={
+                    <MetricsProvider>
+                      <ReadmeProvider>
+                        <RepoDetail />
+                      </ReadmeProvider>
+                    </MetricsProvider>
+                  }
+                />
+                <Route
+                  path="repoDetail/:repoId/issueDetail/:issueId"
+                  element={<IssueDetail />}
+                />
+              </Route>
+              <Route path="myWork" element={<MyWork />} />
+              <Route path="profile" element={<Profile />} />
             </Route>
-            <Route path="myWork" element={<MyWork />} />
-            {/*All nested routes inherit the parent element tree.So React renders:
-             MyWork has access to:UserContext, RepoContext */}
-            <Route path="profile" element={<Profile />} />
-          </Route>
 
-          <Route
-            path="*"
-            element={
-              <NotFound
-                text="  The page you’re looking for doesn’t exist or has been moved."
-                button="Go Home"
-                url="/home"
-              />
-            }
-          />
-        </Routes>
-      </Router>
+            <Route path="*" element={<NotFound url="/home" />} />
+          </Routes>
+        </Router>
+      </ThemeProvider>
       <ReactQueryDevtools initialIsOpen={false} />
-    </>
+    </UserProvider>
   );
 }
-
 export default App;

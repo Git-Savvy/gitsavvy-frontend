@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import { UserContext } from "../../../context/UserContext";
+import { useUserContext } from "../../../context/UserContext";
 import { IssueContext } from "../../../context/IssueContext";
 import { useParams } from "react-router-dom";
 import { useToast } from "../../../context/ToastContext";
 export default function ClimView({ onNext }) {
   const { issueId } = useParams(); // id from URL
-  const { user } = useContext(UserContext);
+  const { user } = useUserContext();
   const { issues, setIssues } = useContext(IssueContext);
   const { showToast } = useToast();
 

@@ -1,6 +1,6 @@
 export default function RecommendationInfoCard() {
   return (
-    <div className="bg-gradient-to-br from-SCyan to-ECyan border border-Teal400 rounded-2xl p-6 flex-col items-center justify-between mb-8">
+    <div className="bg-gradient-to-br from-SCyan to-ECyan border border-NavBorder rounded-2xl p-6 flex-col items-center justify-between mb-8">
       <h3 className="text-textdark font-semibold mb-4">
         How Recommendations Work
       </h3>
