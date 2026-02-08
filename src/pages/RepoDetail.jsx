@@ -54,7 +54,7 @@ export default function RepoDetail() {
       {/*repo info*/}
       <div className="mt-8">
         <div className="md:flex justify-between ">
-          <h1 className="text-3xl text-bold text-textdark  mb-3">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-textdark  mb-3">
             {repo.title}
           </h1>
           <SimpleLightButton
@@ -62,29 +62,31 @@ export default function RepoDetail() {
             icon={<ExternalLink className="w-5 h-5 " />}
           />
         </div>
-        <p className="mt-5">{repo.description}</p>
+        <p className="mt-5 text-xl md:text-2xl lg:text-3xl">
+          {repo.description}
+        </p>
         <div className="flex flex-col md:flex-row gap-4 text-sm  my-5 text-text-secondary">
-          <span className="flex gap-1">
+          <span className="flex gap-1 text-base md:text-lg">
             <Star className="text-Yellow400" />
-            <p className="text-base">{repo.stars}</p>
-            <p className="text-base">stars</p>
+            <p>{repo.stars}</p>
+            <p>stars</p>
           </span>
-          <span className="flex gap-1 ">
+          <span className="flex gap-1 text-base md:text-lg">
             <GitFork className="text-Gray600" />
-            <p className="text-base">{repo.forks}</p>
-            <p className="text-base">forks</p>
+            <p>{repo.forks}</p>
+            <p>forks</p>
           </span>
-          <span className="flex gap-1">
+          <span className="flex gap-1 text-base md:text-lg">
             <Users className="text-primary" />
-            <p className="text-base">{repo.contributers}</p>
-            <p className="text-base">contributers</p>
+            <p>{repo.contributers}</p>
+            <p>contributers</p>
           </span>
         </div>
         <div className="flex gap-2 mt-3">
           {repo.tags.map((tag) => (
             <span
               key={tag}
-              className="text-xs bg-primary  text-[#fff] text-bold  px-3 py-1 rounded-xl bg-gray-300"
+              className="md:text-base bg-primary  text-[#fff] text-bold  px-4 py-1 rounded-2xl bg-gray-300"
             >
               {tag}
             </span>

@@ -88,7 +88,7 @@ export default function IssueDetail() {
             </div>
             <div className="space-y-3">
               <div className="flex gap-3 flex-col md:flex-row">
-                <h1 className="text-3xl text-bold text-textdark">
+                <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-textdark">
                   {issue.issueTitle}
                 </h1>
                 <span className="hidden lg:flex  font-normal text-xl border-1 text-NavBorder bg-NavSelected  text-center justify-center rounded-xl w-12 h-7 mt-2">
@@ -97,7 +97,7 @@ export default function IssueDetail() {
               </div>
 
               <div className="flex gap-4 mb-6">
-                <div className="flex flex-col lg:flex-row lg:items-center gap-4 text-sm text-Gray600">
+                <div className="flex flex-col lg:flex-row lg:items-center gap-4 text-base md:text-lg lg:text-xl text-Gray600">
                   <span>
                     <span className="lg:hidden">• </span>Opened{" "}
                     {timeAgo(issue.creationDate)}
@@ -120,7 +120,7 @@ export default function IssueDetail() {
           {["Easy", "enhancement", "good first issue"].map((label) => (
             <span
               key={label}
-              className="px-3 py-1 text-NavBorder bg-NavSelected lg:text-2xs font-medium rounded-xl border-1"
+              className="px-3 py-1 text-NavBorder bg-NavSelected lg:text-base font-medium rounded-xl border-1"
             >
               {label}
             </span>

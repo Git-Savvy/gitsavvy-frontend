@@ -4,10 +4,10 @@ import { useUserContext } from "../../../context/UserContext";
 export default function ProgressCard({ img }) {
   const { user } = useUserContext();
   return (
-    <div className="border-2 border-Teal400 bg-Cyan50 rounded-xl p-5">
+    <div className="border-2 border-Teal400 bg-Cyan50 rounded-xl p-5 ">
       <div className="flex flex-col md:flex-row justify-between mb-8">
         <div>
-          <p className="text-sm text-text-secondry">Level {user.level}</p>
+          <p className="text-sm md:text-base text-text-secondry">Level {user.level}</p>
           <span className="pt-5 md:pt-0 flex gap-2 ">
             <FontAwesomeIcon icon={faStar} className="text-teal-300 pt-2 md:pt-3 " />{" "}
             <p className="text-sm md:text-lg font-semibold mt-1"> {user.points} pts</p>
@@ -20,8 +20,8 @@ export default function ProgressCard({ img }) {
 
       <div className="mt-4">
         <div className="flex flex-col md:flex-row justify-between">
-          <p className="text-xs text-text-secondry mt-1 mb-2">Next level:</p>
-          <p className="text-xs text-text-secondry mt-1 mb-2"> 4000 pts</p>
+          <p className="text-xs md:text-base text-text-secondry mt-1 mb-2">Next level:</p>
+          <p className="text-xs md:text-base text-text-secondry mt-1 mb-2"> 4000 pts</p>
           {/*need to implement some logic here */}
         </div>
         <div className="h-2 bg-background rounded-full">

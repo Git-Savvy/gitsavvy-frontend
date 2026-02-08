@@ -2,7 +2,7 @@ import React from "react";
 import { Search } from "lucide-react";
 export default function SearchSquare({ text }) {
   return (
-    <div className="relative flex-1">
+    <div className="relative flex-1 lg:text-xl">
       <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-Gray400 w-5 h-5" />
       <input
         type="text"

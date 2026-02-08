@@ -10,7 +10,7 @@ export default function RepositoryCard({ repo, navigate }) {
       {/* Left */}
       <div>
         <div className="flex items-center gap-2">
-          <h3 className="font-semibold text-xl lg:text-2xl mb-2 md:mb-0">
+          <h3 className="font-semibold text-xl md:text-2xl lg:text-3xl mb-2 md:mb-0">
             {repo.title}
           </h3>
           <div className="hidden lg:flex">
@@ -21,24 +21,24 @@ export default function RepositoryCard({ repo, navigate }) {
           </div>
         </div>
 
-        <p className=" text-sm lg:text-md text-Gray600 mt-1">
+        <p className=" text-lg lg:text-xl text-Gray600 mt-1">
           {repo.description}
         </p>
 
-        <div className="flex flex-col md:flex-row gap-4 text-sm text-Gray600 mt-3">
-          <span className="flex gap-1">
+        <div className="flex flex-col md:flex-row  gap-4 text-base lg:text-base text-Gray600 mt-3">
+          <span className="flex gap-1 lg:items-center">
             <FontAwesomeIcon icon={faStar} className="text-lg text-Yellow400" />
-            {repo.stars}
+            {repo.stars} stars
           </span>
-          <span className="flex gap-1">
+          <span className="flex gap-1 lg:items-center">
             <FontAwesomeIcon
               icon={faCodeFork}
               className="text-lg text-Gray600"
             />{" "}
-            {repo.forks}
+            {repo.forks} forks
           </span>
-          <span className="flex gap-1">
-            <AlertCircle className="text-lg text-primary pb-1" />
+          <span className="flex gap-1 lg:items-center">
+            <AlertCircle className="text-lg text-primary " />
             {repo.openIssues} open issues
           </span>
         </div>

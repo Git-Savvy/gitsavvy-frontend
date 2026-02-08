@@ -27,7 +27,7 @@ export default function Navbar() {
     <nav className="flex items-center justify-between gap-2 px-6 py-4 border-b-2  border-Gray200 bg-white h-[4rem] lg:shadow-sm">
       {/* Left */}
       <NavLink to="/home">
-        <img src={logo} className="w-[15rem]" />
+        <img src={logo} className="w-[15rem] lg:w-[20rem]" />
       </NavLink>
 
       {/* Right */}
@@ -57,7 +57,7 @@ export default function Navbar() {
                 </div>
 
                 <span
-                  className={`text-lg font-simibold   transition-all duration-300 cursor-pointer ${isActive ? "text-primary" : "text-Gray600 hover:text-primary "}`}
+                  className={`text-lg lg:text-xl font-simibold   transition-all duration-300 cursor-pointer ${isActive ? "text-primary" : "text-Gray600 hover:text-primary "}`}
                 >
                   {user.username}
                 </span>

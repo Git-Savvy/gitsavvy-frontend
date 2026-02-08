@@ -94,7 +94,7 @@
     }
   ],
 
-  "repos": [
+  "repositories": [
     {
       "id": 142,
       "title": "cloud-infrastructure",

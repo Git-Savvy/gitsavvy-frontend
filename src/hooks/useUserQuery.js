@@ -9,7 +9,6 @@ export const useUserLogin = () => {
     mutationFn: fetchUser,
     onSuccess: (user) => {
       login(user); // save user in context
-       alert("user is set to context");
       navigate("/home"); // redirect
     },
     onError: (error) => {
@@ -18,7 +17,7 @@ export const useUserLogin = () => {
   });
 };
 // We use useMutation because login is a one-time action, not continuous fetching.
-// useQuery is for continuous/fetch-on-mount data; useMutation is for actions like login, form submission, etc.//change the nameeeeeeeeeeeeee
+// useQuery is for continuous/fetch-on-mount data; useMutation is for actions like login, form submission, etc.
 export const useUpdateUser = () => {
   return useMutation({
     mutationFn: updateUser,
