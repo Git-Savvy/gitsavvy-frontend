@@ -1,21 +1,25 @@
 import { useMemo } from "react";
 import { findPageBySlug } from "../../../utils/findPageBySlug";
 import NoDataMessage from "../../messages/NoDataMessage";
-export default function MainContentCard({ docEntry, activeSlug }) {
-  // 1. Find the current page data{research only if the active slug or docsEntry change}
+import SkeletonCard from "../../messages/SkeletonCard";
+export default function MainContentCard({
+  docEntry,
+  activeSlug,
+  isPending,
+  error,
+}) {
+  // Find the current page data{research only if the active slug or docsEntry change}
   const currentPage = useMemo(() => {
     if (!docEntry?.pages || !activeSlug) return null;
     return findPageBySlug(docEntry.pages, activeSlug);
   }, [docEntry, activeSlug]);
 
-  // 2. Handle state where no page is found {I made first page to be shown in first abload so always there is a selected page]
+  if (isPending)
+    return <SkeletonCard containerStyle="w-full h-[450px] rounded-2xl" />;
+  if (error) return <></>;
+  // Handle state where no page is found {I made first page to be shown in first abload so always there is a selected page]
   if (!currentPage) {
-    return (
-      <NoDataMessage
-        containerStyle="flex-1 bg-white text-Slate400 border-2 border-Gray200 rounded-2xl p-10 shadow-sm"
-        text="Select a page from the sidebar to view documentation."
-      />
-    );
+    return <> </>;
   }
 
   const { title, generatedAt, content } = currentPage;
@@ -24,7 +28,9 @@ export default function MainContentCard({ docEntry, activeSlug }) {
     <main className="flex-1 bg-white border-2 border-Gray200 rounded-2xl p-10 shadow-sm">
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between md:items-center mb-6">
-        <h1 className="text-2xl font-semibold text-textdark mb-5 md:mb-0">{title}</h1>
+        <h1 className="text-2xl font-semibold text-textdark mb-5 md:mb-0">
+          {title}
+        </h1>
         {generatedAt && (
           <span className="bg-Cyan50 text-Cyan400 px-3 py-1 rounded-full text-xs font-bold border border-cyan-100 w-fit">
             Generated At:{" "}

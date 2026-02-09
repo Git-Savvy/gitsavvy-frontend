@@ -1,16 +1,12 @@
 import React from "react";
 import SearchSquare from "../common/SearchSquare";
-import IssueCard from "../common/IssueCard";
-import FilterPop from "../common/FilterPop";
-import { useContext } from "react";
-import { IssueContext } from "../../context/IssueContext";
+import IssueCard from "../common/issues/IssueCard";
+import FilterPop from "../common/issues/FilterPop";
 import NoDataMessage from "../messages/NoDataMessage";
-export default function Issues({ repoId }) {
-  const { issues } = useContext(IssueContext);
-  // 1. Filter the list first
-  const filteredIssues = issues?.filter(
-    (item) => item.repositoryId === parseInt(repoId),
-  );
+import SkeletonCard from "../messages/SkeletonCard";
+import ErrorMessage from "../messages/ErrorMessage";
+import IssuesList from "../common/issues/IssuesList";
+export default function Issues() {
   const issuesLable = [
     "All Issues",
     "Good First Issue",
@@ -44,17 +40,7 @@ export default function Issues({ repoId }) {
           </div>
         </div>
         {/* 2. Individual Issue Cards */}
-
-        {filteredIssues.length > 0 ? (
-          filteredIssues.map((item) => (
-            <IssueCard key={item.issueId} issue={item} />
-          ))
-        ) : (
-          <NoDataMessage
-            text="No issues found for this repository."
-            containerStyle="flex-1 bg-white border-2 border-Gray200 rounded-2xl p-10 shadow-sm"
-          />
-        )}
+        <IssuesList />
       </div>
     </div>
   );

@@ -1,11 +1,6 @@
 import React from "react";
 
-export default function Skeleton({
-  containerStyle,
-  width = "w-full",
-  height = "h-4",
-  rounded = "rounded",
-}) {
+export default function SkeletonCard({ containerStyle }) {
   return (
     <div
       className={`${containerStyle}  animate-pulse bg-slate-200 flex justify-center items-center`}

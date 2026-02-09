@@ -9,32 +9,42 @@ import { Star, GitFork, Users, ExternalLink } from "lucide-react";
 import SimpleLightButton from "../components/common/SimpleLightButton";
 import BackButton from "../components/common/BackButton";
 import { useParams } from "react-router-dom";
-import { useContext } from "react";
-import { RepoContext } from "../context/RepoContext";
+import { useRepository } from "../hooks/useRepoQuery";
 import NotFound from "./NotFound";
+import SkeletonPage from "../components/messages/SkeletonPage";
+import ErrorMessage from "../components/messages/ErrorMessage";
 export default function RepoDetail() {
   const { repoId } = useParams(); // id from URL "it is a string!"
-  const { repos } = useContext(RepoContext);
-  // find repo with this id
-  const repo = repos.find((r) => r.id === parseInt(repoId));
-  if (!repo)
-    return (
-      <NotFound
-        text="  The Repository page you’re looking for doesn’t exist or has been moved."
-        button="Go to Home"
-        url="/home"
-      />
-    );
-
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("readme");
+  // ask for repo with this id
+  const { data: repo, isLoading, error } = useRepository(Number(repoId)); // convert to number
+  if (isLoading) return <SkeletonPage containerStyle={"w-full h-screen"} />;
+  if (error) {
+    // Axios error has response object
+    if (error.response?.status === 404) {
+      return (
+        <NotFound
+          text="  The Repository page you’re looking for doesn’t exist or has been moved."
+          button="Go to Home"
+          url="/home"
+        />
+      );
+    }
+    return (
+      <ErrorMessage
+        message={error.message}
+        containerStyle={"w-full h-screen"}
+      />
+    );
+  }
 
   const renderContent = () => {
     switch (activeTab) {
       case "docs":
         return <Docs repoId={repo.id} />;
       case "issues":
-        return <Issues repoId={repo.id} />;
+        return <Issues />;
       case "metrics":
         return <Metrics repoId={repo.id} />;
       default:

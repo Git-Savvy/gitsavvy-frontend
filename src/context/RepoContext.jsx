@@ -1,10 +1,8 @@
 import { createContext, useState } from "react";
-import mockRepos from "../data/mockRepos";
-
 const RepoContext = createContext();
 
 function RepoProvider({ children }) {
-  const [repos, setRepos] = useState(mockRepos);
+  const [repos, setRepos] = useState(null);
   return (
     <RepoContext.Provider value={{ repos, setRepos }}>
       {children}

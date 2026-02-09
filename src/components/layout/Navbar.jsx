@@ -27,7 +27,7 @@ export default function Navbar() {
     <nav className="flex items-center justify-between gap-2 px-6 py-4 border-b-2  border-Gray200 bg-white h-[4rem] lg:shadow-sm">
       {/* Left */}
       <NavLink to="/home">
-        <img src={logo} className="w-[15rem] lg:w-[20rem]" />
+        <img src={logo} className="w-[12rem] lg:w-[17rem]" />
       </NavLink>
 
       {/* Right */}

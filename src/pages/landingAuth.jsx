@@ -26,17 +26,12 @@ const Landing = () => {
     },
   ];
   return (
-    <section className="min-h-screen bg-background flex items-center">
-      <div className="container mx-auto  grid grid-cols-1 lg:grid-cols-2 gap-20 items-center ">
+    <section className="min-h-screen bg-background flex items-center mx-5">
+      <div className="container mx-auto  grid grid-cols-1 lg:grid-cols-2 gap-15 items-center ">
         {/* LEFT SIDE */}
         <div>
-          <div className="absolute top-10 left-10">
-            {" "}
-            <ThemeSwitcher />
-          </div>
-
           {/* Logo */}
-          <div className="flex items-center gap-2 mb-6">
+          <div className="flex items-center mb-6">
             <img
               src={img}
               alt="logo"
@@ -75,8 +70,13 @@ const Landing = () => {
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="flex justify-end max-w-[50rem]">
-          <AuthCard />
+        <div className="flex flex-col max-w-[50rem]">
+          <div className="flex justify-end mb-2">
+            <ThemeSwitcher />
+          </div>
+          <div className="flex justify-end">
+            <AuthCard />
+          </div>
         </div>
       </div>
     </section>

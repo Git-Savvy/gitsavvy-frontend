@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { MessageSquare, Clock, AlertCircle } from "lucide-react";
-import SimpleDarkButton from "./SimpleDarkButton";
+import SimpleDarkButton from "../SimpleDarkButton";
 import { useParams } from "react-router-dom";
 
 export default function IssueCard({ issue }) {
@@ -41,7 +41,9 @@ export default function IssueCard({ issue }) {
         <SimpleDarkButton
           text="View Details"
           onClick={() => {
-            navigate(`/home/repoDetail/${issue.repositoryId}/issueDetail/${issue.issueId}`);
+            navigate(
+              `/home/repoDetail/${issue.repositoryId}/issueDetail/${issue.issueId}`,
+            );
           }}
         />
       </div>

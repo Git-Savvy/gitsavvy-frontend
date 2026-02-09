@@ -1,16 +1,38 @@
 import { NavItem } from "./NavItem";
 import NoDataMessage from "../../messages/NoDataMessage";
+import SkeletonCard from "../../messages/SkeletonCard";
+import ErrorMessage from "../../messages/ErrorMessage";
 
-export default function DocumentationSidebar({ data, activeSlug, onSelect }) {
-  // Ensure we are checking the array, not the parent object
-  if (!data || data.length === 0) {
+export default function DocumentationSidebar({
+  data,
+  activeSlug,
+  onSelect,
+  isPending,
+  error,
+}) {
+  if (isPending)
     return (
-      <NoDataMessage
-        text="No documentation found."
-        containerStyle="w-full md:w-72 bg-white border-2 border-Gray200 rounded-2xl p-6 shadow-sm text-slate-400"
+      <SkeletonCard
+        containerStyle={
+          "w-full md:w-72 h-[450px] border-2 border-Gray200 rounded-2xl"
+        }
       />
     );
-  }
+  if (error)
+    return (
+      <ErrorMessage
+        message={error.message}
+        containerStyle={"w-full h-[450px]"}
+      />
+    );
+  // Ensure we are checking the array, not the parent object
+  if (!data || data.length === 0)
+    return (
+      <NoDataMessage
+        text="No documentation found for this repository."
+        containerStyle={"w-full h-[450px] mb-4"}
+      />
+    );
 
   return (
     <aside className="w-full md:w-72 bg-white border-2 border-Gray200 rounded-2xl p-6 shadow-sm overflow-y-auto max-h-screen">
