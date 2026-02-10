@@ -3,7 +3,7 @@ import React from "react";
 export default function SkeletonCard({ containerStyle }) {
   return (
     <div
-      className={`${containerStyle}  animate-pulse bg-slate-200 flex justify-center items-center`}
+      className={`${containerStyle}  animate-pulse bg-white  border-2 border-Gray200  rounded-2xl flex justify-center items-center`}
     >
       <svg
         class="animate-spin h-5 w-5 text-textdark"

@@ -31,7 +31,7 @@ export default function FilterPop() {
       {/* Filter Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-6 py-2 border border-Gray200 rounded-lg font-medium text-Gray600 hover:bg-hoverl transition-colors lg:shadow-sm bg-white"
+        className="flex items-center gap-2 px-6 py-2 border border-Gray200 rounded-lg font-semibold text-medium md:text-lg text-Gray600 hover:bg-hoverl transition-colors lg:shadow-sm bg-white"
       >
         <ListFilter className="w-4 h-4" />
         Filter
@@ -63,7 +63,7 @@ export default function FilterPop() {
             ))}
           </div>
 
-          <hr className="my-5 border-gray-100" />
+          <hr className="my-5 border-Gray200" />
 
           {/* Status Section */}
           <div className="space-y-3">

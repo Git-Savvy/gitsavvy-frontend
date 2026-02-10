@@ -32,10 +32,10 @@
   --color-EBar: #00c0e8;
 
   /* border */
-  --color-Gray200: #e5e7eb; /*border-gray-200*/
+  --color-Gray200: #d1d5db; /*border-gray-200   gray-200	#e5e7eb replaced bu gray 300*/
   --color-Indigo300: #a5b4fc; /*border-indigo-300*/
-  --color-Teal400: #00d5be;
-  --color-Cyan400: #22d3ee;
+  --color-Teal400: #0d9488;/*in light mood teal-600*/
+  --color-Cyan400:#0891b2; /*in light mood cyan-600*/
   --color-Purple400: #c084fc;
   --color-NavBorder: #321e73;
 
@@ -85,10 +85,10 @@
     --color-EBar: #00827e;
 
     /* border */
-    --color-Gray200: #e5e7eb; /*border-gray-200*/
+    --color-Gray200: #374151; /*border-gray-700*/
     --color-Indigo300: #6366f1; /*border-indigo-300*/
-    --color-Teal400: #00d5be;
-    --color-Cyan400: #22d3ee;
+    --color-Teal400: #00d5be; /*in light mood teal-600 but 400 for dark*/
+    --color-Cyan400: #22d3ee; /*in light mood cyan-600 but 400 for dark*/
     --color-Purple400: #a855f7;
     --color-NavBorder: #00d5be;
 

@@ -34,8 +34,8 @@ export const NavItem = ({ item, depth = 0, activeSlug, onSelect }) => {
       <div
         onClick={handleClick}
         className={`
-          flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer transition-colors
-          ${isActive ? "bg-Nav/30 text-NavBorder font-medium" : "hover:bg-background text-Gray600"}
+          flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer transition-colors 
+          ${isActive ? "bg-Nav/30 text-NavBorder font-medium " : "hover:bg-background text-Gray600"}
           ${depth > 0 ? "ml-4" : ""}
         `}
       >
@@ -53,7 +53,7 @@ export const NavItem = ({ item, depth = 0, activeSlug, onSelect }) => {
         <Icon
           className={`w-4 h-4 ${isActive ? "text-NavBorder" : "text-Slate400"}`}
         />
-        <span className="text-sm">{item.title}</span>
+        <span className="text-base">{item.title}</span>
       </div>
 
       {hasChildren && isOpen && (//the content of each folder which may be other files or simple pages

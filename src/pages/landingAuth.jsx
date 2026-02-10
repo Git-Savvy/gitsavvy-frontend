@@ -70,11 +70,11 @@ const Landing = () => {
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="flex flex-col max-w-[50rem]">
+        <div className="flex flex-col h-screen justify-evenly  ">
           <div className="flex justify-end mb-2">
             <ThemeSwitcher />
           </div>
-          <div className="flex justify-end">
+          <div className="flex justify-end  max-w-[50rem]">
             <AuthCard />
           </div>
         </div>

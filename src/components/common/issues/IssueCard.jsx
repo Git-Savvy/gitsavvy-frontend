@@ -13,14 +13,14 @@ export default function IssueCard({ issue }) {
         <div className="space-y-3 flex-1">
           {/* Title and Icon */}
           <div className="flex items-center gap-2">
-            <AlertCircle className="w-5 h-5 text-Slate400" />
-            <h3 className="text-lg font-semibold text-textdark">
+            <AlertCircle className="w-5 h-5 md:w-7 md:h-7 text-Slate400" />
+            <h3 className="text-lg md:text-2xl font-semibold text-textdark">
               {issue.issueTitle}
             </h3>
           </div>
 
           {/* Description */}
-          <p className="text-Gray600 text-[15px] leading-relaxed max-w-3xl">
+          <p className="text-Gray600 text-[15px] md:text-lg leading-relaxed max-w-4xl">
             {issue.issueDescription}
           </p>
 

@@ -14,7 +14,7 @@ export default function DocumentationSidebar({
     return (
       <SkeletonCard
         containerStyle={
-          "w-full md:w-72 h-[450px] border-2 border-Gray200 rounded-2xl"
+          "w-full md:w-72 h-[450px] "
         }
       />
     );
@@ -36,7 +36,7 @@ export default function DocumentationSidebar({
 
   return (
     <aside className="w-full md:w-72 bg-white border-2 border-Gray200 rounded-2xl p-6 shadow-sm overflow-y-auto max-h-screen">
-      <h2 className="text-sm font-bold text-textdark mb-6">Documentation</h2>
+      <h2 className="text-lg font-bold text-textdark mb-6">Documentation</h2>
 
       <nav className="space-y-1">
         {data.map((item, index) => (

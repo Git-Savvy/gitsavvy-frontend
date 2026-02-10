@@ -4,16 +4,16 @@ import { useUserContext } from "../../../context/UserContext";
 export default function ProgressCard({ img }) {
   const { user } = useUserContext();
   return (
-    <div className="border-2 border-Teal400 bg-Cyan50 rounded-xl p-5 ">
+    <div className="border-2 border-teal-400 bg-Cyan50 rounded-xl p-5 ">
       <div className="flex flex-col md:flex-row justify-between mb-8">
         <div>
           <p className="text-sm md:text-base text-text-secondry">Level {user.level}</p>
           <span className="pt-5 md:pt-0 flex gap-2 ">
-            <FontAwesomeIcon icon={faStar} className="text-teal-300 pt-2 md:pt-3 " />{" "}
+            <FontAwesomeIcon icon={faStar} className="text-teal-400 pt-2 md:pt-3 " />{" "}
             <p className="text-sm md:text-lg font-semibold mt-1"> {user.points} pts</p>
           </span>
         </div>
-        <div className="hidden md:flex w-16 h-16 items-center justify-center bg-background border-2 border-gray-300 rounded-full">
+        <div className="hidden md:flex w-16 h-16 items-center justify-center bg-background border-2 border-teal-400 rounded-full">
           <img src={img} alt="cup icon" className="w-8 h-8 " />
         </div>
       </div>

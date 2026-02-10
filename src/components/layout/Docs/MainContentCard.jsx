@@ -15,9 +15,9 @@ export default function MainContentCard({
   }, [docEntry, activeSlug]);
 
   if (isPending)
-    return <SkeletonCard containerStyle="w-full h-[450px] rounded-2xl" />;
+    return <SkeletonCard containerStyle="w-full h-[450px]" />;
   if (error) return <></>;
-  // Handle state where no page is found {I made first page to be shown in first abload so always there is a selected page]
+  // Handle state where no page is found {I made first page to be shown in first upload, so always there is a selected page]
   if (!currentPage) {
     return <> </>;
   }
@@ -32,7 +32,7 @@ export default function MainContentCard({
           {title}
         </h1>
         {generatedAt && (
-          <span className="bg-Cyan50 text-Cyan400 px-3 py-1 rounded-full text-xs font-bold border border-cyan-100 w-fit">
+          <span className="bg-Cyan50 text-Cyan400 px-3 py-1 rounded-full text-sm font-bold border-2 border-Cyan400 w-fit">
             Generated At:{" "}
             {new Date(generatedAt).toLocaleDateString("en-GB", {
               day: "numeric",
@@ -44,7 +44,7 @@ export default function MainContentCard({
 
       {/* Description */}
       {content?.description && (
-        <p className="text-Gray600 mb-8 leading-relaxed">
+        <p className="text-lg text-Gray600 mb-8 leading-relaxed">
           {content.description}
         </p>
       )}
@@ -52,8 +52,8 @@ export default function MainContentCard({
       {/* Prerequisites Section */}
       {content?.prerequisites && (
         <>
-          <h3 className="text-lg font-semibold mb-4">Prerequisites</h3>
-          <ul className="list-disc list-inside space-y-3 text-Gray600 mb-8 ml-2">
+          <h3 className="text-xl font-semibold mb-4">Prerequisites</h3>
+          <ul className="list-disc list-inside space-y-3 text-Gray600 text-lg mb-8 ml-2">
             {content.prerequisites.map((req, i) => (
               <li key={i}>{req}</li>
             ))}
@@ -64,16 +64,16 @@ export default function MainContentCard({
       {/* Installation Section */}
       {content?.installation && (
         <>
-          <h3 className="text-lg font-semibold mb-4">Installation</h3>
-          <div className="bg-zinc-900 text-zinc-100 p-5 rounded-xl font-mono text-sm mb-4 overflow-x-auto">
-            <span className="text-slate-400">npm install</span>{" "}
+          <h3 className="text-xl font-semibold mb-4">Installation</h3>
+          <div className="bg-zinc-900 text-zinc-100 p-5 rounded-xl font-mono  mb-4 overflow-x-auto">
+            <span className="text-Slate400 text-lg">npm install</span>{" "}
             {content.installation.npm.split("install ")[1]}
           </div>
           {content.installation.yarn && (
             <>
-              <p className="text-sm text-Gray600 mb-4">Or using yarn:</p>
-              <div className="bg-zinc-900 text-zinc-100 p-5 rounded-xl font-mono text-sm overflow-x-auto">
-                <span className="text-slate-400">yarn add</span>{" "}
+              <p className="text-lg text-Gray600 mb-4">Or using yarn:</p>
+              <div className="bg-zinc-900 text-zinc-100 p-5 rounded-xl font-mono  overflow-x-auto">
+                <span className="text-Slate400 text-lg">yarn add</span>{" "}
                 {content.installation.yarn.split("add ")[1]}
               </div>
             </>
@@ -84,8 +84,8 @@ export default function MainContentCard({
       {/* Usage Section */}
       {content?.usage && (
         <>
-          <h3 className="text-lg font-semibold mt-8 mb-4">Basic Usage</h3>
-          <pre className="bg-zinc-900 text-zinc-100 p-5 rounded-xl font-mono text-sm overflow-x-auto whitespace-pre">
+          <h3 className="text-xl font-semibold mt-8 mb-4">Basic Usage</h3>
+          <pre className="bg-zinc-900 text-zinc-100 p-5 rounded-xl font-mono text-lg overflow-x-auto whitespace-pre">
             <code>{content.usage.trim()}</code>
           </pre>
         </>

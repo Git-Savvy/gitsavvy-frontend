@@ -12,8 +12,8 @@ export default function ErrorMessage({ containerStyle, message }) {
       </div>
 
       <div>
-        <h3 className="text-textdark font-semibold">Something went wrong</h3>
-        <p className="text-Gray400 text-sm max-w-[250px] mx-auto">
+        <h3 className="text-textdark font-semibold text-xl">Something went wrong</h3>
+        <p className="text-Gray400 text-base max-w-[250px] mx-auto">
           {message || "We couldn't load the repositories. Please try again."}
         </p>
       </div>

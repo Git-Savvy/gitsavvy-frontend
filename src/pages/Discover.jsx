@@ -24,7 +24,7 @@ export default function Discover() {
         <RepositoryList />
       </main>
       {/* Right sidebar */}
-      <div className="bg-white border-x-2 border-gray-200  lg:shadow-sm">
+      <div className="bg-white border-x-2 border-Gray200  lg:shadow-sm">
         <RightSidebar />
       </div>
     </div>
