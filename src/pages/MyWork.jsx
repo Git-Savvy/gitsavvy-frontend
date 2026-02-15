@@ -40,8 +40,8 @@ export default function MyWork() {
       <div className="bg-white w-full flex flex-col lg:flex-row  justify-between px-10 lg:px-40  pb-3 border-b-2 border-Gray200 lg:shadow-sm">
         <div className="">
           <BackButton text={"Back"} onClick={() => navigate("/home")} />
-          <h1 className="text-3xl font-semibold text-textdark">My Work</h1>
-          <p className="text-Gray600">
+          <h1 className="mb-3 text-4xl font-semibold text-textdark">My Work</h1>
+          <p className="text-xl text-Gray600">
             Track your current contributions and view your work history
           </p>
         </div>

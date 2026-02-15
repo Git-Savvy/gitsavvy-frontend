@@ -14,7 +14,7 @@ export default function DocumentationSidebar({
     return (
       <SkeletonCard
         containerStyle={
-          "w-full md:w-72 h-[450px] "
+          "w-full md:w-95 h-[450px] "
         }
       />
     );

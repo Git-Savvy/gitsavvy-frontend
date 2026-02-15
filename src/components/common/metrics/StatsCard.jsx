@@ -1,6 +1,6 @@
-import { TrendingUp } from "lucide-react";
-import { TrendingDown } from "lucide-react";
-export default function StatsCard({ stat }) {
+import { TrendingUp, TrendingDown } from "lucide-react";
+export default function StatsCard({ stat}) {
+ 
   return (
     <div className="w-full bg-white p-5 rounded-2xl border-2 border-Gray200 lg:shadow-sm flex flex-col gap-3">
       <div className="flex flex-col md:flex-row items-center gap-3 mb-5">
@@ -16,7 +16,7 @@ export default function StatsCard({ stat }) {
       </div>
       <div className="text-2xs font-bold  flex items-center justify-center md:justify-start gap-1">
         {/*change color and icon depends on growth */}
-        {stat.growth.includes("+") ? (
+        {stat.growth>0 ? (
           <>
             <TrendingUp className="hidden md:flex w-5 h-5 text-emerald-500" />
             <p className="text-emerald-500">{stat.growth} this month</p>

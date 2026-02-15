@@ -13,7 +13,7 @@ export default function ProfileDropdownMenu() {
   }
   return (
     <div className="w-64 bg-white rounded-2xl shadow-2xl border-2 border-Gray200 overflow-hidden">
-      <div className="p-4 border-b border-gray-50">
+      <div className="p-4 border-b border-Gray200">
         <p className="font-bold text-text-secondary text-lg lg:text-xl">
           {`${user.firstName} ${user.lastName}`}
         </p>

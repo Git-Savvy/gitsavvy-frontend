@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "username": "Mshael",
       "firstName": "Mshael",
       "lastName": "Alshawaf",
@@ -44,7 +44,7 @@
       "status": "active"
     },
     {
-      "id": 2,
+      "id": "2",
       "username": "SaraDev",
       "firstName": "Sara",
       "lastName": "Alqahtani",
@@ -75,7 +75,7 @@
       "status": "active"
     },
     {
-      "id": 3,
+      "id": "3",
       "username": "OmarBackend",
       "firstName": "Omar",
       "lastName": "Alharbi",
@@ -93,10 +93,9 @@
       "status": "inactive"
     }
   ],
-
   "repositories": [
     {
-      "id": 142,
+      "id": "142",
       "title": "cloud-infrastructure",
       "owner": "octocat",
       "description": "Infrastructure as code templates for AWS, Azure, and GCP",
@@ -112,7 +111,7 @@
       "status": "active"
     },
     {
-      "id": 200,
+      "id": "200",
       "title": "EmergencyApp",
       "owner": "mashael",
       "description": "An emergency communication system with AI first aid guidance",
@@ -128,7 +127,7 @@
       "status": "active"
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "DiabetesDietAI",
       "owner": "mashael",
       "description": "Personalized meal recommendation system for diabetes management",
@@ -144,7 +143,7 @@
       "status": "active"
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "ProgrammingClubProjects",
       "owner": "clubadmin",
       "description": "Collection of projects developed in Programming Club courses",
@@ -160,7 +159,7 @@
       "status": "archived"
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "Test-Empty",
       "owner": "mesh",
       "description": "testing for empty states in project",
@@ -176,68 +175,83 @@
       "status": "archived"
     }
   ],
-
   "readmes": [
     {
-      "id": 1,
+      "id": "1",
       "repoId": 142,
       "content": "# Cloud Infrastructure\n\nInfrastructure as code templates for AWS, Azure, and GCP.\nThis project provides production-ready Terraform and scripting templates designed to simplify cloud deployment and management.\n\n## Features\n- Modular Terraform architecture\n- Multi-cloud support (AWS, Azure, GCP)\n- Secure IAM and networking templates\n- CI/CD-ready structure\n\n## Use Cases\n- Rapid cloud environment setup\n- Standardized infrastructure across teams\n- Best-practice cloud security implementation"
     },
     {
-      "id": 2,
+      "id": "2",
       "repoId": 200,
       "content": "# EmergencyApp\n\nEmergencyApp is a smart emergency communication system with AI-powered first aid guidance.\nThe app enables users to quickly contact emergency services and share critical medical and location information.\n\n## Core Features\n- One-tap emergency calling\n- Voice-activated emergency trigger\n- Real-time location sharing\n- AI-based first aid instructions\n- Smartwatch vital sign monitoring\n\n## Target Users\n- Individuals\n- Elderly users\n- People with chronic conditions"
     },
     {
-      "id": 3,
+      "id": "3",
       "repoId": 3,
       "content": "# DiabetesDietAI\n\nDiabetesDietAI is an AI-driven system that provides personalized meal recommendations for diabetes management.\nIt analyzes user food intake, blood sugar levels, and preferences to suggest healthier meal options.\n\n## Key Capabilities\n- Personalized meal planning\n- Blood sugar–aware recommendations\n- Regional food database\n- AI-based decision logic\n\n## Goal\nHelp users maintain stable blood glucose levels through smarter nutrition choices."
     },
     {
-      "id": 4,
+      "id": "4",
       "repoId": 4,
       "content": "# ProgrammingClubProjects\n\nThis repository contains a collection of projects developed during Programming Club courses.\nIt serves as a portfolio showcase and learning reference for club members.\n\n## Included Projects\n- Web development projects\n- React and JavaScript applications\n- UI/UX practice projects\n- Team-based course assignments\n\n## Purpose\n- Encourage collaborative learning\n- Showcase student achievements\n- Provide reusable learning resources"
     }
   ],
   "metrics": [
     {
-      "id": 1,
+      "id": "1",
       "repoId": 142,
       "totalCommits": 1547,
+      "growthCommits": 20,
       "prsMerged": 197,
+      "growthPr": 15,
       "issuesClosed": 134,
-      "contributors": 37
+      "growthIssues": -10,
+      "contributors": 37,
+      "growthContributors": 15
     },
     {
-      "id": 2,
+      "id": "2",
       "repoId": 200,
       "totalCommits": 320,
+      "growthCommits": -10,
       "prsMerged": 45,
+      "growthPr": 15,
       "issuesClosed": 19,
-      "contributors": 12
+      "growthIssues": -10,
+      "contributors": 12,
+      "growthContributors": 5
     },
     {
-      "id": 3,
+      "id": "3",
       "repoId": 3,
       "totalCommits": 98,
+      "growthCommits": 20,
       "prsMerged": 28,
+      "growthPr": 15,
       "issuesClosed": 12,
-      "contributors": 5
+      "growthIssues": -10,
+      "contributors": 5,
+      "growthContributors": 5
     },
     {
-      "id": 4,
+      "id": "4",
       "repoId": 4,
       "totalCommits": 75,
+      "growthCommits": -20,
       "prsMerged": 20,
+      "growthPr": -15,
       "issuesClosed": 10,
-      "contributors": 6
+      "growthIssues": -10,
+      "contributors": 6,
+      "growthContributors": -5
     }
   ],
   "issues": [
     {
-      "id": 42,
+      "id": "42",
       "issueTitle": "Fix login bug in authentication module",
-      "issueStatus": "Open",
+      "issueStatus": "Claimed",
       "issueDescription": "Users are unable to login when passwords contain special characters. Need to sanitize input and add unit tests.",
       "labels": [
         "All Issues",
@@ -248,39 +262,39 @@
       ],
       "githubIssueLink": "https://github.com/octocat/HelloWorld/issues/42",
       "repositoryId": 142,
-      "assignedUserId": null,
+      "assignedUserId": "1",
       "creationDate": "2025-10-15",
       "lastUpdatedDate": "2025-10-18",
       "priority": "High"
     },
     {
-      "id": 43,
+      "id": "43",
       "issueTitle": "Improve dashboard responsiveness",
-      "issueStatus": "Open",
+      "issueStatus": "Claimed",
       "issueDescription": "Dashboard layout breaks on smaller screens. Adjust CSS and Tailwind classes to ensure proper display across devices.",
       "labels": ["Easy", "Enhancement", "Good First Issue"],
       "githubIssueLink": "https://github.com/octocat/HelloWorld/issues/43",
       "repositoryId": 142,
-      "assignedUserId": null,
+      "assignedUserId": "1",
       "creationDate": "2025-10-12",
       "lastUpdatedDate": "2025-10-17",
       "priority": "Medium"
     },
     {
-      "id": 44,
+      "id": "44",
       "issueTitle": "Update README documentation",
-      "issueStatus": "Open",
+      "issueStatus": "Claimed",
       "issueDescription": "The README is outdated. Add new setup instructions, screenshots, and API usage examples for the emergency app.",
       "labels": ["Easy", "Enhancement", "Documentation"],
       "githubIssueLink": "https://github.com/octocat/HelloWorld/issues/44",
       "repositoryId": 200,
-      "assignedUserId": null,
+      "assignedUserId": "1",
       "creationDate": "2025-10-05",
       "lastUpdatedDate": "2025-10-10",
       "priority": "Low"
     },
     {
-      "id": 45,
+      "id": "45",
       "issueTitle": "Fix API error handling",
       "issueStatus": "Open",
       "issueDescription": "Some errors from the emergency API are not logged or displayed. Add proper error messages and retry logic.",
@@ -293,35 +307,35 @@
       "priority": "High"
     },
     {
-      "id": 46,
+      "id": "46",
       "issueTitle": "Improve AI meal suggestions",
-      "issueStatus": "Open",
+      "issueStatus": "Claimed",
       "issueDescription": "AI sometimes suggests high-sugar meals. Adjust algorithm to better consider recent blood sugar readings.",
       "labels": ["Enhancement", "AI", "Health"],
       "githubIssueLink": "https://github.com/mashael/DiabetesDietAI/issues/46",
       "repositoryId": 3,
-      "assignedUserId": null,
+      "assignedUserId": "1",
       "creationDate": "2026-01-08",
       "lastUpdatedDate": "2026-01-09",
       "priority": "High"
     },
     {
-      "id": 47,
+      "id": "47",
       "issueTitle": "Add regional Saudi foods",
       "issueStatus": "Open",
       "issueDescription": "Include local Saudi cuisine options in the meal database to make diet suggestions culturally relevant.",
       "labels": ["Feature", "Database"],
       "githubIssueLink": "https://github.com/mashael/DiabetesDietAI/issues/47",
       "repositoryId": 3,
-      "assignedUserId": null,
+      "assignedUserId": "1",
       "creationDate": "2026-01-09",
       "lastUpdatedDate": "2026-01-10",
       "priority": "Medium"
     },
     {
-      "id": 48,
+      "id": "48",
       "issueTitle": "Fix glucose reading bug",
-      "issueStatus": "Claimed",
+      "issueStatus": "Open",
       "issueDescription": "Some glucose readings are not updating in real-time due to API latency. Add proper error handling and retries.",
       "labels": ["Bug", "Critical"],
       "githubIssueLink": "https://github.com/mashael/DiabetesDietAI/issues/48",
@@ -332,7 +346,7 @@
       "priority": "High"
     },
     {
-      "id": 49,
+      "id": "49",
       "issueTitle": "Add project showcase page",
       "issueStatus": "Open",
       "issueDescription": "Create a dynamic page to showcase all club projects with filters for tech stack and course.",
@@ -345,7 +359,7 @@
       "priority": "Medium"
     },
     {
-      "id": 50,
+      "id": "50",
       "issueTitle": "Fix responsive layout bug",
       "issueStatus": "Open",
       "issueDescription": "Some project cards break layout on mobile screens. Update Tailwind classes for proper responsiveness.",
@@ -358,9 +372,9 @@
       "priority": "High"
     },
     {
-      "id": 51,
+      "id": "51",
       "issueTitle": "Update README with instructions",
-      "issueStatus": "Claimed",
+      "issueStatus": "Open",
       "issueDescription": "Add setup instructions and screenshots for each project in the repo README.",
       "labels": ["Documentation"],
       "githubIssueLink": "https://github.com/programmingclub/Projects/issues/51",
@@ -373,7 +387,7 @@
   ],
   "docs": [
     {
-      "id": 1,
+      "id": "1",
       "repoId": 142,
       "pages": [
         {
@@ -398,7 +412,11 @@
                 }
               }
             },
-            { "slug": "installation", "title": "Installation", "type": "page" }
+            {
+              "slug": "installation",
+              "title": "Installation",
+              "type": "page"
+            }
           ]
         },
         {
@@ -428,11 +446,15 @@
             }
           ]
         },
-        { "title": "Guides", "type": "folder", "children": [] }
+        {
+          "title": "Guides",
+          "type": "folder",
+          "children": []
+        }
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "repoId": 200,
       "pages": [
         {
@@ -565,7 +587,7 @@
       ]
     },
     {
-      "id": 3,
+      "id": "3",
       "repoId": 3,
       "pages": [
         {
@@ -594,11 +616,19 @@
       ]
     },
     {
-      "id": 4,
+      "id": "4",
       "repoId": 4,
       "pages": [
-        { "slug": "about", "title": "About This Repository", "type": "page" },
-        { "slug": "structure", "title": "Project Structure", "type": "page" }
+        {
+          "slug": "about",
+          "title": "About This Repository",
+          "type": "page"
+        },
+        {
+          "slug": "structure",
+          "title": "Project Structure",
+          "type": "page"
+        }
       ]
     }
   ]

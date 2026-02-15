@@ -1,13 +1,19 @@
 import { Laptop, CircleCheckBig } from "lucide-react";
-import { useContext } from "react";
-import { ReadmeContext } from "../../context/ReadmeContext";
+import { useReadmeByRepoId } from "../../hooks/useReadmeQuery";
 import NoDataMessage from "../messages/NoDataMessage";
+import SkeletonCard from "../messages/SkeletonCard";
+import ErrorMessage from "../messages/ErrorMessage";
 export default function Readme({ repoId }) {
-  const { readmes } = useContext(ReadmeContext);
-  // Use find() because we expect only 1 README per repo
-  const readme = readmes.find((r) => r.repoId === parseInt(repoId));
-
-  if (!readme) return <NoDataMessage  containerStyle="flex-1 bg-white border-2 border-Gray200 rounded-2xl p-10 shadow-sm" text="No readme file found."/>;
+  const { data: readme, isPending, error } = useReadmeByRepoId(repoId);
+  if (isPending) return <SkeletonCard containerStyle={"h-[500px]"}/>;
+  if (error) return <ErrorMessage  containerStyle="h-[500px]" message={error.message}></ErrorMessage>
+  if (!readme)
+    return (
+      <NoDataMessage
+        containerStyle="h-[500px]"
+        text="No readme file found for this repository."
+      />
+    );
   else
     return (
       <div className="border-2 border-Gray200 rounded-xl bg-white p-8 lg:shadow-sm">
@@ -22,9 +28,9 @@ export default function Readme({ repoId }) {
         {/* About */}
         <div className="mb-6">
           <h3 className="text-base font-semibold mb-1">
-            About {readme.content[0]}
+            About {}
           </h3>
-          <p className="text-Gray600 leading-relaxed">{readme.content[1]}</p>
+          <p className="text-Gray600 leading-relaxed">{}</p>
         </div>
 
         {/* Features */}

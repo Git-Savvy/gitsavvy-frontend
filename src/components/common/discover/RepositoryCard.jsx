@@ -5,6 +5,10 @@ import { faStar } from "@fortawesome/free-regular-svg-icons";
 import SimpleDarkButton from "../SimpleDarkButton";
 import SimpleLightButton from "../SimpleLightButton";
 export default function RepositoryCard({ repo, navigate }) {
+  function handleVisit(){
+  // Use _blank for a new tab, or _self to open in the same window
+  window.open(repo.externalRepoLink, '_blank', 'noopener,noreferrer');
+};
   return (
     <div className="border-2 border-Gray200 rounded-xl p-5 bg-white flex flex-col lg:flex-row justify-between gap-4  lg:shadow-sm">
       {/* Left */}
@@ -14,9 +18,9 @@ export default function RepositoryCard({ repo, navigate }) {
             {repo.title}
           </h3>
           <div className="hidden lg:flex">
-            <div className="flex items-center  gap-2 w-fit border-1  border-primary rounded-lg bg-Purple400/20 px-2">
+            <div className="flex items-center  gap-2 w-fit border-1  border-primary rounded-lg  px-2">
               <Sparkles className="w-4 h-4 text-primary " />
-              <p className="text-primary">Recommended</p>
+              <p className="text-primary font-semibold">Recommended</p>
             </div>
           </div>
         </div>
@@ -62,8 +66,9 @@ export default function RepositoryCard({ repo, navigate }) {
           onClick={() => navigate(`/home/repoDetail/${repo.id}`)}
         />
         <SimpleLightButton
-          text="GitHup"
+          text="GitHub"
           icon={<ExternalLink className="w-4 h-4 " />}
+          onClick={handleVisit}
         />
       </div>
     </div>

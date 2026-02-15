@@ -4,60 +4,62 @@ import StatsCard from "../common/metrics/StatsCard";
 import ContributionActivityCard from "../common/metrics/ContributionActivityCard";
 import TopContributerCard from "../common/metrics/TopContributerCard";
 import MonthlyContributionCard from "../common/metrics/MonthlyContributionCard";
-import { MetricsContext } from "../../context/MetricsContext";
-import { useContext } from "react";
+import { useMetricsByRepoId } from "../../hooks/useMetricQuery";
 import NoDataMessage from "../messages/NoDataMessage";
+import SkeletonCard from "../messages/SkeletonCard";
+import ErrorMessage from "../messages/ErrorMessage";
 const Metrics = ({ repoId }) => {
-  const { metrics } = useContext(MetricsContext);
-  const metric = metrics.find((m) => m.repoId === parseInt(repoId));
+  const { data: metricStats, isPending, error } = useMetricsByRepoId(repoId);
+
   let Commits = 0;
+  let CommitsG = 0;
   let PL = 0;
+  let PLG = 0;
   let issueC = 0;
-  let Contributers = 0;
-  if (metric) {
-    Commits = metric.totalCommits;
-    PL = metric.prsMerged;
-    issueC = metric.issuesClosed;
-    Contributers = metric.contributors;
-  } else {
-    return (
-      <NoDataMessage
-        containerStyle="flex-1 bg-white border-2 border-gray-200 rounded-2xl p-10 shadow-sm"
-        text={"No metric status found."}
-      />
-    );
+  let issueCG = 0;
+  let Contributors = 0;
+  let ContributorsG = 0;
+
+  if (metricStats) {
+    Commits = metricStats.totalCommits;
+    CommitsG = metricStats.growthCommits;
+    PL = metricStats.prsMerged;
+    PLG = metricStats.growthPr;
+    issueC = metricStats.issuesClosed;
+    issueCG = metricStats.growthIssues;
+    Contributors = metricStats.contributors;
+    ContributorsG = metricStats.growthContributors;
   }
   const stats = [
     {
       label: "Total Commits",
       value: Commits,
-      growth: "+12%", //later calculate it or try to fitch it
+      growth: CommitsG, //later calculate it or try to fitch it
       icon: <Activity className="text-indigo-500" />,
       color: "bg-indigo-500/15 border-indigo-500",
     },
     {
       label: "PRs Merged",
       value: PL,
-      growth: "+8%",
+      growth: PLG,
       icon: <GitPullRequest className="text-purple-500" />,
       color: "bg-purple-500/15 border-purple-500",
     },
     {
       label: "Issues Closed",
       value: issueC,
-      growth: "+15%",
+      growth: issueCG,
       icon: <CircleCheck className="text-teal-500" />,
       color: "bg-teal-500/15 border-teal-500",
     },
     {
       label: "Contributors",
-      value: Contributers,
-      growth: "+5%",
+      value: Contributors,
+      growth: ContributorsG,
       icon: <Users className="text-cyan-400" />,
       color: "bg-cyan-400/15 border-cyan-400",
     },
   ];
-
   const contributors = [
     {
       name: "Sarah Johnson",
@@ -99,6 +101,34 @@ const Metrics = ({ repoId }) => {
     { name: "May", commits: 320, prs: 42, issues: 28 },
     { name: "Jun", commits: 295, prs: 38, issues: 20 },
   ];
+
+  if (isPending)
+    return (
+      <div className=" bg-background min-h-screen">
+        <div className="space-y-6 w-full">
+    
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-7 ">
+            {stats.map((stat, i) => (
+              <SkeletonCard key={i} containerStyle={"h-[150px]"}/>
+            ))}
+          </div>
+
+          <ContributionActivityCard data={data} />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-4">
+            <TopContributerCard contributors={contributors} />
+            <MonthlyContributionCard data={data} />
+          </div>
+        </div>
+      </div>
+    );
+
+  if (error)
+    return (
+      <ErrorMessage containerStyle={"h-[500px]"} message={error.message} />
+    );
+
+    if(!metricStats)
+      return(<NoDataMessage containerStyle={"h-[500px]"} text={"No matrics found for this repository"}/>)
 
   return (
     <div className=" bg-background min-h-screen font-sans text-Gray500">

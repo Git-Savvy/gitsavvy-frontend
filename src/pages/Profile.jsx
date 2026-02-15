@@ -60,7 +60,6 @@ export default function Profile() {
         tags={languages} //this contain all list to show
         activeColor="blue"
         type="languages"
-        setUser={setUser}
         user={user}
       />
 
@@ -70,7 +69,6 @@ export default function Profile() {
         tags={interests}
         activeColor="purple"
         type="interests"
-        setUser={setUser}
         user={user}
       />
       <RecommendationInfoCard />

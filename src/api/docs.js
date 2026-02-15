@@ -1,6 +1,6 @@
 import { api } from "./Axios";
 // GET Docs by Repository ID
 export const fetchDocsByRepoId = async (repoId) => {
-  const res = await api.get(`/docs?repoId=${repoId}`);
+  const res = await api.get(`/docs?repoId=${repoId}`);//may have many??? 
    return res.data[0] ?? null; // 👈 extract the single object
 };

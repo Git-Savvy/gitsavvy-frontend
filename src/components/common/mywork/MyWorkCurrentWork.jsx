@@ -11,7 +11,7 @@ export default function MyWorkCurrentCard({
   status,
 }) {
   return (
-    <div className=" mx-auto bg-white p-6 border-2 border-Gray200 rounded-xl  lg:shadow-sm ">
+    <div className=" mx-auto bg-white p-6 border-2 border-Gray200 rounded-xl  lg:shadow-sm mb-5">
       {/* Top Row: Icon, Title, and Badge */}
       <div className="flex flex-col md:flex-row justify-between items-start mb-4">
         <div className="flex gap-4">
@@ -19,32 +19,32 @@ export default function MyWorkCurrentCard({
             <GitBranch className="w-6 h-6 text-Cyan400" />
           </div>
           <div>
-            <h3 className="text-xl font-semibold text-text-secondary">{title}</h3>
-            <p className="text-Gray600 text-sm">{repo}</p>
+            <h3 className="text-2xl font-semibold text-text-secondary">{title}</h3>
+            <p className="text-Gray600 text-base">{repo}</p>
           </div>
         </div>
-        <span className="bg-Cyan400 text-NavText1 px-3 py-1 rounded-full text-sm  font-medium my-5 md:my-0">
+        <span className="bg-Cyan400 text-NavText1 px-3 py-1 rounded-full text-base  font-medium my-5 md:my-0">
           {status}
         </span>
       </div>
 
       {/* Description */}
-      <p className="text-Gray600 mb-6 ml-[60px]">{description}</p>
+      <p className="text-xl text-Gray600 mb-6 ml-[60px]">{description}</p>
 
       {/* Metadata Row */}
-      <div className="flex flex-col md:flex-row md:items-center gap-6 ml-[60px] text-Gray400 text-sm mb-8">
+      <div className="flex flex-col md:flex-row md:items-center gap-6 ml-[60px] text-Gray400 text-base mb-2">
         <div className="flex items-center gap-1.5">
           <Clock className="w-4 h-4" />
           <span>Updated {updatedDays} ago</span>
         </div>
 
-        <div className="flex items-center gap-2 bg-background border border-Gray200 px-3 py-0.5 rounded-full w-fit">
-          <span className="text-text-secondary">{language}</span>
-        </div>
-
         <div className="flex items-center gap-1.5">
           <GitBranch className="w-4 h-4 rotate-90" />
           <span>{branch}</span>
+        </div>
+
+         <div className="flex items-center gap-2 bg-background border border-Gray200 px-3 py-0.5 rounded-full w-fit">
+          <span className="text-text-secondary">{language}</span>
         </div>
       </div>
 

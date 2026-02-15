@@ -15,7 +15,7 @@ export const fetchUser = async ({ username, password }) => {
 /* =======================
    UPDATE USER
 ======================= */
-export const updateUser = async ({ id, updates }) => {
-  const res = await api.patch(`/users/${id}`, updates);
+export const updateUser = async (userId, updates) => {
+  const res = await api.patch(`/users/${userId}`, updates);
   return res.data;
 };

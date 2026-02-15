@@ -7,8 +7,7 @@ export const fetchRepositories = async () => {
   return res.data; // Axios automatically parses the JSON
 };
 
-// GET a single repository by ID
 export const fetchRepoById = async (id) => {
-  const res = await api.get(`/repositories/${id}`);
-  return res.data;
+  const res = await api.get(`/repositories/${id}`);//only strickly one object
+  return res.data; // Just return the object directly
 };

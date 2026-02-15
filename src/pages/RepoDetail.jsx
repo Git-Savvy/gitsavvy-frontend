@@ -18,8 +18,12 @@ export default function RepoDetail() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("readme");
   // ask for repo with this id
-  const { data: repo, isLoading, error } = useRepository(Number(repoId)); // convert to number
-  if (isLoading) return <SkeletonPage containerStyle={"w-full h-screen"} />;
+  const { data: repo, isPending, error } = useRepository(Number(repoId)); // convert to number
+  function handleVisit() {
+    // Use _blank for a new tab, or _self to open in the same window
+    window.open(repo.externalRepoLink, "_blank", "noopener,noreferrer");
+  }
+  if (isPending) return <SkeletonPage />;
   if (error) {
     // Axios error has response object
     if (error.response?.status === 404) {
@@ -42,13 +46,13 @@ export default function RepoDetail() {
   const renderContent = () => {
     switch (activeTab) {
       case "docs":
-        return <Docs repoId={repo.id} />;
+        return <Docs repoId={Number(repoId)} />;
       case "issues":
         return <Issues />;
       case "metrics":
-        return <Metrics repoId={repo.id} />;
+        return <Metrics repoId={Number(repoId)} />;
       default:
-        return <Readme repoId={repo.id} />;
+        return <Readme repoId={Number(repoId)} />;
     }
   };
 
@@ -68,8 +72,9 @@ export default function RepoDetail() {
             {repo.title}
           </h1>
           <SimpleLightButton
-            text="View on GitHup"
+            text="View on GitHub"
             icon={<ExternalLink className="w-5 h-5 " />}
+            onClick={handleVisit}
           />
         </div>
         <p className="mt-5 text-xl md:text-2xl lg:text-3xl">

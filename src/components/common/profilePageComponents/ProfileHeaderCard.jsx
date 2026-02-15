@@ -9,8 +9,8 @@ export default function ProfileHeaderCard({
   githubUser,
 }) {
   return (
-    <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
-      <h2 className="text-textdark font-semibold mb-6">Account Information</h2>
+    <div className="bg-white border border-Gray200 rounded-2xl p-8 shadow-sm">
+      <h2 className="text-textdark font-semibold mb-6 text-lg">Account Information</h2>
       <div className="flex items-center gap-5 mb-8">
         <img
           src={avatar}
@@ -22,11 +22,11 @@ export default function ProfileHeaderCard({
           <h3 className="text-xl font-bold text-textdark">{name}</h3>
           <p className="text-Gray600 mb-2">@{handle}</p>
           <div className="flex flex-col md:flex-row gap-2">
-            <span className="bg-cyan-400 text-NavText1 text-xs font-bold px-2 py-1 rounded flex items-center gap-1">
-              <Trophy className="w-3 h-3" /> Level {level}
+            <span className="bg-Cyan400 text-NavText1 text-sm font-bold px-2 py-1 rounded flex items-center gap-1">
+              <Trophy className="w-4 h-4" /> Level {level}
             </span>
-            <span className="border border-Gray200 text-Gray600 text-xs font-bold px-2 py-1 rounded flex items-center gap-1">
-              <Star className="w-3 h-3" /> {points} points
+            <span className="border border-Gray200 text-Gray600 text-sm font-bold px-2 py-1 rounded flex items-center gap-1">
+              <Star className="w-4 h-4" /> {points} points
             </span>
           </div>
         </div>
@@ -35,16 +35,16 @@ export default function ProfileHeaderCard({
         <div className="flex items-center gap-3">
           <Github className="w-5 h-5 text-Teal400" />
           <div>
-            <p className="text-sm font-semibold text-textdark">
+            <p className="text-base font-semibold text-textdark">
               GitHub Connected
             </p>
-            <p className="text-xs text-Gray600">
+            <p className="text-sm text-Gray600">
               Authenticated as @{githubUser}
             </p>
           </div>
         </div>
-        <span className="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-1 rounded-md flex items-center gap-1 w-fit mt-5 md:mt-0">
-          <Check className="w-3 h-3" /> CONNECTED
+        <span className="bg-Teal400/20 text-Teal400 text-[10px] border border-Teal400 font-bold px-2 py-1 rounded-md flex items-center gap-1 w-fit mt-5 md:mt-0">
+          <Check className="w-3 h-3 text-Teal400" /> CONNECTED
         </span>
       </div>
     </div>

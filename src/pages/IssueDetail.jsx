@@ -8,25 +8,16 @@ import DescriptionIssue from "../components/layout/DescriptionIssue";
 import Comments from "../components/layout/Comments";
 import ContributionWorkflow from "../components/common/contributionFlow/ContributionWorkflow"; // The modal component
 import { useParams } from "react-router-dom";
-import { IssueContext } from "../context/IssueContext";
-import { useContext } from "react";
+import { useIssue } from "../hooks/useIssueQuery";
 import NotFound from "./NotFound";
 import { timeAgo } from "../utils/timeAgo";
 import ClaimBanner from "../components/common/contributionFlow/ClaimBanner";
 import ClaimedBanner from "../components/common/contributionFlow/ClimedBanner";
+import SkeletonPage from "../components/messages/SkeletonPage";
+import ErrorMessage from "../components/messages/ErrorMessage";
 export default function IssueDetail() {
   const { repoId, issueId } = useParams(); // id from URL
-  const { issues } = useContext(IssueContext);
-  // find issue with this id
-  const issue = issues.find((i) => i.issueId === parseInt(issueId));
-  if (!issue)
-    return (
-      <NotFound
-        text="  The Issue page you’re looking for doesn’t exist or has been moved."
-        button={`Back to repository`}
-        url={`/home/repoDetail/${parseInt(repoId)}`}
-      />
-    );
+  const { data: issue, isPending, error } = useIssue(Number(issueId));
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("description");
@@ -56,6 +47,11 @@ export default function IssueDetail() {
       text: "Should we use CSS variables or a theming library like styled-components?",
     },
   ];
+
+    function handleVisit() {
+    // Use _blank for a new tab, or _self to open in the same window
+    window.open(issue.githubIssueLink, "_blank", "noopener,noreferrer");
+  }
   const renderContent = () => {
     switch (activeTab) {
       case "comments":
@@ -64,6 +60,26 @@ export default function IssueDetail() {
         return <DescriptionIssue issue={issue} />;
     }
   };
+  if (isPending) return <SkeletonPage />;
+  if (error) {
+    // Axios error has response object
+    if (error.response?.status === 404) {
+      return (
+        <NotFound
+          text="  The Issue page you’re looking for doesn’t exist or has been moved."
+          button={`Back to repository`}
+          url={`/home/repoDetail/${repoId}`}
+        />
+      );
+    }
+    return (
+      <ErrorMessage
+        message={error.message}
+        containerStyle={"w-full h-screen"}
+      />
+    );
+  }
+
   return (
     <main className="max-w-8xl  flex-col gap-10 px-5 md:px-20 lg:px-45">
       {/* Back Link */}
@@ -83,7 +99,7 @@ export default function IssueDetail() {
                 <Info size={30} />
               </div>
               <span className="lg:hidden  font-normal text-xl border-1 text-NavBorder bg-NavSelected  flex items-center justify-center rounded-xl w-13 h-8 mt-2">
-                #{issue.issueId}
+                #{issue.id}
               </span>
             </div>
             <div className="space-y-3">
@@ -92,7 +108,7 @@ export default function IssueDetail() {
                   {issue.issueTitle}
                 </h1>
                 <span className="hidden lg:flex  font-normal text-xl border-1 text-NavBorder bg-NavSelected  text-center justify-center rounded-xl w-12 h-7 mt-2">
-                  #{issue.issueId}
+                  #{issue.id}
                 </span>
               </div>
 
@@ -104,15 +120,16 @@ export default function IssueDetail() {
                   </span>
                   <span className="flex items-center gap-1">• 3 comments</span>
                   <span className="flex items-center gap-1">
-                    • <UserCircle size={14} /> johndoe
+                    • <UserCircle size={20} /> johndoe
                   </span>
                 </div>
               </div>
             </div>
           </div>
           <SimpleLightButton
-            text="View on GitHup"
+            text="View on GitHub"
             icon={<ExternalLink className="w-5 h-5 " />}
+            onClick={handleVisit}
           />
         </div>
         {/* Labels */}
@@ -129,7 +146,7 @@ export default function IssueDetail() {
       </div>
 
       {/* 3. CTA Claim Banner */}
-      {!issue.assignedUserId ? (
+      {issue.issueStatus=="Open" ? (
         <ClaimBanner setIsModalOpen={setIsModalOpen} />
       ) : (
         <ClaimedBanner />

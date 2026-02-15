@@ -26,8 +26,8 @@ const Landing = () => {
     },
   ];
   return (
-    <section className="min-h-screen bg-background flex items-center mx-5">
-      <div className="container mx-auto  grid grid-cols-1 lg:grid-cols-2 gap-15 items-center ">
+    <section className="min-h-screen bg-background flex items-center m-5 ">
+      <div className="container mx-10 lg:mx-auto  grid grid-cols-1 lg:grid-cols-2 gap-15 items-center ">
         {/* LEFT SIDE */}
         <div>
           {/* Logo */}
@@ -35,12 +35,12 @@ const Landing = () => {
             <img
               src={img}
               alt="logo"
-              className="w-[28rem] h-auto object-contain rounded"
+              className="w-[20rem] md:w-[25rem] lg:w-[28rem] h-auto object-contain rounded"
             />
           </div>
 
           {/* Heading */}
-          <h1 className="text-6xl lg:text-6xl font-simibold text-textdark leading-tight mb-10">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-simibold text-textdark leading-tight mb-10">
             Your Smart Companion for <br />
             <span className="text-primary">Open-Source Success</span>
           </h1>
@@ -70,14 +70,14 @@ const Landing = () => {
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="flex flex-col h-screen justify-evenly  ">
-          <div className="flex justify-end mb-2">
-            <ThemeSwitcher />
-          </div>
-          <div className="flex justify-end  max-w-[50rem]">
+      
+          <div className="flex justify-end  max-w-[50rem] mb-10">
             <AuthCard />
           </div>
-        </div>
+    
+          <div className="fixed top-[5%] right-[5%] flex justify-end mb-2">
+            <ThemeSwitcher />
+          </div>
       </div>
     </section>
   );

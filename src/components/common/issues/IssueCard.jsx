@@ -42,7 +42,7 @@ export default function IssueCard({ issue }) {
           text="View Details"
           onClick={() => {
             navigate(
-              `/home/repoDetail/${issue.repositoryId}/issueDetail/${issue.issueId}`,
+              `/home/repoDetail/${issue.repositoryId}/issueDetail/${issue.id}`,
             );
           }}
         />

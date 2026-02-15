@@ -1,34 +1,32 @@
-import { useContext } from "react";
 import { useUserContext } from "../../../context/UserContext";
-import { IssueContext } from "../../../context/IssueContext";
+import { useClaimIssue } from "../../../hooks/useIssueQuery";
+import { useIssue } from "../../../hooks/useIssueQuery";
 import { useParams } from "react-router-dom";
-import { useToast } from "../../../context/ToastContext";
 export default function ClimView({ onNext }) {
   const { issueId } = useParams(); // id from URL
   const { user } = useUserContext();
-  const { issues, setIssues } = useContext(IssueContext);
-  const { showToast } = useToast();
+  const { mutate, isPending } = useClaimIssue();
+  const { data: issue } = useIssue(Number(issueId));
 
   function handleClaim() {
-    setIssues(
-      (
-        issues, //Always update state using the previous state callback.
-      ) =>
-        issues.map((issue) =>
-          issue.issueId === Number(issueId) && !issue.assignedUserId
-            ? {
-                ...issue,
-                assignedUserId: user.id,
-                issueStatus: "claimed",
-              }
-            : issue,
-        ),
+    if (!user) {
+      alert("Please login first!");
+      return;
+    }
+    // Trigger the mutation
+    // You pass onNext here!
+    mutate(
+      {
+        issueId: issue.id,
+        userId: user.id,
+      },
+      {
+        onSuccess: () => {
+          // This runs AFTER the global onSuccess in your hook
+          onNext();
+        },
+      },
     );
-    showToast({
-      message: "Issue claimed successfully!",
-      type: "success",
-      duration: 4000,
-    });
   }
 
   return (
@@ -44,10 +42,9 @@ export default function ClimView({ onNext }) {
         </p>
       </div>
       <button
+        disabled={isPending || issue?.issueStatus === "Claimed"}
         onClick={() => {
           handleClaim();
-          onNext();
-          console.log("Updated Issue:", issues);
         }}
         className="w-full bg-primary text-white hover:bg-hoverd py-4 rounded-xl font-bold text-lg"
       >
