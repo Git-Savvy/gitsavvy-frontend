@@ -1,32 +1,41 @@
-import { createContext, useContext, useState } from "react"; //A context is like a global storage for a part of your app.
+import { createContext, useState, useEffect } from "react";
 
-const UserContext = createContext(); //like a container that can store your user data so any component in your app can access it.
+export const UserContext = createContext();
 
-function UserProvider({ children }) {
+// Provider: You use this in your app to wrap components so they can access the user data.
+export function UserProvider({ children }) {
   // Initialize from localStorage so the session survives a refresh
   const [user, setUser] = useState(() => {
-    const savedUser = localStorage.getItem("user");
-    return savedUser ? JSON.parse(savedUser) : null;
+    try {
+      const savedUser = localStorage.getItem("user");
+      return savedUser ? JSON.parse(savedUser) : null;
+    } catch (error) {
+      console.error("Failed to parse user from localStorage", error);
+      return null;
+    }
   });
 
+  // Keep localStorage in sync with user state
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem("user", JSON.stringify(user));
+    } else {
+      localStorage.removeItem("user"); // If user === null, it means: the user logged out
+    }
+  }, [user]);
+
+  // Only update state because local storage handled by useEffect
   const login = (userData) => {
     setUser(userData);
-    localStorage.setItem("user", JSON.stringify(userData));
   };
 
   const logout = () => {
-    setUser(null);// Clears the React state (RAM)
-    localStorage.removeItem("user");// Clears the browser storage (Disk)
+    setUser(null); // Clears the React state (RAM)
   };
 
   return (
-    <UserContext.Provider value={{ user, login, logout, setUser }}>
+    <UserContext.Provider value={{ user, setUser, login, logout }}>
       {children}
     </UserContext.Provider>
   );
 }
-
-const useUserContext = () => useContext(UserContext);
-export { UserProvider, useUserContext };
-//UserProvider: You use this in your app to wrap components so they can access the user data.(insted of direct UserContext.Provider)
-//UserContext: You use this with useContext(UserContext) inside any component that needs the user data.(to be able to consume it) but useAuth do it already

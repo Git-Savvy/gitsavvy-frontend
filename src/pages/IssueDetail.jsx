@@ -98,7 +98,7 @@ export default function IssueDetail() {
               <div className=" w-16 h-16 bg-Teal400/20 rounded-full flex items-center justify-center text-Teal400">
                 <Info size={30} />
               </div>
-              <span className="lg:hidden  font-normal text-xl border-1 text-NavBorder bg-NavSelected  flex items-center justify-center rounded-xl w-13 h-8 mt-2">
+              <span className="lg:hidden  font-normal text-xl border text-NavBorder bg-NavSelected  flex items-center justify-center rounded-xl w-13 h-8 mt-2">
                 #{issue.id}
               </span>
             </div>
@@ -107,7 +107,7 @@ export default function IssueDetail() {
                 <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-textdark">
                   {issue.issueTitle}
                 </h1>
-                <span className="hidden lg:flex  font-normal text-xl border-1 text-NavBorder bg-NavSelected  text-center justify-center rounded-xl w-12 h-7 mt-2">
+                <span className="hidden lg:flex  font-normal text-xl border text-NavBorder bg-NavSelected  text-center justify-center rounded-xl w-12 h-7 mt-2">
                   #{issue.id}
                 </span>
               </div>
@@ -137,7 +137,7 @@ export default function IssueDetail() {
           {["Easy", "enhancement", "good first issue"].map((label) => (
             <span
               key={label}
-              className="px-3 py-1 text-NavBorder bg-NavSelected lg:text-base font-medium rounded-xl border-1"
+              className="px-3 py-1 text-NavBorder bg-NavSelected lg:text-base font-medium rounded-xl border"
             >
               {label}
             </span>

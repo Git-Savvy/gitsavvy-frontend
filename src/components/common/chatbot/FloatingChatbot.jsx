@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
-import { MessageSquare, X, Send, Sparkles } from "lucide-react";
+import { MessageSquare, X, Sparkles } from "lucide-react";
 import MessageBubble from "./MessageBubble";
+import ChatInput from "./ChatInput";
 
 const FloatingChatbot = ({ messages, onSend }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,13 +13,6 @@ const FloatingChatbot = ({ messages, onSend }) => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  const [input, setInput] = useState("");
-
-  const handleSend = () => {
-    if (!input.trim()) return;
-    onSend(input);
-    setInput("");
-  };
 
   return (
     <div className="fixed bottom-6 right-6 z-[100] flex flex-col items-end font-sans max-h-[90%]">
@@ -57,25 +51,7 @@ const FloatingChatbot = ({ messages, onSend }) => {
           </div>
 
           {/* Input Area */}
-          <div className="p-4 bg-white border-t border-gray-400">
-            <div className="flex items-center gap-2">
-              <div className="flex-1 relative">
-                <input
-                  type="text"
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  placeholder="Ask me anything..."
-                  className="w-full bg-background border border-gray-400 rounded-xl py-3 px-4 text-sm text-Gray600 placeholder:text-Slate400 focus:ring-2 focus:ring-indigo-500/50 outline-none"
-                />
-              </div>
-              <button
-                onClick={handleSend}
-                className="bg-Cyan400 p-3 rounded-xl text-NavText1 hover:bg-Cyan400/80 transition-all shadow-md active:scale-95"
-              >
-                <Send className="w-5 h-5" />
-              </button>
-            </div>
-          </div>
+         <ChatInput onSend={onSend}/>
         </div>
       )}
 

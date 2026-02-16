@@ -2,7 +2,7 @@ import ProgressCard from "../common/discover/ProgressCard";
 import Badge from "../common/discover/Badge";
 import Cup from "../../assets/cupIcon.png";
 import ContributionCard from "../common/discover/ContributionCard";
-import { useUserContext } from "../../context/UserContext";
+import { useUserContext } from "../../hooks/useUserContext";
 export default function RightSidebar() {
   const { user } = useUserContext();
   return (

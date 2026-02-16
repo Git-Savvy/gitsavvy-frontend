@@ -1,4 +1,4 @@
-import { useUserContext } from "../../../context/UserContext";
+import { useUserContext } from "../../../hooks/useUserContext";
 import { useClaimIssue } from "../../../hooks/useIssueQuery";
 import { useIssue } from "../../../hooks/useIssueQuery";
 import { useParams } from "react-router-dom";

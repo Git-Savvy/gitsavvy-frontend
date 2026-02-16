@@ -3,13 +3,12 @@ import RecommendationInfoCard from "../components/common/profilePageComponents/R
 import SelectionCards from "../components/common/profilePageComponents/SelectionCards";
 import BackButton from "../components/common/BackButton";
 import { useNavigate } from "react-router-dom";
-import { useState} from "react";
-import { useUserContext } from "../context/UserContext";
+import { useUserContext } from "../hooks/useUserContext";
 export default function Profile() {
-  const { user, setUser } = useUserContext();
+  const { user } = useUserContext();
   const Navigate = useNavigate();
   // State for Language Tags
-  const [languages, setLanguages] = useState([
+  const languages = [
     { id: 1, name: "TypeScript" },
     { id: 2, name: "JavaScript" },
     { id: 3, name: "Python" },
@@ -21,10 +20,10 @@ export default function Profile() {
     { id: 9, name: "PHP" },
     { id: 10, name: "Swift" },
     { id: 11, name: "Kotlin" },
-  ]);
+  ];
 
   // State for Interest Tags
-  const [interests, setInterests] = useState([
+  const interests = [
     { id: 1, name: "Web Development" },
     { id: 2, name: "Mobile Development" },
     { id: 3, name: "Machine Learning" },
@@ -36,7 +35,7 @@ export default function Profile() {
     { id: 9, name: "Security" },
     { id: 10, name: "UI/UX" },
     { id: 11, name: "API Development" },
-  ]);
+  ];
   return (
     <div className="max-w-8xl px-10 lg:px-45 space-y-8">
       <BackButton

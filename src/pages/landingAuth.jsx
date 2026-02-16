@@ -39,7 +39,7 @@ const Landing = () => {
               <img
                 src={img}
                 alt="logo"
-                className="w-[20rem] md:w-[25rem] lg:w-[28rem] h-auto object-contain rounded"
+                className="w-[20rem] md:w-100 lg:w-md h-auto object-contain rounded"
               />
             </div>
 
@@ -75,7 +75,7 @@ const Landing = () => {
 
           {/* RIGHT SIDE */}
 
-          <div className="flex justify-end  max-w-[50rem] mb-10">
+          <div className="flex justify-end  max-w-200 mb-10">
             <AuthCard />
           </div>
         </div>

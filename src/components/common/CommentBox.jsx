@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { SendHorizontal } from "lucide-react";
 import SimpleDarkButton from "./SimpleDarkButton";
-import { useUserContext} from "../../context/UserContext";
+import { useUserContext} from "../../hooks/useUserContext";
 export default function CommentBox() {
   const [comment, setComment] = useState("");
   const {user}=useUserContext()

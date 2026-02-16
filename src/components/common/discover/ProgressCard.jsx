@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { useUserContext } from "../../../context/UserContext";
+import { useUserContext } from "../../../hooks/useUserContext";
 export default function ProgressCard({ img }) {
   const { user } = useUserContext();
   return (

@@ -1,5 +1,6 @@
 import React from "react";
 import { Check } from "lucide-react";
+import { useUserContext } from "../../../hooks/useUserContext";
 
 export default function SelectionCards({
   title,
@@ -13,6 +14,8 @@ export default function SelectionCards({
     blue: "bg-Cyan50 border-Teal400 text-Teal400",
     purple: "bg-Purple50 border-Purple400 text-Purple400",
   };
+
+  const{setUser}=useUserContext()
   const userpref = user.preferences?.[type] || [];
   // Normal function for handling tag clicks
   function handleTagClick(tagName) {
@@ -31,9 +34,10 @@ export default function SelectionCards({
     };
 
     // 3. Trigger the mutation to sync with Server and Storage
-    mutate(updatedUser);
+    // ✅ 1. update React state(no need for user to refresh) and sync to localStorage correctly
+    setUser(updatedUser);
+    //has to try to change in server .. if error show toast a and refetch real valuie from server as they not updated
   }
-
   return (
     <div className="bg-white border border-Gray200 rounded-2xl p-8 shadow-sm">
       <div className="flex flex-col md:flex-row justify-between md:items-center mb-6">

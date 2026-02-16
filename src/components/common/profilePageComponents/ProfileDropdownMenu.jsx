@@ -1,5 +1,5 @@
 import { User, LogOut, Trophy } from "lucide-react";
-import { useUserContext } from "../../../context/UserContext";
+import { useUserContext } from "../../../hooks/useUserContext";
 import { useNavigate } from "react-router-dom";
 
 export default function ProfileDropdownMenu() {

@@ -2,7 +2,7 @@ import logo from "../../assets/lightLogo.svg";
 import { ChevronDown, Briefcase } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
-import { useUserContext } from "../../context/UserContext";
+import { useUserContext } from "../../hooks/useUserContext";
 import ProfileDropdownMenu from "../common/profilePageComponents/ProfileDropdownMenu";
 import ThemeSwitcher from "../common/ThemeSwitcher";
 export default function Navbar() {

@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { fetchUser, updateUser } from "../api/users";
-import { useUserContext } from "../context/UserContext";
+import { useUserContext } from "../hooks/useUserContext";
 import { useNavigate } from "react-router-dom";
 export const useUserLogin = () => {
   const { login } = useUserContext();
