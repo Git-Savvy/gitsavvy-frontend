@@ -1,11 +1,27 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { MessageSquare, X, Send, Sparkles } from "lucide-react";
+import MessageBubble from "./MessageBubble";
 
-const FloatingChatbot = () => {
+const FloatingChatbot = ({ messages, onSend }) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  //helper for scroll functionality
+  const bottomRef = useRef(null);
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+  const [input, setInput] = useState("");
+
+  const handleSend = () => {
+    if (!input.trim()) return;
+    onSend(input);
+    setInput("");
+  };
+
   return (
-    <div className="fixed bottom-6 right-6 z-[100] flex flex-col items-end font-sans">
+    <div className="fixed bottom-6 right-6 z-[100] flex flex-col items-end font-sans max-h-[90%]">
       {/* Chat Window */}
       {isOpen && (
         <div className="mb-4 w-[400px] h-[600px] bg-background rounded-2xl shadow-2xl border-2 border-gray-400 flex flex-col overflow-hidden animate-in slide-in-from-bottom-4 duration-300">
@@ -33,14 +49,11 @@ const FloatingChatbot = () => {
           {/* Messages Area */}
           <div className="flex-1 p-4 bg-white overflow-y-auto space-y-4">
             {/* AI Welcome Message */}
-            <div className="flex flex-col items-start max-w-[85%]">
-              <div className=" bg-background border border-Gray200 p-4 rounded-2xl rounded-tl-none text-text-secondary text-[15px] leading-relaxed">
-                Hello! I'm your AI assistant for cloud-infrastructure. I can
-                help you understand the codebase, explain functions, navigate
-                the repository structure, and answer technical questions. How
-                can I assist you today?
-              </div>
-            </div>
+            {messages.map((message) => (
+              <MessageBubble key={message.id} message={message} />
+            ))}
+
+            <div ref={bottomRef} />
           </div>
 
           {/* Input Area */}
@@ -49,11 +62,16 @@ const FloatingChatbot = () => {
               <div className="flex-1 relative">
                 <input
                   type="text"
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask me anything..."
                   className="w-full bg-background border border-gray-400 rounded-xl py-3 px-4 text-sm text-Gray600 placeholder:text-Slate400 focus:ring-2 focus:ring-indigo-500/50 outline-none"
                 />
               </div>
-              <button className="bg-Cyan400 p-3 rounded-xl text-NavText1 hover:bg-Cyan400/80 transition-all shadow-md active:scale-95">
+              <button
+                onClick={handleSend}
+                className="bg-Cyan400 p-3 rounded-xl text-NavText1 hover:bg-Cyan400/80 transition-all shadow-md active:scale-95"
+              >
                 <Send className="w-5 h-5" />
               </button>
             </div>

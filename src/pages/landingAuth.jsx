@@ -27,57 +27,58 @@ const Landing = () => {
   ];
   return (
     <section className="min-h-screen bg-background flex items-center m-5 ">
-      <div className="container mx-10 lg:mx-auto  grid grid-cols-1 lg:grid-cols-2 gap-15 items-center ">
-        {/* LEFT SIDE */}
-        <div>
-          {/* Logo */}
-          <div className="flex items-center mb-6">
-            <img
-              src={img}
-              alt="logo"
-              className="w-[20rem] md:w-[25rem] lg:w-[28rem] h-auto object-contain rounded"
-            />
-          </div>
-
-          {/* Heading */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-simibold text-textdark leading-tight mb-10">
-            Your Smart Companion for <br />
-            <span className="text-primary">Open-Source Success</span>
-          </h1>
-
-          {/* Description */}
-          <p className="text-text-secondary text-2xl mb-12 mr-30">
-            Discover perfect repositories, streamline contributions, and build
-            your developer reputation — all in one intelligent platform.
-          </p>
-
-          {/* Feature Pills */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xlg ">
-            {features.map((feature) => (
-              <div
-                key={feature.text}
-                className="bg-white border-2 border-Gray200  rounded-2xl px-4 py-3 flex items-center gap-3 text-base text-text-secondary"
-              >
-                <img
-                  src={feature.image}
-                  alt={feature.text}
-                  className="w-6 h-6"
-                />
-                <span>{feature.text}</span>
-              </div>
-            ))}
-          </div>
+      <div>
+        <div className="w-full h-[10%] flex justify-end mb-5">
+          <ThemeSwitcher />
         </div>
+        <div className="container mx-10 lg:mx-auto  grid grid-cols-1 lg:grid-cols-2 gap-15 items-center ">
+          {/* LEFT SIDE */}
+          <div>
+            {/* Logo */}
+            <div className="flex items-center mb-6">
+              <img
+                src={img}
+                alt="logo"
+                className="w-[20rem] md:w-[25rem] lg:w-[28rem] h-auto object-contain rounded"
+              />
+            </div>
 
-        {/* RIGHT SIDE */}
-      
+            {/* Heading */}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-simibold text-textdark leading-tight mb-10">
+              Your Smart Companion for <br />
+              <span className="text-primary">Open-Source Success</span>
+            </h1>
+
+            {/* Description */}
+            <p className="text-text-secondary text-2xl mb-12 mr-30">
+              Discover perfect repositories, streamline contributions, and build
+              your developer reputation — all in one intelligent platform.
+            </p>
+
+            {/* Feature Pills */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xlg ">
+              {features.map((feature) => (
+                <div
+                  key={feature.text}
+                  className="bg-white border-2 border-Gray200  rounded-2xl px-4 py-3 flex items-center gap-3 text-base text-text-secondary"
+                >
+                  <img
+                    src={feature.image}
+                    alt={feature.text}
+                    className="w-6 h-6"
+                  />
+                  <span>{feature.text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* RIGHT SIDE */}
+
           <div className="flex justify-end  max-w-[50rem] mb-10">
             <AuthCard />
           </div>
-    
-          <div className="fixed top-[5%] right-[5%] flex justify-end mb-2">
-            <ThemeSwitcher />
-          </div>
+        </div>
       </div>
     </section>
   );
