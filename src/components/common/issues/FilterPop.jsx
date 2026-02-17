@@ -1,7 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import { ListFilter } from "lucide-react";
 
-export default function FilterPop() {
+export default function FilterPop({
+  setSelectedLabels,
+  setSelectedStatus,
+  selectedStatus,
+  selectedLabels,
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const popoverRef = useRef(null);
 
@@ -24,7 +29,17 @@ export default function FilterPop() {
     "Documentation",
   ];
 
-  const statusOptions = ["Available", "Claimed"];
+  const statusOptions = ["Open", "Claimed"];
+  //STORE ALL SELECTED LABLES
+  const toggleLabel = (label) => {
+    setSelectedLabels((prev) =>
+      prev.includes(label) ? prev.filter((l) => l !== label) : [...prev, label],
+    );
+  };
+  //STORE THE SELECTED STATUS
+  const toggleStatus = (status) => {
+    setSelectedStatus((prev) => (prev === status ? "" : status));
+  };
 
   return (
     <div className="relative inline-block" ref={popoverRef}>
@@ -54,6 +69,8 @@ export default function FilterPop() {
               >
                 <input
                   type="checkbox"
+                  checked={selectedLabels.includes(label)}
+                  onChange={() => toggleLabel(label)}
                   className="w-5 h-5 rounded border-Gray200 text-primary focus:ring-indigo-500 cursor-pointer"
                 />
                 <span className="text-[15px] text-Gray600 group-hover:text-dark transition-colors">
@@ -77,6 +94,8 @@ export default function FilterPop() {
               >
                 <input
                   type="checkbox"
+                  checked={selectedStatus.includes(status)}
+                  onChange={() => toggleStatus(status)}
                   className="w-5 h-5 rounded border-Gray400 text-primary focus:ring-primary cursor-pointer"
                 />
                 <span className="text-[15px] text-Gray600 group-hover:text-textdark transition-colors">

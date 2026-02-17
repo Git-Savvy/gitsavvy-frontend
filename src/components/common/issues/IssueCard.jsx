@@ -1,10 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { MessageSquare, Clock, AlertCircle } from "lucide-react";
 import SimpleDarkButton from "../SimpleDarkButton";
-import { useParams } from "react-router-dom";
+import { timeAgo } from "../../../utils/timeAgo";
 
 export default function IssueCard({ issue }) {
-  const { repoId } = useParams();
   const navigate = useNavigate();
   return (
     <div className="bg-white border-2 border-Gray200 rounded-xl p-6 lg:shadow-sm  transition-colors">
@@ -52,11 +51,11 @@ export default function IssueCard({ issue }) {
       <div className="flex items-center justify-end gap-6  text-Slate400 text-sm">
         <div className="flex items-center gap-1.5">
           <Clock className="w-4 h-4" />
-          <span>2 days ago</span>
+          <span>{timeAgo(issue.creationDate)}</span>
         </div>
         <div className="flex items-center gap-1.5">
           <MessageSquare className="w-4 h-4" />
-          <span>3</span>
+          <span>{issue.commentsNum}</span>
         </div>
       </div>
     </div>

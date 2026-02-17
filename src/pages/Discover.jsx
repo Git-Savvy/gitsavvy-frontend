@@ -1,9 +1,9 @@
-
 import RightSidebar from "../components/layout/RightSidebar";
 import RepositoryList from "../components/common/discover/RepositoryList";
 import SearchSquare from "../components/common/SearchSquare";
+import { useState } from "react";
 export default function Discover() {
-
+  const [search, setSearch] = useState("");
 
   return (
     <div className="max-w-8xl  flex lg:gap-5 ">
@@ -18,10 +18,13 @@ export default function Discover() {
           </p>
         </div>
         {/* searchSquare */}
-        <SearchSquare text="Search repositories by name, language, or topic..." />
+        <SearchSquare
+          text="Search repositories by name, language, or topic..."
+          setSearch={setSearch}
+        />
 
         <h2 className="font-semibold text-xl">Recommended for You</h2>
-        <RepositoryList />
+        <RepositoryList search={search} />
       </main>
       {/* Right sidebar */}
       <div className="bg-white border-x-2 border-Gray200  lg:shadow-sm">

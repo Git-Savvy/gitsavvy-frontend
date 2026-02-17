@@ -4,7 +4,7 @@ import NoDataMessage from "../../messages/NoDataMessage";
 import SkeletonCard from "../../messages/SkeletonCard";
 import ErrorMessage from "../../messages/ErrorMessage";
 import { useParams } from "react-router-dom";
-export default function IssuesList() {
+export default function IssuesList({ search, selectedStatus, selectedLabels }) {
   const { repoId } = useParams(); // id from URL "it is a string!"
   const { data: issues, isPending, error } = useIssuesByRepo(Number(repoId));
   const CARD_STYLE =
@@ -33,10 +33,31 @@ export default function IssuesList() {
       />
     );
   }
+  const filteredIssues = issues.filter((issue) => {
+    const query = search.toLowerCase();
+
+    // 🔍 search
+    const matchesSearch =
+      issue.issueTitle.toLowerCase().includes(query) ||
+      issue.issueDescription.toLowerCase().includes(query) ||
+      issue.labels?.some((l) => l.toLowerCase().includes(query));
+
+    // 🏷 labels
+    const matchesLabels =
+      selectedLabels.length === 0 ||
+      selectedLabels.every((label) => issue.labels.includes(label));
+
+    // 📌 status
+    const matchesStatus =
+      selectedStatus === "" ||
+      issue.issueStatus?.toLowerCase() === selectedStatus.toLowerCase();
+
+    return matchesSearch && matchesLabels && matchesStatus; //alll of them has to be true
+  });
 
   return (
     <>
-      {issues.map((item) => (
+      {filteredIssues.map((item) => (
         <IssueCard key={item.id} issue={item} />
       ))}
     </>

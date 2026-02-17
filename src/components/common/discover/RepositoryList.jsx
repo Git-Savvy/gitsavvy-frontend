@@ -4,7 +4,7 @@ import { useRepositories } from "../../../hooks/useRepoQuery";
 import Skeleton from "../../messages/SkeletonCard";
 import ErrorMessage from "../../messages/ErrorMessage";
 import SkeletonCard from "../../messages/SkeletonCard";
-export default function RepositoryList() {
+export default function RepositoryList({search}) {
   const { data: repos, isPending, error } = useRepositories();
   const navigate = useNavigate();
   const CARD_STYLE =
@@ -21,12 +21,24 @@ export default function RepositoryList() {
 
   if (error)
     return (
-        <ErrorMessage message={error.message} containerStyle={"w-full h-[450px]"} />
+      <ErrorMessage
+        message={error.message}
+        containerStyle={"w-full h-[450px]"}
+      />
     );
+  const filteredRepos = repos.filter((repo) => {
+    const query = search.toLowerCase();
+
+    return (
+      repo.title.toLowerCase().includes(query) ||
+      repo.programmingLanguage?.some((lang) => lang.toLowerCase().includes(query))||
+      repo.tags?.some((tag) => tag.toLowerCase().includes(query))
+    );
+  });
 
   return (
     <div className="space-y-6 px-2">
-      {repos?.map((repo) => (
+      {filteredRepos?.map((repo) => (
         <RepositoryCard key={repo.id} repo={repo} navigate={navigate} />
       ))}
     </div>
