@@ -27,7 +27,7 @@ export default function ProfileDropdownMenu() {
       </div>
       <div className="p-2">
         <button
-          className="w-full flex items-center gap-3 px-3 py-2 hover:bg-hoverl rounded-xl transition-colors group lg:text-base"
+          className="w-full flex items-center gap-3 px-3 py-2 hover:bg-hoverl/40 rounded-xl transition-colors group lg:text-base"
           onClick={handleProfile}
         >
           <User className="w-5 h-5 text-Gray400  group-hover:text-text-secondary" />

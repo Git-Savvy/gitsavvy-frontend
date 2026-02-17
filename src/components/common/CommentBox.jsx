@@ -1,37 +1,72 @@
 import { useState } from "react";
 import { SendHorizontal } from "lucide-react";
 import SimpleDarkButton from "./SimpleDarkButton";
-import { useUserContext} from "../../hooks/useUserContext";
-export default function CommentBox() {
+import { useUserContext } from "../../hooks/useUserContext";
+import { useAddComment } from "../../hooks/useCommentQuery";
+export default function CommentBox({ issueId }) {
   const [comment, setComment] = useState("");
-  const {user}=useUserContext()
+  const { user } = useUserContext();
+  const { mutate, isPending } = useAddComment();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // prevent empty comment
+    if (!comment.trim()) {
+      return; // stop here
+    }
+
+    const newComment = {
+      issueId: issueId,
+      createdAt: new Date().toISOString(),
+      text: comment,
+      user: {
+        id: user.id,
+        userName: user.username,
+        avatar: user.avatar,
+      },
+    };
+
+    mutate(newComment);
+    setComment("");
+  };
 
   return (
-    <div className="w-full rounded-2xl border border-gray-200 bg-white p-4 mb-5">
-      <div className="flex items-start gap-4">
-        {/* Avatar */}
-        <img
-          src={user.avatar}
-          alt="user avatar"
-          className="h-10 w-10 rounded-full object-cover ring-2 ring-primary"
-        />
+    <form onSubmit={handleSubmit} className="flex">
+      <div className="w-full rounded-2xl border border-gray-200 bg-white p-4 mb-5">
+        <div className="flex items-start gap-4">
+          {/* Avatar */}
+          <img
+            src={user.avatar}
+            alt="user avatar"
+            className="h-10 w-10 rounded-full object-cover ring-2 ring-primary"
+          />
 
-        {/* Input */}
-        <textarea
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
-          placeholder="Add your comment..."
-          className="w-full pl-8 pr-4 py-2 bg-bacground border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
-        />
-      </div>
+          {/* Input */}
 
-      {/* Button */}
-      <div className="mt-3 flex justify-end">
-        <SimpleDarkButton
-          text="Send"
-          icon={<SendHorizontal className="w-4 " />}
-        />
+          <textarea
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                handleSubmit(e);
+              }
+            }}
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+            placeholder="Add your comment..."
+            className="w-full pl-8 pr-4 py-2 placeholder:text-lg bg-bacground border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
+          />
+        </div>
+
+        {/* Button */}
+        <div className="mt-3 flex justify-end">
+          <SimpleDarkButton
+            text="Send"
+            icon={<SendHorizontal className="w-4 " />}
+            onSubmit={handleSubmit}
+            isPending={isPending}
+          />
+        </div>
       </div>
-    </div>
+    </form>
   );
 }

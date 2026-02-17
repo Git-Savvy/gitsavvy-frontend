@@ -1,5 +1,5 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { fetchUser, updateUser } from "../api/users";
+import { useQuery,useMutation, useQueryClient } from "@tanstack/react-query";
+import { fetchUserById,fetchUser, updateUser } from "../api/users";
 import { useUserContext } from "../hooks/useUserContext";
 import { useNavigate } from "react-router-dom";
 export const useUserLogin = () => {
@@ -27,7 +27,7 @@ export const useUpdateUser = () => {
 
 export const useUpdatePreferences = () => {
   const queryClient = useQueryClient();
-  const { setUser } = useUserContext();
+  //const { setUser } = useUserContext();
 
   return useMutation({
     // We send the full updated user object to the server
@@ -38,15 +38,25 @@ export const useUpdatePreferences = () => {
       queryClient.setQueryData(["user", updatedUser.id], updatedUser);
       
       // 2. Sync with Local Storage (Critical for your refresh issue!)
-      localStorage.setItem("user", JSON.stringify(updatedUser));
+      // localStorage.setItem("user", JSON.stringify(updatedUser));
       
       // 3. Update the Context State
-      setUser(updatedUser);
+      // setUser(updatedUser);
       
       console.log("Preferences and Storage synced successfully.");
     },
     onError: (error) => {
       console.error("Sync failed:", error.message);
     }
+  });
+};
+
+export const useUserById = (id) => {
+  return useQuery({
+    queryKey: ["User", id], 
+    queryFn: () => fetchUserById(id),
+    enabled: !!id, // don’t run if id is undefined/null
+    staleTime: 1000 * 60 * 5, // 5 minutes
+    cacheTime: 1000 * 60 * 60, // 1 hour
   });
 };

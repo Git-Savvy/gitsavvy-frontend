@@ -265,7 +265,8 @@
       "assignedUserId": "1",
       "creationDate": "2025-10-15",
       "lastUpdatedDate": "2025-10-18",
-      "priority": "High"
+      "priority": "High",
+      "commentsNum": 2
     },
     {
       "id": "43",
@@ -278,7 +279,8 @@
       "assignedUserId": "1",
       "creationDate": "2025-10-12",
       "lastUpdatedDate": "2025-10-17",
-      "priority": "Medium"
+      "priority": "Medium",
+      "commentsNum": 2
     },
     {
       "id": "44",
@@ -291,7 +293,8 @@
       "assignedUserId": "1",
       "creationDate": "2025-10-05",
       "lastUpdatedDate": "2025-10-10",
-      "priority": "Low"
+      "priority": "Low",
+      "commentsNum": 2
     },
     {
       "id": "45",
@@ -304,7 +307,8 @@
       "assignedUserId": 126,
       "creationDate": "2025-10-16",
       "lastUpdatedDate": "2025-10-18",
-      "priority": "High"
+      "priority": "High",
+      "commentsNum": 2
     },
     {
       "id": "46",
@@ -317,7 +321,8 @@
       "assignedUserId": "1",
       "creationDate": "2026-01-08",
       "lastUpdatedDate": "2026-01-09",
-      "priority": "High"
+      "priority": "High",
+      "commentsNum": 2
     },
     {
       "id": "47",
@@ -330,7 +335,8 @@
       "assignedUserId": "1",
       "creationDate": "2026-01-09",
       "lastUpdatedDate": "2026-01-10",
-      "priority": "Medium"
+      "priority": "Medium",
+      "commentsNum": 0
     },
     {
       "id": "48",
@@ -343,7 +349,8 @@
       "assignedUserId": 129,
       "creationDate": "2026-01-10",
       "lastUpdatedDate": "2026-01-11",
-      "priority": "High"
+      "priority": "High",
+      "commentsNum": 2
     },
     {
       "id": "49",
@@ -356,7 +363,8 @@
       "assignedUserId": null,
       "creationDate": "2026-01-07",
       "lastUpdatedDate": "2026-01-08",
-      "priority": "Medium"
+      "priority": "Medium",
+      "commentsNum": 2
     },
     {
       "id": "50",
@@ -369,7 +377,8 @@
       "assignedUserId": null,
       "creationDate": "2026-01-08",
       "lastUpdatedDate": "2026-01-09",
-      "priority": "High"
+      "priority": "High",
+      "commentsNum": 2
     },
     {
       "id": "51",
@@ -382,7 +391,8 @@
       "assignedUserId": 132,
       "creationDate": "2026-01-09",
       "lastUpdatedDate": "2026-01-10",
-      "priority": "Low"
+      "priority": "Low",
+      "commentsNum": 2
     }
   ],
   "docs": [
@@ -630,6 +640,151 @@
           "type": "page"
         }
       ]
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "issueId": 42,
+      "createdAt": "2026-02-15T10:15:00Z",
+      "text": "This would be a great addition! I can help with the CSS variables setup.",
+      "user": {
+        "id": 1,
+        "userName": "Mshael",
+        "avatar": "https://i.pravatar.cc/150?img=2"
+      }
+    },
+    {
+      "id": 2,
+      "issueId": 42,
+      "createdAt": "2026-02-15T11:00:00Z",
+      "text": "Should we use CSS variables or a theming library like styled-components?",
+      "user": {
+        "id": 2,
+        "userName": "Sara",
+        "avatar": "https://i.pravatar.cc/150?img=5"
+      }
+    },
+    {
+      "id": 3,
+      "issueId": 42,
+      "createdAt": "2026-02-15T12:20:00Z",
+      "text": "I suggest starting with CSS variables for simplicity and performance.",
+      "user": {
+        "id": 1,
+        "userName": "Mshael",
+        "avatar": "https://i.pravatar.cc/150?img=2"
+      }
+    },
+    {
+      "id": 4,
+      "issueId": 43,
+      "createdAt": "2026-02-15T13:05:00Z",
+      "text": "We should define naming conventions for the variables early.",
+      "user": {
+        "id": 2,
+        "userName": "Sara",
+        "avatar": "https://i.pravatar.cc/150?img=5"
+      }
+    },
+    {
+      "id": 5,
+      "issueId": 43,
+      "createdAt": "2026-02-16T08:40:00Z",
+      "text": "Agree. Maybe use tokens like --color-primary and --spacing-md.",
+      "user": {
+        "id": 3,
+        "userName": "Omar",
+        "avatar": "https://i.pravatar.cc/150?img=12"
+      }
+    },
+    {
+      "id": 6,
+      "issueId": 44,
+      "createdAt": "2026-02-16T09:10:00Z",
+      "text": "We can integrate this with Tailwind config as well.",
+      "user": {
+        "id": 1,
+        "userName": "Mshael",
+        "avatar": "https://i.pravatar.cc/150?img=2"
+      }
+    },
+    {
+      "id": 7,
+      "issueId": 45,
+      "createdAt": "2026-02-16T10:00:00Z",
+      "text": "I will create a base theme file for light and dark modes.",
+      "user": {
+        "id": 2,
+        "userName": "Sara",
+        "avatar": "https://i.pravatar.cc/150?img=5"
+      }
+    },
+    {
+      "id": 8,
+      "issueId": 45,
+      "createdAt": "2026-02-16T10:30:00Z",
+      "text": "Don't forget accessibility contrast ratios.",
+      "user": {
+        "id": 3,
+        "userName": "Omar",
+        "avatar": "https://i.pravatar.cc/150?img=12"
+      }
+    },
+    {
+      "id": 9,
+      "issueId": 46,
+      "createdAt": "2026-02-16T11:00:00Z",
+      "text": "We should document usage examples for developers.",
+      "user": {
+        "id": 3,
+        "userName": "Omar",
+        "avatar": "https://i.pravatar.cc/150?img=12"
+      }
+    },
+    {
+      "id": 10,
+      "issueId": 42,
+      "createdAt": "2026-02-16T11:20:00Z",
+      "text": "I’ll add examples in Storybook and README.",
+      "user": {
+        "id": 2,
+        "userName": "Sara",
+        "avatar": "https://i.pravatar.cc/150?img=5"
+      }
+    },
+    {
+      "id": 11,
+      "issueId": 48,
+      "createdAt": "2026-02-16T12:00:00Z",
+      "text": "Maybe we should support RTL layouts since we target Arabic users.",
+      "user": {
+        "id": 1,
+        "userName": "Mshael",
+        "avatar": "https://i.pravatar.cc/150?img=2"
+      }
+    },
+    {
+      "id": 12,
+      "issueId": 49,
+      "createdAt": "2026-02-16T12:30:00Z",
+      "text": "Yes! RTL support is essential for our Saudi audience.",
+      "user": {
+        "id": 3,
+        "userName": "Omar",
+        "avatar": "https://i.pravatar.cc/150?img=12"
+      }
+    },
+    {
+      "id": 13,
+      "issueId": 50,
+      "createdAt": "2026-02-16T13:00:00Z",
+      "text": "Let’s also include dark mode toggle in user settings.",
+      "user": {
+        "id": 2,
+        "userName": "Sara",
+        "avatar": "https://i.pravatar.cc/150?img=5"
+      }
     }
   ]
 }

@@ -2,8 +2,9 @@ import { useState, useRef, useEffect } from "react";
 import { MessageSquare, X, Sparkles } from "lucide-react";
 import MessageBubble from "./MessageBubble";
 import ChatInput from "./ChatInput";
+import TypingIndicator from "./TypingIndicator";
 
-const FloatingChatbot = ({ messages, onSend }) => {
+const FloatingChatbot = ({ messages, onSend, isTyping }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   //helper for scroll functionality
@@ -12,7 +13,6 @@ const FloatingChatbot = ({ messages, onSend }) => {
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
-
 
   return (
     <div className="fixed bottom-6 right-6 z-[100] flex flex-col items-end font-sans max-h-[90%]">
@@ -46,12 +46,12 @@ const FloatingChatbot = ({ messages, onSend }) => {
             {messages.map((message) => (
               <MessageBubble key={message.id} message={message} />
             ))}
-
+            {isTyping && <TypingIndicator />}
             <div ref={bottomRef} />
           </div>
 
           {/* Input Area */}
-         <ChatInput onSend={onSend}/>
+          <ChatInput onSend={onSend} />
         </div>
       )}
 

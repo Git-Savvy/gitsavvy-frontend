@@ -21,41 +21,15 @@ export default function IssueDetail() {
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("description");
-  const comments = [
-    {
-      id: 1,
-      user: "sarahj",
-      time: "1 day ago",
-      text: "This would be a great addition! I can help with the CSS variables setup.",
-    },
-    {
-      id: 2,
-      user: "mikec",
-      time: "1 day ago",
-      text: "Should we use CSS variables or a theming library like styled-components?",
-    },
-    {
-      id: 3,
-      user: "mikec",
-      time: "1 day ago",
-      text: "Should we use CSS variables or a theming library like styled-components?",
-    },
-    {
-      id: 4,
-      user: "mikec",
-      time: "1 day ago",
-      text: "Should we use CSS variables or a theming library like styled-components?",
-    },
-  ];
 
-    function handleVisit() {
+  function handleVisit() {
     // Use _blank for a new tab, or _self to open in the same window
     window.open(issue.githubIssueLink, "_blank", "noopener,noreferrer");
   }
   const renderContent = () => {
     switch (activeTab) {
       case "comments":
-        return <Comments comments={comments} />;
+        return <Comments issueId={issue.id} />;
       default:
         return <DescriptionIssue issue={issue} />;
     }
@@ -118,7 +92,7 @@ export default function IssueDetail() {
                     <span className="lg:hidden">• </span>Opened{" "}
                     {timeAgo(issue.creationDate)}
                   </span>
-                  <span className="flex items-center gap-1">• 3 comments</span>
+                  <span className="flex items-center gap-1">{`• ${issue.commentsNum} comments`}</span>
                   <span className="flex items-center gap-1">
                     • <UserCircle size={20} /> johndoe
                   </span>
@@ -146,7 +120,7 @@ export default function IssueDetail() {
       </div>
 
       {/* 3. CTA Claim Banner */}
-      {issue.issueStatus=="Open" ? (
+      {issue.issueStatus == "Open" ? (
         <ClaimBanner setIsModalOpen={setIsModalOpen} />
       ) : (
         <ClaimedBanner />
@@ -154,11 +128,7 @@ export default function IssueDetail() {
 
       {/* 4. Navigation Bar (Tabs) */}
       <div>
-        <IssueNav
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-          num={comments.length}
-        />
+        <IssueNav activeTab={activeTab} setActiveTab={setActiveTab} num={issue.commentsNum}/>
         <div className="mt-6 ">{renderContent()}</div>
       </div>
       {/* The Modal Component */}

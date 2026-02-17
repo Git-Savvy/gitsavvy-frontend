@@ -19,3 +19,8 @@ export const updateUser = async (userId, updates) => {
   const res = await api.patch(`/users/${userId}`, updates);
   return res.data;
 };
+
+export const fetchUserById = async (id) => {
+  const res = await api.get(`/users?id=${id}`);
+  return res.data[0]; //If a user was found, it returns the first person in that list becose we are sure ..user is unique.
+};

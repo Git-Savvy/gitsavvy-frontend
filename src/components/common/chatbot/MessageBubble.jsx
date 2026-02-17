@@ -5,15 +5,15 @@ export default function MessageBubble({ message }) {
   };
 
   const InnerDivStyle = {
-    user: "border-2 border-Gray400 rounded-tr-none",
-    bot: "border border-Gray200 rounded-tl-none",
+    user: " border-Cyan400 rounded-tr-none bg-Cyan50",
+    bot: " border-Gray300 rounded-tl-none bg-background",
   };
 
   return (
     <div className={`flex flex-col w-full ${OuterDivStyle[message.sender]}`}>
       <div
-        className={`bg-background p-4 rounded-2xl text-text-secondary text-[15px] max-w-[85%] leading-relaxed 
-        ${InnerDivStyle[message.sender]}`}
+        className={`p-4 border rounded-2xl text-text-secondary text-[15px] max-w-[85%] leading-relaxed 
+       whitespace-pre-line break-words h-fit w-fit ${InnerDivStyle[message.sender]}`}
       >
         {message.text}
       </div>
