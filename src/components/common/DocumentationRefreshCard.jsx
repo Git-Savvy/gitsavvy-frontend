@@ -7,15 +7,17 @@ export default function DocumentationRefreshCard({ docs }) {
           <Sparkles className="w-5 h-5 text-primary" />
           <h1 className="text-textdark">AI Documentation Engine</h1>
         </div>
-        <button className="flex items-center gap-2 px-4 py-2 bg-background border-2 border-NavBorder rounded-lg text-medium  text-Gray600 font-medium bg-background hover:outline-1 hover:bg-hoverl transition-colors">
+        {/* <button className="flex items-center gap-2 px-4 py-2 bg-background border-2 border-NavBorder rounded-lg text-medium  text-Gray600 font-medium bg-background hover:outline-1 hover:bg-hoverl transition-colors">
           <RefreshCw className="w-4 h-4" />
           {docs ? "Refresh Docs" : "Create Docs"}
-        </button>
+        </button> */}
+        {/* May be added in future development*/}
       </div>
-      <p className="text-Gray600 leading-relaxed max-w-6xl text-lg">
-        AI-generated documentation is automatically updated when code changes
-        are detected. Documentation is organized hierarchically from
-        repository-level overview down to individual functions.
+      <p className="text-Gray600 leading-relaxed max-w-8xl text-lg">
+        Our platform uses AI to generate clear, structured documentation
+        directly from repository codebase. It organizes information from a high-level
+        project overview down to modules, classes, and individual
+        functions. Making it easy to explore, understand, and maintain.
       </p>
     </header>
   );

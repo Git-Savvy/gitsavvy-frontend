@@ -480,7 +480,7 @@
     {
       "id": "50",
       "issueTitle": "Fix responsive layout bug",
-      "issueStatus": "Open",
+      "issueStatus": "Claimed",
       "issueDescription": "Some project cards break layout on mobile screens. Update Tailwind classes for proper responsiveness.",
       "labels": [
         "Bug",
@@ -488,7 +488,7 @@
       ],
       "githubIssueLink": "https://github.com/programmingclub/Projects/issues/50",
       "repositoryId": 4,
-      "assignedUserId": null,
+      "assignedUserId": "1",
       "creationDate": "2026-01-08",
       "lastUpdatedDate": "2026-01-09",
       "priority": "High",
@@ -763,7 +763,7 @@
   ],
   "comments": [
     {
-      "id": 1,
+      "id": "1",
       "issueId": 42,
       "createdAt": "2026-02-15T10:15:00Z",
       "text": "This would be a great addition! I can help with the CSS variables setup.",
@@ -774,7 +774,7 @@
       }
     },
     {
-      "id": 2,
+      "id": "2",
       "issueId": 42,
       "createdAt": "2026-02-15T11:00:00Z",
       "text": "Should we use CSS variables or a theming library like styled-components?",
@@ -785,7 +785,7 @@
       }
     },
     {
-      "id": 3,
+      "id": "3",
       "issueId": 42,
       "createdAt": "2026-02-15T12:20:00Z",
       "text": "I suggest starting with CSS variables for simplicity and performance.",
@@ -796,7 +796,7 @@
       }
     },
     {
-      "id": 4,
+      "id": "4",
       "issueId": 43,
       "createdAt": "2026-02-15T13:05:00Z",
       "text": "We should define naming conventions for the variables early.",
@@ -807,7 +807,7 @@
       }
     },
     {
-      "id": 5,
+      "id": "5",
       "issueId": 43,
       "createdAt": "2026-02-16T08:40:00Z",
       "text": "Agree. Maybe use tokens like --color-primary and --spacing-md.",
@@ -818,7 +818,7 @@
       }
     },
     {
-      "id": 6,
+      "id": "6",
       "issueId": 44,
       "createdAt": "2026-02-16T09:10:00Z",
       "text": "We can integrate this with Tailwind config as well.",
@@ -829,7 +829,7 @@
       }
     },
     {
-      "id": 7,
+      "id": "7",
       "issueId": 45,
       "createdAt": "2026-02-16T10:00:00Z",
       "text": "I will create a base theme file for light and dark modes.",
@@ -840,7 +840,7 @@
       }
     },
     {
-      "id": 8,
+      "id": "8",
       "issueId": 45,
       "createdAt": "2026-02-16T10:30:00Z",
       "text": "Don't forget accessibility contrast ratios.",
@@ -851,7 +851,7 @@
       }
     },
     {
-      "id": 9,
+      "id": "9",
       "issueId": 46,
       "createdAt": "2026-02-16T11:00:00Z",
       "text": "We should document usage examples for developers.",
@@ -862,7 +862,7 @@
       }
     },
     {
-      "id": 10,
+      "id": "10",
       "issueId": 42,
       "createdAt": "2026-02-16T11:20:00Z",
       "text": "I’ll add examples in Storybook and README.",
@@ -873,7 +873,7 @@
       }
     },
     {
-      "id": 11,
+      "id": "11",
       "issueId": 48,
       "createdAt": "2026-02-16T12:00:00Z",
       "text": "Maybe we should support RTL layouts since we target Arabic users.",
@@ -884,7 +884,7 @@
       }
     },
     {
-      "id": 12,
+      "id": "12",
       "issueId": 49,
       "createdAt": "2026-02-16T12:30:00Z",
       "text": "Yes! RTL support is essential for our Saudi audience.",
@@ -895,7 +895,7 @@
       }
     },
     {
-      "id": 13,
+      "id": "13",
       "issueId": 50,
       "createdAt": "2026-02-16T13:00:00Z",
       "text": "Let’s also include dark mode toggle in user settings.",
@@ -910,6 +910,17 @@
       "issueId": "42",
       "createdAt": "2026-02-17T16:04:47.700Z",
       "text": "hi",
+      "user": {
+        "id": "1",
+        "userName": "Mshael",
+        "avatar": "https://i.pravatar.cc/150?img=2"
+      }
+    },
+    {
+      "id": "cdea",
+      "issueId": "42",
+      "createdAt": "2026-02-28T17:36:14.987Z",
+      "text": "yyyyyyyyyyy",
       "user": {
         "id": "1",
         "userName": "Mshael",

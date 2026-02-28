@@ -1,10 +1,12 @@
-import logo from "../../assets/lightLogo.svg";
+import imgLight from "../../assets/lightLogo.svg";
+import imgDark from "../../assets/DarkLogo.svg";
 import { ChevronDown, Briefcase } from "lucide-react";
 import { NavLink } from "react-router-dom";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect,useContext } from "react";
 import { useUserContext } from "../../hooks/useUserContext";
 import ProfileDropdownMenu from "../common/profilePageComponents/ProfileDropdownMenu";
 import ThemeSwitcher from "../common/ThemeSwitcher";
+import { ThemeContext } from "../../context/ThemeContext";
 export default function Navbar() {
   const { user } = useUserContext(); //just access without modifying anything
   const [isOpen, setIsOpen] = useState(false);
@@ -23,11 +25,16 @@ export default function Navbar() {
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
+
+
+    const { theme } = useContext(ThemeContext);
+    const img= theme==="light"?imgLight:imgDark;
+
   return (
     <nav className="flex items-center justify-between gap-2 px-6 py-4 border-b-2  border-Gray200 bg-white h-[4rem] lg:shadow-sm">
       {/* Left */}
       <NavLink to="/home">
-        <img src={logo} className="w-[12rem] lg:w-[17rem]" />
+        <img src={img} className="w-[12rem] lg:w-[17rem]" />
       </NavLink>
 
       {/* Right */}

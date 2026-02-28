@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import AuthCard from "../components/layout/AuthCard";
-import img from "../assets/lightLogo.svg";
+import imgLight from "../assets/lightLogo.svg";
+import imgDark from "../assets/DarkLogo.svg";
 import star from "../assets/starLogo.png";
 import light from "../assets/lightningLogo.png";
 import code from "../assets/codeLogo.png";
 import increase from "../assets/increaseLogo.png";
 import ThemeSwitcher from "../components/common/ThemeSwitcher";
+import { ThemeContext } from "../context/ThemeContext";
 const Landing = () => {
   const features = [
     {
@@ -25,9 +27,12 @@ const Landing = () => {
       image: increase,
     },
   ];
+
+  const { theme } = useContext(ThemeContext);
+  const img= theme==="light"?imgLight:imgDark;
   return (
     <section className="min-h-screen bg-background flex items-center m-5 ">
-      <div>
+      <div className="m-auto">
         <div className="w-full h-[10%] flex justify-end mb-5">
           <ThemeSwitcher />
         </div>

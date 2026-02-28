@@ -12,7 +12,7 @@ export default function IssueNav({ activeTab, setActiveTab, num }) {
           className={`py-2 px-2 md:px-6 ${
             activeTab === tab.id
               ? "bg-NavSelected text-NavText2 rounded-full font-semibold border-2 border-NavBorde lg:shadow-sm"
-              : "text-NavText1"
+              : "text-NavText1  font-semibold"
           }`}
         >
           {tab.label}
