@@ -12,6 +12,11 @@ export default defineConfig({
         target: "http://127.0.0.1:8000",
         changeOrigin: true,
       },
+      // README endpoint
+      "/repositories": {
+        target: "http://127.0.0.1:8000",
+        changeOrigin: true,
+      },
     },
   },
   plugins: [react(), tailwindcss()],

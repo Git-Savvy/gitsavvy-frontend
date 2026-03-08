@@ -20,7 +20,10 @@ export default function MainContentCard({
   if (isPending) return <SkeletonCard containerStyle="w-full h-[450px]" />;
 
   // 3. Error State
-  if (error) return <ErrorMessage message={error.message} containerStyle="w-full h-[450px]" />;
+  if (error)
+    return (
+      <ErrorMessage message={error.message} containerStyle="w-full h-[450px]" />
+    );
 
   // 4. File Selected but no Chunks returned by DB
   if (docData && docData.length === 0) {
@@ -49,12 +52,14 @@ export default function MainContentCard({
           >
             {/* Header: Displays signature (e.g., "function setupTermynal()") or File Summary title */}
             {chunk.signature ? (
-              <h2 className="text-xl font-semibold text-NavBorder mb-4 bg-Nav/70 p-3 rounded-lg border border-Gray200 inline-block w-full text-center">
-                {chunk.signature}
-              </h2>
+              <>
+                <h2 className="text-xl font-semibold text-NavBorder/70 mb-4 p-3 rounded-lg inline-block w-full text-center ">
+                  {chunk.signature}
+                </h2>
+              </>
             ) : (
               chunk.type === "file_summary" && (
-                <h1 className="text-3xl font-bold text-NavBorder mb-6 p-3 rounded-lg w-full text-center bg-Nav/70">
+                <h1 className="text-3xl font-bold text-NavBorder/70 mb-6 p-3 rounded-lg  w-full text-center ">
                   File Overview
                 </h1>
               )
@@ -73,7 +78,7 @@ export default function MainContentCard({
                 <p className="text-sm font-bold text-Gray400 mb-2 uppercase tracking-widest font-mono">
                   Source Context
                 </p>
-                <pre className="bg-zinc-900 text-zinc-100 p-6 rounded-xl font-mono text-sm overflow-x-auto shadow-inner">
+                <pre className="bg-zinc-900 text-indigo-300 p-6 rounded-xl font-mono text-sm overflow-x-auto shadow-inner">
                   <code className="block">{chunk.code}</code>
                 </pre>
               </div>

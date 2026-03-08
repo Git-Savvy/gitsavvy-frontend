@@ -3,7 +3,7 @@
 ---------------------------------------------- */
 @import "tailwindcss";
 @plugin "tailwind-scrollbar";
-
+@plugin "@tailwindcss/typography";
 /* ---------------------------------------------
    Enable dark mode variant
    This tells Tailwind to look for the .dark class
@@ -23,7 +23,7 @@
   --color-Purple50: #faf5ff;
   --color-Nav: #b88ef4;
   --color-NavSelected: #faf5ff;
-  --color-Warning:#FFFBEB;
+  --color-Warning: #fffbeb;
   --color-Gray300: #d1d5db;
   /*Gradient Pair*/
   --color-SCyan: #edfbfa;
@@ -34,11 +34,11 @@
   /* border */
   --color-Gray200: #d1d5db; /*border-gray-200   gray-200	#e5e7eb replaced bu gray 300*/
   --color-Indigo300: #a5b4fc; /*border-indigo-300*/
-  --color-Teal400: #0d9488;/*in light mood teal-600*/
-  --color-Cyan400:#0891b2; /*in light mood cyan-600*/
+  --color-Teal400: #0d9488; /*in light mood teal-600*/
+  --color-Cyan400: #0891b2; /*in light mood cyan-600*/
   --color-Purple400: #c084fc;
   --color-NavBorder: #321e73;
-
+  /*bg-zinc-900 text-indigo-300 use them for code section*/
   /* Text */
   --color-textdark: #171717; /* primary text */
   --color-text-secondary: #525252; /* secondary text */
@@ -51,7 +51,7 @@
   --color-Indigo900: #312e81; /*border-indigo-900*/
   --color-NavText1: #fff; /*not change in both mood*/
   --color-NavText2: #321e73;
-  --color-WarningText:#92400E;
+  --color-WarningText: #92400e;
   /* Brand */
   --color-primary: #321e73;
 
@@ -71,13 +71,13 @@
   .dark {
     /* Backgrounds */
     --color-background: #0b0d10; /* Slightly lighter surface */
-    --color-white: #24292E; /* Industry standard dark grey */
+    --color-white: #24292e; /* Industry standard dark grey */
     --color-Indigo50: #1e1b4b;
     --color-Cyan50: #082f2c;
     --color-Purple50: #241e2f;
     --color-Nav: #082f2c;
     --color-NavSelected: #040d0c;
-    --color-Warning:#1C1917;
+    --color-Warning: #1c1917;
     /*Gradient Pair*/
     --color-SCyan: #040d0c;
     --color-ECyan: #0d3d39;
@@ -99,14 +99,14 @@
     --color-NavText1: #fff; /* stay white in both mood */
     --color-NavText2: #00d5be; /* change on mood */
     --color-Slate400: #94a3b8; /* insted of zink i used it no data message*/
-    --color-WarningText:#FDE68A;
+    --color-WarningText: #fde68a;
 
     /* Brand (Electric Indigo) */
     --color-primary: #a16fe0;
 
     /* Hover */
     --color-hoverl: #000;
-    --color-hoverd:  #9159d9; /*#b88ef4; */
+    --color-hoverd: #9159d9; /*#b88ef4; */
     --color-texthover: #c7d2fe;
     /* UI */
     --color-primaryLableBg: #0b0d10;

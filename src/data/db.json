@@ -38,15 +38,8 @@
         }
       ],
       "preferences": {
-        "languages": [
-          "TypeScript",
-          "JavaScript",
-          "Python"
-        ],
-        "interests": [
-          "Web Development",
-          "UI/UX"
-        ]
+        "languages": ["TypeScript", "JavaScript", "Python"],
+        "interests": ["Web Development", "UI/UX"]
       },
       "status": "active"
     },
@@ -76,14 +69,8 @@
         }
       ],
       "preferences": {
-        "languages": [
-          "JavaScript",
-          "React"
-        ],
-        "interests": [
-          "Frontend",
-          "UI Design"
-        ]
+        "languages": ["JavaScript", "React"],
+        "interests": ["Frontend", "UI Design"]
       },
       "status": "active"
     },
@@ -100,15 +87,8 @@
       "level": 3,
       "badges": [],
       "preferences": {
-        "languages": [
-          "Java",
-          "Spring",
-          "SQL"
-        ],
-        "interests": [
-          "Backend",
-          "Databases"
-        ]
+        "languages": ["Java", "Spring", "SQL"],
+        "interests": ["Backend", "Databases"]
       },
       "status": "inactive"
     }
@@ -123,25 +103,10 @@
       "forks": 734,
       "openIssues": 3,
       "contributors": 37,
-      "tags": [
-        "React",
-        "Vite",
-        "Tailwind",
-        "UI"
-      ],
-      "programmingLanguage": [
-        "Python",
-        "Terraform",
-        "Bash"
-      ],
+      "tags": ["React", "Vite", "Tailwind", "UI"],
+      "programmingLanguage": ["Python", "Terraform", "Bash"],
       "externalRepoLink": "https://github.com/octocat/cloud-infrastructure",
-      "contributorIDs": [
-        1,
-        2,
-        3,
-        4,
-        5
-      ],
+      "contributorIDs": [1, 2, 3, 4, 5],
       "lastUpdated": "2026-01-15T12:34:00Z",
       "status": "active"
     },
@@ -154,20 +119,10 @@
       "forks": 30,
       "openIssues": 19,
       "contributors": 37,
-      "tags": [
-        "TypeScript",
-        "Python"
-      ],
-      "programmingLanguage": [
-        "TypeScript",
-        "Python"
-      ],
+      "tags": ["TypeScript", "Python"],
+      "programmingLanguage": ["TypeScript", "Python"],
       "externalRepoLink": "https://github.com/mashael/EmergencyApp",
-      "contributorIDs": [
-        1,
-        2,
-        6
-      ],
+      "contributorIDs": [1, 2, 6],
       "lastUpdated": "2026-01-10T09:20:00Z",
       "status": "active"
     },
@@ -180,22 +135,10 @@
       "forks": 15,
       "openIssues": 2,
       "contributors": 37,
-      "tags": [
-        "AI",
-        "Nutrition",
-        "Health",
-        "React"
-      ],
-      "programmingLanguage": [
-        "Python",
-        "React"
-      ],
+      "tags": ["AI", "Nutrition", "Health", "React"],
+      "programmingLanguage": ["Python", "React"],
       "externalRepoLink": "https://github.com/mashael/DiabetesDietAI",
-      "contributorIDs": [
-        1,
-        7,
-        8
-      ],
+      "contributorIDs": [1, 7, 8],
       "lastUpdated": "2026-01-05T15:45:00Z",
       "status": "active"
     },
@@ -208,25 +151,10 @@
       "forks": 10,
       "openIssues": 0,
       "contributors": 37,
-      "tags": [
-        "React",
-        "JavaScript",
-        "Club",
-        "Portfolio"
-      ],
-      "programmingLanguage": [
-        "JavaScript",
-        "React",
-        "Tailwind"
-      ],
+      "tags": ["React", "JavaScript", "Club", "Portfolio"],
+      "programmingLanguage": ["JavaScript", "React", "Tailwind"],
       "externalRepoLink": "https://github.com/programmingclub/Projects",
-      "contributorIDs": [
-        2,
-        3,
-        4,
-        9,
-        10
-      ],
+      "contributorIDs": [2, 3, 4, 9, 10],
       "lastUpdated": "2026-01-12T08:00:00Z",
       "status": "archived"
     },
@@ -239,51 +167,15 @@
       "forks": 10,
       "openIssues": 0,
       "contributors": 37,
-      "tags": [
-        "React",
-        "JavaScript",
-        "Club",
-        "Portfolio"
-      ],
-      "programmingLanguage": [
-        "JavaScript",
-        "React",
-        "Tailwind"
-      ],
+      "tags": ["React", "JavaScript", "Club", "Portfolio"],
+      "programmingLanguage": ["JavaScript", "React", "Tailwind"],
       "externalRepoLink": "https://github.com/programmingclub/Projects5",
-      "contributorIDs": [
-        2,
-        3,
-        4,
-        9,
-        10
-      ],
+      "contributorIDs": [2, 3, 4, 9, 10],
       "lastUpdated": "2025-01-12T08:00:00Z",
       "status": "archived"
     }
   ],
-  "readmes": [
-    {
-      "id": "1",
-      "repoId": 2,
-      "content": "# Cloud Infrastructure\n\nInfrastructure as code templates for AWS, Azure, and GCP.\nThis project provides production-ready Terraform and scripting templates designed to simplify cloud deployment and management.\n\n## Features\n- Modular Terraform architecture\n- Multi-cloud support (AWS, Azure, GCP)\n- Secure IAM and networking templates\n- CI/CD-ready structure\n\n## Use Cases\n- Rapid cloud environment setup\n- Standardized infrastructure across teams\n- Best-practice cloud security implementation"
-    },
-    {
-      "id": "2",
-      "repoId": 200,
-      "content": "# EmergencyApp\n\nEmergencyApp is a smart emergency communication system with AI-powered first aid guidance.\nThe app enables users to quickly contact emergency services and share critical medical and location information.\n\n## Core Features\n- One-tap emergency calling\n- Voice-activated emergency trigger\n- Real-time location sharing\n- AI-based first aid instructions\n- Smartwatch vital sign monitoring\n\n## Target Users\n- Individuals\n- Elderly users\n- People with chronic conditions"
-    },
-    {
-      "id": "3",
-      "repoId": 3,
-      "content": "# DiabetesDietAI\n\nDiabetesDietAI is an AI-driven system that provides personalized meal recommendations for diabetes management.\nIt analyzes user food intake, blood sugar levels, and preferences to suggest healthier meal options.\n\n## Key Capabilities\n- Personalized meal planning\n- Blood sugar–aware recommendations\n- Regional food database\n- AI-based decision logic\n\n## Goal\nHelp users maintain stable blood glucose levels through smarter nutrition choices."
-    },
-    {
-      "id": "4",
-      "repoId": 4,
-      "content": "# ProgrammingClubProjects\n\nThis repository contains a collection of projects developed during Programming Club courses.\nIt serves as a portfolio showcase and learning reference for club members.\n\n## Included Projects\n- Web development projects\n- React and JavaScript applications\n- UI/UX practice projects\n- Team-based course assignments\n\n## Purpose\n- Encourage collaborative learning\n- Showcase student achievements\n- Provide reusable learning resources"
-    }
-  ],
+
   "metrics": [
     {
       "id": "1",
@@ -340,12 +232,7 @@
       "issueTitle": "Fix login bug in authentication module",
       "issueStatus": "Claimed",
       "issueDescription": "Users are unable to login when passwords contain special characters. Need to sanitize input and add unit tests.",
-      "labels": [
-        "Good First Issue",
-        "Help Wanted",
-        "Bug",
-        "Enhancement"
-      ],
+      "labels": ["Good First Issue", "Help Wanted", "Bug", "Enhancement"],
       "githubIssueLink": "https://github.com/octocat/HelloWorld/issues/42",
       "repositoryId": 2,
       "assignedUserId": "1",
@@ -359,11 +246,7 @@
       "issueTitle": "Improve dashboard responsiveness",
       "issueStatus": "Claimed",
       "issueDescription": "Dashboard layout breaks on smaller screens. Adjust CSS and Tailwind classes to ensure proper display across devices.",
-      "labels": [
-        "Easy",
-        "Enhancement",
-        "Good First Issue"
-      ],
+      "labels": ["Easy", "Enhancement", "Good First Issue"],
       "githubIssueLink": "https://github.com/octocat/HelloWorld/issues/43",
       "repositoryId": 2,
       "assignedUserId": "1",
@@ -377,11 +260,7 @@
       "issueTitle": "Update README documentation",
       "issueStatus": "Claimed",
       "issueDescription": "The README is outdated. Add new setup instructions, screenshots, and API usage examples for the emergency app.",
-      "labels": [
-        "Easy",
-        "Enhancement",
-        "Documentation"
-      ],
+      "labels": ["Easy", "Enhancement", "Documentation"],
       "githubIssueLink": "https://github.com/octocat/HelloWorld/issues/44",
       "repositoryId": 200,
       "assignedUserId": "1",
@@ -395,11 +274,7 @@
       "issueTitle": "Fix API error handling",
       "issueStatus": "Open",
       "issueDescription": "Some errors from the emergency API are not logged or displayed. Add proper error messages and retry logic.",
-      "labels": [
-        "Bug",
-        "High Priority",
-        "Enhancement"
-      ],
+      "labels": ["Bug", "High Priority", "Enhancement"],
       "githubIssueLink": "https://github.com/octocat/HelloWorld/issues/45",
       "repositoryId": 200,
       "assignedUserId": 126,
@@ -413,11 +288,7 @@
       "issueTitle": "Improve AI meal suggestions",
       "issueStatus": "Claimed",
       "issueDescription": "AI sometimes suggests high-sugar meals. Adjust algorithm to better consider recent blood sugar readings.",
-      "labels": [
-        "Enhancement",
-        "AI",
-        "Health"
-      ],
+      "labels": ["Enhancement", "AI", "Health"],
       "githubIssueLink": "https://github.com/mashael/DiabetesDietAI/issues/46",
       "repositoryId": 3,
       "assignedUserId": "1",
@@ -431,10 +302,7 @@
       "issueTitle": "Add regional Saudi foods",
       "issueStatus": "Open",
       "issueDescription": "Include local Saudi cuisine options in the meal database to make diet suggestions culturally relevant.",
-      "labels": [
-        "Feature",
-        "Database"
-      ],
+      "labels": ["Feature", "Database"],
       "githubIssueLink": "https://github.com/mashael/DiabetesDietAI/issues/47",
       "repositoryId": 3,
       "assignedUserId": "1",
@@ -448,10 +316,7 @@
       "issueTitle": "Fix glucose reading bug",
       "issueStatus": "Open",
       "issueDescription": "Some glucose readings are not updating in real-time due to API latency. Add proper error handling and retries.",
-      "labels": [
-        "Bug",
-        "Critical"
-      ],
+      "labels": ["Bug", "Critical"],
       "githubIssueLink": "https://github.com/mashael/DiabetesDietAI/issues/48",
       "repositoryId": 3,
       "assignedUserId": 129,
@@ -465,10 +330,7 @@
       "issueTitle": "Add project showcase page",
       "issueStatus": "Open",
       "issueDescription": "Create a dynamic page to showcase all club projects with filters for tech stack and course.",
-      "labels": [
-        "Feature",
-        "UI"
-      ],
+      "labels": ["Feature", "UI"],
       "githubIssueLink": "https://github.com/programmingclub/Projects/issues/49",
       "repositoryId": 4,
       "assignedUserId": null,
@@ -482,10 +344,7 @@
       "issueTitle": "Fix responsive layout bug",
       "issueStatus": "Claimed",
       "issueDescription": "Some project cards break layout on mobile screens. Update Tailwind classes for proper responsiveness.",
-      "labels": [
-        "Bug",
-        "UI"
-      ],
+      "labels": ["Bug", "UI"],
       "githubIssueLink": "https://github.com/programmingclub/Projects/issues/50",
       "repositoryId": 4,
       "assignedUserId": "1",
@@ -499,9 +358,7 @@
       "issueTitle": "Update README with instructions",
       "issueStatus": "Open",
       "issueDescription": "Add setup instructions and screenshots for each project in the repo README.",
-      "labels": [
-        "Documentation"
-      ],
+      "labels": ["Documentation"],
       "githubIssueLink": "https://github.com/programmingclub/Projects/issues/51",
       "repositoryId": 4,
       "assignedUserId": 132,
@@ -511,7 +368,7 @@
       "commentsNum": 2
     }
   ],
- 
+
   "comments": [
     {
       "id": "1",
