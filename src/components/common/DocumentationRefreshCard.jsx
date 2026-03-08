@@ -1,5 +1,5 @@
 import { Sparkles, RefreshCw } from "lucide-react";
-export default function DocumentationRefreshCard({ docs }) {
+export default function DocumentationRefreshCard() {
   return (
     <header className="border-2 border-NavBorder rounded-2xl p-8 lg:shadow-sm bg-gradient-to-br from-SCyan to-ECyan ">
       <div className="flex flex-col md:flex-row justify-between items-start mb-4">
@@ -14,10 +14,12 @@ export default function DocumentationRefreshCard({ docs }) {
         {/* May be added in future development*/}
       </div>
       <p className="text-Gray600 leading-relaxed max-w-8xl text-lg">
-        Our platform uses AI to generate clear, structured documentation
-        directly from repository codebase. It organizes information from a high-level
-        project overview down to modules, classes, and individual
-        functions. Making it easy to explore, understand, and maintain.
+        Turn complex codebases into clear, easy-to-navigate documentation. Our
+        AI analyzes your repository and generates structured explanations
+        directly from the source code. Browse the project through an interactive
+        explorer, open any file, and instantly see meaningful insights,
+        summaries, and relevant code context. It’s a faster way to understand
+        how a project works, without digging through every line of code.
       </p>
     </header>
   );

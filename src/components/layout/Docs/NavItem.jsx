@@ -5,27 +5,76 @@ import {
   Folder,
   FileText,
   Code2,
+  Loader2,
 } from "lucide-react";
-//depth: A number (0, 1, 2...) that tells the component how far "in" it is.
-//This is used to add the left margin (indentation).
-export const NavItem = ({ item, depth = 0, activeSlug, onSelect }) => {
-  //Each folder manages its own state. If isOpen is true, you see the children. If false, they are hidden. We start with true so the sidebar looks full when the page loads.
-  const [isOpen, setIsOpen] = useState(true);
-  const hasChildren = item.type === "folder" && item.children?.length > 0;//check if folder and has content inside
-  const isActive = activeSlug === item.slug;
+import { useRepoChildren } from "../../../hooks/useDocQuery";
 
-  const Icon =
-    item.type === "folder"
-      ? Folder
-      : item.slug?.includes("component")
-        ? Code2
-        : FileText;
+export default function NavItem({
+  item,
+  depth,
+  activeSlug,
+  onSelect,
+  repoId, // Passed down from Sidebar/Docs
+}) {
+  const [isOpen, setIsOpen] = useState(false); // Start closed for subfolders
 
-  const handleClick = () => {
-    if (hasChildren) {
-      setIsOpen(!isOpen); // Toggle folder open/close
-    } else if (item.slug) {//true only if item has slug(type==page)
-      onSelect(item.slug); // Notify parent to change main content
+  const isFolder = item.type === "folder";
+
+  // 1. Fetch children ONLY if it's a folder and it is open
+  const { data, isPending } = useRepoChildren(repoId, item.id, {
+    enabled: isFolder && isOpen,
+  });
+
+  const isActive = !isFolder && activeSlug === item.id;
+
+  // 2. Define strictly what counts as "Code" for filtering
+  const codeExtensions = [".js", ".py", ".ts", ".jsx", ".tsx", ".c", ".cpp"];
+
+  const ignoredFolders = [".github"];
+
+  // 3. Process and filter the children data from the API
+  const childrenModules = (data?.modules ?? []).filter((m) => {
+    const name = m.path?.toLowerCase().split("/").pop();
+    return !ignoredFolders.includes(name);
+  });
+
+  const childrenFiles = (data?.files ?? [])
+    .filter((file) => {
+      const path = file.file_path?.toLowerCase() || "";
+      return codeExtensions.some((ext) => path.endsWith(ext));
+    })
+    .map((file) => ({
+      ...file,
+      type: "page",
+      title: file.file_path?.split("/").pop() || "Untitled File",
+    }));
+
+  const allChildren = [
+    ...childrenModules.map((m) => ({
+      ...m,
+      type: "folder",
+      title: m.path,
+    })),
+    ...childrenFiles,
+  ];
+
+  const hasChildren = allChildren.length > 0;
+
+  const Icon = isFolder
+    ? Folder
+    : item.title?.includes(".js") ||
+        item.title?.includes(".py") ||
+        item.title?.includes("component")
+      ? Code2
+      : FileText;
+
+  const handleClick = (e) => {
+    e.stopPropagation();
+    if (isFolder) {
+      setIsOpen(!isOpen);
+    } else {
+      // Pass the file ID and the parent module ID for the Step 3 API
+      onSelect(item.id, item.module_id);
     }
   };
 
@@ -33,42 +82,46 @@ export const NavItem = ({ item, depth = 0, activeSlug, onSelect }) => {
     <div className="w-full">
       <div
         onClick={handleClick}
-        className={`
-          flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer transition-colors 
-          ${isActive ? "bg-Nav/30 text-NavBorder font-medium " : "hover:bg-background text-Gray600"}
-          ${depth > 0 ? "ml-4" : ""}
-        `}
+        className={`flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer transition-colors
+          ${isActive ? "bg-Nav/50 text-NavBorder font-medium" : "hover:bg-primaryLableBg text-Gray600"}`}
+        style={{ marginLeft: depth * 16 }}
       >
-        {/**depth represent the depth as if there is depth put margin left. */}
-        {hasChildren ? (
+        {isFolder ? (
           isOpen ? (
             <ChevronDown className="w-4 h-4" />
           ) : (
             <ChevronRight className="w-4 h-4" />
           )
         ) : (
-          <div className="w-4" />//// Keeps things aligned,so that the icons and text of the pages align perfectly with the icons and text of the folders.
+          <div className="w-4" />
         )}
 
-        <Icon
-          className={`w-4 h-4 ${isActive ? "text-NavBorder" : "text-Slate400"}`}
-        />
-        <span className="text-base">{item.title}</span>
+        {/* Show a loader icon if the folder is fetching its children */}
+        {isPending && isOpen ? (
+          <Loader2 className="w-4 h-4 animate-spin text-Gray400" />
+        ) : (
+          <Icon
+            className={`w-4 h-4 min-w-4 ${isActive ? "text-NavBorder" : "text-Slate400"}`}
+          />
+        )}
+
+        <span className="text-base truncate">{item.title}</span>
       </div>
 
-      {hasChildren && isOpen && (//the content of each folder which may be other files or simple pages
+      {isFolder && isOpen && hasChildren && (
         <div className="mt-1">
-          {item.children.map((child, index) => (//call the same component again(recursive )as many as child the current parents have
+          {allChildren.map((child) => (
             <NavItem
-              key={index}
+              key={`${child.type}-${child.id}`}
               item={child}
-              depth={depth + 1}//It passes depth + 1, which is why the sub-items are indented further than the parent.
+              depth={depth + 1}
               activeSlug={activeSlug}
               onSelect={onSelect}
+              repoId={repoId}
             />
           ))}
         </div>
       )}
     </div>
   );
-};
+}

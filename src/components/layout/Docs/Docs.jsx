@@ -1,52 +1,73 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import DocumentationRefreshCard from "../../common/DocumentationRefreshCard";
 import DocumentationSidebar from "./DocumentationSidebar";
 import MainContentCard from "./MainContentCard";
-import { getFirstSlug } from "../../../utils/getFirstSlug";
-import { useParams } from "react-router-dom";
-import { useDocsByRepoId } from "../../../hooks/useDocQuery";
+import { useRepoChildren, useDocsByFileId } from "../../../hooks/useDocQuery";
+
 export default function Docs() {
-  const { repoId } = useParams(); // get repoId from URL params
-  const { data: docEntry, isPending, error } = useDocsByRepoId(Number(repoId)); // get docs object for this repo
-  // useMemo ensures that the search only runs if the docs changes.}
-  // Extract just the pages array for the sidebar since we do not care here about repoid
-  //this array represent exact one in mockdata so it preserves the hierarchy
-  const pages = useMemo(() => docEntry?.pages || [], [docEntry]);
+  const { repoId } = useParams();
 
-  // State to track which page is currently selected
-  // Start with null or a placeholder
-  const [activeSlug, setActiveSlug] = useState(null);
+  // Track selection
+  // selectedModuleId is needed for the API path, but we also use it to
+  // identify which folder is open in the Sidebar.
+  const [selectedModuleId, setSelectedModuleId] = useState(null);
+  const [selectedFileId, setSelectedFileId] = useState(null);
 
-  // Automatically set the first slug when the pages data changes or activeSlug==null
-  useEffect(() => {
-    if (pages.length > 0 && !activeSlug) {
-      const firstSlug = getFirstSlug(pages);
-      setActiveSlug(firstSlug);
-    }
-  }, [pages, activeSlug]);
+  // 1. Fetch root-level children (modules and files)
+  const {
+    data: rootData,
+    isPending: isRootPending,
+    error: rootError,
+  } = useRepoChildren(Number(repoId));
+
+  const rootModules = rootData?.modules ?? []; //contain data array (hook extracted it)
+  const rootFiles = rootData?.files ?? [];
+  // 2. DATA: Fetch docs for selected file
+  // 1. Fetch the query
+  const {
+    data: docsResponse, // Rename this to represent the whole response object
+    isPending: isDocsPending,
+    error: docsError,
+  } = useDocsByFileId(Number(repoId), selectedModuleId, selectedFileId);
+
+  // 2. Safely extract the ARRAY from the "data" key in JSON
+  //  API returns { data: [...] }, so we need docsResponse.data
+    const docData =docsResponse?.docs?? [];
+
+  // // Auto-select the first file found at the root level if nothing is selected
+  // useEffect(() => {
+  //   if (rootFiles.length > 0 && !selectedFileId) {
+  //     setSelectedFileId(rootFiles[0].id);
+  //     setSelectedModuleId(rootFiles[0].module_id); //the module related to the specific file
+  //   }
+  // }, [rootFiles, selectedFileId]);
+
+  // Handle file selection (from sidebar)
+  const handleFileSelect = (fileId, moduleId) => {
+    setSelectedFileId(fileId);
+    setSelectedModuleId(moduleId); // Crucial for the STEP 3 API path
+  };
 
   return (
     <div className="min-h-screen font-sans text-Gray600">
       <div className="space-y-6">
-        <DocumentationRefreshCard docs={docEntry} />
+        <DocumentationRefreshCard />
 
         <div className="flex flex-col lg:flex-row gap-6">
-          {/* Pass pages array and the setter function */}
           <DocumentationSidebar
-            data={pages}
-            ///state and setState to control
-            activeSlug={activeSlug}
-            onSelect={setActiveSlug}
-            isPending={isPending}
-            error={error}
+            repoId={Number(repoId)}
+            initialData={{ modules: rootModules, files: rootFiles }}
+            selectedFileId={selectedFileId}
+            onFileSelect={handleFileSelect}
+            isPending={isRootPending}
+            error={rootError}
           />
-
-          {/* Pass the full docEntry and activeSlug to find specific content */}
           <MainContentCard
-            docEntry={docEntry}
-            activeSlug={activeSlug}
-            isPending={isPending}
-            error={error}
+            docData={docData} 
+            isPending={isDocsPending}
+            error={docsError}
+            selectedFileId={selectedFileId}
           />
         </div>
       </div>
