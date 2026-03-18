@@ -35,12 +35,19 @@ export default function Readme({ repoId }) {
 
         {/* README */}
         <div
-          className="prose max-w-none text-text-secondary   [&_>_p]:flex 
-        [&_>_p]:flex-wrap 
-        [&_>_p]:gap-2 
+          className="
+        prose max-w-none text-text-secondary leading-relaxed
+        [&>p]:flex-wrap 
+        [&>p]:gap-2 
+        [&>img]:block [&>img]:mx-auto [&>img]:!float-none
         [&_p_img]:max-w-[200px]
-        [&_img]:m-0
-        [&_img]:m-auto [&_p_img]:p-2 [&_strong]:text-textdark [&_h2]:text-NavBorder/70 [&_h3]:text-NavBorder/50 [&_h4]:text-NavBorder/40 [&_code]:text-indigo-300 [&_pre]:bg-zinc-900 [&_a]:text-Indigo300  bg-white"
+        [&_img]:bg-gray-200
+        [&_img]:inline
+        [&_>_img]:bg-gray-900
+        [&_p_img]:p-2
+        [&_strong]:text-textdark [&_h1]:text-NavBorder/70
+        [&_h2]:text-NavBorder/70 [&_h3]:text-NavBorder/50 [&_h4]:text-NavBorder/40
+        [&_code]:text-indigo-300 [&_pre]:bg-zinc-900 [&_a]:text-Indigo300 bg-white"
         >
           <ReactMarkdown rehypePlugins={[rehypeRaw]}>{readme}</ReactMarkdown>
         </div>

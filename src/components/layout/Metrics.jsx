@@ -8,9 +8,23 @@ import { useMetricsByRepoId } from "../../hooks/useMetricQuery";
 import NoDataMessage from "../messages/NoDataMessage";
 import SkeletonCard from "../messages/SkeletonCard";
 import ErrorMessage from "../messages/ErrorMessage";
-const Metrics = ({ repoId }) => {
-  const { data: metricStats, isPending, error } = useMetricsByRepoId(repoId);
+import { useParams } from "react-router-dom";
 
+const Metrics = ({}) => {
+  const { repoId } = useParams();
+  console.log("repoId:", repoId);
+  const {
+    data: metricsData,
+    isPending,
+    error,
+  } = useMetricsByRepoId(Number(repoId));
+
+  console.log("HOOK RUNNING");
+  console.log("loading:", isPending);
+  console.log("error:", error);
+  console.log("data:", metricsData);
+  const metricStats = metricsData?.stats;
+  console.log(metricStats);
   let Commits = 0;
   let CommitsG = 0;
   let PL = 0;
@@ -21,13 +35,13 @@ const Metrics = ({ repoId }) => {
   let ContributorsG = 0;
 
   if (metricStats) {
-    Commits = metricStats.totalCommits;
+    Commits = metricStats.num_of_commits;
     CommitsG = metricStats.growthCommits;
-    PL = metricStats.prsMerged;
+    PL = metricStats.num_of_merged_pr;
     PLG = metricStats.growthPr;
-    issueC = metricStats.issuesClosed;
+    issueC = metricStats.num_of_closed_issues;
     issueCG = metricStats.growthIssues;
-    Contributors = metricStats.contributors;
+    Contributors = metricStats.num_of_contributors;
     ContributorsG = metricStats.growthContributors;
   }
   const stats = [
@@ -60,39 +74,8 @@ const Metrics = ({ repoId }) => {
       color: "bg-cyan-400/15 border-cyan-400",
     },
   ];
-  const contributors = [
-    {
-      name: "Sarah Johnson",
-      commits: 342,
-      prs: 45,
-      img: "https://i.pravatar.cc/150?u=1",
-    },
-    {
-      name: "Michael Chen",
-      commits: 298,
-      prs: 38,
-      img: "https://i.pravatar.cc/150?u=2",
-    },
-    {
-      name: "Emily Rodriguez",
-      commits: 256,
-      prs: 32,
-      img: "https://i.pravatar.cc/150?u=3",
-    },
-    {
-      name: "David Kim",
-      commits: 234,
-      prs: 29,
-      img: "https://i.pravatar.cc/150?u=4",
-    },
-    {
-      name: "Lisa Anderson",
-      commits: 198,
-      prs: 24,
-      img: "https://i.pravatar.cc/150?u=5",
-    },
-  ];
-
+  const contributors = metricsData?.top_contributors;
+  console.log(contributors);
   const data = [
     { name: "Jan", commits: 145, prs: 25, issues: 12 },
     { name: "Feb", commits: 200, prs: 32, issues: 20 },
@@ -106,10 +89,9 @@ const Metrics = ({ repoId }) => {
     return (
       <div className=" bg-background min-h-screen">
         <div className="space-y-6 w-full">
-    
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-7 ">
             {stats.map((stat, i) => (
-              <SkeletonCard key={i} containerStyle={"h-[150px]"}/>
+              <SkeletonCard key={i} containerStyle={"h-[150px]"} />
             ))}
           </div>
 
@@ -127,8 +109,13 @@ const Metrics = ({ repoId }) => {
       <ErrorMessage containerStyle={"h-[500px]"} message={error.message} />
     );
 
-    if(!metricStats)
-      return(<NoDataMessage containerStyle={"h-[500px]"} text={"No matrics found for this repository"}/>)
+  if (!metricStats)
+    return (
+      <NoDataMessage
+        containerStyle={"h-[500px]"}
+        text={"No matrics found for this repository"}
+      />
+    );
 
   return (
     <div className=" bg-background min-h-screen font-sans text-Gray500">

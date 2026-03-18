@@ -1,6 +1,8 @@
 // utils/timeAgo.js
 export function timeAgo(dateString) {
-  const date = new Date(dateString);
+  // Remove microseconds for safe parsing
+  const normalized = dateString.replace(/\.\d+/, '');
+  const date = new Date(normalized);
   const now = new Date();
   const diffMs = now - date;
 

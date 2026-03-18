@@ -3,7 +3,7 @@ import { SendHorizontal } from "lucide-react";
 import SimpleDarkButton from "./SimpleDarkButton";
 import { useUserContext } from "../../hooks/useUserContext";
 import { useAddComment } from "../../hooks/useCommentQuery";
-export default function CommentBox({ issueId }) {
+export default function CommentBox({repoId, issueId }) {
   const [comment, setComment] = useState("");
   const { user } = useUserContext();
   const { mutate, isPending } = useAddComment();

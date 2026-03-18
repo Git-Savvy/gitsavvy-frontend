@@ -38,21 +38,22 @@ export default function IssuesList({ search, selectedStatus, selectedLabels }) {
 
     // 🔍 search
     const matchesSearch =
-      issue.issueTitle.toLowerCase().includes(query) ||
-      issue.issueDescription.toLowerCase().includes(query) ||
-      issue.labels?.some((l) => l.toLowerCase().includes(query));
+      issue.title.toLowerCase().includes(query) ||
+      issue.body.toLowerCase().includes(query);
+    // ||
+    // issue.labels?.some((l) => l.toLowerCase().includes(query));
 
     // 🏷 labels
-    const matchesLabels =
-      selectedLabels.length === 0 ||
-      selectedLabels.every((label) => issue.labels.includes(label));
+    // const matchesLabels =
+    //   selectedLabels.length === 0 ||
+    //   selectedLabels.every((label) => issue.labels.includes(label));
 
     // 📌 status
     const matchesStatus =
       selectedStatus === "" ||
-      issue.issueStatus?.toLowerCase() === selectedStatus.toLowerCase();
+      issue.state?.toLowerCase() === selectedStatus.toLowerCase();
 
-    return matchesSearch && matchesLabels && matchesStatus; //alll of them has to be true
+    return matchesSearch  && matchesStatus; // && matchesLabels //alll of them has to be true
   });
 
   return (

@@ -12,7 +12,7 @@ export default function TopContributerCard({ contributors }) {
                 {i + 1}
               </span>
               <img
-                src={person.img}
+                src={person.avatar_url}
                 className="w-10 h-10 rounded-full object-cover"
                 alt=""
               />
@@ -26,7 +26,7 @@ export default function TopContributerCard({ contributors }) {
               </div>
             </div>
             <div className="bg-background px-3 py-1 rounded-lg text-xs font-bold text-Gray600 group-hover:bg-indigo-50 group-hover:text-indigo-600 transition-colors">
-              {person.commits}
+              {person.num_of_contributions}
             </div>
           </div>
         ))}

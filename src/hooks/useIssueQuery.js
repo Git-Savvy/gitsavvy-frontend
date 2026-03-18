@@ -19,10 +19,10 @@ export const useIssues = () => {
   });
 };
 
-export const useIssue = (id) => {
+export const useIssue = (repoId,id) => {
   return useQuery({
     queryKey: ["issue", id],
-    queryFn: () => fetchIssueById(id),
+    queryFn: () => fetchIssueById(repoId,id),
     staleTime: 1000 * 30, // Keep data fresh for 30S
     cacheTime: 1000 * 60 * 5, // 5 minutes
   });

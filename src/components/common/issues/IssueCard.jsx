@@ -1,3 +1,4 @@
+import ReactMarkdown from "react-markdown";
 import { useNavigate } from "react-router-dom";
 import { MessageSquare, Clock, AlertCircle } from "lucide-react";
 import SimpleDarkButton from "../SimpleDarkButton";
@@ -14,17 +15,24 @@ export default function IssueCard({ issue }) {
           <div className="flex items-center gap-2">
             <AlertCircle className="w-5 h-5 md:w-7 md:h-7 text-Slate400" />
             <h3 className="text-lg md:text-2xl font-semibold text-textdark">
-              {issue.issueTitle}
+              {issue.title}
             </h3>
           </div>
 
           {/* Description */}
-          <p className="text-Gray600 text-[15px] md:text-lg leading-relaxed max-w-4xl">
-            {issue.issueDescription}
-          </p>
+
+           <div
+            className="prose text-Gray600 text-[15px] md:text-lg leading-relaxed max-w-5xl h-2xl 
+          [&_>_p]:flex-wrap 
+          [&_>_p]:gap-2 
+          [&_strong]:text-textdark [&_h2]:text-textdark [&_code]:text-indigo-300 
+          [&_pre]:bg-zinc-900 [&_a]:text-Indigo300  bg-white  line-clamp-2"
+          >
+            <ReactMarkdown>{issue.body}</ReactMarkdown>
+          </div>
 
           {/* Corrected Tags Mapping */}
-          <div className="flex flex-wrap gap-2 pt-1">
+          {/* <div className="flex flex-wrap gap-2 pt-1">
             {issue.labels.map((label, index) => (
               <span
                 key={index}
@@ -33,7 +41,7 @@ export default function IssueCard({ issue }) {
                 {label}
               </span>
             ))}
-          </div>
+          </div> */}
         </div>
 
         {/* Right Side: Action Button */}
@@ -41,7 +49,7 @@ export default function IssueCard({ issue }) {
           text="View Details"
           onClick={() => {
             navigate(
-              `/home/repoDetail/${issue.repositoryId}/issueDetail/${issue.id}`,
+              `/home/repoDetail/${issue.repository_id}/issueDetail/${issue.number}`,//here used number insted of id to align with api
             );
           }}
         />
@@ -51,11 +59,11 @@ export default function IssueCard({ issue }) {
       <div className="flex items-center justify-end gap-6  text-Slate400 text-sm">
         <div className="flex items-center gap-1.5">
           <Clock className="w-4 h-4" />
-          <span>{timeAgo(issue.creationDate)}</span>
+          <span>{timeAgo(issue.opened_at)}</span>
         </div>
         <div className="flex items-center gap-1.5">
           <MessageSquare className="w-4 h-4" />
-          <span>{issue.commentsNum}</span>
+          <span>{issue.num_of_comments}</span>
         </div>
       </div>
     </div>

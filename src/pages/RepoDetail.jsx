@@ -21,7 +21,7 @@ export default function RepoDetail() {
   const { data: repo, isPending, error } = useRepository(Number(repoId)); // convert to number
   function handleVisit() {
     // Use _blank for a new tab, or _self to open in the same window
-    window.open(repo.externalRepoLink, "_blank", "noopener,noreferrer");
+    window.open(repo.url, "_blank", "noopener,noreferrer");
   }
   if (isPending) return <SkeletonPage />;
   if (error) {
@@ -69,7 +69,7 @@ export default function RepoDetail() {
       <div className="mt-8">
         <div className="md:flex justify-between ">
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-textdark  mb-3">
-            {repo.title}
+            {repo.name}
           </h1>
           <SimpleLightButton
             text="View on GitHub"
@@ -83,27 +83,27 @@ export default function RepoDetail() {
         <div className="flex flex-col md:flex-row gap-4 text-sm  my-5 text-text-secondary">
           <span className="flex gap-1 text-base md:text-lg">
             <Star className="text-Yellow400" />
-            <p>{repo.stars}</p>
+            <p>{repo.stars_count}</p>
             <p>stars</p>
           </span>
           <span className="flex gap-1 text-base md:text-lg">
             <GitFork className="text-Gray600" />
-            <p>{repo.forks}</p>
+            <p>{repo.forks_count}</p>
             <p>forks</p>
           </span>
           <span className="flex gap-1 text-base md:text-lg">
             <Users className="text-primary" />
-            <p>{repo.contributers}</p>
+            {/* <p>{repo.contributers}</p> */}
             <p>contributers</p>
           </span>
         </div>
         <div className="flex gap-2 mt-3">
-          {repo.tags.map((tag) => (
+          {repo.topics.map((item) => (
             <span
-              key={tag}
+              key={item.id}
               className="md:text-base bg-primary  text-[#fff] text-bold  px-4 py-1 rounded-2xl bg-gray-300"
             >
-              {tag}
+              {item.topic}
             </span>
           ))}
         </div>

@@ -17,21 +17,21 @@ import SkeletonPage from "../components/messages/SkeletonPage";
 import ErrorMessage from "../components/messages/ErrorMessage";
 export default function IssueDetail() {
   const { repoId, issueId } = useParams(); // id from URL
-  const { data: issue, isPending, error } = useIssue(Number(issueId));
+  const { data: issue, isPending, error } = useIssue(Number(repoId),Number(issueId));
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("description");
 
   function handleVisit() {
     // Use _blank for a new tab, or _self to open in the same window
-    window.open(issue.githubIssueLink, "_blank", "noopener,noreferrer");
+    window.open(issue.url, "_blank", "noopener,noreferrer");
   }
   const renderContent = () => {
     switch (activeTab) {
       case "comments":
-        return <Comments issueId={issue.id} />;
+        return <Comments repoId={issue.repository_id} issueId={issue.number} />;//use number for issue insted of id
       default:
-        return <DescriptionIssue issue={issue} />;
+        return <DescriptionIssue body={issue.body} />;
     }
   };
   if (isPending) return <SkeletonPage />;
@@ -58,7 +58,7 @@ export default function IssueDetail() {
     <main className="max-w-8xl  flex-col gap-10 px-5 md:px-20 lg:px-45">
       {/* Back Link */}
       <BackButton
-        text=" Back to Repository"
+        text="Back to Repository"
         onClick={() => {
           navigate(`/home/repoDetail/${repoId}`);
         }}
@@ -69,20 +69,21 @@ export default function IssueDetail() {
         <div className="md:flex justify-between gap-2">
           <div className="flex flex-col lg:flex-row gap-3 ">
             <div className="flex  gap-5">
-              <div className=" w-16 h-16 bg-Teal400/20 rounded-full flex items-center justify-center text-Teal400">
-                <Info size={30} />
+              <div className=" w-17 h-17 bg-Teal400/20 rounded-full flex items-center justify-center text-Teal400">
+                {/* <Info size={30} /> */}
+                <img src={issue.author_avatar_url}className=" w-16 h-16 rounded-full"/>
               </div>
-              <span className="lg:hidden  font-normal text-xl border text-NavBorder bg-NavSelected  flex items-center justify-center rounded-xl w-13 h-8 mt-2">
-                #{issue.id}
-              </span>
+              {/* <span className="lg:hidden  font-normal text-xl border text-NavBorder bg-NavSelected  flex items-center justify-center rounded-full px-4 py-2 mt-2  h-fit">
+                #{issue.number}
+              </span> */}
             </div>
             <div className="space-y-3">
               <div className="flex gap-3 flex-col md:flex-row">
                 <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-textdark">
-                  {issue.issueTitle}
+                  {issue.title}
                 </h1>
-                <span className="hidden lg:flex  font-normal text-xl border text-NavBorder bg-NavSelected  text-center justify-center rounded-xl w-12 h-7 mt-2">
-                  #{issue.id}
+                <span className="flex  font-normal text-xl border text-NavSelected bg-NavBorder flex text-center justify-center rounded-full px-4 py-2 mt-2 h-fit">
+                  #{issue.number}
                 </span>
               </div>
 
@@ -90,11 +91,11 @@ export default function IssueDetail() {
                 <div className="flex flex-col lg:flex-row lg:items-center gap-4 text-base md:text-lg lg:text-xl text-Gray600">
                   <span>
                     <span className="lg:hidden">• </span>Opened{" "}
-                    {timeAgo(issue.creationDate)}
+                    {timeAgo(issue.opened_at)}
                   </span>
                   <span className="flex items-center gap-1">{`• ${issue.commentsNum} comments`}</span>
                   <span className="flex items-center gap-1">
-                    • <UserCircle size={20} /> johndoe
+                    • <UserCircle size={20} /> {issue.author_username}
                   </span>
                 </div>
               </div>

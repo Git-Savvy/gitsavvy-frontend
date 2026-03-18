@@ -30,9 +30,8 @@ export default function RepositoryList({search}) {
     const query = search.toLowerCase();
 
     return (
-      repo.title.toLowerCase().includes(query) ||
-      repo.programmingLanguage?.some((lang) => lang.toLowerCase().includes(query))||
-      repo.tags?.some((tag) => tag.toLowerCase().includes(query))
+      repo.name.toLowerCase().includes(query) ||
+      repo.topics?.some((tag) => tag.topic.toLowerCase().includes(query))
     );
   });
 

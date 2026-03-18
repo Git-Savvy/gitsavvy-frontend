@@ -3,12 +3,12 @@ import { timeAgo } from "../../utils/timeAgo";
 import SkeletonCard from "../messages/SkeletonCard";
 import ErrorMessage from "../messages/ErrorMessage";
 import NoDataMessage from "../messages/NoDataMessage";
-export default function CommentList({ issueId }) {
+export default function CommentList({ repoId,issueId }) {
   const {
     data: comments = [],
     isPending,
     error,
-  } = useCommentsByIssueId(issueId);
+  } = useCommentsByIssueId(repoId, issueId);
 
   if (isPending)
     return (
@@ -34,20 +34,20 @@ export default function CommentList({ issueId }) {
         >
           {
             <img
-              src={comment.user.avatar}
+              src={comment.avatar_url}
               className="w-10 h-10 rounded-full"
               alt="avatar"
             />
           }
           <div>
             <div className="flex gap-2 items-center mb-1">
-              <span className="font-bold text-sm">{comment.user.userName}</span>
+              <span className="font-bold text-sm">{comment.username}</span>
               <span className="text-xs text-Gray400">
                 {" "}
-                {timeAgo(comment.createdAt)}
+                {timeAgo(comment.posted_at)}
               </span>
             </div>
-            <p className="text-sm text-Gray600">{comment.text}</p>
+            <p className="text-sm text-Gray600">{comment.body}</p>
           </div>
         </div>
       ))}
