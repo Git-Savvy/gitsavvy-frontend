@@ -1,4 +1,5 @@
 import React from "react";
+import SkeletonCard from "../../messages/SkeletonCard"
 import { useMemo } from "react";
 import {
   BarChart,
@@ -10,12 +11,21 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-export default function MonthlyContributionCard({ data }) {
-  // 2. Transform the data to include the 'total' key
-  const chartData = useMemo(() => {
+export default function MonthlyContributionCard({ data ,year}) {
+   if(data==="loading"){return  <SkeletonCard containerStyle={"w-full h-[300px]"}></SkeletonCard>}
+  // 2. Transform the data to include the 'total' key if we get other dt beside number of contributorsd (future work)
+  // const chartData = useMemo(() => {
+  //   return data.map((item) => ({
+  //     ...item,
+  //     total: item.commits + item.prs + item.issues, // Summing the keys here
+  //   }));
+  // }, [data]);
+
+
+   const chartData = useMemo(() => {
     return data.map((item) => ({
       ...item,
-      total: item.commits + item.prs + item.issues, // Summing the keys here
+      total: item.contributions, // Summing the keys here
     }));
   }, [data]);
 
@@ -26,7 +36,7 @@ export default function MonthlyContributionCard({ data }) {
   return (
     <div className="w-full max-w-4xl bg-white border-2 border-Gray200 rounded-2xl p-8 lg:shadow-sm font-sans">
       <h2 className="text-xl font-medium text-text-secondary mb-12">
-        Monthly Contributions
+        Monthly Contributions for {year}
       </h2>
 
       <div className="h-[350px] w-full">

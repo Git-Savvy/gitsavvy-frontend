@@ -16,7 +16,7 @@ import { ReadmeProvider } from "./context/ReadmeContext";
 import { DocsProvider } from "./context/DocsContext";
 import NotFound from "./pages/NotFound";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { LoginForm } from "./pages/LoginForm";
+// import { LoginForm } from "./pages/LoginForm";
 import ProtectedRoute from "./pages/ProtectedRoute";
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
           <Routes>
             {/* PUBLIC ROUTES */}
             <Route path="/" element={<AuthPage />} />
-            <Route path="/login" element={<LoginForm />} />
+            {/* <Route path="/login" element={<LoginForm />} /> */}
 
             {/* PROTECTED ROUTES - Wrapped in the Gatekeeper */}
             <Route

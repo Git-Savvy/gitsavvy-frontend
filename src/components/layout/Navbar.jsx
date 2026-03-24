@@ -56,18 +56,18 @@ export default function Navbar() {
                 <div
                   className={`w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary  hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer ${isActive ? "bg-primary " : ""}`}
                 >
-                  <img
+                  {/* <img
                     src={user.avatar}
                     className="w-9 h-9 rounded-full"
                     alt="avatar"
-                  />
+                  /> */}
                 </div>
 
-                <span
+                {/* <span
                   className={`text-lg lg:text-xl font-simibold   transition-all duration-300 cursor-pointer ${isActive ? "text-primary" : "text-Gray600 hover:text-primary "}`}
                 >
                   {user.username}
-                </span>
+                </span> */}
               </div>
             )}
           </NavLink>

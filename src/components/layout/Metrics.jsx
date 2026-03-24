@@ -8,43 +8,84 @@ import { useMetricsByRepoId } from "../../hooks/useMetricQuery";
 import NoDataMessage from "../messages/NoDataMessage";
 import SkeletonCard from "../messages/SkeletonCard";
 import ErrorMessage from "../messages/ErrorMessage";
-import { useParams } from "react-router-dom";
 
-const Metrics = ({}) => {
-  const { repoId } = useParams();
+const Metrics = ({ repoId }) => {
   console.log("repoId:", repoId);
-  const {
-    data: metricsData,
-    isPending,
-    error,
-  } = useMetricsByRepoId(Number(repoId));
-
+  const { data: metricsData, isPending, error } = useMetricsByRepoId(repoId);
   console.log("HOOK RUNNING");
-  console.log("loading:", isPending);
-  console.log("error:", error);
-  console.log("data:", metricsData);
-  const metricStats = metricsData?.stats;
-  console.log(metricStats);
-  let Commits = 0;
-  let CommitsG = 0;
-  let PL = 0;
-  let PLG = 0;
-  let issueC = 0;
-  let issueCG = 0;
-  let Contributors = 0;
-  let ContributorsG = 0;
 
-  if (metricStats) {
-    Commits = metricStats.num_of_commits;
-    CommitsG = metricStats.growthCommits;
-    PL = metricStats.num_of_merged_pr;
-    PLG = metricStats.growthPr;
-    issueC = metricStats.num_of_closed_issues;
-    issueCG = metricStats.growthIssues;
-    Contributors = metricStats.num_of_contributors;
-    ContributorsG = metricStats.growthContributors;
-  }
-  const stats = [
+
+  let stats = [
+    {
+  
+    },
+    {
+      
+    },
+    {
+      
+    },
+    {
+      
+    },
+  ];
+
+
+  if (isPending)
+    return (
+      <div className=" bg-background min-h-screen">
+        <div className="space-y-6 w-full">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-7 ">
+            {stats.map((stats, i) => (
+              <SkeletonCard key={i} containerStyle={"h-[150px]"} />
+            ))}
+          </div>
+
+          <ContributionActivityCard data={"loading"} />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-4">
+            <TopContributerCard contributors={"loading"} />
+            <MonthlyContributionCard data={"loading"} />
+          </div>
+        </div>
+      </div>
+    );
+
+  if (error)
+    return (
+      <ErrorMessage containerStyle={"h-[500px]"} message={error.message} />
+    );
+
+  if (!metricsData)
+    return (
+      <NoDataMessage
+        containerStyle={"h-[500px]"}
+        text={"No matrics found for this repository"}
+      />
+    );
+
+  
+  // let Commits = 0;
+  // let CommitsG = 0;
+  // let PL = 0;
+  // let PLG = 0;
+  // let issueC = 0;
+  // let issueCG = 0;
+  // let Contributors = 0;
+  // let ContributorsG = 0;
+
+   const metricStats = metricsData?.stats;
+ 
+    let Commits = metricStats.num_of_commits;
+    let CommitsG = metricStats.growthCommits;
+    let PL = metricStats.num_of_merged_pr;
+    let PLG = metricStats.growthPr;
+    let issueC = metricStats.num_of_closed_issues;
+    let issueCG = metricStats.growthIssues;
+    let Contributors = metricStats.num_of_contributors;
+    let ContributorsG = metricStats.growthContributors;
+  
+
+     stats = [
     {
       label: "Total Commits",
       value: Commits,
@@ -74,48 +115,36 @@ const Metrics = ({}) => {
       color: "bg-cyan-400/15 border-cyan-400",
     },
   ];
+
+
   const contributors = metricsData?.top_contributors;
-  console.log(contributors);
-  const data = [
-    { name: "Jan", commits: 145, prs: 25, issues: 12 },
-    { name: "Feb", commits: 200, prs: 32, issues: 20 },
-    { name: "Mar", commits: 235, prs: 28, issues: 15 },
-    { name: "Apr", commits: 270, prs: 35, issues: 22 },
-    { name: "May", commits: 320, prs: 42, issues: 28 },
-    { name: "Jun", commits: 295, prs: 38, issues: 20 },
-  ];
+  
+  // const data = [
+  //   { name: "Jan", commits: 145, prs: 25, issues: 12 },
+  //   { name: "Feb", commits: 200, prs: 32, issues: 20 },
+  //   { name: "Mar", commits: 235, prs: 28, issues: 15 },
+  //   { name: "Apr", commits: 270, prs: 35, issues: 22 },
+  //   { name: "May", commits: 320, prs: 42, issues: 28 },
+  //   { name: "Jun", commits: 295, prs: 38, issues: 20 },
+  // ];
 
-  if (isPending)
-    return (
-      <div className=" bg-background min-h-screen">
-        <div className="space-y-6 w-full">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-7 ">
-            {stats.map((stat, i) => (
-              <SkeletonCard key={i} containerStyle={"h-[150px]"} />
-            ))}
-          </div>
+  let year=null;
+  const chartData = metricsData?.monthly_activity?.map((item) => {
+  // Convert "2025-03" to a short name like "Mar 25"
+  const dateParts = item.month.split("-");
+  year= dateParts[0].slice(-4); // "2025"
+  const monthIndex = parseInt(dateParts[1], 10) - 1;
+  const monthName = new Date(2000, monthIndex).toLocaleString('default', { month: 'short' });
 
-          <ContributionActivityCard data={data} />
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-4">
-            <TopContributerCard contributors={contributors} />
-            <MonthlyContributionCard data={data} />
-          </div>
-        </div>
-      </div>
-    );
-
-  if (error)
-    return (
-      <ErrorMessage containerStyle={"h-[500px]"} message={error.message} />
-    );
-
-  if (!metricStats)
-    return (
-      <NoDataMessage
-        containerStyle={"h-[500px]"}
-        text={"No matrics found for this repository"}
-      />
-    );
+  return {
+    name: `${monthName} `, // e.g., "Mar 25"
+    contributions: item.num_of_contributions,
+    // Keep these as 0 or the same value if your Chart component requires them(future enhancement)
+    // commits:0, 
+    // prs: 0,
+    // issues: 0,
+  };
+}) || [];
 
   return (
     <div className=" bg-background min-h-screen font-sans text-Gray500">
@@ -128,14 +157,14 @@ const Metrics = ({}) => {
         </div>
 
         {/* 2. Main Contribution Activity Card */}
-        <ContributionActivityCard data={data} />
+        {/* <ContributionActivityCard data={data} /> */}
         {/* 3. Bottom Grid: Top Contributors & Monthly Bar Chart */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-4">
           {/* Top Contributors Card */}
           <TopContributerCard contributors={contributors} />
 
           {/* Monthly Contributions Bar Chart Card */}
-          <MonthlyContributionCard data={data} />
+          <MonthlyContributionCard data={chartData} year={year}/>
         </div>
       </div>
     </div>

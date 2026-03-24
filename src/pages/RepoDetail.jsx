@@ -10,8 +10,10 @@ import SimpleLightButton from "../components/common/SimpleLightButton";
 import BackButton from "../components/common/BackButton";
 import { useParams } from "react-router-dom";
 import { useRepository } from "../hooks/useRepoQuery";
+import { useMetricsByRepoId } from "../hooks/useMetricQuery";
 import NotFound from "./NotFound";
 import SkeletonPage from "../components/messages/SkeletonPage";
+import SkeletonCard from "../components/messages/SkeletonCard";
 import ErrorMessage from "../components/messages/ErrorMessage";
 export default function RepoDetail() {
   const { repoId } = useParams(); // id from URL "it is a string!"
@@ -19,6 +21,7 @@ export default function RepoDetail() {
   const [activeTab, setActiveTab] = useState("readme");
   // ask for repo with this id
   const { data: repo, isPending, error } = useRepository(Number(repoId)); // convert to number
+  const { data: M, isPending:isPendingM, error:errorM } = useMetricsByRepoId(Number(repoId)); // convert to number
   function handleVisit() {
     // Use _blank for a new tab, or _self to open in the same window
     window.open(repo.url, "_blank", "noopener,noreferrer");
@@ -91,13 +94,30 @@ export default function RepoDetail() {
             <p>{repo.forks_count}</p>
             <p>forks</p>
           </span>
-          <span className="flex gap-1 text-base md:text-lg">
+
+          <span className="flex items-center gap-1 text-base md:text-lg">
             <Users className="text-primary" />
-            {/* <p>{repo.contributers}</p> */}
-            <p>contributers</p>
+
+            {/* 1. Loading State */}
+            {isPendingM && (
+              <div className="w-fit">
+               loading.. 
+              </div>
+            )}
+
+            {/* 2. Success State - Added optional chaining (?.) */}
+            {!isPendingM && M?.stats && (
+              <p className="font-bold">{M.stats.num_of_contributors}</p>
+            )}
+
+            {/* 3. Error State */}
+            {errorM && (<p className="text-red-500 text-xs">error</p>)}
+
+            <p>contributors</p>
           </span>
+
         </div>
-        <div className="flex gap-2 mt-3">
+        <div className="flex flex-wrap gap-2 mt-3">
           {repo.topics.map((item) => (
             <span
               key={item.id}

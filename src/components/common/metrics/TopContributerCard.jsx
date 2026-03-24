@@ -1,4 +1,8 @@
+import SkeletonCard from "../../messages/SkeletonCard"
 export default function TopContributerCard({ contributors }) {
+  if (contributors==="loading") {
+    return <SkeletonCard containerStyle={"w-full h-[300px]"}></SkeletonCard>;
+  }
   return (
     <div className="bg-white p-6 rounded-2xl border-2 border-Gray200 lg:shadow-sm">
       <h3 className="text-lg font-semibold text-text-secondary mb-6">
@@ -21,7 +25,8 @@ export default function TopContributerCard({ contributors }) {
                   {person.name}
                 </div>
                 <div className="text-sm text-Slate400">
-                  {person.commits} commits · {person.prs} PRs
+                  {/**  future work */}
+                  {/* {person.commits} commits · {person.prs} PRs */}
                 </div>
               </div>
             </div>

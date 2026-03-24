@@ -2,39 +2,42 @@ import { createContext, useState, useEffect } from "react";
 
 export const UserContext = createContext();
 
-// Provider: You use this in your app to wrap components so they can access the user data.
 export function UserProvider({ children }) {
-  // Initialize from localStorage so the session survives a refresh
   const [user, setUser] = useState(() => {
     try {
-      const savedUser = localStorage.getItem("user");
-      return savedUser ? JSON.parse(savedUser) : null;
-    } catch (error) {
-      console.error("Failed to parse user from localStorage", error);
+      const saved = localStorage.getItem("user");
+      return saved ? JSON.parse(saved) : null;
+    } catch {
       return null;
     }
   });
 
-  // Keep localStorage in sync with user state
+  const [token, setToken] = useState(() => {
+    return localStorage.getItem("token") || null;
+  });
+
   useEffect(() => {
-    if (user) {
-      localStorage.setItem("user", JSON.stringify(user));
-    } else {
-      localStorage.removeItem("user"); // If user === null, it means: the user logged out
-    }
+    if (user) localStorage.setItem("user", JSON.stringify(user));
+    else localStorage.removeItem("user");
   }, [user]);
 
-  // Only update state because local storage handled by useEffect
-  const login = (userData) => {
+  useEffect(() => {
+    if (token) localStorage.setItem("token", token);
+    else localStorage.removeItem("token");
+  }, [token]);
+
+  const login = (userData, idToken) => {
     setUser(userData);
+    setToken(idToken);
   };
 
   const logout = () => {
-    setUser(null); // Clears the React state (RAM)
+    setUser(null);
+    setToken(null);
   };
 
   return (
-    <UserContext.Provider value={{ user, setUser, login, logout }}>
+    <UserContext.Provider value={{ user, token, login, logout }}>
       {children}
     </UserContext.Provider>
   );

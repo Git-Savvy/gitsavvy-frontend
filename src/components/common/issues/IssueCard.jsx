@@ -1,4 +1,5 @@
 import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 import { useNavigate } from "react-router-dom";
 import { MessageSquare, Clock, AlertCircle } from "lucide-react";
 import SimpleDarkButton from "../SimpleDarkButton";
@@ -7,13 +8,13 @@ import { timeAgo } from "../../../utils/timeAgo";
 export default function IssueCard({ issue }) {
   const navigate = useNavigate();
   return (
-    <div className="bg-white border-2 border-Gray200 rounded-xl p-6 lg:shadow-sm  transition-colors">
+    <div className="overflow-hidden bg-white border-2 border-Gray200 rounded-xl p-6 lg:shadow-sm  transition-colors">
       <div className="flex flex-col md:flex-row justify-between items-start gap-4">
         {/* Left Side: Content */}
-        <div className="space-y-3 flex-1">
+        <div className="space-y-3 flex-1 break-words max-w-full overflow-hidden">
           {/* Title and Icon */}
           <div className="flex items-center gap-2">
-            <AlertCircle className="w-5 h-5 md:w-7 md:h-7 text-Slate400" />
+            <AlertCircle size={20} className="text-Slate400" />
             <h3 className="text-lg md:text-2xl font-semibold text-textdark">
               {issue.title}
             </h3>
@@ -22,26 +23,34 @@ export default function IssueCard({ issue }) {
           {/* Description */}
 
            <div
-            className="prose text-Gray600 text-[15px] md:text-lg leading-relaxed max-w-5xl h-2xl 
-          [&_>_p]:flex-wrap 
-          [&_>_p]:gap-2 
-          [&_strong]:text-textdark [&_h2]:text-textdark [&_code]:text-indigo-300 
-          [&_pre]:bg-zinc-900 [&_a]:text-Indigo300  bg-white  line-clamp-2"
+            className="
+            prose max-w-none text-text-secondary leading-relaxed line-clamp-3 
+            [&>p]:flex-wrap 
+            [&>p]:gap-2 
+            [&>img]:block [&>img]:mx-auto [&>img]:!float-none
+            [&_p_img]:max-w-[200px]
+            [&_img]:bg-gray-200
+            [&_img]:inline
+            [&_>_img]:bg-gray-900
+            [&_p_img]:p-2
+            [&_strong]:text-textdark [&_h1]:text-NavBorder/70
+            [&_h2]:text-NavBorder/70 [&_h3]:text-NavBorder/50 [&_h4]:text-NavBorder/40
+            [&_code]:text-indigo-300 [&_code]:line-clamp-3 [&_pre]:bg-zinc-900 [&_a]:text-Indigo300 bg-white"
           >
-            <ReactMarkdown>{issue.body}</ReactMarkdown>
+            <ReactMarkdown rehypePlugins={[rehypeRaw]} >{issue.body}</ReactMarkdown>
           </div>
 
           {/* Corrected Tags Mapping */}
-          {/* <div className="flex flex-wrap gap-2 pt-1">
-            {issue.labels.map((label, index) => (
+          <div className="flex flex-wrap gap-2 pt-1">
+            {issue.issue_labels.map((label, index) => (
               <span
                 key={index}
                 className="px-3 py-1  bg-Cyan50 text-Teal400 border border-Teal400  font-semibold rounded-full text-xs font-semibold"
               >
-                {label}
+                {label.name}
               </span>
             ))}
-          </div> */}
+          </div>
         </div>
 
         {/* Right Side: Action Button */}

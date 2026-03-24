@@ -17,7 +17,11 @@ import SkeletonPage from "../components/messages/SkeletonPage";
 import ErrorMessage from "../components/messages/ErrorMessage";
 export default function IssueDetail() {
   const { repoId, issueId } = useParams(); // id from URL
-  const { data: issue, isPending, error } = useIssue(Number(repoId),Number(issueId));
+  const {
+    data: issue,
+    isPending,
+    error,
+  } = useIssue(Number(repoId), Number(issueId));
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("description");
@@ -29,7 +33,7 @@ export default function IssueDetail() {
   const renderContent = () => {
     switch (activeTab) {
       case "comments":
-        return <Comments repoId={issue.repository_id} issueId={issue.number} />;//use number for issue insted of id
+        return <Comments repoId={issue.repository_id} issueId={issue.number} />; //use number for issue insted of id
       default:
         return <DescriptionIssue body={issue.body} />;
     }
@@ -71,7 +75,10 @@ export default function IssueDetail() {
             <div className="flex  gap-5">
               <div className=" w-17 h-17 bg-Teal400/20 rounded-full flex items-center justify-center text-Teal400">
                 {/* <Info size={30} /> */}
-                <img src={issue.author_avatar_url}className=" w-16 h-16 rounded-full"/>
+                <img
+                  src={issue.author_avatar_url}
+                  className=" w-16 h-16 rounded-full"
+                />
               </div>
               {/* <span className="lg:hidden  font-normal text-xl border text-NavBorder bg-NavSelected  flex items-center justify-center rounded-full px-4 py-2 mt-2  h-fit">
                 #{issue.number}
@@ -93,7 +100,7 @@ export default function IssueDetail() {
                     <span className="lg:hidden">• </span>Opened{" "}
                     {timeAgo(issue.opened_at)}
                   </span>
-                  <span className="flex items-center gap-1">{`• ${issue.commentsNum} comments`}</span>
+                  <span className="flex items-center gap-1">{`• ${issue.num_of_comments} comments`}</span>
                   <span className="flex items-center gap-1">
                     • <UserCircle size={20} /> {issue.author_username}
                   </span>
@@ -101,27 +108,28 @@ export default function IssueDetail() {
               </div>
             </div>
           </div>
-          <SimpleLightButton
+          {/*future work*/}
+          {/* <SimpleLightButton
             text="View on GitHub"
             icon={<ExternalLink className="w-5 h-5 " />}
             onClick={handleVisit}
-          />
+          /> */}
         </div>
         {/* Labels */}
-        <div className="flex gap-2 mb-8 mt-5 md:mt-0">
-          {["Easy", "enhancement", "good first issue"].map((label) => (
+        <div className="flex flex-wrap gap-2 mb-8 mt-5 md:mt-0">
+          {issue?.labels?.map((label, index) => (
             <span
-              key={label}
+              key={`${label.id}-${index}`}
               className="px-3 py-1 text-NavBorder bg-NavSelected lg:text-base font-medium rounded-xl border"
             >
-              {label}
+              {label.name}
             </span>
           ))}
         </div>
       </div>
 
       {/* 3. CTA Claim Banner */}
-      {issue.issueStatus == "Open" ? (
+      {issue.state == "open" || issue.state == "Open" ? (
         <ClaimBanner setIsModalOpen={setIsModalOpen} />
       ) : (
         <ClaimedBanner />
@@ -129,7 +137,11 @@ export default function IssueDetail() {
 
       {/* 4. Navigation Bar (Tabs) */}
       <div>
-        <IssueNav activeTab={activeTab} setActiveTab={setActiveTab} num={issue.commentsNum}/>
+        <IssueNav
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          num={issue.num_of_comments}
+        />
         <div className="mt-6 ">{renderContent()}</div>
       </div>
       {/* The Modal Component */}

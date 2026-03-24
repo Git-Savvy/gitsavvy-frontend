@@ -34,26 +34,36 @@ export default function IssuesList({ search, selectedStatus, selectedLabels }) {
     );
   }
   const filteredIssues = issues.filter((issue) => {
-    const query = search.toLowerCase();
+    const query = search?.toLowerCase();
 
     // 🔍 search
     const matchesSearch =
-      issue.title.toLowerCase().includes(query) ||
-      issue.body.toLowerCase().includes(query);
-    // ||
-    // issue.labels?.some((l) => l.toLowerCase().includes(query));
+      issue.title?.toLowerCase().includes(query) ||
+      issue.body?.toLowerCase().includes(query) ||
+      issue.issue_labels?.some((l) => l.name.toLowerCase().includes(query)) ||
+      issue.issue_labels?.some((l) =>
+        l.description?.toLowerCase().includes(query),
+      );
 
     // 🏷 labels
-    // const matchesLabels =
-    //   selectedLabels.length === 0 ||
-    //   selectedLabels.every((label) => issue.labels.includes(label));
+    const matchesLabels =
+      selectedLabels.length === 0 ||
+      selectedLabels.every((selected) =>
+        // Added ?. here to prevent crash if issue_labels is missing
+        issue.issue_labels?.some(
+          (label) =>
+            // Added ?. here to prevent crash if name or description is null/undefined
+            label.name?.toLowerCase().includes(selected.toLowerCase()) ||
+            label.description?.toLowerCase().includes(selected.toLowerCase()),
+        ),
+      );
 
     // 📌 status
     const matchesStatus =
       selectedStatus === "" ||
-      issue.state?.toLowerCase() === selectedStatus.toLowerCase();
+      issue.state?.toLowerCase() === selectedStatus?.toLowerCase();
 
-    return matchesSearch  && matchesStatus; // && matchesLabels //alll of them has to be true
+    return matchesSearch && matchesLabels && matchesStatus; //all of them has to be true
   });
 
   return (

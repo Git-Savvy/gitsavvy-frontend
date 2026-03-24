@@ -1,4 +1,5 @@
 import React from "react";
+import SkeletonCard from "../../messages/SkeletonCard"
 import {
   LineChart,
   Line,
@@ -11,6 +12,8 @@ import {
 } from "recharts";
 
 export default function ContributionActivityCard({ data }) {
+
+  if(data==="loading"){return  <SkeletonCard containerStyle={"w-full h-[300px]"}></SkeletonCard>}
   return (
     <div className="w-full p-6 bg-white border-2 border-Gray200 rounded-xl lg:shadow-sm">
       {/* Header */}
