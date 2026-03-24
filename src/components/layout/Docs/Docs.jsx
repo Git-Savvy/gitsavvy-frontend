@@ -4,7 +4,6 @@ import DocumentationRefreshCard from "../../common/DocumentationRefreshCard";
 import DocumentationSidebar from "./DocumentationSidebar";
 import MainContentCard from "./MainContentCard";
 import { useRepoChildren, useDocsByFileId } from "../../../hooks/useDocQuery";
-
 export default function Docs() {
   const { repoId } = useParams();
 
@@ -33,7 +32,7 @@ export default function Docs() {
 
   // 2. Safely extract the ARRAY from the "data" key in JSON
   //  API returns { data: [...] }, so we need docsResponse.data
-    const docData =docsResponse?.docs?? [];
+  const docData = docsResponse?.docs ?? [];
 
   // // Auto-select the first file found at the root level if nothing is selected
   // useEffect(() => {
@@ -53,7 +52,6 @@ export default function Docs() {
     <div className="min-h-screen font-sans text-Gray600">
       <div className="space-y-6">
         <DocumentationRefreshCard />
-
         <div className="flex flex-col lg:flex-row gap-6">
           <DocumentationSidebar
             repoId={Number(repoId)}
@@ -64,7 +62,7 @@ export default function Docs() {
             error={rootError}
           />
           <MainContentCard
-            docData={docData} 
+            docData={docData}
             isPending={isDocsPending}
             error={docsError}
             selectedFileId={selectedFileId}

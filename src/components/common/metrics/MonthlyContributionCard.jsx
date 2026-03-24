@@ -1,5 +1,5 @@
 import React from "react";
-import SkeletonCard from "../../messages/SkeletonCard"
+import SkeletonCard from "../../messages/SkeletonCard";
 import { useMemo } from "react";
 import {
   BarChart,
@@ -11,8 +11,10 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-export default function MonthlyContributionCard({ data ,year}) {
-   if(data==="loading"){return  <SkeletonCard containerStyle={"w-full h-[300px]"}></SkeletonCard>}
+export default function MonthlyContributionCard({ data, year }) {
+  if (data === "loading") {
+    return <SkeletonCard containerStyle={"w-full h-[300px]"}></SkeletonCard>;
+  }
   // 2. Transform the data to include the 'total' key if we get other dt beside number of contributorsd (future work)
   // const chartData = useMemo(() => {
   //   return data.map((item) => ({
@@ -21,8 +23,7 @@ export default function MonthlyContributionCard({ data ,year}) {
   //   }));
   // }, [data]);
 
-
-   const chartData = useMemo(() => {
+  const chartData = useMemo(() => {
     return data.map((item) => ({
       ...item,
       total: item.contributions, // Summing the keys here
@@ -30,7 +31,11 @@ export default function MonthlyContributionCard({ data ,year}) {
   }, [data]);
 
   if (!data || data.length === 0) {
-    return <div className="p-8 text-Gray600">No data available</div>;
+    return (
+      <div className="w-full max-w-4xl bg-white border-2 border-Gray200 rounded-2xl p-8 lg:shadow-sm font-sans flex items-center justify-center">
+        <p className="p-8 text-Gray600">No monthy data available</p>
+      </div>
+    );
   }
 
   return (
