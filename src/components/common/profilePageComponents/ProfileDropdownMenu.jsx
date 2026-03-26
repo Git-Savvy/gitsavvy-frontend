@@ -10,14 +10,17 @@ export default function ProfileDropdownMenu() {
   }
   function handleProfile() {
     Navigate("/home/profile");
+
   }
   return (
     <div className="w-64 bg-white rounded-2xl shadow-2xl border-2 border-Gray200 overflow-hidden">
       <div className="p-4 border-b border-Gray200">
         <p className="font-bold text-text-secondary text-lg lg:text-xl">
-          {`${user.firstName} ${user.lastName}`}
+          {user.name}
         </p>
-        <p className="text-Gray400 text-sm mb-5 lg:text-base">@{user.username}</p>
+        <p className="text-Gray400 text-sm mb-5 lg:text-base">
+          @{user.username}
+        </p>
         <div className="flex items-center gap-1.5 text-xs lg:text-[14px] font-bold text-Gray600">
           <Trophy className="w-3.5 h-3.5 text-Cyan400" />
           <span>Level {user.level}</span>

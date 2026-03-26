@@ -24,7 +24,12 @@ export default defineConfig({
       "/auth": {
         target: "http://127.0.0.1:8000",
         changeOrigin: true,
-      },//auth/github/sync
+      },
+ /// the slash at end may should remove
+      "/profile": {
+        target: "http://127.0.0.1:8000",
+        changeOrigin: true,
+      },
     },
   },
   plugins: [react(), tailwindcss()],

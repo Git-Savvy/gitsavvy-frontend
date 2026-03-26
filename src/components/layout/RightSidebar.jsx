@@ -25,7 +25,7 @@ export default function RightSidebar() {
           <div className="flex justify-between items-center md:text-xl">
             <h3 className="font-semibold mb-5  ">Recent Badges</h3>
             <span className="bg-background w-6 h-6 border-2 border-gray-400 rounded-[40%]  mb-5 flex justify-center items-center">
-              <p className="text-text-dark ">{user.badges.length}</p>
+              <p className="text-text-dark ">{user.badges?.length||0}</p>
             </span>
           </div>
 

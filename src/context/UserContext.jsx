@@ -21,23 +21,27 @@ export function UserProvider({ children }) {
     else localStorage.removeItem("user");
   }, [user]);
 
-  useEffect(() => {
-    if (token) localStorage.setItem("token", token);
-    else localStorage.removeItem("token");
-  }, [token]);
+  // useEffect(() => {
+  //   if (token) localStorage.setItem("token", token);
+  //   else localStorage.removeItem("token");
+  // }, [token]);
 
   const login = (userData, idToken) => {
     setUser(userData);
+    localStorage.setItem("user", JSON.stringify(userData));
     setToken(idToken);
+    localStorage.setItem("token", idToken);
   };
 
   const logout = () => {
     setUser(null);
+    localStorage.removeItem("user");
     setToken(null);
+    localStorage.removeItem("token");
   };
 
   return (
-    <UserContext.Provider value={{ user, token, login, logout }}>
+    <UserContext.Provider value={{ user, token, login, logout ,setUser}}>
       {children}
     </UserContext.Provider>
   );

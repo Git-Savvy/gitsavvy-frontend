@@ -33,7 +33,7 @@ export default function MonthlyContributionCard({ data, year }) {
   if (!data || data.length === 0) {
     return (
       <div className="w-full max-w-4xl bg-white border-2 border-Gray200 rounded-2xl p-8 lg:shadow-sm font-sans flex items-center justify-center">
-        <p className="p-8 text-Gray600">No monthy data available</p>
+        <p className="p-8 text-Gray600">No monthly data available</p>
       </div>
     );
   }

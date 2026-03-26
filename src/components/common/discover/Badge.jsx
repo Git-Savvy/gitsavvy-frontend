@@ -12,7 +12,7 @@ const colorMap = {
     bg: "bg-Purple50",
   },
 };
-export default function Budge({ title, level, img, num }) {
+export default function Badge({ title, level, img, num }) {
   const styles = colorMap[num % 3];
 
   return (

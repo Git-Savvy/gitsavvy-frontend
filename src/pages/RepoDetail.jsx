@@ -55,7 +55,7 @@ export default function RepoDetail() {
       case "metrics":
         return <Metrics repoId={Number(repoId)} />;
       default:
-        return <Readme repoId={Number(repoId)} />;
+        return <Readme repoId={Number(repoId)}  repoData={repo}/>;
     }
   };
 

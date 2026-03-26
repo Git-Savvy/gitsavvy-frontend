@@ -11,18 +11,18 @@ export default function AuthCard() {
   const navigate = useNavigate();
   const handleLoginClick = async () => {
     try {
-      // // 1. Trigger popup IMMEDIATELY on click (Browser is happy)
-      // const firebaseData = await githubLogin();
+      // 1. Trigger popup IMMEDIATELY on click (Browser is happy)
+      const firebaseData = await githubLogin();
 
-      // // 2. Pass the tokens to the mutation for backend syncing
-      // mutate(firebaseData, {
-      //   onSuccess: () => {
-      //     navigate("/home");
-      //   },
+      // 2. Pass the tokens to the mutation for backend syncing
+      mutate(firebaseData, {
+        // onSuccess: () => {
+        //   navigate("/home");
+        // },
 
-      // });
+      });
 
-       navigate("/home");
+    
     } catch (error) {
       console.error("Popup closed or blocked:", error);
     }

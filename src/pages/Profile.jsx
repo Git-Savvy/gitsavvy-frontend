@@ -46,7 +46,7 @@ export default function Profile() {
       />
       <ProfileHeaderCard
         avatar={user.avatar}
-        name={`${user.firstName} ${user.lastName}`}
+        name={user.name}
         handle={user.username}
         level={user.level}
         points={user.points}

@@ -10,9 +10,7 @@ export default function FeedbackBox() {
 
       <StarRating value={rating} onChange={setRating} />
 
-      <p className="mt-2 text-sm text-gray-500">
-        You rated: {rating}/5
-      </p>
+      <p className="mt-2 text-sm text-gray-500">You rated: {rating}/5</p>
     </div>
   );
 }
