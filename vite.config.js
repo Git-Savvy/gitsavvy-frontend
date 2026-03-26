@@ -25,8 +25,12 @@ export default defineConfig({
         target: "http://127.0.0.1:8000",
         changeOrigin: true,
       },
- /// the slash at end may should remove
+ 
       "/profile": {
+        target: "http://127.0.0.1:8000",
+        changeOrigin: true,
+      },
+       "/my-work": {
         target: "http://127.0.0.1:8000",
         changeOrigin: true,
       },

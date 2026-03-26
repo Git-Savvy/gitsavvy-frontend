@@ -7,7 +7,7 @@ import SimpleLightButton from "../SimpleLightButton";
 export default function RepositoryCard({ repo, navigate }) {
   function handleVisit(){
   // Use _blank for a new tab, or _self to open in the same window
-  window.open(repo.externalRepoLink, '_blank', 'noopener,noreferrer');
+  window.open(repo.url, '_blank', 'noopener,noreferrer');
 };
   return (
     <div className="border-2 border-Gray200 rounded-xl p-5 bg-white flex flex-col lg:flex-row justify-between gap-4  lg:shadow-sm">

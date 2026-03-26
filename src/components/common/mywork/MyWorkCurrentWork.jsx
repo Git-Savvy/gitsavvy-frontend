@@ -1,17 +1,17 @@
 import { GitBranch, Clock, Code2 } from "lucide-react";
-
+import {timeAgo} from "../../../utils/timeAgo"
 export default function MyWorkCurrentCard({
   title,
   repo,
   description,
-  updatedDays,
+  opened_at,
   language,
   branch,
   progress,
   status,
 }) {
   return (
-    <div className=" mx-auto bg-white p-6 border-2 border-Gray200 rounded-xl  lg:shadow-sm mb-5">
+    <div className=" mx-auto bg-white p-6 border-2 border-Gray200 rounded-xl lg:shadow-sm mb-7">
       {/* Top Row: Icon, Title, and Badge */}
       <div className="flex flex-col md:flex-row justify-between items-start mb-4">
         <div className="flex gap-4">
@@ -35,7 +35,7 @@ export default function MyWorkCurrentCard({
       <div className="flex flex-col md:flex-row md:items-center gap-6 ml-[60px] text-Gray400 text-base mb-2">
         <div className="flex items-center gap-1.5">
           <Clock className="w-4 h-4" />
-          <span>Updated {updatedDays} ago</span>
+          {/* <span>opened {timeAgo(opened_at)} ago</span> */}
         </div>
 
         <div className="flex items-center gap-1.5">

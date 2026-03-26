@@ -1,56 +1,26 @@
 import MyWorkCurrentCard from "../common/mywork/MyWorkCurrentWork";
-
-export default function CurrentWork() {
-  const work = [
-    {
-      title: "Add dark mode support",
-      repo: "react-awesome-ui",
-      description:
-        "Implementing dark mode with theme provider and custom hooks",
-      updatedDays: "366d",
-      language: "TypeScript",
-      branch: "feature/dark-mode",
-      progress: 75,
-      status: "In Progress",
-    },
-    {
-      title: "Add dark mode support",
-      repo: "react-awesome-ui",
-      description:
-        "Implementing dark mode with theme provider and custom hooks",
-      updatedDays: "366d",
-      language: "TypeScript",
-      branch: "feature/dark-mode",
-      progress: 75,
-      status: "In Progress",
-    },
-    {
-      title: "Add dark mode support",
-      repo: "react-awesome-ui",
-      description:
-        "Implementing dark mode with theme provider and custom hooks",
-      updatedDays: "366d",
-      language: "TypeScript",
-      branch: "feature/dark-mode",
-      progress: 75,
-      status: "In Progress",
-    },
-  ];
-  return (
-    <div className="space-y-6 ">
-      {work.map((w, index) => (
-        <MyWorkCurrentCard
-          key={index}
-          title={w.title}
-          repo={w.repo}
-          description={w.description}
-          updatedDays={w.updatedDays}
-          language={w.language}
-          branch={w.branch}
-          progress={w.progress}
-          status={w.status}
-        />
-      ))}
-    </div>
-  );
+import NoDataMessages from"../messages/NoDataMessage"
+export default function CurrentWork({data}) {
+ if (!data || data.length === 0) {
+   return <NoDataMessages text="You don't have any current work." containerStyle={"text-center py-10"}/> ;
+  }
+  else {
+    return (
+      <div className="space-y-6 ">
+        {data.map((w, index) => (
+          <MyWorkCurrentCard
+            key={index}
+            title={w.title}
+            repo={w.repository_name}
+            description={w.description}
+            opened_at={w.opened_at}
+            language={w.language}
+            // branch={w.branch}
+            progress_percentage={w.progress}
+            status={w.status}
+          />
+        ))}
+      </div>
+    );
+  }
 }

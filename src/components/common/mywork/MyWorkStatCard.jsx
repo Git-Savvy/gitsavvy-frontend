@@ -6,9 +6,8 @@ export default function MyWorkStatCard({ stat }) {
         {stat.icon}
       </div>
       <div className="flex md:flex-col  text-lg font-semibold  gap-2">
-        <h3>{stat.title}</h3> <span>3</span>
+        <h3>{stat.title}</h3> <span>{stat.value}</span>
       </div>
-      {/*i need here to update to dynamic num */}
     </div>
   );
 }

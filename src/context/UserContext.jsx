@@ -21,10 +21,10 @@ export function UserProvider({ children }) {
     else localStorage.removeItem("user");
   }, [user]);
 
-  // useEffect(() => {
-  //   if (token) localStorage.setItem("token", token);
-  //   else localStorage.removeItem("token");
-  // }, [token]);
+  useEffect(() => {
+    if (token) localStorage.setItem("token", token);
+    else localStorage.removeItem("token");
+  }, [token]);
 
   const login = (userData, idToken) => {
     setUser(userData);
@@ -41,7 +41,7 @@ export function UserProvider({ children }) {
   };
 
   return (
-    <UserContext.Provider value={{ user, token, login, logout ,setUser}}>
+    <UserContext.Provider value={{ user, token, login, logout, setUser }}>
       {children}
     </UserContext.Provider>
   );

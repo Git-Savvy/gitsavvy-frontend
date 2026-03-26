@@ -129,7 +129,7 @@ export default function IssueDetail() {
       </div>
 
       {/* 3. CTA Claim Banner */}
-      {issue.state == "Open" || issue.state == "Open" ? (
+      {issue.state == "open" || issue.state == "Open" ? (
         <ClaimBanner setIsModalOpen={setIsModalOpen} />
       ) : (
         <ClaimedBanner />

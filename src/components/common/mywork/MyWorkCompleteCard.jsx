@@ -10,8 +10,9 @@ export default function MyWorkCompleteCard({
   deletions,
   status,
 }) {
+
   return (
-    <div className=" mx-auto bg-white border border-Gray200 rounded-2xl p-6 shadow-sm font-sans mb-5">
+    <div className=" mx-auto bg-white border border-Gray200 rounded-2xl p-6 shadow-sm font-sans mb-7">
       {/* Top Row: Icon, Title, and Badge */}
       <div className="flex flex-col md:flex-row justify-between items-start mb-6">
         <div className="flex gap-4">

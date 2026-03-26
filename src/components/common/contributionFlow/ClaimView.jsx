@@ -3,10 +3,10 @@ import { useClaimIssue } from "../../../hooks/useIssueQuery";
 import { useIssue } from "../../../hooks/useIssueQuery";
 import { useParams } from "react-router-dom";
 export default function ClimView({ onNext }) {
-  const { issueId } = useParams(); // id from URL
+  const { repoId, issueId } = useParams(); // id from URL
   const { user } = useUserContext();
   const { mutate, isPending } = useClaimIssue();
-  const { data: issue } = useIssue(Number(issueId));
+  const { data: issue } = useIssue(Number(repoId),Number(issueId));
 
   function handleClaim() {
     if (!user) {
@@ -15,18 +15,21 @@ export default function ClimView({ onNext }) {
     }
     // Trigger the mutation
     // You pass onNext here!
-    mutate(
-      {
-        issueId: issue.id,
-        userId: user.id,
-      },
-      {
-        onSuccess: () => {
-          // This runs AFTER the global onSuccess in your hook
-          onNext();
-        },
-      },
-    );
+    // mutate(
+    //   {
+    //     issueId: issue.number,
+    //     userId: user.id,
+    //   },
+    //   {
+    //     onSuccess: () => {
+    //       // This runs AFTER the global onSuccess in hook
+    //       onNext();
+    //     },
+    //   },
+    // );
+
+    //for now lets just show steps
+    onNext();
   }
 
   return (
@@ -42,7 +45,7 @@ export default function ClimView({ onNext }) {
         </p>
       </div>
       <button
-        disabled={isPending || issue?.issueStatus === "Claimed"}
+        disabled={isPending || issue?.assignees.length !== 0}
         onClick={() => {
           handleClaim();
         }}
