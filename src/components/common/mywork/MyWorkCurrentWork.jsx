@@ -35,7 +35,7 @@ export default function MyWorkCurrentCard({
       <div className="flex flex-col md:flex-row md:items-center gap-6 ml-[60px] text-Gray400 text-base mb-2">
         <div className="flex items-center gap-1.5">
           <Clock className="w-4 h-4" />
-          {/* <span>opened {timeAgo(opened_at)} ago</span> */}
+          <span>opened {timeAgo(opened_at)}</span>
         </div>
 
         <div className="flex items-center gap-1.5">

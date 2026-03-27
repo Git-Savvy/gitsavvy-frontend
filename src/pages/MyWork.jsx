@@ -9,20 +9,40 @@ import LanguageFilter from "../components/common/mywork/LanguageFilter";
 import TimeFilter from "../components/common/mywork/TimeFilter";
 import MyWorkNav from "../components/layout/MyWorkNav";
 import { usefetchMyWork } from "../hooks/useMyWorkQuery";
-import SkeletonPage from"../components/messages/SkeletonPage";
-import ErrorMessage from "../components/messages/ErrorMessage"
+import SkeletonPage from "../components/messages/SkeletonPage";
+import ErrorMessage from "../components/messages/ErrorMessage";
 export default function MyWork() {
   const { data, isPending, error } = usefetchMyWork();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("current");
 
   if (isPending) return <SkeletonPage></SkeletonPage>;
-  else if (error) return <ErrorMessage containerStyle="h-screen" message={error.message}></ErrorMessage>
-  else {
+  else if (error) {
+    if (error?.status === 401 || error?.response?.status === 401) {
+      return (
+        <>
+          <ErrorMessage
+            containerStyle="h-screen"
+            message={"The token expired, login again please."}
+          ></ErrorMessage>
+          ;
+          {setTimeout(() => {
+            navigate("/");
+          }, 4000)}
+        </>
+      );
+    } else
+      return (
+        <ErrorMessage
+          containerStyle="h-screen"
+          message={error.message}
+        ></ErrorMessage>
+      );
+  } else {
     const statData = data.stats;
-    const currentData=data.current_work;
-    const completeData=data.completed_work;
-    
+    const currentData = data.current_work;
+    const completeData = data.completed_work;
+
     const workStats = [
       {
         title: "In Progres",
@@ -88,8 +108,8 @@ export default function MyWork() {
           {/*condition && value
         if condition is true → return value*/}
           <div>
-            {activeTab === "current" && <CurrentWork data={currentData}/>}
-            {activeTab === "completed" && <CompletedWork data={completeData}/>}
+            {activeTab === "current" && <CurrentWork data={currentData} />}
+            {activeTab === "completed" && <CompletedWork data={completeData} />}
           </div>
         </div>
       </div>

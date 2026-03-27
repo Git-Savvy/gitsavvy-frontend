@@ -10,7 +10,7 @@ export default function useGitHubLogin() {
 
   return useMutation({
     mutationFn: async ({ idToken, githubAccessToken }) => {
-      // STEP 1: Sync (This creates the user in your DB)
+      // STEP 1: Sync (This creates the user in DB)
       console.log("Syncing user...");
       await syncGitHubUser({ idToken, githubAccessToken });
 

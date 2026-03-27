@@ -1,5 +1,17 @@
 import { GitBranch, Clock } from "lucide-react";
+import { useToast } from "../../../context/ToastContext";
 export default function ({ onNext }) {
+    const { showToast } = useToast();
+    function handleChanges() {
+      showToast({
+        message: "Changes is showed successfully!",
+        type: "success",
+        duration: 4000,
+      });
+  
+      onNext();
+    }
+
   return (
     <div className="border border-Gray200 rounded-2xl overflow-hidden">
       <div className="p-4 bg-white border-b border-Gray200 flex justify-between items-center">
@@ -23,7 +35,7 @@ export default function ({ onNext }) {
         </div>
       ))}
       <button
-        onClick={onNext}
+        onClick={()=>{handleChanges()}}
         className="w-full bg-primary text-white hover:bg-hoverd py-4 font-bold text-lg mt-4 rounded-xl"
       >
         Continue to Pull Request

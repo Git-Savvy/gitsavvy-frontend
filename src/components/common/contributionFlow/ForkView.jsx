@@ -14,6 +14,7 @@ export default function ({ onNext }) {
       type: "success",
       duration: 4000,
     });
+    onNext();
   }
   return (
     <div className="space-y-5">
@@ -27,7 +28,6 @@ export default function ({ onNext }) {
       <button
         onClick={() => {
           handleFork();
-          onNext();
         }}
         className="w-full bg-primary text-white hover:bg-hoverd py-4 rounded-xl font-bold text-lg"
       >

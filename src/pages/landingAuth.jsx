@@ -29,9 +29,9 @@ const Landing = () => {
   ];
 
   const { theme } = useContext(ThemeContext);
-  const img= theme==="light"?imgLight:imgDark;
+  const img = theme === "light" ? imgLight : imgDark;
   return (
-    <section className="min-h-screen bg-background flex items-center m-5 ">
+    <section className="h-screen bg-background flex items-center m-5 ">
       <div className="m-auto">
         <div className="w-full h-[10%] flex justify-end mb-5">
           <ThemeSwitcher />

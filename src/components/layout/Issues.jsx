@@ -10,6 +10,8 @@ export default function Issues() {
     "Help Wanted",
     "Bug",
     "Enhancement",
+    "Question",
+    "Investigate"
   ];
 
   const [search, setSearch] = useState("");

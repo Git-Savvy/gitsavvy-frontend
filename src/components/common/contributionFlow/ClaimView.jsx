@@ -2,12 +2,14 @@ import { useUserContext } from "../../../hooks/useUserContext";
 import { useClaimIssue } from "../../../hooks/useIssueQuery";
 import { useIssue } from "../../../hooks/useIssueQuery";
 import { useParams } from "react-router-dom";
+import { useToast } from "../../../context/ToastContext";
+
 export default function ClimView({ onNext }) {
   const { repoId, issueId } = useParams(); // id from URL
   const { user } = useUserContext();
   const { mutate, isPending } = useClaimIssue();
   const { data: issue } = useIssue(Number(repoId),Number(issueId));
-
+ const { showToast } = useToast();
   function handleClaim() {
     if (!user) {
       alert("Please login first!");
@@ -29,6 +31,11 @@ export default function ClimView({ onNext }) {
     // );
 
     //for now lets just show steps
+     showToast({
+      message: "Claim is done successfully!",
+      type: "success",
+      duration: 4000,
+    });
     onNext();
   }
 

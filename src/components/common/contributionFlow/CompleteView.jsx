@@ -1,5 +1,17 @@
 import { Check } from "lucide-react";
+import { useToast } from "../../../context/ToastContext";
 export default function CompleteView({ onNext }) {
+      const { showToast } = useToast();
+      function handleComplete() {
+        showToast({
+          message: "Steps completed successfully!",
+          type: "success",
+          duration: 4000,
+        });
+    
+        onNext();
+      }
+  
   return (
     <div className="text-center py-4 space-y-6">
       <div className="w-20 h-20 bg-Teal400/20 text-Teal400 rounded-full flex items-center justify-center mx-auto">
@@ -19,7 +31,7 @@ export default function CompleteView({ onNext }) {
           View Pull Request
         </button>
         <button
-          onClick={onNext}
+          onClick={()=>{handleComplete()}}
           className="w-full bg-primary text-NavText1 hover:bg-hoverd  hover:outline-primary hover:outline-1 py-3.5 rounded-xl font-bold"
         >
           Done

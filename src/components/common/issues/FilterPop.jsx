@@ -27,6 +27,8 @@ export default function FilterPop({
     "Bug",
     "Enhancement",
     "Documentation",
+    "Question",
+    "Investigate",
   ];
 
   const statusOptions = ["Open", "Claimed"];

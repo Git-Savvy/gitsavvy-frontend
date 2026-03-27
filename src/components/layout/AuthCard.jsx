@@ -15,12 +15,7 @@ export default function AuthCard() {
       const firebaseData = await githubLogin();
 
       // 2. Pass the tokens to the mutation for backend syncing
-      mutate(firebaseData, {
-        // onSuccess: () => {
-        //   navigate("/home");
-        // },
-
-      });
+      mutate(firebaseData);
 
     
     } catch (error) {

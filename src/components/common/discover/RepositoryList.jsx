@@ -4,7 +4,7 @@ import { useRepositories } from "../../../hooks/useRepoQuery";
 import Skeleton from "../../messages/SkeletonCard";
 import ErrorMessage from "../../messages/ErrorMessage";
 import SkeletonCard from "../../messages/SkeletonCard";
-export default function RepositoryList({search}) {
+export default function RepositoryList({ search }) {
   const { data: repos, isPending, error } = useRepositories();
   const navigate = useNavigate();
   const CARD_STYLE =
@@ -30,6 +30,7 @@ export default function RepositoryList({search}) {
     const query = search.toLowerCase();
 
     return (
+      repo.description?.toLowerCase().includes(query) ||
       repo.name.toLowerCase().includes(query) ||
       repo.topics?.some((tag) => tag.topic.toLowerCase().includes(query))
     );

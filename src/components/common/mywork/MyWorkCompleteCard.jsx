@@ -1,5 +1,5 @@
 import { CheckCircle2, Clock } from "lucide-react";
-
+import {timeAgo} from "../../../utils/timeAgo"
 export default function MyWorkCompleteCard({
   title,
   repo,
@@ -36,7 +36,7 @@ export default function MyWorkCompleteCard({
         {/* Date */}
         <div className="flex items-center gap-1.5 text-Gray400">
           <Clock className="w-4 h-4" />
-          <span>{date}</span>
+          <span>closed {timeAgo(date)}</span>
         </div>
 
         {/* Language Tag */}
@@ -47,11 +47,11 @@ export default function MyWorkCompleteCard({
         {/* Points */}
         <div className="text-emerald-500 font-medium">+{points} points</div>
 
-        {/* Diff Stats */}
-        <div className="flex gap-2 font-medium">
+        {/* Diff Stats  future work */}
+        {/* <div className="flex gap-2 font-medium">
           <span className="text-emerald-500">+{additions}</span>
           <span className="text-red-500">-{deletions}</span>
-        </div>
+        </div> */}
       </div>
     </div>
   );

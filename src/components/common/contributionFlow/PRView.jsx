@@ -1,4 +1,16 @@
+import { useToast } from "../../../context/ToastContext";
 export default function PRView({ onNext }) {
+     const { showToast } = useToast();
+      function handlePR() {
+        showToast({
+          message: "Pull Request is done successfully!",
+          type: "success",
+          duration: 4000,
+        });
+    
+        onNext();
+      }
+
   return (
     <div className="space-y-4">
       <p className="text-sm text-Slate400">
@@ -20,7 +32,7 @@ export default function PRView({ onNext }) {
         </div>
       </div>
       <button
-        onClick={onNext}
+        onClick={()=>handlePR()}
         className="w-full bg-primary text-white hover:bg-hoverd py-4 rounded-xl font-bold text-lg"
       >
         Create Pull Request

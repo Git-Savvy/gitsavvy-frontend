@@ -20,7 +20,7 @@ export function UserProvider({ children }) {
     if (user) localStorage.setItem("user", JSON.stringify(user));
     else localStorage.removeItem("user");
   }, [user]);
-
+  // if token changed  1. updated? restore it  2.removed? delete it from local storage
   useEffect(() => {
     if (token) localStorage.setItem("token", token);
     else localStorage.removeItem("token");
