@@ -46,7 +46,7 @@ export default function CompletedWork({data}) {
 // ];
 
   if (!data || data.length === 0) {
-    return <NoDataMessages text="You don't have complete work yet." containerStyle={"text-center py-10"}/> ;
+    return <NoDataMessages text="You don't have complete work yet." containerStyle={"text-center h-[500px]"}/> ;
   }
   else
     return (

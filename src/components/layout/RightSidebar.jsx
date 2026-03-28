@@ -49,7 +49,7 @@ export default function RightSidebar() {
 
   return (
     <aside className=" hidden md:flex">
-      <div className=" max-w-[15rem] md:max-w-[20rem] space-y-6">
+      <div className=" max-w-[15rem] md:max-w-[20rem] space-y-6 h-screen">
         {/* Progress */}
         <div className=" p-5 bg-white mt-5">
           <div className="flex gap-2">

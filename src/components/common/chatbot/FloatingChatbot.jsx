@@ -15,7 +15,7 @@ const FloatingChatbot = ({ messages, onSend, isTyping }) => {
   }, [messages]);
 
   return (
-    <div className="fixed bottom-6 right-6 z-[100] flex flex-col items-end font-sans max-h-[90%]">
+    <div className="fixed bottom-6 right-6 z-[200] flex flex-col items-end max-w-[100%] max-h-[90%] ">
       {/* Chat Window */}
       {isOpen && (
         <div className="mb-4 w-[400px] h-[600px] bg-background rounded-2xl shadow-2xl border-2 border-gray-400 flex flex-col overflow-hidden animate-in slide-in-from-bottom-4 duration-300">
