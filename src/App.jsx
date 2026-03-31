@@ -71,7 +71,7 @@ function App() {
           </Routes>
         </Router>
       </ThemeProvider>
-      <ReactQueryDevtools initialIsOpen={false} />
+      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
     </UserProvider>
   );
 }
