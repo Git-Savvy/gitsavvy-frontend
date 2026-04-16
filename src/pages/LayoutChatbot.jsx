@@ -13,7 +13,8 @@ export default function LayoutChatbot() {
   ]);
 
   const [isTyping, setIsTyping] = useState(false);
-  const socket = useRef(null);
+  const socket = useRef(null); //useRef → store something that doesn’t reset (WebSocket connection)
+  //It keeps value between renders. Doesn’t cause re-render when changed
 
   // 2. A reusable function to handle incoming messages
   const handleSocketMessage = (event) => {
@@ -56,10 +57,10 @@ export default function LayoutChatbot() {
     ws.onclose = () => console.log("WS Disconnected");
     socket.current = ws;
 
-    return () => socket.current?.close();
+    return () => socket.current?.close();//Prevent memory leaks
   }, []);
 
-  // 4. Fixed Send Logic (Reconnects if the first session ended)
+  // 4. Send Logic (Reconnects if the first session ended)
   const sendMessage = (text) => {
     const userMessage = { id: Date.now(), text, sender: "user" };
     setMessages((prev) => [...prev, userMessage]);

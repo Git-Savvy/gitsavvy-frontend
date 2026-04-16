@@ -28,7 +28,7 @@ export default function NavItem({
   const isActive = !isFolder && activeSlug === item.id;
 
   // 2. Define strictly what counts as "Code" for filtering
-  const codeExtensions = [".js", ".py", ".ts", ".jsx", ".tsx", ".c", ".cpp"];
+  const codeExtensions = [".js", ".py", ".ts", ".jsx","go" ,".dart",".tsx", ".c", ".cpp",".java",".swift"];
 
   const ignoredFolders = [".github"];
 
@@ -64,6 +64,13 @@ export default function NavItem({
     ? Folder
     : item.title?.includes(".js") ||
         item.title?.includes(".py") ||
+         item.title?.includes(".go") ||
+         item.title?.includes(".c") ||
+         item.title?.includes(".cpp") ||
+          item.title?.includes(".java") ||
+           item.title?.includes(".dart") ||
+            item.title?.includes(".ts") ||
+             item.title?.includes(".swift") ||
         item.title?.includes("component")
       ? Code2
       : FileText;

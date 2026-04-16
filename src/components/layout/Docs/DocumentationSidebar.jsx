@@ -32,7 +32,7 @@ export default function DocumentationSidebar({
   }
 
   // 2. Define strictly what counts as "Code" for your AI engine
-  const codeExtensions = [".js", ".py", ".ts", ".jsx", ".tsx", ".c", ".cpp"];
+  const codeExtensions = [".js", ".py", ".ts", ".jsx", ".tsx", ".c", ".cpp",".go",".java",".dart",".h",".swift",".txt"];
   // const ignoredFolders = [".github", "docs", "site", "workflows", "templates"];
   const ignoredFolders = [".github"];
 
