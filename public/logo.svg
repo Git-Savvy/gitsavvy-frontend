@@ -1,0 +1,17 @@
+<svg width="74" height="62" viewBox="0 0 74 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="6.00098" width="63.361" height="61.4263" rx="5.8224" fill="#321E73"/>
+<mask id="mask0_228_3750" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="1" width="74" height="59">
+<circle cx="5.8224" cy="5.8224" r="5.8224" transform="matrix(1 0 0 -1 31.4414 59.9712)" fill="#50D6CD"/>
+<circle cx="5.8224" cy="5.8224" r="5.8224" transform="matrix(1 0 0 -1 31.4414 13.3918)" fill="#50D6CD"/>
+<circle cx="13.3908" cy="30.8593" r="5.8224" fill="#50D6CD"/>
+<circle cx="62.299" cy="30.8593" r="5.8224" fill="#50D6CD"/>
+<circle cx="5.8224" cy="5.8224" r="5.8224" transform="matrix(1 0 0 -1 31.4414 36.6813)" fill="#50D6CD"/>
+<rect x="39.0098" y="27.948" width="22.7074" height="5.8224" fill="#50D6CD"/>
+<rect y="39.6392" width="47.8496" height="5.8224" transform="rotate(-45 0 39.6392)" fill="#50D6CD"/>
+<rect x="36.9551" y="52.5801" width="46.1746" height="5.8224" transform="rotate(-45 36.9551 52.5801)" fill="#50D6CD"/>
+<rect width="30.855" height="5.8224" transform="matrix(0.707107 0.707107 0.707107 -0.707107 13.5391 36.2207)" fill="#50D6CD"/>
+</mask>
+<g mask="url(#mask0_228_3750)">
+<rect x="5.97852" y="0.483887" width="63.361" height="61.4263" rx="2.9112" fill="#B88EF4"/>
+</g>
+</svg>

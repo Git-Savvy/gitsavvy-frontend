@@ -95,16 +95,18 @@ export default function MainContentCard({
             )}
 
             {/* Code Block: The raw source code for this specific chunk */}
-            {chunk.code && chunk.code.trim() !== "" && (
-              <div className="mt-6">
-                <p className="text-sm font-bold text-Gray400 mb-2 uppercase tracking-widest font-mono">
-                  Source Context
-                </p>
-                <pre className="bg-zinc-900 text-indigo-300 p-6 rounded-xl font-mono text-sm overflow-x-auto shadow-inner">
-                  <code className="block">{chunk.code}</code>
-                </pre>
-              </div>
-            )}
+            { chunk.type === "function" && chunk.code &&
+              chunk.code.trim() !== "" &&
+             (
+                <div className="mt-6">
+                  <p className="text-sm font-bold text-Gray400 mb-2 uppercase tracking-widest font-mono">
+                    Source Context
+                  </p>
+                  <pre className="bg-zinc-900 text-indigo-300 p-6 rounded-xl font-mono text-sm overflow-x-auto shadow-inner">
+                    <code className="block">{chunk.code}</code>
+                  </pre>
+                </div>
+              )}
           </div>
         ))}
       </div>

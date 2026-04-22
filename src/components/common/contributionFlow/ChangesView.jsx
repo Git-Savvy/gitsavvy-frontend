@@ -1,45 +1,76 @@
-import { GitBranch, Clock } from "lucide-react";
+import React from "react";
+import { GitBranch, Clock, CodeXml } from "lucide-react";
 import { useToast } from "../../../context/ToastContext";
-export default function ({ onNext }) {
-    const { showToast } = useToast();
-    function handleChanges() {
-      showToast({
-        message: "Changes is showed successfully!",
-        type: "success",
-        duration: 4000,
-      });
-  
-      onNext();
-    }
+import { useContribution } from "../../../context/ContributionContext";
+
+export default function ChangesView({ onNext }) {
+  const { showToast } = useToast();
+  const { branchData } = useContribution(); // Grab from context
+  const { forkData } = useContribution(); // Grab from context
+  console.log(forkData);
+  console.log(branchData);
+
+  // Construct the URL to the user's branch on GitHub
+  // Assuming branchData contains { fork_owner, fork_name, branch_name } from the previous step
+  const branchUrl = `${forkData.fork_url}/tree/${branchData.branch_name}`;
+  function handleContinue() {
+    showToast({
+      message: "Ready to create your Pull Request!",
+      type: "success",
+      duration: 3000,
+    });
+    onNext();
+  }
 
   return (
-    <div className="border border-Gray200 rounded-2xl overflow-hidden">
-      <div className="p-4 bg-white border-b border-Gray200 flex justify-between items-center">
-        <span className="font-bold text-text-secondary">Commit Activity</span>
-        <span className="bg-background px-3 py-1 rounded-lg text-xs font-bold text-Gray600">
-          3 commits
-        </span>
-      </div>
-      {[1, 2, 3].map((i) => (
-        <div
-          key={i}
-          className="p-4 flex items-center justify-between border-b border-background last:border-0"
+    <div className="space-y-4">
+      {/* GitHub Instruction Card */}
+      <div className="bg-white border-2 border-Gray200 p-5 rounded-2xl">
+        <h4 className="font-bold text-indigo-900 mb-2 flex items-center gap-2">
+          <CodeXml size={18} /> Edit in Code Editor
+        </h4>
+        <p className="text-sm text-text-secondary mb-4">
+          Check your branch on GitHub, make your code changes, and commit them.
+          Once you've pushed your commits, come back here to submit your work.
+        </p>
+        <a
+          href={branchUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block border-2 border-Gray200 text-indigo-700 px-4 py-2 rounded-lg text-sm font-bold transition-colors"
         >
-          <div className="flex items-center gap-3 text-Gray600">
-            <GitBranch size={16} />
-            <span className="text-sm">Commit #{i}: Updated files</span>
-          </div>
-          <div className="flex items-center gap-1.5 text-Gray400 text-xs">
-            <Clock size={14} /> <span>Just now</span>
-          </div>
+          Open GitHub Branch
+        </a>
+      </div>
+
+      {/* Visual Commit Activity Placeholder */}
+      <div className="border-2 border-Gray200 rounded-2xl overflow-hidden bg-white">
+        <div className="p-4 border-b border-Gray200 flex justify-between items-center">
+          <span className="font-bold text-indigo-900 text-sm">
+            Branch Status
+          </span>
+          <span className=" px-3 py-1 rounded-lg text-[10px] font-bold text-indigo-700 uppercase tracking-wider">
+            {branchData.branch_name}"
+          </span>
         </div>
-      ))}
-      <button
-        onClick={()=>{handleChanges()}}
-        className="w-full bg-primary text-white hover:bg-hoverd py-4 font-bold text-lg mt-4 rounded-xl"
-      >
-        Continue to Pull Request
-      </button>
+
+        <div className="p-8 text-center">
+          <div className="flex justify-center mb-3 text-Gray300">
+            <GitBranch size={40} />
+          </div>
+          <p className="text-sm text-Gray500 max-w-[200px] mx-auto">
+            Make your commits then submit your final Pull
+            Request.
+          </p>
+        </div>
+
+        <button
+          onClick={handleContinue}
+          className="w-[calc(100%-2rem)] mx-4 mb-4 bg-primary text-white hover:bg-hoverd py-4 font-bold text-lg rounded-xl transition-all shadow-md active:scale-[0.98]"
+        >
+          Continue to Pull Request
+        </button>
+      </div>
     </div>
   );
 }

@@ -38,7 +38,8 @@ const STEP_ICONS = {
 
 export default function ContributionWorkflow({ isOpen, onClose, issue }) {
   const [currentStep, setCurrentStep] = useState(0);
-
+  
+   
   if (!isOpen) return null; // Don't render if modal is closed
 
   /* Function to go to next step */
@@ -77,7 +78,7 @@ export default function ContributionWorkflow({ isOpen, onClose, issue }) {
         </div>
 
         {/* Stepper Header */}
-        <div className="px-6 py-6 flex items-center justify-between relative">
+        <div className="px-6 py-6 flex items-center justify-between relative border-b-2  border-NavBorder mb-2">
           {STEPS.map((step, index) => {
             const Icon = STEP_ICONS[step.id];
             return (
@@ -134,12 +135,22 @@ export default function ContributionWorkflow({ isOpen, onClose, issue }) {
 
             {/* Step Views */}
             <div className="space-y-4 px-10 ">
-              {currentStep === 0 && <ClaimView onNext={nextStep} />}
-              {currentStep === 1 && <ForkView onNext={nextStep} />}
-              {currentStep === 2 && <BranchView onNext={nextStep} />}
-              {currentStep === 3 && <ChangesView onNext={nextStep} />}
-              {currentStep === 4 && <PRView onNext={nextStep} />}
-              {currentStep === 5 && <CompleteView onNext={onClose} />}
+              {currentStep === 0 && (
+                <ClaimView onNext={nextStep} />
+              )}
+              {currentStep === 1 && (
+                <ForkView onNext={nextStep} issue={issue} />
+              )}
+              {currentStep === 2 && (
+                <BranchView onNext={nextStep} issue={issue} />
+              )}
+              {currentStep === 3 && (
+                <ChangesView onNext={nextStep} issue={issue}/>
+              )}
+              {currentStep === 4 && <PRView onNext={nextStep} issue={issue}/>}
+              {currentStep === 5 && (
+                <CompleteView onNext={onClose} issue={issue} />
+              )}
             </div>
           </div>
         </div>

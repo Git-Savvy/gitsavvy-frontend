@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import getStarted from "../../assets/getStarted.svg";
 import { Github, ArrowRight } from "lucide-react";
@@ -9,6 +9,7 @@ import useGitHubLogin from "../../hooks/useGitHubLogin";
 export default function AuthCard() {
   const { mutate, isPending } = useGitHubLogin();
   const navigate = useNavigate();
+  const [isFirebaseLoading, setIsFirebaseLoading] = useState(false);
   const handleLoginClick = async () => {
     try {
       // 1. Trigger popup IMMEDIATELY on click (Browser is happy)
@@ -16,13 +17,13 @@ export default function AuthCard() {
 
       // 2. Pass the tokens to the mutation for backend syncing
       mutate(firebaseData);
-
-    
     } catch (error) {
       console.error("Popup closed or blocked:", error);
+    } finally {
+      setIsFirebaseLoading(false);
     }
   };
-
+  const isLoading = isPending || isFirebaseLoading;
   return (
     <div className="bg-white border-2 border-Gray200  rounded-2xl shadow-b shadow-lg p-12 max-w-[41rem] ">
       <div className="mb-7">
@@ -41,8 +42,8 @@ export default function AuthCard() {
 
       <button
         onClick={handleLoginClick}
-        disabled={isPending}
-        className="w-full bg-primary hover:bg-hoverd  hover:cursor-pointer text-NavText1 py-3  rounded-lg font-medium flex items-center justify-center gap-3 transition mt-25 mb-29 "
+        disabled={isLoading}
+        className={`w-full bg-primary hover:bg-hoverd  hover:cursor-pointer text-NavText1 py-3  rounded-lg font-medium flex items-center justify-center gap-3 transition mt-25 mb-29 ${isLoading ? "opacity-70 cursor-not-allowed" : ""} `}
       >
         <Github />
         <span>{isPending ? "Loading..." : "Sign up with GitHub"}</span>

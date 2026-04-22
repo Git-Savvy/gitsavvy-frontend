@@ -1,33 +1,81 @@
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import { useToast } from "../../../context/ToastContext";
-export default function BranchView({ onNext }) {
-  const { showToast } = useToast();
-  function handleBranch() {
-    showToast({
-      message: "Branch is created successfully!",
-      type: "success",
-      duration: 4000,
-    });
+import { useCreateBranch } from "../../../hooks/useContributionQuery"; 
+import {useContribution} from "../../../context/ContributionContext";
 
-    onNext();
+export default function BranchView({ onNext, issue}) {
+  const { issueId } = useParams();
+  const { showToast } = useToast();
+  const { setBranchData } = useContribution(); // Grab from context
+
+  // 1. State for the user's input
+  const [branchName, setBranchName] = useState("feature/issue-" + issueId);
+
+  // 2. Initialize the mutation
+  const { mutate, isPending } = useCreateBranch();
+
+  function handleBranch() {
+    if (!branchName.trim()) {
+      showToast({ message: "Please enter a branch name", type: "error" });
+      return;
+    }
+
+    // 3. Trigger the mutation with the expected object { issue_id, branch_name }
+    mutate(
+      { issue_id: issue.id, branch_name: branchName },
+      {
+        onSuccess: (data) => {
+          setBranchData(data);
+          showToast({
+            message: `Branch "${data.branch_name}" created successfully!`,
+            type: "success",
+            duration: 4000,
+          });
+          onNext(); // Move to the "Make Changes" step
+        },
+        onError: (error) => {
+          const errMsg =
+            error.response?.data?.message ||
+           "Failed to create branch. Try a different name.";
+          showToast({ message: errMsg, type: "error" });
+        },
+      },
+    );
   }
+
   return (
     <div className="space-y-4">
       <label className="block text-sm font-bold text-Gray600">
         Branch Name
       </label>
+
       <input
-        readOnly
-        value="feature/add-dark-mode"
-        className="w-full p-4 bg-background border border-Gray200 rounded-xl text-Gray600 focus:outline-none"
+        type="text"
+        value={branchName}
+        onChange={(e) => setBranchName(e.target.value)}
+        placeholder="e.target.feature/add-dark-mode"
+        disabled={isPending}
+        className="w-full p-4 bg-background border border-Gray200 rounded-xl text-Gray900 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
       />
+
       <p className="text-xs text-Gray600">
-        Use a descriptive name like "feature/" or "fix/" prefix
+        Use a descriptive name like{" "}
+        <span className="font-mono text-indigo-600">"feature/"</span> or{" "}
+        <span className="font-mono text-indigo-600">"fix/"</span> prefix.
       </p>
+      <p className="text-xs text-Gray600">Make sure that the branch name is unique and not already in use.</p>
+
       <button
-        onClick={() => handleBranch()}
-        className="w-full bg-primary text-white hover:bg-hoverd py-4 rounded-xl font-bold text-lg"
+        disabled={isPending}
+        onClick={handleBranch}
+        className={`w-full py-4 rounded-xl font-bold text-lg transition-all ${
+          isPending
+            ? "bg-gray-300 cursor-wait"
+            : "bg-primary text-white hover:bg-hoverd shadow-lg shadow-primary/10"
+        }`}
       >
-        Create Branch
+        {isPending ? "Creating Branch..." : "Create Branch"}
       </button>
     </div>
   );

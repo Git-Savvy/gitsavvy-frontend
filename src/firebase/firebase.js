@@ -19,6 +19,7 @@ export const githubLogin = async () => {
   const provider = new GithubAuthProvider();
 
   provider.addScope("read:user");
+  provider.addScope("repo");
   const result = await signInWithPopup(auth, provider);
   // ✅ Firebase ID Token
   const idToken = await result.user.getIdToken();

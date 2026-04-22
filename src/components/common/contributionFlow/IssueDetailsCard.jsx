@@ -2,13 +2,13 @@ import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 export default function IssueDetailsCard({ issue }) {
   return (
-    <div className="border border-Gray200 rounded-2xl p-6 bg-white shadow-sm">
+    <div className="border-2 border-Gray200 rounded-2xl p-6 bg-white shadow-sm">
       <h3 className="text-xl font-bold text-text-secondary">{issue.title}</h3>
 
       <div
         className="
                    text-Gray600 text-[15px] mt-3 leading-relaxed line-clamp-3 
-                   [&_code]:line-clamp-5 [&_pre]:bg-zinc-900 [&_a]:text-Indigo300 bg-white"
+                   [&_code]:rounded-2xl [&_code]:line-clamp-5 [&_pre]:bg-zinc-900 [&_a]:text-Indigo300 bg-white"
       >
         <ReactMarkdown rehypePlugins={[rehypeRaw]}>{issue.body}</ReactMarkdown>
       </div>

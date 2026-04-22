@@ -14,6 +14,7 @@ import { IssueProvider } from "./context/IssueContext";
 import { MetricsProvider } from "./context/MetricsContext";
 import { ReadmeProvider } from "./context/ReadmeContext";
 import { DocsProvider } from "./context/DocsContext";
+import { ContributionProvider } from "./context/ContributionContext";
 import NotFound from "./pages/NotFound";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 // import { LoginForm } from "./pages/LoginForm";
@@ -60,7 +61,7 @@ function App() {
                 />
                 <Route
                   path="repoDetail/:repoId/issueDetail/:issueId"
-                  element={<IssueDetail />}
+                  element={<ContributionProvider><IssueDetail /></ContributionProvider>}
                 />
               </Route>
               <Route path="myWork" element={<MyWork />} />
@@ -71,7 +72,7 @@ function App() {
           </Routes>
         </Router>
       </ThemeProvider>
-      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+      <ReactQueryDevtools initialIsOpen={false} />
     </UserProvider>
   );
 }
