@@ -1,31 +1,41 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import StarRating from "./StarRating";
-import { useParams } from "react-router-dom"; //
+import { useParams } from "react-router-dom";
+import { useSubmitRating } from "../../../hooks/useRatingQuery"; 
 
 export default function FeedbackBox() {
   const { repoId } = useParams();
-  // 1. Initialize state from LocalStorage or default to 0
   const storageKey = `stars-${repoId}`;
+  
+  // 1. Initialize local state from LocalStorage
   const [rating, setRating] = useState(() => {
     const saved = localStorage.getItem(storageKey);
     return saved ? parseInt(saved, 10) : 0;
   });
 
-  // 2. Update LocalStorage whenever the value changes
-  useEffect(() => {
-    if (repoId) {
-      localStorage.setItem(storageKey, rating.toString());
-    }
-  }, [rating, storageKey]);
+  // 2. Initialize the mutation
+  const { mutate } = useSubmitRating(repoId);
 
+  const handleRatingChange = (newRating) => {
+    // Update local UI immediately
+    setRating(newRating);
+    localStorage.setItem(storageKey, newRating.toString());
+
+    // Sync with backend
+    if (repoId && newRating > 0) {
+      mutate(newRating);
+    }
+  };
 
   return (
-    <div className="p-4 border border-2 border-NavBorder bg-background rounded-lg min-w-fit ml-5">
-      <p className="mb-2 font-medium">Rate this documentation:</p>
+    <div className="p-4 border-2 border-NavBorder bg-background rounded-lg min-w-fit h-fit ml-5 shadow-sm">
+      <p className="mb-2 font-medium text-textdark">Rate this documentation:</p>
 
-      <StarRating value={rating} onChange={setRating} />
+      <StarRating value={rating} onChange={handleRatingChange} />
 
-      <p className="mt-2 text-sm text-gray-500">You rated: {rating}/5</p>
+      <p className="mt-2 text-xs text-Gray400 italic">
+        {rating > 0 ? `You rated: ${rating}/5` : "Click a star to rate"}
+      </p>
     </div>
   );
 }
