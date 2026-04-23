@@ -65,7 +65,7 @@ export default function PRView({ onNext, issue }) {
       </p>
 
       {/* Dynamic Info Summary */}
-      <div className="border-2 border-Gray200 bg-Gray50 rounded-2xl p-4 space-y-2">
+      <div className="border-2 border-Gray200 bg-Gray50 rounded-2xl p-4 space-y-2 bg-background/20">
         <div className="flex justify-between text-sm">
           <span className="text-Gray600 text-sm">Branch:</span>
           <span className="text-primary font-mono font-medium text-sm">
@@ -90,7 +90,7 @@ export default function PRView({ onNext, issue }) {
             onChange={(e) =>
               setPrDetails({ ...prDetails, title: e.target.value })
             }
-            className="w-full p-3 bg-background border-2 border-Gray200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/20"
+            className="w-full p-3 bg-background border-2 border-primary rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/20"
           />
         </div>
         <div>
@@ -103,7 +103,7 @@ export default function PRView({ onNext, issue }) {
             onChange={(e) =>
               setPrDetails({ ...prDetails, body: e.target.value })
             }
-            className="w-full p-3 bg-background border-2 border-Gray200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 resize-none"
+            className="w-full p-3 bg-background border-2 border-primary rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 resize-none"
           />
         </div>
       </div>

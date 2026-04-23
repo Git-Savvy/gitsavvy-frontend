@@ -11,10 +11,10 @@ import { useParams } from "react-router-dom";
 import { useIssue } from "../hooks/useIssueQuery";
 import NotFound from "./NotFound";
 import { timeAgo } from "../utils/timeAgo";
-import ClaimBanner from "../components/common/contributionFlow/ClaimBanner";
-import ClaimedBanner from "../components/common/contributionFlow/ClimedBanner";
+
 import SkeletonPage from "../components/messages/SkeletonPage";
 import ErrorMessage from "../components/messages/ErrorMessage";
+import Banner from "../components/common/contributionFlow/Banner";  
 export default function IssueDetail() {
   const { repoId, issueId } = useParams(); // id from URL
   const {
@@ -25,7 +25,7 @@ export default function IssueDetail() {
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("description");
-
+ 
   function handleVisit() {
     // Use _blank for a new tab, or _self to open in the same window
     window.open(issue.url, "_blank", "noopener,noreferrer");
@@ -58,6 +58,8 @@ export default function IssueDetail() {
     );
   }
 
+  else{
+ 
   return (
     <main className="max-w-8xl  flex-col gap-10 px-5 md:px-20 lg:px-45">
       {/* Back Link */}
@@ -128,12 +130,10 @@ export default function IssueDetail() {
         </div>
       </div>
 
-      {/* 3. CTA Claim Banner */}
-      {issue.state == "open" || issue.state == "Open" ? (
-        <ClaimBanner setIsModalOpen={setIsModalOpen} />
-      ) : (
-        <ClaimedBanner />
-      )}
+       {/* 3. Claim Banner */}
+      <Banner setIsModalOpen={setIsModalOpen}  issueId={issue.id} />
+
+      
 
       {/* 4. Navigation Bar (Tabs) */}
       <div>
@@ -152,4 +152,4 @@ export default function IssueDetail() {
       />
     </main>
   );
-}
+}}

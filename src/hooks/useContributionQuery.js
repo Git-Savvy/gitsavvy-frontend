@@ -3,8 +3,11 @@ import {
   claimIssue, 
   forkRepository, 
   createBranch, 
-  createPullRequest 
+  createPullRequest ,fetchClaimStatus, unclaimIssue 
 } from "../api/contribution"; 
+
+import { useQuery } from "@tanstack/react-query";
+
 
 // 1) Claim Issue Mutation
 export const useClaimIssue = () => {
@@ -55,6 +58,45 @@ export const useCreatePullRequest = () => {
       // 2. Optional: Invalidate existing work or issues lists 
       // so the UI updates to show the contribution is finished
       queryClient.invalidateQueries(["my-work"]);
+    },
+  });
+};
+
+
+//6) Fetch Claim Status Query
+
+export const useClaimStatus = (issueId) => {
+  return useQuery({
+    queryKey: ["claim-status", issueId],
+    queryFn: () => fetchClaimStatus(issueId),
+    enabled: !!issueId, // لا يعمل إلا إذا وجد ID
+    refetchOnWindowFocus: true, // لتحديث الحالة فور عودة المستخدم للمتصفح
+  });
+};
+
+
+// 7) Unclaim Issue Mutation
+export const useUnclaimIssue = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    // mutationFn receives issueId from the call site: mutate(issueId)
+    mutationFn: (issueId) => unclaimIssue(issueId),
+    
+    // onSuccess receives (data, variables, context)
+    // 'variables' here is the issueId you passed to the mutation
+    onSuccess: (data, issueId) => {
+      // 1. Manually set the cached status to 'unclaimed' for instant UI update
+      queryClient.setQueryData(["claim-status", issueId], {
+        claim_status: "unclaimed",
+        can_claim: true,
+        claimed_by_current_user: false,
+        claimed_by_other_user: false,
+        claimed_by_username: null,
+      });
+
+      // 2. Invalidate the query to refetch fresh state from server
+      queryClient.invalidateQueries(["claim-status", issueId]);
     },
   });
 };

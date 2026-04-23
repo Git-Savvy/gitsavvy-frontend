@@ -7,7 +7,7 @@ import {useContribution} from "../../../context/ContributionContext";
 export default function BranchView({ onNext, issue}) {
   const { issueId } = useParams();
   const { showToast } = useToast();
-  const { setBranchData } = useContribution(); // Grab from context
+  const { setBranchData, setReachedMCHStep } = useContribution(); // Grab from context
 
   // 1. State for the user's input
   const [branchName, setBranchName] = useState("feature/issue-" + issueId);
@@ -32,6 +32,8 @@ export default function BranchView({ onNext, issue}) {
             type: "success",
             duration: 4000,
           });
+          setReachedMCHStep(true);
+          localStorage.setItem("reachedMCHStep", "true");
           onNext(); // Move to the "Make Changes" step
         },
         onError: (error) => {
@@ -56,7 +58,7 @@ export default function BranchView({ onNext, issue}) {
         onChange={(e) => setBranchName(e.target.value)}
         placeholder="e.target.feature/add-dark-mode"
         disabled={isPending}
-        className="w-full p-4 bg-background border border-Gray200 rounded-xl text-Gray900 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+        className="w-full p-4 bg-background border-2 border-primary rounded-xl text-Gray900 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
       />
 
       <p className="text-xs text-Gray600">

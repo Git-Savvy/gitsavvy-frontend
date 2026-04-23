@@ -58,3 +58,32 @@ export const createPullRequest = async (issue_id, prData) => {
   );
   return res.data;
 };
+
+/**
+ * 6) Check claim
+ * GET Claim Status
+ */
+export const fetchClaimStatus = async (issue_id) => {
+  const res = await mainApi.get(
+    `/contributions/issues/${issue_id}/claim-status`,
+    getAuthConfig()
+  );
+  /* المتوقع من الباكند إرجاع:
+    {
+      "claim_status": "unclaimed" | "claimed_by_you" | "claimed_by_other",
+      "can_claim": boolean,
+      "claimed_by_username": string | null
+    }
+  */
+  return res.data;
+};
+
+
+// DELETE Claim
+export const unclaimIssue = async (issue_id) => {
+  const res = await mainApi.delete(
+    `/contributions/issues/${issue_id}/claim`,
+    getAuthConfig()
+  );
+  return res.data;
+};

@@ -79,7 +79,7 @@ export default function ClaimView({ onNext }) {
         {isPending
           ? "Processing..."
           : isAlreadyAssigned
-            ? "Already Assigned"
+            ? "Already Assigned - Continue to PR"
             : "Claim This Issue"}
       </button>
     </div>
