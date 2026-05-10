@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Check } from "lucide-react";
 import { useUserContext } from "../../../hooks/useUserContext";
 import { useUpdatePreferences } from "../../../hooks/useUserQuery";
 import { useQueryClient } from "@tanstack/react-query";
+
 export default function SelectionCards({
   title,
   description,
@@ -17,42 +18,62 @@ export default function SelectionCards({
   };
 
   const queryClient = useQueryClient();
-
-  useEffect(() => {
-    if (user) {
-      queryClient.invalidateQueries({ queryKey: ["repositories"] });
-    }
-  }, [user]);
-
-  //useUpdatePreferences hook
-  const { mutate, isLoading } = useUpdatePreferences();
   const { setUser } = useUserContext();
-  const userpref = user.preferences?.[type] || [];
-  // Normal function for handling tag clicks
+  const { mutate, isPending } = useUpdatePreferences();
+
+  // Stores the timeout ID so we can cancel the previous timer
+  const timeoutRef = useRef(null);
+
+  // Current preferences for this category (languages or interests)
+  const userpref = user?.preferences?.[type] || [];
+
+  // Refetch recommended repositories whenever preferences change
+  useEffect(() => {
+    if (user?.preferences) {
+      queryClient.invalidateQueries({ queryKey: ["repositories"] });
+      console.log("Repositories invalidated because preferences changed");
+    }
+  }, [user?.preferences, queryClient]);
+
+  // Clear any pending timeout when component unmounts
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
+
   function handleTagClick(tagName) {
-    // 1. Calculate the new array for that specific type
+    // Toggle selected tag
     const newPref = userpref.includes(tagName)
       ? userpref.filter((t) => t !== tagName)
       : [...userpref, tagName];
 
-    // 2. Build the full updated user object
+    // Build updated user object
     const updatedUser = {
       ...user,
       preferences: {
         ...user.preferences,
-        [type]: newPref, // Dynamically updates either languages or interests
+        [type]: newPref,
       },
     };
 
-    // Only call mutate if actually there data
-    if (updatedUser.preferences) {
-      mutate(updatedUser.preferences);
+    // Update UI immediately (optimistic update)
+    setUser(updatedUser);
+
+    // Cancel previous pending request
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
     }
 
-    // 3. Trigger the mutation to sync with Server and Storage
-    // ✅ 1. update React state(no need for user to refresh) and sync to localStorage correctly
-    setUser(updatedUser);
-    //has to try to change in server .. if error show toast a and refetch real valuie from server as they not updated
+    // Send request only after user stops changing preferences for 3 seconds
+    timeoutRef.current = setTimeout(() => {
+      if (updatedUser.preferences) {
+        mutate(updatedUser.preferences);
+        console.log("Preferences saved to server");
+      }
+    }, 3000); // Change to 10000 for 10 seconds if desired
   }
 
   return (
@@ -61,21 +82,25 @@ export default function SelectionCards({
         <h2 className="text-textdark text-xl font-semibold">{title}</h2>
         <span className="text-Slate400 text-base">
           {userpref.length} selected
+          {isPending && " (Saving...)"}
         </span>
       </div>
+
       <p className="text-Gray600 text-lg mb-8">{description}</p>
+
       <div className="flex flex-wrap gap-3">
         {tags.map((tag) => (
           <button
-            onClick={() => handleTagClick(tag.name)}
+            type="button"
             key={tag.id}
+            onClick={() => handleTagClick(tag.name)}
             className={`px-4 py-2 rounded-xl border-2 text-sm font-semibold transition-all flex items-center gap-2 ${
               userpref.includes(tag.name)
                 ? colorMap[activeColor]
                 : "bg-white border-Gray200 text-Gray600 hover:border-Gray400"
             }`}
           >
-            {tag.name} {tag.selected && <Check className="w-4 h-4" />}
+            {tag.name}
           </button>
         ))}
       </div>
