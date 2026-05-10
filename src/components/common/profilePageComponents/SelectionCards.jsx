@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Check } from "lucide-react";
 import { useUserContext } from "../../../hooks/useUserContext";
 import { useUpdatePreferences } from "../../../hooks/useUserQuery";
-
+import { useQueryClient } from "@tanstack/react-query";
 export default function SelectionCards({
   title,
   description,
@@ -15,6 +15,15 @@ export default function SelectionCards({
     blue: "bg-Cyan50 border-Teal400 text-Teal400",
     purple: "bg-Purple50 border-Purple400 text-Purple400",
   };
+
+  const queryClient = useQueryClient();
+
+  useEffect(() => {
+    if (user) {
+      queryClient.invalidateQueries({ queryKey: ["repositories"] });
+    }
+  }, [user]);
+
   //useUpdatePreferences hook
   const { mutate, isLoading } = useUpdatePreferences();
   const { setUser } = useUserContext();

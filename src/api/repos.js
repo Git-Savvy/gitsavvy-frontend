@@ -1,12 +1,17 @@
 // api/users.js or api/repos.js
 import { mainApi } from "./Axios";
 
+const getAuthConfig = () => ({
+  headers: {
+    Authorization: `Bearer ${localStorage.getItem("token")}`,
+  },
+});
+
 // GET all repositories
 export const fetchRepositories = async () => {
-  const token = localStorage.getItem("token");
-  const res = await mainApi.get("/repositories/recommend", {
-    headers: { Authorization: `Bearer ${token}` },
-  });
+  const res = await mainApi.get('/repositories/recommend',
+    getAuthConfig(), // this provides the Firebase token
+  );
   return res.data.data; // Axios automatically parses the JSON
 };
 
