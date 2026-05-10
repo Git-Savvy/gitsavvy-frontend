@@ -1,5 +1,5 @@
 import { CheckCircle2, Clock } from "lucide-react";
-import {timeAgo} from "../../../utils/timeAgo"
+import { timeAgo } from "../../../utils/timeAgo";
 export default function MyWorkCompleteCard({
   title,
   repo,
@@ -10,7 +10,6 @@ export default function MyWorkCompleteCard({
   deletions,
   status,
 }) {
-
   return (
     <div className=" mx-auto bg-white border border-Gray200 rounded-2xl p-6 shadow-sm font-sans mb-7">
       {/* Top Row: Icon, Title, and Badge */}
@@ -40,9 +39,11 @@ export default function MyWorkCompleteCard({
         </div>
 
         {/* Language Tag */}
-        <div className="bg-background border border-Gray200 px-3 py-0.5 rounded-full text-text-secondary w-fit">
-          {language}
-        </div>
+        {language && (
+          <div className="bg-background border border-Gray200 px-3 py-0.5 rounded-full text-text-secondary w-fit">
+            {language}
+          </div>
+        )}
 
         {/* Points */}
         <div className="text-emerald-500 font-medium">+{points} points</div>

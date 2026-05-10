@@ -26,8 +26,5 @@ export const githubLogin = async () => {
   // ✅ GitHub Access Token
   const credential = GithubAuthProvider.credentialFromResult(result);
   const githubAccessToken = credential?.accessToken;
-  //for testing
-  console.log("Firebase ID Token:", idToken);
-  console.log("GitHub Access Token:", githubAccessToken);
   return { idToken, githubAccessToken };
 };

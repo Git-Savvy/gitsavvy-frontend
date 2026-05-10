@@ -21,7 +21,11 @@ export default function RepoDetail() {
   const [activeTab, setActiveTab] = useState("readme");
   // ask for repo with this id
   const { data: repo, isPending, error } = useRepository(Number(repoId)); // convert to number
-  const { data: M, isPending:isPendingM, error:errorM } = useMetricsByRepoId(Number(repoId)); // convert to number
+  const {
+    data: M,
+    isPending: isPendingM,
+    error: errorM,
+  } = useMetricsByRepoId(Number(repoId)); // convert to number
   function handleVisit() {
     // Use _blank for a new tab, or _self to open in the same window
     window.open(repo.url, "_blank", "noopener,noreferrer");
@@ -55,7 +59,7 @@ export default function RepoDetail() {
       case "metrics":
         return <Metrics repoId={Number(repoId)} />;
       default:
-        return <Readme repoId={Number(repoId)}  repoData={repo}/>;
+        return <Readme repoId={Number(repoId)} repoData={repo} />;
     }
   };
 
@@ -86,12 +90,12 @@ export default function RepoDetail() {
         <div className="flex flex-col md:flex-row gap-4 text-sm  my-5 text-text-secondary">
           <span className="flex gap-1 text-base md:text-lg">
             <Star className="text-Yellow400" />
-            <p>{repo.stars_count}</p>
+            <p className="font-semibold">{repo.stars_count}</p>
             <p>stars</p>
           </span>
           <span className="flex gap-1 text-base md:text-lg">
             <GitFork className="text-Gray600" />
-            <p>{repo.forks_count}</p>
+            <p className="font-semibold">{repo.forks_count}</p>
             <p>forks</p>
           </span>
 
@@ -99,23 +103,18 @@ export default function RepoDetail() {
             <Users className="text-primary" />
 
             {/* 1. Loading State */}
-            {isPendingM && (
-              <div className="w-fit">
-               loading.. 
-              </div>
-            )}
+            {isPendingM && <div className="w-fit">loading..</div>}
 
             {/* 2. Success State - Added optional chaining (?.) */}
             {!isPendingM && M?.stats && (
-              <p className="font-bold">{M.stats.num_of_contributors}</p>
+              <p className="font-semibold">{M.stats.num_of_contributors}</p>
             )}
 
             {/* 3. Error State */}
-            {errorM && (<p className="text-red-500 text-xs">error</p>)}
+            {errorM && <p className="text-red-500 text-xs">error</p>}
 
             <p>contributors</p>
           </span>
-
         </div>
         <div className="flex flex-wrap gap-2 mt-3">
           {repo.topics.map((item) => (

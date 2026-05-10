@@ -18,20 +18,30 @@ export default function MyWorkCurrentCard({
           <div className="bg-background p-3 rounded-xl w-fit h-fit">
             <GitBranch className="w-6 h-6 text-Cyan400" />
           </div>
+
           <div>
+            <div className="md:hidden w-full flex justify-end">
+              <span className="bg-Cyan400 text-NavText1 px-3 py-1 rounded-full text-base  w-30 font-medium my-5 md:my-0">
+                {status}
+              </span>
+            </div>
             <h3 className="text-2xl font-semibold text-text-secondary">
               {title}
             </h3>
-            <p className="text-Gray600 text-base">{repo}</p>
+            <p className="text-Cyan400 text-xl font-semibold ">{repo}</p>
           </div>
         </div>
-        <span className="bg-Cyan400 text-NavText1 px-3 py-1 rounded-full text-base  font-medium my-5 md:my-0">
-          {status}
-        </span>
+        <div className="hidden md:flex w-full  justify-end">
+          <span className="bg-Cyan400 text-NavText1 px-3 py-1 rounded-full text-base  w-30 font-medium my-5 md:my-0">
+            {status}
+          </span>
+        </div>
       </div>
 
       {/* Description */}
-      <p className="break-words text-xl text-Gray600 mb-6 ml-[60px]">{description}</p>
+      <p className="break-words text-xl text-Gray600 mb-6 ml-[60px] line-clamp-3">
+        {description}
+      </p>
 
       {/* Metadata Row */}
       <div className="flex flex-col md:flex-row md:items-center gap-6 ml-[60px] text-Gray400 text-base mb-2">

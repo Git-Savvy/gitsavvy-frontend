@@ -40,8 +40,6 @@ const Metrics = ({ repoId }) => {
               <SkeletonCard key={i} containerStyle={"h-[150px]"} />
             ))}
           </div>
-
-          <ContributionActivityCard data={"loading"} />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-4">
             <TopContributerCard contributors={"loading"} />
             <MonthlyContributionCard data={"loading"} />
