@@ -64,7 +64,7 @@ export default function Navbar() {
                 </div>
 
                 <span
-                  className={`text-lg lg:text-xl font-simibold   transition-all duration-300 cursor-pointer ${isActive ? "text-primary" : "text-Gray600 hover:text-primary "}`}
+                  className={`hidden md:flex text-lg lg:text-xl font-simibold   transition-all duration-300 cursor-pointer ${isActive ? "text-primary" : "text-Gray600 hover:text-primary "}`}
                 >
                   {user.name}
                 </span>

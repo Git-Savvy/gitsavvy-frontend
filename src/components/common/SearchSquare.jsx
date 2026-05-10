@@ -12,7 +12,7 @@ export default function SearchSquare({ text, setSearch }) {
           const cleanValue = e.target.value.trim().substring(0, 100); // Limit length
           setSearch(cleanValue);
         }}
-        className="w-full pl-10 pr-4 py-2.5 bg-background border border-Gray400 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
+        className="w-full placeholder:text-sm  md:placeholder:text-lg pl-10 pr-4 py-2.5 bg-background border border-Gray400 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
       />
     </div>
   );

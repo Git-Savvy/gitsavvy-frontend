@@ -28,7 +28,7 @@ export default function FeedbackBox() {
   };
 
   return (
-    <div className="p-4 border-2 border-NavBorder bg-background rounded-lg min-w-fit h-fit ml-5 shadow-sm">
+    <div className="p-4 border-2 border-NavBorder bg-background rounded-lg min-w-fit h-fit ml-5 shadow-sm mt-4 md:mt-0">
       <p className="mb-2 font-medium text-textdark">Rate this documentation:</p>
 
       <StarRating value={rating} onChange={handleRatingChange} />

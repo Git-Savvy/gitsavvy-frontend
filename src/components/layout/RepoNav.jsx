@@ -3,7 +3,7 @@ export default function RepoNav({ activeTab, setActiveTab }) {
     { id: "readme", label: "README" },
     { id: "docs", label: "DOCS" },
     { id: "issues", label: "ISSUES" },
-    { id: "metrics", label: "METRICE" },
+    { id: "metrics", label: "METRICS" },
   ];
 
   return (

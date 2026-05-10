@@ -7,6 +7,7 @@ export default function ProfileHeaderCard({
   level,
   points,
   githubUser,
+  github_connected
 }) {
   return (
     <div className="bg-white border border-Gray200 rounded-2xl p-8 shadow-sm">
@@ -31,6 +32,7 @@ export default function ProfileHeaderCard({
           </div>
         </div>
       </div>
+      {github_connected&&
       <div className="bg-Cyan50 border border-Teal400 rounded-xl p-4 flex flex-col md:flex-row justify-between md:items-center">
         <div className="flex items-center gap-3">
           <Github className="w-5 h-5 text-Teal400" />
@@ -46,7 +48,8 @@ export default function ProfileHeaderCard({
         <span className="bg-Teal400/20 text-Teal400 text-[10px] border border-Teal400 font-bold px-2 py-1 rounded-md flex items-center gap-1 w-fit mt-5 md:mt-0">
           <Check className="w-3 h-3 text-Teal400" /> CONNECTED
         </span>
-      </div>
+      </div>}
+
     </div>
   );
 }

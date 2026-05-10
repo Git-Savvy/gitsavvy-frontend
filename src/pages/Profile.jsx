@@ -51,6 +51,7 @@ export default function Profile() {
         level={user.level}
         points={user.points}
         githubUser={user.username}
+        github_connected={user.github_connected}
       />
 
       <SelectionCards

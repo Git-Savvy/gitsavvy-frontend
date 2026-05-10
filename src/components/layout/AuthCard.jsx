@@ -26,16 +26,16 @@ export default function AuthCard() {
   const isLoading = isPending || isFirebaseLoading;
   return (
     <div className="bg-white border-2 border-Gray200  rounded-2xl shadow-b shadow-lg p-12 max-w-[41rem] ">
-      <div className="mb-7">
+      <div className=" w-30 md:w-40 h-auto mb-7">
         {" "}
         <img src={getStarted} />{" "}
       </div>
 
-      <h2 className="text-4xl font-normal text-textdark mb-8">
+      <h2 className="text-3xl md:text-4xl font-normal text-textdark mb-2 md:mb-8">
         Welcome to GitSavvy
       </h2>
 
-      <p className="text-text-secondary text-2xl mb-10">
+      <p className="text-text-secondary text-xl md:text-2xl mb-0 md:mb-10">
         Join thousands of developers making meaningful contributions to
         open-source projects worldwide.
       </p>
@@ -43,14 +43,14 @@ export default function AuthCard() {
       <button
         onClick={handleLoginClick}
         disabled={isLoading}
-        className={`w-full bg-primary hover:bg-hoverd  hover:cursor-pointer text-NavText1 py-3  rounded-lg font-medium flex items-center justify-center gap-3 transition mt-25 mb-29 ${isLoading ? "opacity-70 cursor-not-allowed" : ""} `}
+        className={`w-full bg-primary hover:bg-hoverd  hover:cursor-pointer text-NavText1 py-3  rounded-lg font-medium flex items-center justify-center gap-3 transition mt-10 md:mt-25 mb-12 md:mb-29 ${isLoading ? "opacity-70 cursor-not-allowed" : ""} `}
       >
         <Github />
         <span>{isPending ? "Loading..." : "Sign up with GitHub"}</span>
         <ArrowRight />
       </button>
 
-      <p className="text-xs text-Gray600 text-center mt-4">
+      <p className="text-xs text-Gray600 text-center mb-0 md:mt-4">
         By signing up, you agree to our{" "}
         <span className="font-medium">Terms of Service</span> and{" "}
         <span className="font-medium">Privacy Policy</span>
