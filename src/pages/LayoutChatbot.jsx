@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import FloatingChatbot from "../components/common/chatbot/FloatingChatbot";
 import { Outlet } from "react-router-dom";
-
+import { useUserContext } from "../hooks/useUserContext";
 export default function LayoutChatbot() {
   // 1. Restored your original initial state
   const [messages, setMessages] = useState([
@@ -11,7 +11,7 @@ export default function LayoutChatbot() {
       sender: "bot",
     },
   ]);
-
+  const {user}=useUserContext();
   const [isTyping, setIsTyping] = useState(false);
   const socket = useRef(null); //useRef → store something that doesn’t reset (WebSocket connection)
   //It keeps value between renders. Doesn’t cause re-render when changed
@@ -67,7 +67,7 @@ export default function LayoutChatbot() {
     setIsTyping(true);
 
     const requestBody = {
-      repo_id: 1,
+      repo_id: user.id,
       query: text,
     };
 
