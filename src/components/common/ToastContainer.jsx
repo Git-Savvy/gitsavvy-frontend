@@ -26,7 +26,7 @@ const ToastContainer = ({ toasts, removeToast }) => {
             min-w-[320px] max-w-sm
             px-4 py-3 rounded-2xl border 
             shadow-[0_8px_30px_rgb(0,0,0,0.12)]
-            backdrop-blur-xl
+            backdrop-blur-2xl
             animate-toast-in
             transition-all duration-300
             ${toastStyles[toast.type]}

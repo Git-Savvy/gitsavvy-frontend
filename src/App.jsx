@@ -19,6 +19,7 @@ import NotFound from "./pages/NotFound";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 // import { LoginForm } from "./pages/LoginForm";
 import ProtectedRoute from "./pages/ProtectedRoute";
+import ScrollToTop from "./components/common/ScrollToTop";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
     <UserProvider>
       <ThemeProvider>
         <Router>
+          <ScrollToTop />
           <Routes>
             {/* PUBLIC ROUTES */}
             <Route path="/" element={<AuthPage />} />
@@ -61,7 +63,11 @@ function App() {
                 />
                 <Route
                   path="repoDetail/:repoId/issueDetail/:issueId"
-                  element={<ContributionProvider><IssueDetail /></ContributionProvider>}
+                  element={
+                    <ContributionProvider>
+                      <IssueDetail />
+                    </ContributionProvider>
+                  }
                 />
               </Route>
               <Route path="myWork" element={<MyWork />} />
