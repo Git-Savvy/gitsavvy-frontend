@@ -39,6 +39,7 @@ export default function Readme({ repoId }) {
         prose break-words max-w-none text-text-secondary leading-relaxed
         [&>p]:flex-wrap 
         [&>p]:gap-2 
+        [&>hr]:border-NavBorder
         [&>img]:block [&>img]:mx-auto [&>img]:!float-none
         [&_p_img]:max-w-[200px]
         [&_img]:bg-gray-200
