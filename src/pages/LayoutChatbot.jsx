@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import FloatingChatbot from "../components/common/chatbot/FloatingChatbot";
 import { Outlet } from "react-router-dom";
-import { useUserContext } from "../hooks/useUserContext";
+import { useParams } from "react-router-dom";
+import { useRepository } from "../hooks/useRepoQuery";
 export default function LayoutChatbot() {
   // 1. Restored your original initial state
   const [messages, setMessages] = useState([
@@ -11,7 +12,8 @@ export default function LayoutChatbot() {
       sender: "bot",
     },
   ]);
-  const {user}=useUserContext();
+   const { repoId } = useParams(); // id from URL "it is a string!"
+   const { data: repo, isPending, error } = useRepository(Number(repoId)); // convert to number
   const [isTyping, setIsTyping] = useState(false);
   const socket = useRef(null); //useRef → store something that doesn’t reset (WebSocket connection)
   //It keeps value between renders. Doesn’t cause re-render when changed
@@ -19,7 +21,7 @@ export default function LayoutChatbot() {
   // 2. A reusable function to handle incoming messages
   const handleSocketMessage = (event) => {
     const response = JSON.parse(event.data);
-
+    
     if (response.type === "token") {
       setIsTyping(false);
       setMessages((prev) => {
@@ -67,7 +69,7 @@ export default function LayoutChatbot() {
     setIsTyping(true);
 
     const requestBody = {
-      repo_id: user.id,
+      repo_id: repo.id,
       query: text,
     };
 

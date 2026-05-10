@@ -2,7 +2,7 @@ import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import SkeletonCard from "../../messages/SkeletonCard";
 import ErrorMessage from "../../messages/ErrorMessage";
-
+import CopyButton from "../../common/CopyButton";
 export default function MainContentCard({
   docData, // Array of chunks from the docs endpoint
   isPending, // Loading state for Step 3
@@ -50,7 +50,7 @@ export default function MainContentCard({
         {docData.map((chunk, index) => (
           <div
             key={chunk.chunk_id || index}
-            className="pb-10 border-b border-Gray100 last:border-0 last:pb-0"
+            className="pb-10 border-b border-NavBorder last:border-0 last:pb-0"
           >
             {/* Header: Displays signature (e.g., "function setupTermynal()") or File Summary title */}
             {chunk.signature ? (
@@ -86,7 +86,7 @@ export default function MainContentCard({
                       [&_p_img]:p-2
                       [&_strong]:text-textdark [&_h1]:text-NavBorder/70
                       [&_h2]:text-NavBorder/70 [&_h3]:text-NavBorder/50 [&_h4]:text-NavBorder/40
-                      [&_code]:text-indigo-300 [&_pre]:bg-zinc-900 [&_a]:text-Indigo300 bg-white"
+                      [&_code]:text-indigo-300 [&_pre]:bg-white [&_a]:text-Indigo300 bg-white"
               >
                 <ReactMarkdown rehypePlugins={[rehypeRaw]}>
                   {chunk.docs}
@@ -95,15 +95,18 @@ export default function MainContentCard({
             )}
 
             {/* Code Block: The raw source code for this specific chunk */}
-            { chunk.type === "function" && chunk.code &&
-              chunk.code.trim() !== "" &&
-             (
+            {chunk.type === "function" &&
+              chunk.code &&
+              chunk.code.trim() !== "" && (
                 <div className="mt-6">
                   <p className="text-sm font-bold text-Gray400 mb-2 uppercase tracking-widest font-mono">
                     Source Context
                   </p>
-                  <pre className="bg-zinc-900 text-indigo-300 p-6 rounded-xl font-mono text-sm overflow-x-auto shadow-inner">
-                    <code className="block">{chunk.code}</code>
+                  <div className="flex justify-end rounded-t-xl bg-zinc-900">
+                    <CopyButton textToCopy={chunk.code} />
+                  </div>
+                  <pre className="bg-zinc-900 text-indigo-300 p-6 rounded-b-xl font-mono text-sm overflow-x-auto shadow-inner">
+                    <code className="flex flex-col">{chunk.code}</code>
                   </pre>
                 </div>
               )}
