@@ -31,7 +31,7 @@ export default function FilterPop({
     "Investigate",
   ];
 
-  const statusOptions = ["Open", "Claimed"];
+  const statusOptions = ["Open", "Claimed","Unclaimed"];
   //STORE ALL SELECTED LABLES
   const toggleLabel = (label) => {
     setSelectedLabels((prev) =>

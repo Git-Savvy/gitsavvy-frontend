@@ -61,7 +61,7 @@ export default function IssuesList({ search, selectedStatus, selectedLabels }) {
     // 📌 status
     const matchesStatus =
       selectedStatus === "" ||
-      issue.state?.toLowerCase() === selectedStatus?.toLowerCase() || issue.assignees.length!==0;
+      issue.state?.toLowerCase() === selectedStatus?.toLowerCase() || issue.assignees.length!==0&&selectedStatus?.toLowerCase()==="claimed"||issue.assignees.length===0&&selectedStatus?.toLowerCase()==="unclaimed";
 
     return matchesSearch && matchesLabels && matchesStatus; //all of them has to be true
   });

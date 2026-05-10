@@ -24,7 +24,7 @@ export default function IssueCard({ issue }) {
 
            <div
             className="
-            prose max-w-none text-text-secondary leading-relaxed line-clamp-3 
+            prose break-words max-w-none text-text-secondary leading-relaxed line-clamp-3 
             [&>p]:flex-wrap 
             [&>p]:gap-2 
             [&>img]:block [&>img]:mx-auto [&>img]:!float-none

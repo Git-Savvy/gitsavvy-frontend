@@ -36,7 +36,7 @@ export default function Readme({ repoId }) {
         {/* README */}
         <div
           className="
-        prose max-w-none text-text-secondary leading-relaxed
+        prose break-words max-w-none text-text-secondary leading-relaxed
         [&>p]:flex-wrap 
         [&>p]:gap-2 
         [&>img]:block [&>img]:mx-auto [&>img]:!float-none
