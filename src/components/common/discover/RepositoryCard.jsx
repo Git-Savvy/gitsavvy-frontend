@@ -5,10 +5,10 @@ import { faStar } from "@fortawesome/free-regular-svg-icons";
 import SimpleDarkButton from "../SimpleDarkButton";
 import SimpleLightButton from "../SimpleLightButton";
 export default function RepositoryCard({ repo, navigate }) {
-  function handleVisit(){
-  // Use _blank for a new tab, or _self to open in the same window
-  window.open(repo.url, '_blank', 'noopener,noreferrer');
-};
+  function handleVisit() {
+    // Use _blank for a new tab, or _self to open in the same window
+    window.open(repo.url, "_blank", "noopener,noreferrer");
+  }
   return (
     <div className="border-2 border-Gray200 rounded-xl p-5 bg-white flex flex-col lg:flex-row justify-between gap-4  lg:shadow-sm">
       {/* Left */}
@@ -32,18 +32,20 @@ export default function RepositoryCard({ repo, navigate }) {
         <div className="flex flex-col md:flex-row  gap-4 text-base lg:text-base text-Gray600 mt-3">
           <span className="flex gap-1 lg:items-center">
             <FontAwesomeIcon icon={faStar} className="text-lg text-Yellow400" />
-            {repo.stars_count}
+            <span className="font-semibold">{repo.stars_count}</span>
+            stars
           </span>
           <span className="flex gap-1 lg:items-center">
             <FontAwesomeIcon
               icon={faCodeFork}
               className="text-lg text-Gray600"
             />{" "}
-            {repo.forks_count} forks
+            <span className="font-semibold">{repo.forks_count}</span> forks
           </span>
           <span className="flex gap-1 lg:items-center">
             <AlertCircle className="text-lg text-primary " />
-            {repo.open_issues_count} open issues
+            <span className="font-semibold">{repo.open_issues_count}</span> open
+            issues
           </span>
         </div>
 
