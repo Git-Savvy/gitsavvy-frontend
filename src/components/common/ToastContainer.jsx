@@ -1,40 +1,52 @@
-import { CircleCheckBig } from "lucide-react";
-import { Ban } from "lucide-react";
-import { TriangleAlert } from "lucide-react";
-import { Info } from "lucide-react";
+import { CircleCheckBig, Ban, TriangleAlert, Info, X } from "lucide-react";
+
 const toastStyles = {
-  success: "bg-teal-500/20 text-teal-500",
-  error: "bg-red-500/20 text-red-500",
-  warning: "bg-yellow-500/20 text-yellow-500",
-  info: "bg-cyan-500/20 text-cyan-500",
+  success: "border-teal-500/20 bg-teal-500/10 text-teal-500",
+  error: "border-red-500/20 bg-red-500/10 text-red-500",
+  warning: "border-yellow-500/20 bg-yellow-500/10 text-yellow-500",
+  info: "border-cyan-500/20 bg-cyan-500/10 text-cyan-500",
 };
 
 const toastIcon = {
-  success: <CircleCheckBig />,
-  error: <Ban />,
-  warning: <TriangleAlert />,
-  info: <Info />,
+  success: <CircleCheckBig size={20} />,
+  error: <Ban size={20} />,
+  warning: <TriangleAlert size={20} />,
+  info: <Info size={20} />,
 };
 
 const ToastContainer = ({ toasts, removeToast }) => {
   return (
-    <div className="fixed top-5 right-5 z-50 flex flex-col gap-3">
+    <div className="fixed top-20 right-5 z-50 flex flex-col gap-3 pointer-events-none">
       {toasts.map((toast) => (
-        <div className="bg-background rounded-xl" key={toast.id}>
-          <div
-            className={`px-4 py-3 rounded-xl shadow-lg border flex items-center gap-5 animate-slide-in ${toastStyles[toast.type]}`}
-          >
-            <div className="flex gap-2">
-              <span className="font-semibold">{toast.message}</span>
-              <span>{toastIcon[toast.type]}</span>
-            </div>
-            <button
-              onClick={() => removeToast(toast.id)}
-              className="text-Gray400 hover:text-Gray600"
-            >
-              ✕
-            </button>
+        <div
+          key={toast.id}
+          className={`
+            pointer-events-auto
+            flex items-center gap-4 
+            min-w-[320px] max-w-sm
+            px-4 py-3 rounded-2xl border 
+            shadow-[0_8px_30px_rgb(0,0,0,0.12)]
+            backdrop-blur-xl
+            animate-toast-in
+            transition-all duration-300
+            ${toastStyles[toast.type]}
+          `}
+        >
+          {/* Icon Container */}
+          <div className="shrink-0 opacity-90">{toastIcon[toast.type]}</div>
+
+          {/* Message */}
+          <div className="flex-1 text-sm font-medium leading-tight">
+            {toast.message}
           </div>
+
+          {/* Close Button */}
+          <button
+            onClick={() => removeToast(toast.id)}
+            className="shrink-0 p-1 rounded-lg transition-colors hover:bg-black/5 dark:hover:bg-white/10 opacity-50 hover:opacity-100"
+          >
+            <X size={16} />
+          </button>
         </div>
       ))}
     </div>

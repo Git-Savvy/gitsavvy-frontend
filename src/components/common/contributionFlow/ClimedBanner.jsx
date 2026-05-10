@@ -45,7 +45,7 @@ export default function ClaimedBanner({ setIsModalOpen, statusData ,issueId}) {
                 onClick={() => {
                   setIsModalOpen(true);
                 }}
-                text=" Continue to PR"
+                text=" Continue"
               />
 
               <SimpleLightButton

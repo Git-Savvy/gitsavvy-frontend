@@ -63,6 +63,33 @@
   /* UI */
   --color-primaryLableBg: #f3e8ff; /*light purple bg*/
   --color-switchbg: #fafafa;
+
+  /* Define the keyframes */
+  @keyframes slide-in {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-out {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+
+  /* Assign them to utility names */
+  --animate-toast-in: slide-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+  --animate-toast-out: slide-out 0.3s ease-in forwards;
 }
 
 /* 3. Force Dark Theme for manual class (Important for the JS toggle) */

@@ -14,16 +14,16 @@ export const useIssues = () => {
   return useQuery({
     queryKey: ["issues"], // The "cache key"
     queryFn: fetchIssues,
-    staleTime: 1000 * 60 * 5, // Keep data fresh for 5 minutes
+    staleTime: 1000 * 60 * 0.1, // Keep data fresh for 0.1 minutes
     cacheTime: 1000 * 60 * 60, // Cache data for 1 hour
   });
 };
 
-export const useIssue = (repoId,id) => {
+export const useIssue = (repoId, id) => {
   return useQuery({
     queryKey: ["issue", id],
-    queryFn: () => fetchIssueById(repoId,id),
-    staleTime: 1000 * 30, // Keep data fresh for 30S
+    queryFn: () => fetchIssueById(repoId, id),
+    staleTime: 1000 * 10, // Keep data fresh for 10S
     cacheTime: 1000 * 60 * 5, // 5 minutes
   });
 };
@@ -35,7 +35,7 @@ export const useIssuesByRepo = (repoId) => {
     queryKey: ["issues", repoId], // important: scoped to repo
     queryFn: () => fetchIssuesByRepoId(repoId),
     enabled: !!repoId, // don’t run if repoId (come from parameters) is undefined/null
-    staleTime: 1000 * 30, // 30 seconds (issues change often)
+    staleTime: 1000 * 10, // 10 seconds (issues change often)
     cacheTime: 1000 * 60 * 5, // 5 minutes
   });
 };
@@ -55,10 +55,14 @@ export const useClaimIssue = () => {
     onSuccess: (updatedIssue) => {
       // "Invalidate" tells React Query that the old data is now "trash"
       // It forces a refetch so the UI shows "Claimed" automatically
-      queryClient.invalidateQueries({ queryKey: ["issues",Number(updatedIssue.repositoryId)] });
+      queryClient.invalidateQueries({
+        queryKey: ["issues", Number(updatedIssue.repositoryId)],
+      });
 
       // Optional: Also update the specific detail view if you're on that page
-      queryClient.invalidateQueries({ queryKey: ["issue", Number(updatedIssue.id)] });
+      queryClient.invalidateQueries({
+        queryKey: ["issue", Number(updatedIssue.id)],
+      });
 
       showToast({
         message: "Issue claimed successfully!",
@@ -70,6 +74,11 @@ export const useClaimIssue = () => {
     // 3. What to do if the server fails (e.g., 404 or network error)
     onError: (error) => {
       console.error("Failed to claim issue:", error.message);
+      showToast({
+        message: ("Failed to claim issue:", error.message),
+        type: "error",
+        duration: 4000,
+      });
     },
   });
 };

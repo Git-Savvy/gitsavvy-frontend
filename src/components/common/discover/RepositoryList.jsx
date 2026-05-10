@@ -19,13 +19,24 @@ export default function RepositoryList({ search }) {
       </div>
     );
 
-  if (error)
+  if (error) {
+    if (error?.status === 401 || error?.response?.status === 401) {
+      setTimeout(() => {
+        navigate("/");
+      }, 4000);
+
+      return (
+        <ErrorMessage
+          containerStyle="h-screen"
+          message="The token expired, You will be redirect to login page."
+        />
+      );
+    }
+
     return (
-      <ErrorMessage
-        message={error.message}
-        containerStyle={"w-full h-[450px]"}
-      />
+      <ErrorMessage message={error.message} containerStyle="w-full h-[450px]" />
     );
+  }
   const filteredRepos = repos.filter((repo) => {
     const query = search.toLowerCase();
 

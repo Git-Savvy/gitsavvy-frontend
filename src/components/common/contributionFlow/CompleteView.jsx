@@ -3,10 +3,10 @@ import { Check } from "lucide-react";
 import { useToast } from "../../../context/ToastContext";
 import { useContribution } from "../../../context/ContributionContext"; // Adjust path
 
-export default function CompleteView({ onNext }) {
+export default function CompleteView({ onClose }) {
   const { showToast } = useToast();
   // Grab the PR data and the reset helper from context
-  const { prData, resetContribution } = useContribution();
+  const { prData, resetContributionData } = useContribution();
   console.log(prData);
 
   function handleDone() {
@@ -15,11 +15,8 @@ export default function CompleteView({ onNext }) {
       type: "success",
       duration: 4000,
     });
-    
-    // // Clear localStorage and reset steps to 0
-    // resetContribution();
-    
-   onNext(); // This will close the modal in ContributionWorkflow
+    onClose(); // This will close the modal in ContributionWorkflow
+    console.log("Complete");
   }
 
   const handleViewPR = () => {
@@ -50,13 +47,13 @@ export default function CompleteView({ onNext }) {
 
       {/* Action Buttons */}
       <div className="space-y-3 pt-4">
-        <button 
+        <button
           onClick={handleViewPR}
           className="w-full border border-primary text-primary bg-background hover:bg-hoverl py-3.5 rounded-xl font-bold transition-all active:scale-[0.98]"
         >
           View Pull Request
         </button>
-        
+
         <button
           onClick={handleDone}
           className="w-full bg-primary text-NavText1 hover:bg-hoverd py-3.5 rounded-xl font-bold transition-all shadow-lg shadow-primary/20 active:scale-[0.98]"

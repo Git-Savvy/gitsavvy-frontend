@@ -131,7 +131,7 @@ export default function IssueDetail() {
       </div>
 
        {/* 3. Claim Banner */}
-      <Banner setIsModalOpen={setIsModalOpen}  issueId={issue.id} />
+      <Banner setIsModalOpen={setIsModalOpen}  issue={issue} />
 
       
 

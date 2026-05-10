@@ -2,7 +2,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { fetchUserById, updateUserPref } from "../api/user";
 import { useUserContext } from "../hooks/useUserContext";
 import { useNavigate } from "react-router-dom";
-
+import { useToast } from "../context/ToastContext";
 // We use useMutation because login is a one-time action, not continuous fetching.
 // useQuery is for continuous/fetch-on-mount data; useMutation is for actions like login, form submission, etc.
 // export const useUpdateUser = () => {
@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 // };
 
 export const useUpdatePreferences = () => {
+  const { showToast } = useToast();
   const queryClient = useQueryClient();
   console.log("iam in useUpdared pref in use user query");
   return useMutation({
@@ -27,6 +28,11 @@ export const useUpdatePreferences = () => {
     },
     onError: (error) => {
       console.error("Update failed:", error.message);
+      showToast({
+        message: ("Update failed:", error.message),
+        type: "error",
+        duration: 3000,
+      });
     },
   });
 };
