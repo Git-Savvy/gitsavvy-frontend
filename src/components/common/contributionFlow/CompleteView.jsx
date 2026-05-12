@@ -1,13 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import { Check } from "lucide-react";
 import { useToast } from "../../../context/ToastContext";
-import { useContribution } from "../../../context/ContributionContext"; // Adjust path
-
+import { useContribution } from "../../../context/ContributionContext";
+import { useSyncPRStatus } from "../../../hooks/useContributionQuery";
 export default function CompleteView({ onClose }) {
   const { showToast } = useToast();
   // Grab the PR data and the reset helper from context
   const { prData, resetContributionData } = useContribution();
-  console.log(prData);
+  const [canComplete, setCanComplete] = useState(false);
+
+  const { mutate: checkPRStatus, isPending, data, error } = useSyncPRStatus();
+
+  const handleRefreshPRStatus = () => {
+    checkPRStatus(issueId, {
+      onSuccess: (response) => {
+        // Enable Complete button only if PR is merged
+        setCanComplete(response.merged === true);
+        if (canComplete) {
+          handleDone();
+        } else {
+          showToast({
+            message:
+              "Your pull request has not been merged yet. Please wait until it is merged before completing this contribution.",
+            type: "error",
+            duration: 4000,
+          });
+        }
+      },
+      onError: (err) => {
+        console.error("Failed to sync PR status:", err);
+        setCanComplete(false);
+      },
+    });
+  };
 
   function handleDone() {
     showToast({
@@ -43,6 +68,13 @@ export default function CompleteView({ onClose }) {
           Your pull request has been submitted. Maintainers will review your
           changes and provide feedback.
         </p>
+
+        <p className="text-Gray400 px-10">
+          Once you receive the merge confirmation email, you can click the Done
+          button. If your pull request is closed without being merged, it means
+          your solution was not accepted. In that case, you can either unclaim
+          the issue or update your solution and submit a new pull request.
+        </p>
       </div>
 
       {/* Action Buttons */}
@@ -55,7 +87,7 @@ export default function CompleteView({ onClose }) {
         </button>
 
         <button
-          onClick={handleDone}
+          onClick={handleRefreshPRStatus}
           className="w-full bg-primary text-NavText1 hover:bg-hoverd py-3.5 rounded-xl font-bold transition-all shadow-lg shadow-primary/20 active:scale-[0.98]"
         >
           Done

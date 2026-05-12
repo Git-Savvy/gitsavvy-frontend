@@ -13,9 +13,9 @@ const getAuthConfig = () => ({
  */
 export const claimIssue = async (issue_id) => {
   const res = await mainApi.post(
-    `/contributions/issues/${issue_id}/claim`, 
-    {}, 
-    getAuthConfig()
+    `/contributions/issues/${issue_id}/claim`,
+    {},
+    getAuthConfig(),
   );
   return res.data;
 };
@@ -26,9 +26,9 @@ export const claimIssue = async (issue_id) => {
  */
 export const forkRepository = async (issue_id) => {
   const res = await mainApi.post(
-    `/contributions/issues/${issue_id}/fork`, 
-    {}, 
-    getAuthConfig()
+    `/contributions/issues/${issue_id}/fork`,
+    {},
+    getAuthConfig(),
   );
   return res.data;
 };
@@ -41,7 +41,7 @@ export const createBranch = async (issue_id, branch_name) => {
   const res = await mainApi.post(
     `/contributions/issues/${issue_id}/branch`,
     { branch_name },
-    getAuthConfig()
+    getAuthConfig(),
   );
   return res.data;
 };
@@ -54,7 +54,7 @@ export const createPullRequest = async (issue_id, prData) => {
   const res = await mainApi.post(
     `/contributions/issues/${issue_id}/pull-request`,
     prData,
-    getAuthConfig()
+    getAuthConfig(),
   );
   return res.data;
 };
@@ -66,7 +66,7 @@ export const createPullRequest = async (issue_id, prData) => {
 export const fetchClaimStatus = async (issue_id) => {
   const res = await mainApi.get(
     `/contributions/issues/${issue_id}/claim-status`,
-    getAuthConfig()
+    getAuthConfig(),
   );
   /* المتوقع من الباكند إرجاع:
     {
@@ -78,12 +78,25 @@ export const fetchClaimStatus = async (issue_id) => {
   return res.data;
 };
 
-
 // DELETE Claim
 export const unclaimIssue = async (issue_id) => {
   const res = await mainApi.delete(
     `/contributions/issues/${issue_id}/claim`,
-    getAuthConfig()
+    getAuthConfig(),
   );
   return res.data;
+};
+
+/**
+ * Sync Pull Request status with GitHub.
+ * This endpoint checks whether the PR has been merged.*/
+
+export const syncPRStatus = async (issue_id) => {
+  const response = await mainApi.post(
+    `/contributions/issues/${issue_id}/sync-pr-status`,
+    {},
+    getAuthConfig(),
+  );
+
+  return response.data;
 };

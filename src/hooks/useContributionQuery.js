@@ -1,13 +1,16 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { 
-  claimIssue, 
-  forkRepository, 
-  createBranch, 
-  createPullRequest ,fetchClaimStatus, unclaimIssue 
-} from "../api/contribution"; 
+import {
+  claimIssue,
+  forkRepository,
+  createBranch,
+  createPullRequest,
+  fetchClaimStatus,
+  unclaimIssue,
+} from "../api/contribution";
+
+import { syncPRStatus } from "../api/contribution";
 
 import { useQuery } from "@tanstack/react-query";
-
 
 // 1) Claim Issue Mutation
 export const useClaimIssue = () => {
@@ -18,8 +21,11 @@ export const useClaimIssue = () => {
       // Logic: Move to fork step if successful
     },
     onError: (error) => {
-      console.error("Claim failed:", error.response?.data?.message || error.message);
-    }
+      console.error(
+        "Claim failed:",
+        error.response?.data?.message || error.message,
+      );
+    },
   });
 };
 
@@ -37,7 +43,8 @@ export const useForkRepository = () => {
 // 3) Create Branch Mutation
 export const useCreateBranch = () => {
   return useMutation({
-    mutationFn: ({ issue_id, branch_name }) => createBranch(issue_id, branch_name),
+    mutationFn: ({ issue_id, branch_name }) =>
+      createBranch(issue_id, branch_name),
     onSuccess: (data) => {
       // data contains branch_name, fork_owner, etc.
       console.log("Branch created:", data.branch_name);
@@ -54,14 +61,13 @@ export const useCreatePullRequest = () => {
     onSuccess: (data) => {
       // 1. Success message
       console.log("PR Created:", data.pr_url);
-      
-      // 2. Optional: Invalidate existing work or issues lists 
+
+      // 2. Optional: Invalidate existing work or issues lists
       // so the UI updates to show the contribution is finished
       queryClient.invalidateQueries(["my-work"]);
     },
   });
 };
-
 
 //6) Fetch Claim Status Query
 
@@ -74,7 +80,6 @@ export const useClaimStatus = (issueId) => {
   });
 };
 
-
 // 7) Unclaim Issue Mutation
 export const useUnclaimIssue = () => {
   const queryClient = useQueryClient();
@@ -82,7 +87,7 @@ export const useUnclaimIssue = () => {
   return useMutation({
     // mutationFn receives issueId from the call site: mutate(issueId)
     mutationFn: (issueId) => unclaimIssue(issueId),
-    
+
     // onSuccess receives (data, variables, context)
     // 'variables' here is the issueId you passed to the mutation
     onSuccess: (data, issueId) => {
@@ -98,5 +103,23 @@ export const useUnclaimIssue = () => {
       // 2. Invalidate the query to refetch fresh state from server
       queryClient.invalidateQueries(["claim-status", issueId]);
     },
+  });
+};
+
+// 8) React Query Hook
+/**
+ * This hook does NOT run automatically.
+ * It only executes when mutate() or mutateAsync() is called,
+ * making it ideal for a "Refresh PR Status" button.
+ */
+
+/**
+ * This hook does NOT run automatically.
+ * It only executes when mutate() or mutateAsync() is called,
+ * making it ideal for a "Refresh PR Status" button.
+ */
+export const useSyncPRStatus = () => {
+  return useMutation({
+    mutationFn: syncPRStatus,
   });
 };

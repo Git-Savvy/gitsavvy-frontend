@@ -2,7 +2,7 @@ import React from "react";
 import { GitFork } from "lucide-react";
 import { useParams } from "react-router-dom";
 import { useToast } from "../../../context/ToastContext";
-import { useForkRepository } from "../../../hooks/useContributionQuery"; // Adjust this path to where your hooks are
+import { useForkRepository } from "../../../hooks/useContributionQuery";
 import {useContribution} from "../../../context/ContributionContext"
 export default function ForkView({ onNext, issue}) {
   const { showToast } = useToast();
