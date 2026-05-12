@@ -26,7 +26,7 @@ export default function ChangesView({ onNext }) {
     <div className="space-y-4">
       {/* GitHub Instruction Card */}
       <div className="bg-white border-2 border-Gray200 p-5 rounded-2xl">
-        <h4 className="font-bold text-indigo-900 mb-2 flex items-center gap-2">
+        <h4 className="font-bold text-primary mb-2 flex items-center gap-2">
           <CodeXml size={18} /> Edit in Code Editor
         </h4>
         <p className="text-sm text-text-secondary mb-4">
@@ -37,7 +37,7 @@ export default function ChangesView({ onNext }) {
           href={branchUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block border-2 border-Gray200 text-indigo-700 px-4 py-2 rounded-lg text-sm font-bold transition-colors"
+          className="inline-block border-2 border-Gray200 text-primary px-4 py-2 rounded-lg text-sm font-bold transition-colors"
         >
           Open GitHub Branch
         </a>
@@ -46,10 +46,8 @@ export default function ChangesView({ onNext }) {
       {/* Visual Commit Activity Placeholder */}
       <div className="border-2 border-Gray200 rounded-2xl overflow-hidden bg-white">
         <div className="p-4 border-b border-Gray200 flex justify-between items-center">
-          <span className="font-bold text-indigo-900 text-sm">
-            Branch Status
-          </span>
-          <span className=" px-3 py-1 rounded-lg text-[10px] font-bold text-indigo-700 uppercase tracking-wider">
+          <span className="font-bold text-primary text-sm">Branch Status</span>
+          <span className=" px-3 py-1 rounded-lg text-[10px] font-bold text-primary uppercase tracking-wider">
             {branchData.branch_name}"
           </span>
         </div>
@@ -59,8 +57,7 @@ export default function ChangesView({ onNext }) {
             <GitBranch size={40} />
           </div>
           <p className="text-sm text-Gray500 max-w-[200px] mx-auto">
-            Make your commits then submit your final Pull
-            Request.
+            Make your commits then submit your final Pull Request.
           </p>
         </div>
 

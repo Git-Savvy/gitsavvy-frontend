@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useToast } from "../../../context/ToastContext";
-import { useCreateBranch } from "../../../hooks/useContributionQuery"; 
-import {useContribution} from "../../../context/ContributionContext";
+import { useCreateBranch } from "../../../hooks/useContributionQuery";
+import { useContribution } from "../../../context/ContributionContext";
 
-export default function BranchView({ onNext, issue}) {
+export default function BranchView({ onNext, issue }) {
   const { issueId } = useParams();
   const { showToast } = useToast();
   const { setBranchData, setReachedMCHStep } = useContribution(); // Grab from context
@@ -39,7 +39,7 @@ export default function BranchView({ onNext, issue}) {
         onError: (error) => {
           const errMsg =
             error.response?.data?.message ||
-           "Failed to create branch. Try a different name.";
+            "Failed to create branch. Try a different name.";
           showToast({ message: errMsg, type: "error" });
         },
       },
@@ -63,10 +63,12 @@ export default function BranchView({ onNext, issue}) {
 
       <p className="text-xs text-Gray600">
         Use a descriptive name like{" "}
-        <span className="font-mono text-indigo-600">"feature/"</span> or{" "}
-        <span className="font-mono text-indigo-600">"fix/"</span> prefix.
+        <span className="font-mono text-primary ">"feature/"</span> or{" "}
+        <span className="font-mono text-primary">"fix/"</span> prefix.
       </p>
-      <p className="text-xs text-Gray600">Make sure that the branch name is unique and not already in use.</p>
+      <p className="text-xs text-Gray600">
+        Make sure that the branch name is unique and not already in use.
+      </p>
 
       <button
         disabled={isPending}

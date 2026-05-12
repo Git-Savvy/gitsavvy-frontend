@@ -92,11 +92,11 @@ export const unclaimIssue = async (issue_id) => {
  * This endpoint checks whether the PR has been merged.*/
 
 export const syncPRStatus = async (issue_id) => {
-  const response = await mainApi.post(
+  const res = await mainApi.post(
     `/contributions/issues/${issue_id}/sync-pr-status`,
     {},
     getAuthConfig(),
   );
 
-  return response.data;
+  return res.data;
 };

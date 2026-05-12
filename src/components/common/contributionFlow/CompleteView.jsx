@@ -3,30 +3,44 @@ import { Check } from "lucide-react";
 import { useToast } from "../../../context/ToastContext";
 import { useContribution } from "../../../context/ContributionContext";
 import { useSyncPRStatus } from "../../../hooks/useContributionQuery";
-export default function CompleteView({ onClose }) {
+import { useUserContext } from "../../../hooks/useUserContext";
+export default function CompleteView({ onClose, issue }) {
   const { showToast } = useToast();
   // Grab the PR data and the reset helper from context
   const { prData, resetContributionData } = useContribution();
   const [canComplete, setCanComplete] = useState(false);
-
+  const issue_id = issue.id;
+  const { user, setUser } = useUserContext();
   const { mutate: checkPRStatus, isPending, data, error } = useSyncPRStatus();
 
   const handleRefreshPRStatus = () => {
-    checkPRStatus(issueId, {
+    checkPRStatus(issue_id, {
       onSuccess: (response) => {
-        // Enable Complete button only if PR is merged
-        setCanComplete(response.merged === true);
-        if (canComplete) {
+        console.log(response);
+
+        // Determine whether the PR has been merged
+        const isMerged = response.status === "merged";
+        setCanComplete(isMerged);
+
+        if (isMerged) {
+          // Update the user context with the latest points and level
+          setUser((prevUser) => ({
+            ...prevUser,
+            points: response.total_points,
+            level: response.level,
+          }));
+
           handleDone();
         } else {
           showToast({
             message:
               "Your pull request has not been merged yet. Please wait until it is merged before completing this contribution.",
-            type: "error",
+            type: "info",
             duration: 4000,
           });
         }
       },
+
       onError: (err) => {
         console.error("Failed to sync PR status:", err);
         setCanComplete(false);
@@ -64,16 +78,16 @@ export default function CompleteView({ onClose }) {
         <h4 className="text-2xl font-bold text-textdark">
           Pull Request Created!
         </h4>
-        <p className="text-Gray400 px-10">
+        <p className=" text-textdark px-10">
           Your pull request has been submitted. Maintainers will review your
-          changes and provide feedback.
+          changes and provide feedback. Once you receive the merge confirmation
+          email, you can click the Done button.
         </p>
 
-        <p className="text-Gray400 px-10">
-          Once you receive the merge confirmation email, you can click the Done
-          button. If your pull request is closed without being merged, it means
-          your solution was not accepted. In that case, you can either unclaim
-          the issue or update your solution and submit a new pull request.
+        <p className="text-Gray400 px-10 pt-5 text-sm">
+          If your pull request is closed without being merged, it means your
+          solution was not accepted. In that case, you can either unclaim the
+          issue or update your solution and submit a new pull request.
         </p>
       </div>
 
