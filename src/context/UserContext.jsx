@@ -19,6 +19,7 @@ export function UserProvider({ children }) {
   useEffect(() => {
     if (user) localStorage.setItem("user", JSON.stringify(user));
     else localStorage.removeItem("user");
+    console.log(user);
   }, [user]);
   // if token changed  1. updated? restore it  2.removed? delete it from local storage
   useEffect(() => {
@@ -31,6 +32,13 @@ export function UserProvider({ children }) {
     localStorage.setItem("user", JSON.stringify(userData));
     setToken(idToken);
     localStorage.setItem("token", idToken);
+
+    // for (let i = 0; i < localStorage.length; i++) {
+    //   const key = localStorage.key(i);
+    //   const value = localStorage.getItem(key);
+
+    //   console.log(key, ":", value);
+    // }
   };
 
   const logout = () => {

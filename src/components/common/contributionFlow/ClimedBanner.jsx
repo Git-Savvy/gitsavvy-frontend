@@ -4,22 +4,28 @@ import SimpleLightButton from "../SimpleLightButton";
 import { useUnclaimIssue } from "../../../hooks/useContributionQuery";
 import { useToast } from "../../../context/ToastContext";
 import { useContribution } from "../../../context/ContributionContext";
-export default function ClaimedBanner({ setIsModalOpen, statusData ,issueId}) {
+export default function ClaimedBanner({ setIsModalOpen, statusData, issueId }) {
   const { mutate, isPending } = useUnclaimIssue();
   const { showToast } = useToast();
-  const{resetContributionData} = useContribution();
-
+  const { resetContributionData } = useContribution();
+  const { completedIssue } = useContribution();
   function handleUnclaim() {
     mutate(issueId, {
       onSuccess: (data) => {
-        showToast({ message: "Issue unclaimed successfully!", type: "success" });
+        showToast({
+          message: "Issue unclaimed successfully!",
+          type: "success",
+        });
         setIsModalOpen(false); // Close the modal after unclaiming
         resetContributionData(issueId);
       },
       onError: (error) => {
-        showToast({ message: error.response?.data?.message || "Failed to unclaim issue", type: "error" });
+        showToast({
+          message: error.response?.data?.message || "Failed to unclaim issue",
+          type: "error",
+        });
       },
-    }); 
+    });
   }
   return (
     <div className="bg-gradient-to-br from-SCyan to-ECyan border-1 border-NavBorder rounded-2xl p-6 flex flex-col md:flex-row md:items-center justify-between mb-8">
@@ -37,7 +43,9 @@ export default function ClaimedBanner({ setIsModalOpen, statusData ,issueId}) {
         {statusData?.claim_status == "claimed_by_you" && (
           <>
             <p className="text-Gray600 text-lg">
-              You have already claimed this issue.
+              {completedIssue
+                ? "You have successfully solved this issue. 🎉"
+                : "You have already claimed this issue."}
             </p>
 
             <div className=" flex pt-4 gap-4">
@@ -46,13 +54,15 @@ export default function ClaimedBanner({ setIsModalOpen, statusData ,issueId}) {
                   setIsModalOpen(true);
                 }}
                 text=" Continue"
+                disabled={completedIssue===true}
               />
 
               <SimpleLightButton
                 onClick={() => {
-                 handleUnclaim();
+                  handleUnclaim();
                 }}
                 text=" Cancel Claim"
+                disabled={completedIssue===true}
               />
             </div>
           </>

@@ -7,7 +7,8 @@ import { useUserContext } from "../../../hooks/useUserContext";
 export default function CompleteView({ onClose, issue }) {
   const { showToast } = useToast();
   // Grab the PR data and the reset helper from context
-  const { prData, resetContributionData } = useContribution();
+  const { prData, resetContributionData, setCompletedIssue } =
+    useContribution();
   const [canComplete, setCanComplete] = useState(false);
   const issue_id = issue.id;
   const { user, setUser } = useUserContext();
@@ -28,6 +29,8 @@ export default function CompleteView({ onClose, issue }) {
             ...prevUser,
             points: response.total_points,
             level: response.level,
+            bagdes: response.bagdes,
+
           }));
 
           handleDone();
@@ -43,6 +46,11 @@ export default function CompleteView({ onClose, issue }) {
 
       onError: (err) => {
         console.error("Failed to sync PR status:", err);
+        showToast({
+          message: ("Failed to sync PR status:", err),
+          type: "error",
+          duration: 4000,
+        });
         setCanComplete(false);
       },
     });
@@ -56,6 +64,7 @@ export default function CompleteView({ onClose, issue }) {
     });
     onClose(); // This will close the modal in ContributionWorkflow
     console.log("Complete");
+    setCompletedIssue(true);
   }
 
   const handleViewPR = () => {

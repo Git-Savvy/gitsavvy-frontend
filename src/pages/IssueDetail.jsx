@@ -14,7 +14,8 @@ import { timeAgo } from "../utils/timeAgo";
 
 import SkeletonPage from "../components/messages/SkeletonPage";
 import ErrorMessage from "../components/messages/ErrorMessage";
-import Banner from "../components/common/contributionFlow/Banner";  
+import Banner from "../components/common/contributionFlow/Banner";
+import { useContribution } from "../context/ContributionContext";
 export default function IssueDetail() {
   const { repoId, issueId } = useParams(); // id from URL
   const {
@@ -25,7 +26,21 @@ export default function IssueDetail() {
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("description");
- 
+  const { setCompletedIssue, loadIssueData } = useContribution();
+
+  // Load issue-specific data whenever a new issue is opened
+  //here used the issue id not numbrt that appear to the user to load the data for that specific issue when the modal opens
+  React.useEffect(() => {
+    if (issue?.id) {
+      loadIssueData(issue.id);
+      const completed = localStorage.getItem(
+        `issue_${issue.id}_completedIssue`,
+      );
+
+      setCompletedIssue(completed === "true");
+    }
+  }, [issue?.id]);
+
   function handleVisit() {
     // Use _blank for a new tab, or _self to open in the same window
     window.open(issue.url, "_blank", "noopener,noreferrer");
@@ -56,100 +71,96 @@ export default function IssueDetail() {
         containerStyle={"w-full h-screen"}
       />
     );
-  }
+  } else {
+    return (
+      <main className="max-w-8xl  flex-col gap-10 px-5 md:px-20 lg:px-45">
+        {/* Back Link */}
+        <BackButton
+          text="Back to Repository"
+          onClick={() => {
+            navigate(`/home/repoDetail/${repoId}`);
+          }}
+        />
 
-  else{
- 
-  return (
-    <main className="max-w-8xl  flex-col gap-10 px-5 md:px-20 lg:px-45">
-      {/* Back Link */}
-      <BackButton
-        text="Back to Repository"
-        onClick={() => {
-          navigate(`/home/repoDetail/${repoId}`);
-        }}
-      />
-
-      {/* 2. Issue Title & Meta */}
-      <div className="mt-8">
-        <div className="md:flex justify-between gap-2">
-          <div className="flex flex-col lg:flex-row gap-3 ">
-            <div className="flex  gap-5">
-              <div className=" w-17 h-17 bg-Teal400/20 rounded-full flex items-center justify-center text-Teal400">
-                {/* <Info size={30} /> */}
-                <img
-                  src={issue.author_avatar_url}
-                  className=" w-16 h-16 rounded-full"
-                />
-              </div>
-              {/* <span className="lg:hidden  font-normal text-xl border text-NavBorder bg-NavSelected  flex items-center justify-center rounded-full px-4 py-2 mt-2  h-fit">
+        {/* 2. Issue Title & Meta */}
+        <div className="mt-8">
+          <div className="md:flex justify-between gap-2">
+            <div className="flex flex-col lg:flex-row gap-3 ">
+              <div className="flex  gap-5">
+                <div className=" w-17 h-17 bg-Teal400/20 rounded-full flex items-center justify-center text-Teal400">
+                  {/* <Info size={30} /> */}
+                  <img
+                    src={issue.author_avatar_url}
+                    className=" w-16 h-16 rounded-full"
+                  />
+                </div>
+                {/* <span className="lg:hidden  font-normal text-xl border text-NavBorder bg-NavSelected  flex items-center justify-center rounded-full px-4 py-2 mt-2  h-fit">
                 #{issue.number}
               </span> */}
-            </div>
-            <div className="space-y-3">
-              <div className="flex gap-3 flex-col md:flex-row">
-                <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-textdark">
-                  {issue.title}
-                </h1>
-                <span className="flex  font-normal text-xl border text-NavSelected bg-NavBorder flex text-center justify-center rounded-full px-4 py-2 mt-2 h-fit">
-                  #{issue.number}
-                </span>
               </div>
+              <div className="space-y-3">
+                <div className="flex gap-3 flex-col md:flex-row">
+                  <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-textdark">
+                    {issue.title}
+                  </h1>
+                  <span className="flex  font-normal text-xl border text-NavSelected bg-NavBorder flex text-center justify-center rounded-full px-4 py-2 mt-2 h-fit">
+                    #{issue.number}
+                  </span>
+                </div>
 
-              <div className="flex gap-4 mb-6">
-                <div className="flex flex-col lg:flex-row lg:items-center gap-4 text-base md:text-lg lg:text-xl text-Gray600">
-                  <span>
-                    <span className="lg:hidden">• </span>Opened{" "}
-                    {timeAgo(issue.opened_at)}
-                  </span>
-                  <span className="flex items-center gap-1">{`• ${issue.num_of_comments} comments`}</span>
-                  <span className="flex items-center gap-1">
-                    • <UserCircle size={20} /> {issue.author_username}
-                  </span>
+                <div className="flex gap-4 mb-6">
+                  <div className="flex flex-col lg:flex-row lg:items-center gap-4 text-base md:text-lg lg:text-xl text-Gray600">
+                    <span>
+                      <span className="lg:hidden">• </span>Opened{" "}
+                      {timeAgo(issue.opened_at)}
+                    </span>
+                    <span className="flex items-center gap-1">{`• ${issue.num_of_comments} comments`}</span>
+                    <span className="flex items-center gap-1">
+                      • <UserCircle size={20} /> {issue.author_username}
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          {/*future work*/}
-          {/* <SimpleLightButton
+            {/*future work*/}
+            {/* <SimpleLightButton
             text="View on GitHub"
             icon={<ExternalLink className="w-5 h-5 " />}
             onClick={handleVisit}
           /> */}
+          </div>
+          {/* Labels */}
+          <div className="flex flex-wrap gap-2 mb-8 mt-5 md:mt-0">
+            {issue?.labels?.map((label, index) => (
+              <span
+                key={`${label.id}-${index}`}
+                className="px-3 py-1 text-NavBorder bg-NavSelected lg:text-base font-medium rounded-xl border"
+              >
+                {label.name}
+              </span>
+            ))}
+          </div>
         </div>
-        {/* Labels */}
-        <div className="flex flex-wrap gap-2 mb-8 mt-5 md:mt-0">
-          {issue?.labels?.map((label, index) => (
-            <span
-              key={`${label.id}-${index}`}
-              className="px-3 py-1 text-NavBorder bg-NavSelected lg:text-base font-medium rounded-xl border"
-            >
-              {label.name}
-            </span>
-          ))}
+
+        {/* 3. Claim Banner */}
+        <Banner setIsModalOpen={setIsModalOpen} issue={issue} />
+
+        {/* 4. Navigation Bar (Tabs) */}
+        <div>
+          <IssueNav
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            num={issue.num_of_comments}
+          />
+          <div className="mt-6 ">{renderContent()}</div>
         </div>
-      </div>
-
-       {/* 3. Claim Banner */}
-      <Banner setIsModalOpen={setIsModalOpen}  issue={issue} />
-
-      
-
-      {/* 4. Navigation Bar (Tabs) */}
-      <div>
-        <IssueNav
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-          num={issue.num_of_comments}
+        {/* The Modal Component */}
+        <ContributionWorkflow
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          issue={issue}
         />
-        <div className="mt-6 ">{renderContent()}</div>
-      </div>
-      {/* The Modal Component */}
-      <ContributionWorkflow
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        issue={issue}
-      />
-    </main>
-  );
-}}
+      </main>
+    );
+  }
+}

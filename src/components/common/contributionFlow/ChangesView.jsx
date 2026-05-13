@@ -37,7 +37,7 @@ export default function ChangesView({ onNext }) {
           href={branchUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block border-2 border-Gray200 text-primary px-4 py-2 rounded-lg text-sm font-bold transition-colors"
+          className="inline-block border-2 border-Gray200 text-primary px-4 py-2 rounded-lg text-sm font-bold bg-primary text-white hover:bg-hoverd transition-colors"
         >
           Open GitHub Branch
         </a>

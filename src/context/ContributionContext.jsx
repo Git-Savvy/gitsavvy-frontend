@@ -14,7 +14,7 @@ export const ContributionProvider = ({ children }) => {
   const [forkData, setForkData] = useState(null);
   const [prData, setPrData] = useState(null);
   const [reachedMCHStep, setReachedMCHStep] = useState(false);
-
+  const [completedIssue, setCompletedIssue] = useState(false);
   /**
    * Load data for a specific issue when the modal opens
    */
@@ -26,12 +26,14 @@ export const ContributionProvider = ({ children }) => {
     const fork = localStorage.getItem(`issue_${issueId}_forkData`);
     const pr = localStorage.getItem(`issue_${issueId}_prData`);
     const reached = localStorage.getItem(`issue_${issueId}_reachedMCHStep`);
+    const completed = localStorage.getItem(`issue_${issueId}_completedIssue`);
 
     setCurrentStep(Number(step) || 0);
     setBranchData(branch ? JSON.parse(branch) : null);
     setForkData(fork ? JSON.parse(fork) : null);
     setPrData(pr ? JSON.parse(pr) : null);
     setReachedMCHStep(reached === "true");
+    setCompletedIssue(completed === "true");
   };
 
   /**
@@ -48,12 +50,17 @@ export const ContributionProvider = ({ children }) => {
       getIssueKey("reachedMCHStep"),
       reachedMCHStep.toString(),
     );
+    localStorage.setItem(
+      getIssueKey("completedIssue"),
+      completedIssue.toString(),
+    );
   }, [
     currentStep,
     branchData,
     forkData,
     prData,
     reachedMCHStep,
+    completedIssue,
     activeIssueId,
   ]);
 
@@ -88,6 +95,8 @@ export const ContributionProvider = ({ children }) => {
         setPrData,
         reachedMCHStep,
         setReachedMCHStep,
+        completedIssue,
+        setCompletedIssue,
         resetContributionData,
         loadIssueData, // Call this when opening the workflow
       }}
