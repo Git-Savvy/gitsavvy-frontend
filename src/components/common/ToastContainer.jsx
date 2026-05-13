@@ -1,10 +1,10 @@
 import { CircleCheckBig, Ban, TriangleAlert, Info, X } from "lucide-react";
 
 const toastStyles = {
-  success: "border-teal-500/40 bg-teal-500/10 text-teal-700",
-  error: "border-red-500/40 bg-red-500/10 text-red-700",
-  warning: "border-yellow-500/40 bg-yellow-500/10 text-yellow-700",
-  info: "border-cyan-500/40 bg-cyan-500/10 text-cyan-700",
+  success: "border-teal-500/40 bg-teal-500/10 text-teal-500",
+  error: "border-red-500/40 bg-red-500/10 text-red-500",
+  warning: "border-yellow-500/40 bg-yellow-500/10 text-yellow-500",
+  info: "border-cyan-500/40 bg-cyan-500/10 text-cyan-500",
 };
 
 const toastIcon = {
