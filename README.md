@@ -19,21 +19,14 @@ GitSavvy is an open-source developer platform and contribution engine designed t
 
 ## ✨ Key Features
 
-* **🤖 AI Documentation Engine:** Automatically analyzes, structures, and documents code repositories to minimize onboarding overhead for new contributors.
-* **🔍 Repository Recommendation System:** Smart matching algorithms that recommend open-source projects tailored to a developer's specific tech stack, skill level, and historical activity.
+* **🤖 AI Documentation Engine:** Automatically documents code repositories to minimize onboarding overhead for new contributors.
+* **🔍 Repository Recommendation System:** Smart matching algorithms that recommend open-source projects tailored to a developer's specific prefrencess.
 * **🔐 Stateless Secure Authentication:** Implements secure user authentication flows powered by **GitHub OAuth** for seamless repository synchronization.
 * **🪐 Modern Glass-morphism UI:** Features a minimalist, premium dark mode aesthetic built with fine-tuned translucent components and high-contrast styling.
 * **📊 Contribution Dashboard:** Centralized workspace for tracking code analytics, pull request metrics, and synchronized open-source repositories.
 
 ---
 
-## 🛠️ Tech Stack
-
-* **Core Framework:** React (v19) + Vite (Blazing fast local bundling & HMR)
-* **Styling & Theme:** Vanilla Responsive CSS built on clean custom component parameters and fluid media break-points.
-* **Typography & Assets:** Integrated Google Font APIs ("Poppins") coupled with modular icon interfaces (Boxicons & Remixicons).
-
----
 
 ## 🚀 Local Setup & Installation
 
