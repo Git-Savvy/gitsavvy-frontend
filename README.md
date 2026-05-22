@@ -5,9 +5,15 @@ GitSavvy is an open-source developer platform and contribution engine designed t
 ---
 
 ## 📷 UI Preview
+<img width="1919" height="906" alt="image" src="https://github.com/user-attachments/assets/aac40229-3ff8-48a5-b535-a131b437efe5" />
+<img width="1919" height="904" alt="image" src="https://github.com/user-attachments/assets/6a8a1507-4e2c-4472-935f-91bf1c34041e" />
+<img width="1914" height="903" alt="image" src="https://github.com/user-attachments/assets/d814f9af-5632-4a07-b98e-3967925d34c1" />
+<img width="1919" height="900" alt="image" src="https://github.com/user-attachments/assets/e6560f52-bdd1-4794-b72a-8839e519d744" />
+<img width="1917" height="896" alt="image" src="https://github.com/user-attachments/assets/49605f11-06ef-4227-b20e-4e761ec806f8" />
+<img width="1919" height="904" alt="image" src="https://github.com/user-attachments/assets/93e0dbd7-f315-4e79-927b-74b0c67da2a9" />
+<img width="1919" height="914" alt="image" src="https://github.com/user-attachments/assets/f3ab68ed-726f-42a5-936a-ffb91f9e5e5f" />
 
-![GitSavvy Platform Layout](public/gitsavvy_mockup.png)
-*Replace this with a link or file path to your web design mockup once it's uploaded to your project files!*
+
 
 ---
 
